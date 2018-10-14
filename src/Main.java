@@ -3,6 +3,7 @@ import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.*;
 import javafx.scene.canvas.*;
+import javafx.scene.input.*;
 import javafx.scene.paint.*;
 import javafx.stage.*;
 
@@ -41,8 +42,15 @@ public class Main extends Application {
         stage.setHeight(bounds.getHeight());
 
         Group root = new Group();
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
         c = new Canvas(bounds.getWidth(), bounds.getHeight());
+
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            if (key.getCode() == KeyCode.F4) {
+                System.exit(0);
+            }
+        });
 
         root.getChildren().add(c);
 
