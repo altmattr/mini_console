@@ -33,7 +33,7 @@ public class Main extends Application {
 
         root.getChildren().add(c);
 
-        app = new examples.ScalingChecker(c.getGraphicsContext2D());
+        app = new studentwork.EliseMcCabe(c.getGraphicsContext2D());
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if (key.getCode() == KeyCode.F4) {
@@ -43,7 +43,7 @@ public class Main extends Application {
             } else if (key.getCode() == KeyCode.F12){
                 scaling = ! scaling;
             }
-            app.key = key.getCharacter().charAt(0);
+            app.key = (char)key.getCode().impl_getCode();
             app.keyPressed();
         });
 

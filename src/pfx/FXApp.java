@@ -6,10 +6,15 @@ import javafx.scene.shape.ArcType;
 
 public class FXApp {
 
+    public final int CORNER = 0;
+    public final int CENTER = 1;
+
     public int width;
     public int height;
 
     public char key;
+
+    public int rectMode = CORNER;
 
     GraphicsContext g;
     public FXApp(GraphicsContext g){
@@ -57,8 +62,14 @@ public class FXApp {
     }
     protected void line(float x, float y, float x2, float y2){g.strokeLine(x, y, x2, y2);}
     protected void rect(float x, float y, float width, float height){
-        g.fillRect(x,y,width,height);
-        g.strokeRect(x,y,width,height);
+        float topLeftX = x;
+        float topLeftY = y;
+        if (rectMode == CENTER){
+            topLeftX = x - width/2;
+            topLeftY = y - height/2;
+        }
+        g.fillRect(topLeftX,topLeftY,width,height);
+        g.strokeRect(topLeftX,topLeftY,width,height);
     }
 
     // curves
@@ -76,7 +87,8 @@ public class FXApp {
     // TODO
 
     // setting - colour
-    protected void background(int grey){g.save();g.setFill(Color.gray(grey));g.fillRect(0,0,width,height);g.restore();}
+    protected void background(int grey){g.save();g.setFill(Color.rgb(grey, grey, grey));g.fillRect(0,0,width,height);g.restore();}
+    protected void rectMode(int mode){rectMode = mode;}
     protected void background(int r, int gg, int b){g.save();g.setFill(Color.rgb(r,gg,b));g.fillRect(0,0,width,height);g.restore();}
     protected void fill(int grey){g.setFill(Color.rgb(grey, grey, grey));}
     protected void fill(int rr, int gg, int bb){g.setFill(Color.rgb(rr,gg,bb));}
@@ -86,4 +98,5 @@ public class FXApp {
     // maths
     public float sin(float in){return (float)Math.sin(in);}
     public float cos(float in){return (float)Math.cos(in);}
+    public float random(float lower, float upper){return (float)Math.random()*(upper - lower) + lower;}
 }
