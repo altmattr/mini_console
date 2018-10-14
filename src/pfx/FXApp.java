@@ -1,11 +1,15 @@
+package pfx;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 
 public class FXApp {
 
-    protected int width;
-    protected int height;
+    public int width;
+    public int height;
+
+    public char key;
 
     GraphicsContext g;
     public FXApp(GraphicsContext g){
@@ -45,11 +49,17 @@ public class FXApp {
     // 2d primitives
     // TODO
     protected void ellipse(float x, float y, float width, float height){
-        g.fillArc(x,y,width, height,0, 360, ArcType.ROUND);
-        g.strokeArc(x,y, width, height, 0, 360, ArcType.ROUND);
+        float topLeftX = x - width/2;
+        float topLeftY = y - width/2;
+
+        g.fillOval(topLeftX,topLeftY,width, height);
+        g.strokeOval(topLeftX,topLeftY, width, height);
     }
     protected void line(float x, float y, float x2, float y2){g.strokeLine(x, y, x2, y2);}
-    protected void rect(float x, float y, float width, float height){g.rect(x,y,width,height);}
+    protected void rect(float x, float y, float width, float height){
+        g.fillRect(x,y,width,height);
+        g.strokeRect(x,y,width,height);
+    }
 
     // curves
     // TODO
@@ -60,6 +70,7 @@ public class FXApp {
     // attributes
     // TODO
     protected void strokeWeight(int w){g.setLineWidth(w);}
+    protected void noStroke(){g.setLineWidth(0);}
 
     // vertex
     // TODO
@@ -71,4 +82,8 @@ public class FXApp {
     protected void fill(int rr, int gg, int bb){g.setFill(Color.rgb(rr,gg,bb));}
 
     protected void size(int w, int h){width = w;height = h;}
+
+    // maths
+    public float sin(float in){return (float)Math.sin(in);}
+    public float cos(float in){return (float)Math.cos(in);}
 }

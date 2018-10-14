@@ -1,6 +1,8 @@
+package pfx;
+
 public class PVector {
-    float x;
-    float y;
+    public float x;
+    public float y;
 
     public PVector(float x, float y){
         this.x = x;

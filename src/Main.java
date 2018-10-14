@@ -6,32 +6,15 @@ import javafx.scene.canvas.*;
 import javafx.scene.input.*;
 import javafx.scene.paint.*;
 import javafx.stage.*;
+import pfx.FXApp;
 
 public class Main extends Application {
 
     Canvas c;
     FXApp app;
 
-    public char key;
-    public int mouseX;
-    public int mouseY;
-
-    public void setup(){
-    }
-
-    public void draw(){
-        GraphicsContext g = c.getGraphicsContext2D();
-        g.setFill(Color.BLUE);
-        g.fillRect(75,75,100,100);
-    }
-
-    public void mousePressed(){
-
-    }
-
-    public void keyPressed(){
-
-    }
+    boolean scaling = false;
+    boolean showPerformance;
 
     @Override
     public void start(Stage stage) throws Exception{
@@ -44,17 +27,25 @@ public class Main extends Application {
         Group root = new Group();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true);
         c = new Canvas(bounds.getWidth(), bounds.getHeight());
+
+
+        root.getChildren().add(c);
+
+        app = new examples.ScalingChecker(c.getGraphicsContext2D());
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if (key.getCode() == KeyCode.F4) {
                 System.exit(0);
+            } else if (key.getCode() == KeyCode.F5){
+                showPerformance = !showPerformance;
+            } else if (key.getCode() == KeyCode.F12){
+                scaling = ! scaling;
             }
+            app.key = key.getCharacter().charAt(0);
+            app.keyPressed();
         });
-
-        root.getChildren().add(c);
-
-        app = new BouncingBall(c.getGraphicsContext2D());
 
         app.settings();
         app.setup();
@@ -63,15 +54,26 @@ public class Main extends Application {
         new AnimationTimer(){
             public void handle(long currentNanoTime){
                 long start = System.currentTimeMillis();
+                c.getGraphicsContext2D().save();
+                if (scaling){
+                    c.getGraphicsContext2D().scale(bounds.getWidth()/app.width, bounds.getHeight()/app.height);
+                } else {
+                    double xoffset = (bounds.getWidth() - app.width)/2;
+                    double yoffset = (bounds.getHeight() - app.height)/2;
+                    c.getGraphicsContext2D().translate(xoffset, yoffset);
+                }
 
                 app.draw();
 
                 // show performance
-                c.getGraphicsContext2D().save();
-                long end = System.currentTimeMillis();
+                if (showPerformance) {
+                    c.getGraphicsContext2D().save();
+                    long end = System.currentTimeMillis();
 
-                fps.logFrame(16, end - start);
-                fps.draw(c.getGraphicsContext2D(), 50, 50);
+                    fps.logFrame(16, end - start);
+                    fps.draw(c.getGraphicsContext2D(), 50, 50);
+                    c.getGraphicsContext2D().restore();
+                }
                 c.getGraphicsContext2D().restore();
             }
         }.start();

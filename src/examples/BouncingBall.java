@@ -1,8 +1,10 @@
-// https://processing.org/examples/bouncingball.html
+package examples;// https://processing.org/examples/bouncingball.html
+
+import pfx.*;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class BouncingBall extends FXApp {
+public class BouncingBall extends pfx.FXApp {
     PVector location;
     PVector velocity;
     PVector gravity;
@@ -35,6 +37,9 @@ public class BouncingBall extends FXApp {
         stroke(255);
         strokeWeight(2);
         fill(127);
+        rect(1190,790,10,10);
+        System.out.println(width);
+        System.out.println(height);
         ellipse(location.x, location.y, 48, 48);
     }
 }
