@@ -40,21 +40,31 @@ public class Main extends Application {
         stage.setWidth(bounds.getWidth());
         stage.setHeight(bounds.getHeight());
 
-        double dpi = Screen.getPrimary().getDpi();
         Group root = new Group();
         stage.setScene(new Scene(root));
         c = new Canvas(bounds.getWidth(), bounds.getHeight());
 
         root.getChildren().add(c);
 
-        app = new TitleScreen(c.getGraphicsContext2D());
+        app = new BouncingBall(c.getGraphicsContext2D());
 
         app.settings();
         app.setup();
 
+        FPSChart fps = new FPSChart();
         new AnimationTimer(){
             public void handle(long currentNanoTime){
+                long start = System.currentTimeMillis();
+
                 app.draw();
+
+                // show performance
+                c.getGraphicsContext2D().save();
+                long end = System.currentTimeMillis();
+
+                fps.logFrame(16, end - start);
+                fps.draw(c.getGraphicsContext2D(), 50, 50);
+                c.getGraphicsContext2D().restore();
             }
         }.start();
 
