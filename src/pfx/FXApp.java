@@ -1,6 +1,8 @@
 package pfx;
 
+import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 
@@ -15,6 +17,8 @@ public class FXApp {
     public char key;
 
     public int rectMode = CORNER;
+    public int ellipseMode = CENTER;
+    public boolean filling = true;
 
     GraphicsContext g;
     public FXApp(GraphicsContext g){
@@ -24,8 +28,19 @@ public class FXApp {
     public void settings(){}
     public void setup(){}
     public void draw(){}
+    public void demoDraw(GraphicsContext g2){
+        GraphicsContext oldG = g;
+        g = g2;
+        settings();
+        setup();
+        draw();
+        g = oldG;
+    }
+    public String description(){return "";}
+    public String name(){return "anon";}
     public void mousePressed(){}
-    public void keyPressed(){}
+    public void keyTyped(){}
+    public void keyPressed(KeyEvent evt){}
     public void mouseDragged(){}
     public void mouseReleased(){}
 
@@ -57,7 +72,9 @@ public class FXApp {
         float topLeftX = x - width/2;
         float topLeftY = y - width/2;
 
-        g.fillOval(topLeftX,topLeftY,width, height);
+        if (filling) {
+            g.fillOval(topLeftX, topLeftY, width, height);
+        }
         g.strokeOval(topLeftX,topLeftY, width, height);
     }
     protected void line(float x, float y, float x2, float y2){g.strokeLine(x, y, x2, y2);}
@@ -68,8 +85,14 @@ public class FXApp {
             topLeftX = x - width/2;
             topLeftY = y - height/2;
         }
-        g.fillRect(topLeftX,topLeftY,width,height);
+        if(filling) {
+            g.fillRect(topLeftX, topLeftY, width, height);
+        }
         g.strokeRect(topLeftX,topLeftY,width,height);
+    }
+
+    protected void point(float x, float y){
+        ellipse(x, y, 1, 1);
     }
 
     // curves
@@ -89,14 +112,45 @@ public class FXApp {
     // setting - colour
     protected void background(int grey){g.save();g.setFill(Color.rgb(grey, grey, grey));g.fillRect(0,0,width,height);g.restore();}
     protected void rectMode(int mode){rectMode = mode;}
+    protected void ellipseMode(int mode){ellipseMode = mode;}
     protected void background(int r, int gg, int b){g.save();g.setFill(Color.rgb(r,gg,b));g.fillRect(0,0,width,height);g.restore();}
-    protected void fill(int grey){g.setFill(Color.rgb(grey, grey, grey));}
-    protected void fill(int rr, int gg, int bb){g.setFill(Color.rgb(rr,gg,bb));}
+    protected void fill(int grey){
+        filling = true;
+        g.setFill(Color.rgb(grey, grey, grey));
+    }
+    protected void fill(int rr, int gg, int bb){
+        filling = true;
+        g.setFill(Color.rgb(rr,gg,bb));
+    }
+
+    protected void fill(int grey, int alpha){
+        filling = true;
+        g.setFill(Color.rgb(grey, grey, grey, alpha/100f));
+    }
+    protected void fill(int rr, int gg, int bb, int alpha){
+        filling = true;
+        g.setFill(Color.rgb(rr,gg,bb,alpha));
+    }
+    protected void noFill(){
+        filling = false;
+    }
 
     protected void size(int w, int h){width = w;height = h;}
+
+    protected void text(String txt, float x, float y){
+        g.setTextBaseline(VPos.TOP);
+        g.fillText(txt, x,y);
+    }
 
     // maths
     public float sin(float in){return (float)Math.sin(in);}
     public float cos(float in){return (float)Math.cos(in);}
     public float random(float lower, float upper){return (float)Math.random()*(upper - lower) + lower;}
+    public float dist(float x1, float y1, float x2, float y2){
+        return (float)Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2));
+    }
+
+    public void image(javafx.scene.image.Image img, float x, float y){
+        g.drawImage(img, x, y);
+    }
 }

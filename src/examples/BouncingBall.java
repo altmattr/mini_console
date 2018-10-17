@@ -12,6 +12,8 @@ public class BouncingBall extends pfx.FXApp {
     public BouncingBall(GraphicsContext g) {
         super(g);
     }
+    public String name(){return "Bouncing Ball with Vectors by Daniel Shiffman (https://processing.org/examples/bouncingball.html)";}
+    public String description(){return "Demonstration of using vectors to control motion of body.";}
 
     public void settings(){
         size(1200,800);

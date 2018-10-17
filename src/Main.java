@@ -8,10 +8,13 @@ import javafx.scene.paint.*;
 import javafx.stage.*;
 import pfx.FXApp;
 
+import java.util.*;
+
 public class Main extends Application {
 
     Canvas c;
     FXApp app;
+    FXApp defaultApp;
 
     boolean scaling = false;
     boolean showPerformance;
@@ -33,33 +36,40 @@ public class Main extends Application {
 
         root.getChildren().add(c);
 
-        app = new studentwork.EliseMcCabe(c.getGraphicsContext2D());
+        defaultApp = new ApplicationChooser(c.getGraphicsContext2D(), (FXApp a) -> app = a);
 
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if (key.getCode() == KeyCode.F4) {
-                System.exit(0);
-            } else if (key.getCode() == KeyCode.F5){
-                showPerformance = !showPerformance;
-            } else if (key.getCode() == KeyCode.F12){
-                scaling = ! scaling;
-            }
-            app.key = (char)key.getCode().impl_getCode();
-            app.keyPressed();
-        });
-
+        app = defaultApp;
         app.settings();
         app.setup();
+
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, (evt) -> {
+            if (evt.getCode() == KeyCode.F4) {
+                System.exit(0);
+            } else if (evt.getCode() == KeyCode.F5){
+                showPerformance = !showPerformance;
+            } else if (evt.getCode() == KeyCode.F12){
+                scaling = ! scaling;
+            } else if (evt.getCode() == KeyCode.ESCAPE){
+                app = defaultApp;
+            }
+            app.keyPressed(evt);
+        });
+
+        scene.addEventHandler(KeyEvent.KEY_TYPED, (evt) -> {
+            app.key = evt.getCharacter().charAt(0);
+            app.keyTyped();
+        });
 
         FPSChart fps = new FPSChart();
         new AnimationTimer(){
             public void handle(long currentNanoTime){
                 long start = System.currentTimeMillis();
                 c.getGraphicsContext2D().save();
-                if (scaling){
-                    c.getGraphicsContext2D().scale(bounds.getWidth()/app.width, bounds.getHeight()/app.height);
+                if (scaling) {
+                    c.getGraphicsContext2D().scale(bounds.getWidth() / app.width, bounds.getHeight() / app.height);
                 } else {
-                    double xoffset = (bounds.getWidth() - app.width)/2;
-                    double yoffset = (bounds.getHeight() - app.height)/2;
+                    double xoffset = (bounds.getWidth() - app.width) / 2;
+                    double yoffset = (bounds.getHeight() - app.height) / 2;
                     c.getGraphicsContext2D().translate(xoffset, yoffset);
                 }
 

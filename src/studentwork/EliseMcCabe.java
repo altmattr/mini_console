@@ -13,6 +13,9 @@ import java.io.IOException;
 
 public class EliseMcCabe extends pfx.FXApp {
 
+    public String name(){return "Box Carrier by Elise McCabe (2017)";}
+    public String description(){return "A game of infinite haulage";}
+
     float pX = 175;
     float pY = 120;
     float s = 4;
@@ -134,8 +137,8 @@ public class EliseMcCabe extends pfx.FXApp {
         }
     }
 
-    public void keyPressed() {
-        if (key == 'A') {
+    public void keyTyped() {
+        if (key == 'a') {
             if (pX >= 100) {
                 pRight = false;
                 stopped = false;
@@ -143,13 +146,13 @@ public class EliseMcCabe extends pfx.FXApp {
         }
 
 
-        if (key == 'D') {
+        if (key == 'd') {
             if (pX <= width-100) {
                 pRight = true;
                 stopped = false;
             }
         }
-        if (key == 'S') {
+        if (key == 's') {
             stopped = true;
             if (boxHeld == true) {
                 boxHeld = false;
@@ -168,7 +171,7 @@ public class EliseMcCabe extends pfx.FXApp {
                 }
             }
         }
-        if (key == 'W') {
+        if (key == 'w') {
             if (boxHeld == false && pX >= boxX - 30 && pX <= boxX + 30) {
                 boxHeld = true;
                 stopped = true;
