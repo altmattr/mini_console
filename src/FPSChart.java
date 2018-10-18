@@ -27,7 +27,7 @@ public class FPSChart {
         c.setStroke(Color.RED);
 
         //TODO: getting rid of this empty path slows the application incredibly.
-        c.beginPath();c.closePath();
+        //c.beginPath();c.closePath();
 
         // show performance line
         for(int i = 1; i < len; i++){

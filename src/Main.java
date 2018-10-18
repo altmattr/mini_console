@@ -36,7 +36,7 @@ public class Main extends Application {
 
         root.getChildren().add(c);
 
-        defaultApp = new ApplicationChooser(c.getGraphicsContext2D(), (FXApp a) -> app = a);
+	defaultApp = new ApplicationChooser(c.getGraphicsContext2D(), (FXApp a) -> {app = a; app.settings(); app.setup();});
 
         app = defaultApp;
         app.settings();

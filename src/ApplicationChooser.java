@@ -57,9 +57,9 @@ public class ApplicationChooser extends FXApp {
             } else {
                 stroke(55, 58, 54);
             }
-            Canvas c = new Canvas(boxSize-2, boxSize-2);
-            apps.get(i).demoDraw(c.getGraphicsContext2D());
-            image(c.snapshot(new SnapshotParameters(), null), gapSize+1, ycoord+1);
+//            Canvas c = new Canvas(boxSize-2, boxSize-2);
+//            apps.get(i).demoDraw(c.getGraphicsContext2D());
+//            image(c.snapshot(new SnapshotParameters(), null), gapSize+1, ycoord+1);
             rect(gapSize, ycoord, boxSize, boxSize);
             text(apps.get(i).name() + "\n\n" + apps.get(i).description(), gapSize * 2 + boxSize, ycoord);
             ycoord = ycoord + boxSize + gapSize;
