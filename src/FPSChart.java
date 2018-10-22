@@ -7,11 +7,23 @@ public class FPSChart {
     long[] frameHistory = new long[len];
     long[] drawHistory = new long[len];
     int records = 0;
+
+    long lastNanoTime = 0;
+    long lastNanoGap = 0;
     public void logFrame(long frame, long drawing){
         System.out.println(drawing);
         frameHistory[records] = frame;
         drawHistory[records] = drawing;
         records = (records + 1) % len;
+    }
+
+    public void registerFrameStart(long nanoTime){
+        lastNanoGap = nanoTime - lastNanoTime;
+        lastNanoTime = nanoTime;
+    }
+
+    public void registerFrameEnd(long milliTime){
+        logFrame(lastNanoGap/1000000, milliTime);
     }
 
     public void draw(GraphicsContext c, double x, double y){
@@ -24,14 +36,17 @@ public class FPSChart {
         c.setLineDashes(0);
         c.strokeLine(x+records, y, x+records, y+20);
 
-        c.setStroke(Color.RED);
-
         //TODO: getting rid of this empty path slows the application incredibly.
         //c.beginPath();c.closePath();
 
-        // show performance line
+        // show performance lines
+        c.setStroke(Color.RED); // draw
         for(int i = 1; i < len; i++){
             c.strokeLine(x + (i-1), y + 20-drawHistory[i-1], x + i, y + 20 - drawHistory[i]);
+        }
+        c.setStroke(Color.BLUE); // frame time
+        for(int i = 1; i < len; i++){
+            c.strokeLine(x + (i-1), y + 20-frameHistory[i-1], x + i, y + 20 - frameHistory[i]);
         }
         //c.stroke();
     }

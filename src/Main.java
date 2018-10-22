@@ -63,6 +63,7 @@ public class Main extends Application {
         FPSChart fps = new FPSChart();
         new AnimationTimer(){
             public void handle(long currentNanoTime){
+                fps.registerFrameStart(currentNanoTime);
                 long start = System.currentTimeMillis();
                 c.getGraphicsContext2D().save();
                 if (scaling) {
@@ -80,11 +81,10 @@ public class Main extends Application {
                 c.getGraphicsContext2D().restore();
 
                 // show performance
+                long end = System.currentTimeMillis();
+                fps.registerFrameEnd(end - start);
                 if (showPerformance) {
                     c.getGraphicsContext2D().save();
-                    long end = System.currentTimeMillis();
-
-                    fps.logFrame(16, end - start);
                     fps.draw(c.getGraphicsContext2D(), 50, 50);
                     c.getGraphicsContext2D().restore();
                 }
