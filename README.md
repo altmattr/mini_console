@@ -1,8 +1,10 @@
 The "macquarie mini console" is:
+
   * A Raspberry Pi image setup for JavaFX rendering directly to the frame buffer and including the source code for,
   * A JavaFX application that showcases games made by Macquarie University Students in CS1/computing 101.  The Java application can be run on any computer for easy experimentation.
 
 You will find a zip of the raspberry pi image in the downloads folder.  To get started with this project you should:
+
   * Download the [pi image](http://web.science.mq.edu.au/~mattr/mq_mini_console.zip) and [write it to an SD card](https://www.raspberrypi.org/documentation/installation/installing-images/)
   * Boot the pi, login (pi/raspberry) and navigate to the java project directory (~/mqm).
   * Pull the latest version of the code (git pull)
