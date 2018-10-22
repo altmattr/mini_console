@@ -1,9 +1,9 @@
-import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import pfx.FXApp;
+import studentwork.BoxCarrier;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +25,7 @@ public class ApplicationChooser extends FXApp {
         this.appResetter = appResetter;
 
         apps = Arrays.asList(
-                new studentwork.EliseMcCabe(g),
+                new BoxCarrier(g),
                 new examples.BouncingBall(g),
                 new examples.SineWave(g),
                 new examples.ScalingChecker(g),
@@ -57,9 +57,7 @@ public class ApplicationChooser extends FXApp {
             } else {
                 stroke(55, 58, 54);
             }
-//            Canvas c = new Canvas(boxSize-2, boxSize-2);
-//            apps.get(i).demoDraw(c.getGraphicsContext2D());
-//            image(c.snapshot(new SnapshotParameters(), null), gapSize+1, ycoord+1);
+            image(new Image("boxcarrier.png", boxSize-2, boxSize-2, true, false), gapSize+1, ycoord+1);
             rect(gapSize, ycoord, boxSize, boxSize);
             text(apps.get(i).name() + "\n\n" + apps.get(i).description(), gapSize * 2 + boxSize, ycoord);
             ycoord = ycoord + boxSize + gapSize;

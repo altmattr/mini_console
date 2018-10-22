@@ -1,3 +1,5 @@
+// by Elise McCabe, converted to macquarie mini my Matt Roberts
+
 package studentwork;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -11,7 +13,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
 
-public class EliseMcCabe extends pfx.FXApp {
+public class BoxCarrier extends pfx.FXApp {
 
     public String name(){return "Box Carrier by Elise McCabe (2017)";}
     public String description(){return "A game of infinite haulage";}
@@ -31,7 +33,7 @@ public class EliseMcCabe extends pfx.FXApp {
     float dist;
     float endS;
 
-    public EliseMcCabe(GraphicsContext g) {
+    public BoxCarrier(GraphicsContext g) {
         super(g);
     }
 

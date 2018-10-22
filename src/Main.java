@@ -16,7 +16,7 @@ public class Main extends Application {
     FXApp app;
     FXApp defaultApp;
 
-    boolean scaling = false;
+    boolean scaling = true;
     boolean showPerformance;
 
     @Override
@@ -73,7 +73,11 @@ public class Main extends Application {
                     c.getGraphicsContext2D().translate(xoffset, yoffset);
                 }
 
+                c.getGraphicsContext2D().save();
                 app.draw();
+                c.getGraphicsContext2D().restore();
+
+                c.getGraphicsContext2D().restore();
 
                 // show performance
                 if (showPerformance) {
@@ -84,7 +88,6 @@ public class Main extends Application {
                     fps.draw(c.getGraphicsContext2D(), 50, 50);
                     c.getGraphicsContext2D().restore();
                 }
-                c.getGraphicsContext2D().restore();
             }
         }.start();
 
