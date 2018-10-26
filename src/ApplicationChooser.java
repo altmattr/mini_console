@@ -2,16 +2,19 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Pair;
 import pfx.FXApp;
 import studentwork.BoxCarrier;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 public class ApplicationChooser extends FXApp {
 
-    List<FXApp> apps;
+    List<Pair<FXApp,Optional<Image>>> apps;
+    Image defaultImage;
     int boxSize;
     int gapSize;
     int topLoc;
@@ -25,12 +28,12 @@ public class ApplicationChooser extends FXApp {
         this.appResetter = appResetter;
 
         apps = Arrays.asList(
-                new BoxCarrier(g),
-                new examples.BouncingBall(g),
-                new examples.SineWave(g),
-                new examples.ScalingChecker(g),
-                new examples.AdditiveWave(g),
-                new examples.Array2D(g)
+                new Pair(new BoxCarrier(g), Optional.empty()),
+                new Pair(new examples.BouncingBall(g), Optional.empty()),
+                new Pair(new examples.SineWave(g), Optional.empty()),
+                new Pair(new examples.ScalingChecker(g), Optional.empty()),
+                new Pair(new examples.AdditiveWave(g), Optional.empty()),
+                new Pair(new examples.Array2D(g), Optional.empty())
         );
     }
 
@@ -43,6 +46,7 @@ public class ApplicationChooser extends FXApp {
         boxSize = height / 6;
         gapSize = height / 30;
         selected = 0;
+        defaultImage = new Image("boxcarrier.png", boxSize-2, boxSize-2, true, false);
         recalcGlobals();
     }
 
@@ -57,9 +61,9 @@ public class ApplicationChooser extends FXApp {
             } else {
                 stroke(55, 58, 54);
             }
-            image(new Image("boxcarrier.png", boxSize-2, boxSize-2, true, false), gapSize+1, ycoord+1);
+            image(apps.get(i).getValue().orElse(defaultImage), gapSize+1, ycoord+1);
             rect(gapSize, ycoord, boxSize, boxSize);
-            text(apps.get(i).name() + "\n\n" + apps.get(i).description(), gapSize * 2 + boxSize, ycoord);
+            text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().description(), gapSize * 2 + boxSize, ycoord);
             ycoord = ycoord + boxSize + gapSize;
         }
     }
@@ -75,7 +79,7 @@ public class ApplicationChooser extends FXApp {
             selected = (selected + 1) % apps.size();
             recalcGlobals();
         } else if (evt.getCode() == KeyCode.ENTER){
-            appResetter.accept(apps.get(selected));
+            appResetter.accept(apps.get(selected).getKey());
         }
     }
 
