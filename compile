@@ -1,0 +1,1 @@
+javac -sourcepath src -classpath src:resources src/*.java
