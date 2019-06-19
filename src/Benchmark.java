@@ -77,7 +77,7 @@ public class Benchmark extends Application {
                 }
                 if (size == frameTimes.length){
                     for(long[] vals: frameTimes){
-                        log.append((vals[vals.length-1] - vals[0]) / 1000000l); log.append("\n");
+                        log.append((vals[vals.length-1] - vals[0]) / 10000000l); log.append("\n");
                     }
                     try {FileWriter fw = new FileWriter("logs/"+app.name()+".log"); fw.write(log.toString()); fw.close();} catch (IOException e) {e.printStackTrace();}
                     if (apps.size() == 0) {

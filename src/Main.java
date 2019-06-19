@@ -40,9 +40,6 @@ public class Main extends Application {
         app.setup();
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (evt) -> {
-            System.out.println("the first event handler (in main) got run");
-            System.out.println(evt);
-            System.out.println(evt.getCharacter());
             if (evt.getCode() == KeyCode.F4) {
                 System.exit(0);
             } else if (evt.getCode() == KeyCode.F5){
@@ -60,7 +57,7 @@ public class Main extends Application {
             System.out.println("the second event handler (that passes things on to the app) got run");
             System.out.println(evt);
             System.out.println(evt.getCharacter());
-            if (evt.getCharacter() != null && evt.getCode() != KeyCode.UNDEFINED) { // TODO: I don't like the logic of this check and certain characters (like escape) are not gettting through
+            if (evt.getCharacter() != null && evt.getCharacter().length() > 0) { // TODO: I can't get a check here that does what I want.  It either lets escape through or it lets nothing through!!
                 app.key = evt.getCharacter().charAt(0);
                 app.keyTyped();
             }
