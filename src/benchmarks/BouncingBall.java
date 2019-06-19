@@ -14,7 +14,7 @@ public class BouncingBall extends pfx.SizedFXApp {
     public BouncingBall(GraphicsContext g) {
         super(g);
     }
-    public String name(){return "Bouncing Balls with Vectors based on code by Daniel Shiffman (https://processing.org/examples/bouncingball.html)";}
+    public String name(){return "Bouncing_Balls_30";}
     public String description(){return "Each step is 30 balls.";}
 
     public void settings(){

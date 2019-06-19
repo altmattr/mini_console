@@ -9,6 +9,8 @@ import javafx.scene.paint.*;
 import javafx.stage.*;
 import pfx.SizedFXApp;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class Benchmark extends Application {
@@ -21,8 +23,11 @@ public class Benchmark extends Application {
 
     long[][] frameTimes = new long[100][100];
 
+    StringBuilder log = new StringBuilder();
+
     @Override
     public void start(Stage stage) throws Exception{
+
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         stage.setX(bounds.getMinX());
         stage.setY(bounds.getMinY());
@@ -34,24 +39,22 @@ public class Benchmark extends Application {
         stage.setScene(scene);
         stage.setFullScreen(true);
         c = new Canvas(bounds.getWidth(), bounds.getHeight());
-
+        root.getChildren().add(c);
 
         apps.add(new benchmarks.BouncingBall(c.getGraphicsContext2D()));
         app = apps.remove(0);
-        System.out.println(app.name());
-        System.out.println(app.description());
+        log.append(app.name()); log.append("\n");
+        log.append(app.description()); log.append("\n");
 
         app.setSize(0);
-
-        root.getChildren().add(c);
 
         new AnimationTimer(){
             int repeat = 0;
             int size = 0;
             public void handle(long currentNanoTime){
                 frameTimes[size][repeat] = currentNanoTime;
-                c.getGraphicsContext2D().save();
 
+                c.getGraphicsContext2D().save();
                 if (scaling) {
                     c.getGraphicsContext2D().scale(bounds.getWidth() / app.width, bounds.getHeight() / app.height);
                 } else {
@@ -74,8 +77,9 @@ public class Benchmark extends Application {
                 }
                 if (size == frameTimes.length){
                     for(long[] vals: frameTimes){
-                        System.out.println((vals[vals.length-1] - vals[0]) / 1000000l);
+                        log.append((vals[vals.length-1] - vals[0]) / 1000000l); log.append("\n");
                     }
+                    try {FileWriter fw = new FileWriter("logs/"+app.name()+".log"); fw.write(log.toString()); fw.close();} catch (IOException e) {e.printStackTrace();}
                     if (apps.size() == 0) {
                         System.exit(0);
                     }

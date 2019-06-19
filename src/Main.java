@@ -4,11 +4,8 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.*;
 import javafx.scene.canvas.*;
 import javafx.scene.input.*;
-import javafx.scene.paint.*;
 import javafx.stage.*;
 import pfx.FXApp;
-
-import java.util.*;
 
 public class Main extends Application {
 
@@ -43,6 +40,9 @@ public class Main extends Application {
         app.setup();
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (evt) -> {
+            System.out.println("the first event handler (in main) got run");
+            System.out.println(evt);
+            System.out.println(evt.getCharacter());
             if (evt.getCode() == KeyCode.F4) {
                 System.exit(0);
             } else if (evt.getCode() == KeyCode.F5){
@@ -52,12 +52,18 @@ public class Main extends Application {
             } else if (evt.getCode() == KeyCode.ESCAPE){
                 app = defaultApp;
             }
+            // I really should be setting up the keycode and key here.
             app.keyPressed(evt);
         });
 
         scene.addEventHandler(KeyEvent.KEY_TYPED, (evt) -> {
-            app.key = evt.getCharacter().charAt(0);
-            app.keyTyped();
+            System.out.println("the second event handler (that passes things on to the app) got run");
+            System.out.println(evt);
+            System.out.println(evt.getCharacter());
+            if (evt.getCharacter() != null && evt.getCode() != KeyCode.UNDEFINED) { // TODO: I don't like the logic of this check and certain characters (like escape) are not gettting through
+                app.key = evt.getCharacter().charAt(0);
+                app.keyTyped();
+            }
         });
 
         FPSChart fps = new FPSChart();

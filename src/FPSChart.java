@@ -11,7 +11,7 @@ public class FPSChart {
     long lastNanoTime = 0;
     long lastNanoGap = 0;
     public void logFrame(long frame, long drawing){
-        System.out.println(drawing);
+        //System.out.println(drawing);
         frameHistory[records] = frame;
         drawHistory[records] = drawing;
         records = (records + 1) % len;

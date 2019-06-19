@@ -69,7 +69,6 @@ public class ApplicationChooser extends FXApp {
     }
 
     public void keyPressed(KeyEvent evt) {
-        System.out.println(evt.getCode());
         if (evt.getCode() == KeyCode.UP) {
             selected = (selected - 1);
             if (selected < 0)

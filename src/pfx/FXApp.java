@@ -4,7 +4,6 @@ import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
 
 public class FXApp {
 
@@ -19,6 +18,14 @@ public class FXApp {
     public int rectMode = CORNER;
     public int ellipseMode = CENTER;
     public boolean filling = true;
+
+    public final int UP = 10;
+    public final int DOWN = 11;
+    public final int RIGHT = 12;
+    public final int LEFT = 13;
+    public final int CTRL = 14;
+    public final int SHIFT = 15;
+    public final int ALT = 16;
 
     GraphicsContext g;
     public FXApp(GraphicsContext g){
