@@ -21,7 +21,7 @@ public class Benchmark extends Application {
 
     boolean scaling = true;
 
-    long[][] frameTimes = new long[100][100];
+    long[][] frameTimes = new long[10][10];
 
     StringBuilder log = new StringBuilder();
 
@@ -99,7 +99,8 @@ public class Benchmark extends Application {
     }
 
 
-    public static void main(String[] args) {;
+    public static void main(String[] args) {
+        System.setProperty("javafx.animation.pulse", "30");
         launch(args);
     }
 }

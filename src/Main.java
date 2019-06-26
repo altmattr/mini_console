@@ -99,6 +99,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        System.setProperty("javafx.animation.pulse", "30");
         launch(args);
     }
 }
