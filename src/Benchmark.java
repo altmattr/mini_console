@@ -21,7 +21,7 @@ public class Benchmark extends Application {
 
     boolean scaling = true;
 
-    long[][] frameTimes = new long[10][10];
+    long[][] frameTimes = new long[100][100];
 
     StringBuilder log = new StringBuilder();
 
@@ -41,7 +41,8 @@ public class Benchmark extends Application {
         c = new Canvas(bounds.getWidth(), bounds.getHeight());
         root.getChildren().add(c);
 
-        apps.add(new benchmarks.BouncingBall(c.getGraphicsContext2D()));
+        //apps.add(new benchmarks.BouncingBall(c.getGraphicsContext2D()));
+        apps.add(new benchmarks.Nyan(c.getGraphicsContext2D()));
         app = apps.remove(0);
         log.append(app.name()); log.append("\n");
         log.append(app.description()); log.append("\n");
