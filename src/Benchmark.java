@@ -1,17 +1,16 @@
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.*;
-import javafx.scene.canvas.*;
-import javafx.scene.input.*;
-import javafx.scene.paint.*;
-import javafx.stage.*;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import pfx.SizedFXApp;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.util.Vector;
 
 public class Benchmark extends Application {
 
@@ -21,7 +20,9 @@ public class Benchmark extends Application {
 
     boolean scaling = true;
 
-    long[][] frameTimes = new long[100][100];
+    static int frames = 50;
+
+    long[][] frameTimes = new long[10][frames]; // new long[timesToRepeat][frameAnimationLength]
 
     StringBuilder log = new StringBuilder();
 
@@ -78,7 +79,8 @@ public class Benchmark extends Application {
                 }
                 if (size == frameTimes.length){
                     for(long[] vals: frameTimes){
-                        log.append((vals[vals.length-1] - vals[0]) / 10000000l); log.append("\n");
+                        long avgFrameGap = (vals[vals.length-1] - vals[0]) / (frames * 1000000l);
+                        log.append(avgFrameGap); log.append("\n"); //
                     }
                     try {FileWriter fw = new FileWriter("logs/"+app.name()+".log"); fw.write(log.toString()); fw.close();} catch (IOException e) {e.printStackTrace();}
                     if (apps.size() == 0) {
@@ -101,7 +103,6 @@ public class Benchmark extends Application {
 
 
     public static void main(String[] args) {
-        System.setProperty("javafx.animation.pulse", "30");
         launch(args);
     }
 }

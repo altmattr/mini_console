@@ -21,7 +21,7 @@ public class Nyan extends SizedFXApp {
 
     public void settings(){
         size(1200,800);
-        cats = SIZE*30;
+        cats = SIZE;
         location = new PVector[cats];
         velocity = new PVector[cats];
         gravity = new PVector[cats];
