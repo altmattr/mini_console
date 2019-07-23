@@ -55,7 +55,7 @@ public class Benchmark extends Application {
         root.getChildren().add(c);
 
         //apps.add(new benchmarks.BouncingBall(c.getGraphicsContext2D()));
-        apps.add(new benchmarks.BouncingBall(c.getGraphicsContext2D()));
+        apps.add(new benchmarks.CircleSize(c.getGraphicsContext2D()));
         app = apps.remove(0);
         log.append(app.name()); log.append("\n");
         log.append(app.description()); log.append("\n");
