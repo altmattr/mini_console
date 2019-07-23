@@ -10,7 +10,7 @@ You will find a zip of the raspberry pi image in the downloads folder.  To get s
   * Boot the pi, login (pi/raspberry) and navigate to the java project directory (`cd ~/mqm`).
   * Pull the latest version of the code (`git pull`)
   * Build the java code (`cd src; javac *.java`)
-  * Run the application (`java -classpath=./resources:./src Main`)
+  * Run the application - in ~/mqm (`java -classpath ./resources:./src Main`)
 
 You can make changes to the project directly on the pi if you like command line editing or you can do development on any other machine.  The performance will differ and you might find some JavaFX features won't work on the pi, so you should regularly check the appliation on a real pi.
 
