@@ -19,7 +19,7 @@ public class BouncingBall extends pfx.SizedFXApp {
 
     public void settings(){
         size(1200,800);
-        balls = SIZE*30;
+        balls = SIZE*100;
         location = new PVector[balls];
         velocity = new PVector[balls];
         gravity = new PVector[balls];
