@@ -33,7 +33,12 @@ public class Main extends Application {
 
         root.getChildren().add(c);
 
-	defaultApp = new ApplicationChooser(c.getGraphicsContext2D(), (FXApp a) -> {app = a; app.settings(); app.setup();});
+	defaultApp = new ApplicationChooser(c.getGraphicsContext2D(), (FXApp a) -> {
+		c.getGraphicsContext2D().save(); // fix issue #2: https://bitbucket.org/mqcomputingdept/mq_mini_console/issues/2/processing-state-doesnt-reset-between
+		app = a;
+		app.settings();
+		app.setup();
+	});
 
         app = defaultApp;
         app.settings();
@@ -47,6 +52,7 @@ public class Main extends Application {
             } else if (evt.getCode() == KeyCode.F12){
                 scaling = ! scaling;
             } else if (evt.getCode() == KeyCode.ESCAPE){
+		c.getGraphicsContext2D().restore(); // fix issue #2
                 app = defaultApp;
             }
             // I really should be setting up the keycode and key here.
