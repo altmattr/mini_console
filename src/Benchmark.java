@@ -26,7 +26,7 @@ public class Benchmark extends Application {
     boolean scaling = true;
 
     static int frames = 100;
-    static int repeatTimes = 10;
+    static int repeatTimes = 100;
 
     int frameIndex = 0;
 
@@ -55,7 +55,7 @@ public class Benchmark extends Application {
         root.getChildren().add(c);
 
         //apps.add(new benchmarks.BouncingBall(c.getGraphicsContext2D()));
-        apps.add(new benchmarks.CircleSize(c.getGraphicsContext2D()));
+        apps.add(new benchmarks.Nyan(c.getGraphicsContext2D()));
         app = apps.remove(0);
         log.append(app.name()); log.append("\n");
         log.append(app.description()); log.append("\n");
