@@ -1,11 +1,13 @@
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.scene.input.*;
 import org.knowm.xchart.BitmapEncoder;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
@@ -61,6 +63,13 @@ public class Benchmark extends Application {
         log.append(app.description()); log.append("\n");
 
         app.setSize(0);
+	
+	scene.addEventHandler(KeyEvent.KEY_PRESSED, (evt) -> {
+		if(evt.getCode() == KeyCode.F4) { // added kill switch for Raspberry Pi
+			Platform.exit();
+			System.exit(0);
+		}
+	});
 
         new AnimationTimer(){
             int repeat = 0;
