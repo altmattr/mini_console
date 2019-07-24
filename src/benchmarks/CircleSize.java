@@ -16,12 +16,12 @@ public class CircleSize extends pfx.SizedFXApp {
     public CircleSize(GraphicsContext g) {
         super(g);
     }
-    public String name(){return "Bouncing_Balls_30";}
-    public String description(){return "Each step is 30 balls.";}
+    public String name(){return "Bouncing_Balls_Growing";}
+    public String description(){return "Each step is 3 balls.";}
 
     public void settings(){
         size(1200,800);
-        balls = 100;
+        balls = 3;
         location = new PVector[balls];
         velocity = new PVector[balls];
         gravity = new PVector[balls];
