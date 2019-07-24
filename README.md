@@ -9,8 +9,8 @@ You will find a zip of the raspberry pi image in the downloads folder.  To get s
   * Download the [pi image](http://web.science.mq.edu.au/~mattr/mq_mini_console.zip) and [write it to an SD card](https://www.raspberrypi.org/documentation/installation/installing-images/)
   * Boot the pi, login (pi/raspberry) and navigate to the java project directory (`cd ~/mqm`).
   * Pull the latest version of the code (`git pull`)
-  * Build the java code (`cd src; javac *.java`)
-  * Run the application - in ~/mqm (`java -classpath ./resources:./src Main`)
+  * Build and run the java code (`./compile_and_run`)
+  * Run the benchmark test which logs the frame times to a file (`./run_benchmark`)
 
 You can make changes to the project directly on the pi if you like command line editing or you can do development on any other machine.  The performance will differ and you might find some JavaFX features won't work on the pi, so you should regularly check the appliation on a real pi.
 
