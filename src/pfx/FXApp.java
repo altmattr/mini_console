@@ -27,6 +27,8 @@ public class FXApp {
     public final int SHIFT = 15;
     public final int ALT = 16;
 
+    private boolean noStroke = false;
+
     GraphicsContext g;
     public FXApp(GraphicsContext g){
         this.g = g;
@@ -52,9 +54,11 @@ public class FXApp {
     public void mouseReleased(){}
 
     protected void stroke(int grey){
+	noStroke = false;
         g.setStroke(Color.rgb(grey, grey, grey));
     }
     protected void stroke(int r, int g, int b){
+	noStroke = false;
         this.g.setStroke(Color.rgb(r,g,b, 1.0));
     }
 
@@ -80,9 +84,12 @@ public class FXApp {
         float topLeftY = y - width/2;
 
         if (filling) {
-            g.fillOval(topLeftX, topLeftY, width, height);
+           // rect(topLeftX, topLeftY, width, height);
+           g.fillOval(topLeftX, topLeftY, width, height);
         }
-        g.strokeOval(topLeftX,topLeftY, width, height);
+	if (!noStroke) {
+           g.strokeOval(topLeftX,topLeftY, width, height);
+	}
     }
     protected void line(float x, float y, float x2, float y2){g.strokeLine(x, y, x2, y2);}
     protected void rect(float x, float y, float width, float height){
@@ -95,7 +102,9 @@ public class FXApp {
         if(filling) {
             g.fillRect(topLeftX, topLeftY, width, height);
         }
-        g.strokeRect(topLeftX,topLeftY,width,height);
+        if(!noStroke) {
+            g.strokeRect(topLeftX,topLeftY,width,height);
+	}
     }
 
     protected void point(float x, float y){
@@ -111,7 +120,7 @@ public class FXApp {
     // attributes
     // TODO
     protected void strokeWeight(int w){g.setLineWidth(w);}
-    protected void noStroke(){g.setLineWidth(0);}
+    protected void noStroke(){g.setLineWidth(0); noStroke = true;}
 
     // vertex
     // TODO
