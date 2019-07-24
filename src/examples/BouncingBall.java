@@ -40,8 +40,8 @@ public class BouncingBall extends pfx.FXApp {
         strokeWeight(2);
         fill(127);
         rect(1190,790,10,10);
-        System.out.println(width);
-        System.out.println(height);
+//        System.out.println(width);
+//        System.out.println(height);
         ellipse(location.x, location.y, 48, 48);
     }
 }
