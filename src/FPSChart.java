@@ -10,6 +10,7 @@ public class FPSChart {
 
     long lastNanoTime = 0;
     long lastNanoGap = 0;
+    float frameTime = 0;
     public void logFrame(long frame, long drawing){
         //System.out.println(drawing);
         frameHistory[records] = frame;
@@ -20,6 +21,7 @@ public class FPSChart {
     public void registerFrameStart(long nanoTime){
         lastNanoGap = nanoTime - lastNanoTime;
         lastNanoTime = nanoTime;
+	frameTime = (float)lastNanoGap / 1000000000f;
     }
 
     public void registerFrameEnd(long milliTime){
@@ -27,6 +29,10 @@ public class FPSChart {
     }
 
     public void draw(GraphicsContext c, double x, double y){
+	// draw background box
+	c.setFill(new Color(0.5f, 0.5f, 0.5f, 0.75f));
+	c.fillRect(x, y-100, len, 150);
+
         c.setStroke(Color.GRAY);
         c.strokeRect(x, y, len, 20);
         c.setLineDashes(1,3);
@@ -49,6 +55,10 @@ public class FPSChart {
             c.strokeLine(x + (i-1), y + 20-frameHistory[i-1], x + i, y + 20 - frameHistory[i]);
         }
         //c.stroke();
+	
+	// draw frame time (time in seconds to draw a frame)
+	c.setFill(Color.WHITE);
+	c.fillText("Frame Time: " + String.format("%.4f", frameTime) + "s (" + String.format("%.4f", 1f/frameTime) + " fps)", x, y+40);
     }
 
     public int getWidth(){return len;}

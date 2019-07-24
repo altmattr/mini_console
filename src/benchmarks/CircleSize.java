@@ -21,7 +21,7 @@ public class CircleSize extends pfx.SizedFXApp {
 
     public void settings(){
         size(1200,800);
-        balls = 3;
+        balls = 100;
         location = new PVector[balls];
         velocity = new PVector[balls];
         gravity = new PVector[balls];
