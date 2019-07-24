@@ -1,5 +1,11 @@
+# intellij
 out/
 .idea/workspace.xml
 logs/*
 !logs/.gitkeep
+
+# compiled classes
 *.class
+
+# vim swap
+*.swp
