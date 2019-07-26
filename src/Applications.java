@@ -1,18 +1,21 @@
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Screen;
 import javafx.util.Pair;
 import pfx.FXApp;
 import pfx.PVector;
 import studentwork.BoxCarrier;
 import studentwork.GameOfLife;
 
-import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
+
+//import java.awt.*;
 
 public class Applications extends FXApp
 {
@@ -23,7 +26,7 @@ public class Applications extends FXApp
 
     PVector screenSize, selected, appNumSize;
     int appSize = 200, appSpacing = 30, appToLaunch;
-    Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
+    //Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 
     int numOfRows; //How many full rows are displayed
     int lastRowCol; //How many columns are used on the final row
@@ -46,8 +49,11 @@ public class Applications extends FXApp
     @Override
     public void settings()
     {
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        screenSize = new PVector((float)(bounds.getWidth()), (float)(bounds.getHeight()));
+
         defaultImage = new Image("boxcarrier.png", appSize-2, appSize-2, true, false);
-        screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
+        //screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
         size((int)screenSize.x,(int)screenSize.y);
         appNumSize = new PVector(6,3);
         selected = new PVector(0,0);

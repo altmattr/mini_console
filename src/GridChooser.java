@@ -1,15 +1,15 @@
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import pfx.FXApp;
 import pfx.PVector;
-
-import java.awt.*;
 
 public class GridChooser extends Application
 {
@@ -21,12 +21,14 @@ public class GridChooser extends Application
     boolean showPerformance;
 
     PVector screenSize;
-    Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
+    //Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 
     @Override
     public void start(Stage stage) throws Exception
     {
-        screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        screenSize = new PVector((float)(bounds.getWidth()), (float)(bounds.getHeight()));
+        //screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
 
         stage.setWidth(screenSize.x);
         stage.setHeight(screenSize.y);

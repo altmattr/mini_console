@@ -1,9 +1,9 @@
 package studentwork;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.stage.Screen;
 import pfx.PVector;
-
-import java.awt.*;
 
 public class GameOfLife extends pfx.FXApp {
 
@@ -14,7 +14,7 @@ public class GameOfLife extends pfx.FXApp {
     Cell[][] grid;
 
     PVector screenSize;
-    Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
+    //Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 
     public GameOfLife(GraphicsContext g) {
         super(g);
@@ -22,7 +22,10 @@ public class GameOfLife extends pfx.FXApp {
 
     public void settings()
     {
-        screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        screenSize = new PVector((float)(bounds.getWidth()), (float)(bounds.getHeight()));
+
+        //screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
         size((int)screenSize.x,(int)screenSize.y);
     }
 
