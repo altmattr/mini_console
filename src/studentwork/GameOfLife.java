@@ -23,7 +23,7 @@ public class GameOfLife extends pfx.FXApp {
     public void settings()
     {
         screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
-        fullScreen();
+        size((int)screenSize.x,(int)screenSize.y);
     }
 
     public void setup()

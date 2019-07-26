@@ -27,9 +27,6 @@ public class FXApp {
     public final int SHIFT = 15;
     public final int ALT = 16;
 
-    PVector screenSize;
-    Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
-
     private boolean noStroke = false;
 
     GraphicsContext g;
@@ -55,12 +52,6 @@ public class FXApp {
     public void keyPressed(KeyEvent evt){}
     public void mouseDragged(){}
     public void mouseReleased(){}
-
-    public void fullScreen()
-    {
-        screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
-        size((int)screenSize.x,(int)screenSize.y);
-    }
 
     protected void stroke(int grey){
 	noStroke = false;
