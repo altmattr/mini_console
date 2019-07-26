@@ -4,18 +4,9 @@ package studentwork;
 
 import javafx.scene.canvas.GraphicsContext;
 
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.io.File;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.IOException;
-
 public class BoxCarrier extends pfx.FXApp {
 
-    public String name(){return "Box Carrier by Elise McCabe (2017)";}
+    public String name(){return "Box Carrier - Elise";}
     public String description(){return "A game of infinite haulage";}
 
     float pX = 175;
@@ -35,6 +26,12 @@ public class BoxCarrier extends pfx.FXApp {
 
     public BoxCarrier(GraphicsContext g) {
         super(g);
+    }
+
+    public void settings()
+    {
+        size(500, 200);
+        //fullScreen();
     }
 
     public void setup() {
@@ -180,6 +177,5 @@ public class BoxCarrier extends pfx.FXApp {
             }
         }
     }
-    public void settings() {  size(500, 200); }
 
 }

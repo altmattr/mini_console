@@ -7,7 +7,7 @@ public class ScalingChecker extends pfx.FXApp {
         super(g);
     }
 
-    public String name(){return "Scaling Checker by Matt Roberts";}
+    public String name(){return "Scaling Checker - Matt";}
     public String description(){return "A new age test pattern";}
 
     public void settings(){

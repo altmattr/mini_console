@@ -16,7 +16,7 @@ public class SineWave extends pfx.FXApp {
     public SineWave(GraphicsContext g) {
         super(g);
     }
-    public String name(){return "Sine Wave by Daniel Shiffman (https://processing.org/examples/sinewave.html)";}
+    public String name(){return "Sine Wave - TEST";}
     public String description(){return "Render a simple sine wave.";}
 
     public void settings(){

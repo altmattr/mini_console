@@ -9,7 +9,7 @@ public class AdditiveWave extends pfx.FXApp {
         super(g);
     }
 
-    public String name(){return "Additive Wave by Daniel Shiffman (https://processing.org/examples/additivewave.html)";}
+    public String name(){return "Additive Wave - TEST";}
     public String description(){return "Create a more complex wave by adding two waves together.";}
 
     int xspacing = 8;   // How far apart should each horizontal location be spaced
