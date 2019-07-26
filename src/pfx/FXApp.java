@@ -4,6 +4,9 @@ import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
+
+import java.util.Random;
 
 public class FXApp {
 
@@ -29,6 +32,8 @@ public class FXApp {
 
     private boolean noStroke = false;
 
+    Random rand = new Random();
+
     GraphicsContext g;
     public FXApp(GraphicsContext g){
         this.g = g;
@@ -52,6 +57,8 @@ public class FXApp {
     public void keyPressed(KeyEvent evt){}
     public void mouseDragged(){}
     public void mouseReleased(){}
+
+    public void println(int input) {System.out.println(input);}
 
     protected void stroke(int grey){
 	noStroke = false;
@@ -107,6 +114,19 @@ public class FXApp {
 	}
     }
 
+    protected void square(float x, float y, float size){
+        float topLeftX = x;
+        float topLeftY = y;
+        if (rectMode == CENTER){
+            topLeftX = x - size/2;
+            topLeftY = y - size/2;
+        }
+        if(filling) {
+            g.fillRect(topLeftX, topLeftY, size, size);
+        }
+        g.strokeRect(topLeftX,topLeftY,size,size);
+    }
+
     protected void point(float x, float y){
         ellipse(x, y, 1, 1);
     }
@@ -129,6 +149,16 @@ public class FXApp {
     protected void background(int grey){g.save();g.setFill(Color.rgb(grey, grey, grey));g.fillRect(0,0,width,height);g.restore();}
     protected void rectMode(int mode){rectMode = mode;}
     protected void ellipseMode(int mode){ellipseMode = mode;}
+    protected void textAlign(int mode)
+    {
+        if (mode == 1)
+        {
+            g.setTextAlign(TextAlignment.CENTER);
+        }
+    }
+
+    protected int random(int upperLimit) { return rand.nextInt(upperLimit); }
+
     protected void background(int r, int gg, int b){g.save();g.setFill(Color.rgb(r,gg,b));g.fillRect(0,0,width,height);g.restore();}
     protected void fill(int grey){
         filling = true;
@@ -157,6 +187,8 @@ public class FXApp {
         g.setTextBaseline(VPos.TOP);
         g.fillText(txt, x,y);
     }
+
+
 
     // maths
     public float sin(float in){return (float)Math.sin(in);}
