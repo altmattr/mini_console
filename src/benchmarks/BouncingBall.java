@@ -1,38 +1,48 @@
 package benchmarks;
 
-import pfx.*;
-
 import javafx.scene.canvas.GraphicsContext;
+import pfx.FXAppWithRunCount;
+import pfx.PVector;
 
-public class BouncingBall extends pfx.SizedFXApp {
-    PVector[] location;
-    PVector[] velocity;
-    PVector[] gravity;
+public class BouncingBall extends FXAppWithRunCount {
+    private static final int NUM_EXTRA_BALLS_PER_RUN = 100;
+    private PVector[] location, velocity, gravity;
+    private int numBalls;
 
-    int balls;
-
-    public BouncingBall(GraphicsContext g) {
-        super(g);
+    public BouncingBall(GraphicsContext g, int totalNumRuns) {
+        super(g, totalNumRuns);
     }
-    public String name(){return "Bouncing_Balls_30";}
-    public String description(){return "Each step is 30 balls.";}
 
-    public void settings(){
-        size(1200,800);
-        balls = SIZE*100;
-        location = new PVector[balls];
-        velocity = new PVector[balls];
-        gravity = new PVector[balls];
-        for(int i = 0; i < balls; i++) {
-            location[i] = new PVector(100f + random(0,4), 100f+random(0,4)); // TODO: deal with these f's that should not be here
-            velocity[i] = new PVector(1.5f+random(0,1), 2.1f+random(0,1));
+    @Override
+    public String name() {
+        return "Bouncing_Balls_" + NUM_EXTRA_BALLS_PER_RUN;
+    }
+
+    @Override
+    public String description() {
+        return "Each step is " + NUM_EXTRA_BALLS_PER_RUN + " balls.";
+    }
+
+    @Override
+    public void settings() {
+        size(1200, 800);
+        numBalls = getRunIndex() * NUM_EXTRA_BALLS_PER_RUN;
+        location = new PVector[numBalls];
+        velocity = new PVector[numBalls];
+        gravity = new PVector[numBalls];
+
+        for (int i = 0; i < numBalls; i++) {
+            location[i] = new PVector(100f + random(0, 4),
+                    100f + random(0, 4)); // TODO: deal with these f's that should not be here
+            velocity[i] = new PVector(1.5f + random(0, 1), 2.1f + random(0, 1));
             gravity[i] = new PVector(0f, 0.2f);
         }
     }
 
-    public void draw(){
+    @Override
+    public void draw() {
         background(0);
-        for(int i = 0; i < balls; i++) {
+        for (int i = 0; i < numBalls; i++) {
             location[i].add(velocity[i]);
             velocity[i].add(gravity[i]);
 

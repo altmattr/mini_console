@@ -1,4 +1,6 @@
-import benchmarks.CircleSize;
+import benchmarks.DisplayFilled;
+import benchmarks.DisplayFilling;
+import benchmarks.Expanding;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -15,7 +17,7 @@ import org.knowm.xchart.BitmapEncoder;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.XYSeries;
-import pfx.SizedFXApp;
+import pfx.FXAppWithRunCount;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -29,6 +31,7 @@ public class Benchmark extends Application {
         Canvas canvas = setupStage(stage, bounds);
 
         new AnimationTimerImpl(
+                stage,
                 canvas,
                 bounds,
                 apps(canvas.getGraphicsContext2D()))
@@ -37,10 +40,15 @@ public class Benchmark extends Application {
         stage.show();
     }
 
-    private Vector<SizedFXApp> apps(GraphicsContext graphicsContext) {
-        Vector<SizedFXApp> apps = new Vector<>();
-        //apps.add(new benchmarks.BouncingBall(c.getGraphicsContext2D()));
-        apps.add(new CircleSize(graphicsContext));
+    private Vector<FXAppWithRunCount> apps(GraphicsContext graphicsContext) {
+        Vector<FXAppWithRunCount> apps = new Vector<>();
+        for (DisplayFilled.Display myDisplay : DisplayFilled.Display.values()) {
+            apps.add(new DisplayFilled(graphicsContext, AnimationTimerImpl.NUM_RUNS, myDisplay));
+        }
+        apps.add(new DisplayFilling(graphicsContext, AnimationTimerImpl.NUM_RUNS));
+        apps.add(new Expanding(graphicsContext, AnimationTimerImpl.NUM_RUNS));
+//        apps.add(new BouncingBall(graphicsContext, AnimationTimerImpl.NUM_RUNS));
+//        apps.add(new CircleSize(graphicsContext, AnimationTimerImpl.NUM_RUNS));
         return apps;
     }
 
@@ -61,7 +69,6 @@ public class Benchmark extends Application {
         });
 
         stage.setScene(scene);
-        stage.setFullScreen(true);
         Canvas canvas = new Canvas(bounds.getWidth(), bounds.getHeight());
         root.getChildren().add(canvas);
         return canvas;
@@ -77,22 +84,30 @@ public class Benchmark extends Application {
         }
     }
 
+    private enum AppSizing {
+        SCALE_APP_TO_FIT,
+        TRANSLATE_APP,
+        SIZE_CANVAS_TO_FIT
+    }
+
     private static class AnimationTimerImpl extends AnimationTimer {
-        private static final boolean SCALING = true;
+        static final int NUM_RUNS = 10;
+        private static final AppSizing DEFAULT_SIZING = AppSizing.SCALE_APP_TO_FIT;
         private static final int NUM_FRAMES_PER_RUN = 100;
-        private static final int NUM_RUNS = 10;
         private final StringBuilder log = new StringBuilder();
         private final long[][] frameTimes = new long[NUM_RUNS][NUM_FRAMES_PER_RUN];
-        private final Rectangle2D bounds;
-        private final Vector<SizedFXApp> pendingApps;
+        private final Rectangle2D defaultBounds;
+        private final Vector<FXAppWithRunCount> pendingApps;
         private final Canvas canvas;
-        private SizedFXApp runningApp;
+        private final Stage stage;
+        private FXAppWithRunCount runningApp;
         private int frameIndex = 0;
         private int runIndex = 0;
 
-        AnimationTimerImpl(Canvas canvas, Rectangle2D bounds, Vector<SizedFXApp> apps) {
+        AnimationTimerImpl(Stage stage, Canvas canvas, Rectangle2D bounds, Vector<FXAppWithRunCount> apps) {
+            this.stage = stage;
             this.canvas = canvas;
-            this.bounds = bounds;
+            this.defaultBounds = bounds;
             pendingApps = apps;
             restartWithNextApp();
         }
@@ -103,15 +118,19 @@ public class Benchmark extends Application {
             drawFrame();
             frameIndex++;
 
-            if (frameIndex == NUM_FRAMES_PER_RUN) {
-                runIndex++;
-                frameIndex = 0;
-                runningApp.setSize(runIndex);
-                runningApp.settings();
-                runningApp.setup();
+            if (frameIndex != NUM_FRAMES_PER_RUN) {
+                return;
             }
 
-            if (runIndex == NUM_RUNS) {
+            runIndex++;
+            frameIndex = 0;
+
+            if (runIndex < NUM_RUNS) {
+                runningApp.setRunIndex(runIndex);
+                runningApp.settings();
+                runningApp.setup();
+            } else {
+                assert runIndex == NUM_RUNS;
                 writeResults();
 
                 if (pendingApps.isEmpty()) {
@@ -131,8 +150,7 @@ public class Benchmark extends Application {
 
             frameIndex = 0;
             runIndex = 0;
-            runningApp.setSize(0);
-
+            runningApp.setRunIndex(0);
         }
 
         private RunStats runStats() {
@@ -194,13 +212,32 @@ public class Benchmark extends Application {
 
         private void drawFrame() {
             canvas.getGraphicsContext2D().save();
-            if (SCALING) {
-                canvas.getGraphicsContext2D()
-                        .scale(bounds.getWidth() / runningApp.width, bounds.getHeight() / runningApp.height);
-            } else {
-                double xOffset = (bounds.getWidth() - runningApp.width) / 2;
-                double yOffset = (bounds.getHeight() - runningApp.height) / 2;
-                canvas.getGraphicsContext2D().translate(xOffset, yOffset);
+            AppSizing appSizing = runningApp.fixedSize() ? AppSizing.SIZE_CANVAS_TO_FIT : DEFAULT_SIZING;
+
+            Rectangle2D bounds = appSizing == AppSizing.SIZE_CANVAS_TO_FIT
+                    ? new Rectangle2D(0, 0, runningApp.width, runningApp.height)
+                    : defaultBounds;
+
+            if (stage.getHeight() != bounds.getHeight()) {
+                stage.setHeight(bounds.getHeight());
+                canvas.setHeight(bounds.getHeight());
+            }
+            if (stage.getWidth() != bounds.getWidth()) {
+                stage.setWidth(bounds.getWidth());
+                canvas.setWidth(bounds.getWidth());
+            }
+
+            switch (appSizing) {
+                case SCALE_APP_TO_FIT:
+                    canvas.getGraphicsContext2D()
+                            .scale(defaultBounds.getWidth() / runningApp.width,
+                                    defaultBounds.getHeight() / runningApp.height);
+                    break;
+                case TRANSLATE_APP:
+                    double xOffset = (defaultBounds.getWidth() - runningApp.width) / 2;
+                    double yOffset = (defaultBounds.getHeight() - runningApp.height) / 2;
+                    canvas.getGraphicsContext2D().translate(xOffset, yOffset);
+                    break;
             }
 
             runningApp.draw();

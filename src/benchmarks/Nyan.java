@@ -2,17 +2,15 @@ package benchmarks;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import pfx.FXAppWithRunCount;
 import pfx.PVector;
-import pfx.SizedFXApp;
 
-public class Nyan extends SizedFXApp {
-    PVector[] location;
-    PVector[] velocity;
-    PVector[] gravity;
+public class Nyan extends FXAppWithRunCount {
+    PVector[] location, velocity, gravity;
     Image nyan;
 
-    public Nyan(GraphicsContext g) {
-        super(g);
+    public Nyan(GraphicsContext g, int totalNumRuns) {
+        super(g, totalNumRuns);
     }
 
     @Override
@@ -28,12 +26,12 @@ public class Nyan extends SizedFXApp {
     @Override
     public void settings() {
         size(1200, 800);
-        location = new PVector[SIZE];
-        velocity = new PVector[SIZE];
-        gravity = new PVector[SIZE];
+        location = new PVector[getRunIndex()];
+        velocity = new PVector[getRunIndex()];
+        gravity = new PVector[getRunIndex()];
 
         nyan = new Image("nyan.png");
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < getRunIndex(); i++) {
             location[i] = new PVector(
                     600 + random(-600, 600),
                     400 + random(-400, 400));
@@ -45,9 +43,9 @@ public class Nyan extends SizedFXApp {
     }
 
     @Override
-    public void draw(){
+    public void draw() {
         background(0);
-        for(int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < getRunIndex(); i++) {
             location[i].add(velocity[i]);
             velocity[i].add(gravity[i]);
 

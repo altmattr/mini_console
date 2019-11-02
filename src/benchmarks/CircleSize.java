@@ -1,40 +1,47 @@
 package benchmarks;
 
-import pfx.*;
-
 import javafx.scene.canvas.GraphicsContext;
+import pfx.FXAppWithRunCount;
+import pfx.PVector;
 
-public class CircleSize extends pfx.SizedFXApp {
-    PVector[] location;
-    PVector[] velocity;
-    PVector[] gravity;
-
+public class CircleSize extends FXAppWithRunCount {
+    private PVector[] location, velocity, gravity;
     int balls;
-
     int diam = 0;
 
-    public CircleSize(GraphicsContext g) {
-        super(g);
+    public CircleSize(GraphicsContext g, int totalNumRuns) {
+        super(g, totalNumRuns);
     }
-    public String name(){return "Bouncing_Balls_Growing";}
-    public String description(){return "Each step is 3 balls.";}
 
-    public void settings(){
-        size(1200,800);
+    @Override
+    public String name() {
+        return "Bouncing_Balls_Growing";
+    }
+
+    @Override
+    public String description() {
+        return "Each step is 3 balls.";
+    }
+
+    @Override
+    public void settings() {
+        size(1200, 800);
         balls = 100;
         location = new PVector[balls];
         velocity = new PVector[balls];
         gravity = new PVector[balls];
-        for(int i = 0; i < balls; i++) {
-            location[i] = new PVector(100f + random(0,4), 100f+random(0,4)); // TODO: deal with these f's that should not be here
-            velocity[i] = new PVector(1.5f+random(0,1), 2.1f+random(0,1));
+        for (int i = 0; i < balls; i++) {
+            location[i] = new PVector(100f + random(0, 4),
+                    100f + random(0, 4)); // TODO: deal with these f's that should not be here
+            velocity[i] = new PVector(1.5f + random(0, 1), 2.1f + random(0, 1));
             gravity[i] = new PVector(0f, 0.2f);
         }
     }
 
-    public void draw(){
+    @Override
+    public void draw() {
         background(0);
-        for(int i = 0; i < balls; i++) {
+        for (int i = 0; i < balls; i++) {
             location[i].add(velocity[i]);
             velocity[i].add(gravity[i]);
 
@@ -50,7 +57,8 @@ public class CircleSize extends pfx.SizedFXApp {
             stroke(255);
             strokeWeight(2);
             fill(127);
-            ellipse(location[i].x, location[i].y, diam + (SIZE * 30), diam + (SIZE * 30));
+            float runDiameter = diam + (getRunIndex() * 30);
+            ellipse(location[i].x, location[i].y, runDiameter, runDiameter);
         }
     }
 }
