@@ -30,8 +30,8 @@ public class GridChooser extends Application
         screenSize = new PVector((float)(bounds.getWidth()), (float)(bounds.getHeight()));
         //screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
 
-        stage.setWidth(screenSize.x);
-        stage.setHeight(screenSize.y);
+        stage.setWidth(1280);
+        stage.setHeight(720);
 
         Group root = new Group();
         Scene scene = new Scene(root);

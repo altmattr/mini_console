@@ -40,9 +40,9 @@ public class Benchmark extends Application {
 
     private Vector<FXAppWithRunCount> apps(GraphicsContext graphicsContext) {
         Vector<FXAppWithRunCount> apps = new Vector<>();
-        for (DisplayFilled.Display myDisplay : DisplayFilled.Display.values()) {
-            apps.add(new DisplayFilled(graphicsContext, AnimationTimerImpl.NUM_RUNS, myDisplay));
-        }
+//        for (DisplayFilled.Display myDisplay : DisplayFilled.Display.values()) {
+//            apps.add(new DisplayFilled(graphicsContext, AnimationTimerImpl.NUM_RUNS, myDisplay));
+//        }
 //        apps.add(new DisplayFilling(graphicsContext, AnimationTimerImpl.NUM_RUNS));
 //        apps.add(new Expanding(graphicsContext, AnimationTimerImpl.NUM_RUNS));
         apps.add(new BouncingBall(graphicsContext, AnimationTimerImpl.NUM_RUNS));

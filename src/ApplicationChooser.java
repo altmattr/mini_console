@@ -4,7 +4,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Pair;
 import pfx.FXApp;
-import studentwork.BoxCarrier;
+import studentwork.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +29,7 @@ public class ApplicationChooser extends FXApp {
 
         apps = Arrays.asList(
                 new Pair(new BoxCarrier(g), Optional.empty()),
+		new Pair(new GameOfLife(g), Optional.empty()),
                 new Pair(new examples.BouncingBall(g), Optional.empty()),
                 new Pair(new examples.SineWave(g), Optional.empty()),
                 new Pair(new examples.ScalingChecker(g), Optional.empty()),

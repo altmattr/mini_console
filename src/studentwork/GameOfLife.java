@@ -8,13 +8,10 @@ import pfx.PVector;
 public class GameOfLife extends pfx.FXApp {
 
     public String name(){return "Game of Life - Evan";}
-    public String description(){return "A game of infinite haulage";}
+    public String description(){return "Conway via Gillard";}
 
     int w, h, scale;
     Cell[][] grid;
-
-    PVector screenSize;
-    //Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 
     public GameOfLife(GraphicsContext g) {
         super(g);
@@ -22,18 +19,14 @@ public class GameOfLife extends pfx.FXApp {
 
     public void settings()
     {
-        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-        screenSize = new PVector((float)(bounds.getWidth()), (float)(bounds.getHeight()));
-
-        //screenSize = new PVector((float)(screenDim.getWidth()), (float)(screenDim.getHeight()));
-        size((int)screenSize.x,(int)screenSize.y);
+        size(360,240);
     }
 
     public void setup()
     {
-        scale = 20;
-        w = (int)screenSize.x / scale;
-        h = (int)screenSize.y / scale;
+        scale = 10;
+        w = width / scale;
+        h = height / scale;
         grid = new Cell[w][h];
 
         for (int x = 0; x < w; x++) for (int y = 0; y < h; y++)
