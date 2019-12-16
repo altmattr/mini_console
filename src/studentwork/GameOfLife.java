@@ -24,13 +24,15 @@ public class GameOfLife extends pfx.FXApp {
 
     public void setup()
     {
-        scale = 10;
+        scale = 5;
         w = width / scale;
         h = height / scale;
         grid = new Cell[w][h];
 
         for (int x = 0; x < w; x++) for (int y = 0; y < h; y++)
         { { grid[x][y] = new Cell(x*scale,y*scale); } }
+
+	noStroke();
     }
 
     public void draw()
@@ -69,8 +71,7 @@ public class GameOfLife extends pfx.FXApp {
                 fill(0);
             }
 
-            stroke(0);
-            square(pos.x, pos.y, scale);
+            square(pos.x+1, pos.y+1, scale-2);
         }
     }
 }

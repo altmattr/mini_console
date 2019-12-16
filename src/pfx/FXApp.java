@@ -115,16 +115,7 @@ public class FXApp {
     }
 
     protected void square(float x, float y, float size){
-        float topLeftX = x;
-        float topLeftY = y;
-        if (rectMode == CENTER){
-            topLeftX = x - size/2;
-            topLeftY = y - size/2;
-        }
-        if(filling) {
-            g.fillRect(topLeftX, topLeftY, size, size);
-        }
-        g.strokeRect(topLeftX,topLeftY,size,size);
+	    rect(x, y, size, size);
     }
 
     protected void point(float x, float y){
