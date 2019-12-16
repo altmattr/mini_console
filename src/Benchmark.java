@@ -45,10 +45,10 @@ public class Benchmark extends Application {
         for (DisplayFilled.Display myDisplay : DisplayFilled.Display.values()) {
             apps.add(new DisplayFilled(graphicsContext, AnimationTimerImpl.NUM_RUNS, myDisplay));
         }
-        apps.add(new DisplayFilling(graphicsContext, AnimationTimerImpl.NUM_RUNS));
-        apps.add(new Expanding(graphicsContext, AnimationTimerImpl.NUM_RUNS));
-//        apps.add(new BouncingBall(graphicsContext, AnimationTimerImpl.NUM_RUNS));
-//        apps.add(new CircleSize(graphicsContext, AnimationTimerImpl.NUM_RUNS));
+//        apps.add(new DisplayFilling(graphicsContext, AnimationTimerImpl.NUM_RUNS));
+//        apps.add(new Expanding(graphicsContext, AnimationTimerImpl.NUM_RUNS));
+        apps.add(new BouncingBall(graphicsContext, AnimationTimerImpl.NUM_RUNS));
+        apps.add(new CircleSize(graphicsContext, AnimationTimerImpl.NUM_RUNS));
         return apps;
     }
 
