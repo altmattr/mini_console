@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="extra config we needed">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/studentwork/FarmerBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/studentwork/FarmerBill.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -347,14 +349,7 @@
       <option name="project" value="LOCAL" />
       <updated>1576545175239</updated>
     </task>
-    <task id="LOCAL-00011" summary="extra config we needed">
-      <created>1576556724098</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1576556724098</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -412,40 +407,40 @@
     <option name="LAST_COMMIT_MESSAGE" value="extra config we needed" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="383" y="55" key="CommitChangelistDialog2" timestamp="1576556723683">
+    <state x="383" y="55" key="CommitChangelistDialog2" timestamp="1576545174958">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state x="383" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1576539374388" />
     <state x="383" y="55" key="CommitChangelistDialog2/0.23.1440.827@0.23.1440.827" timestamp="1576544936406" />
-    <state x="383" y="55" key="CommitChangelistDialog2/0.23.1440.835@0.23.1440.835" timestamp="1576556723683" />
-    <state width="1398" height="164" key="GridCell.Tab.0.bottom" timestamp="1576556929365">
+    <state x="383" y="55" key="CommitChangelistDialog2/0.23.1440.835@0.23.1440.835" timestamp="1576545174958" />
+    <state width="1398" height="164" key="GridCell.Tab.0.bottom" timestamp="1576556169290">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576543195286" />
     <state width="590" height="78" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1576544998789" />
     <state width="1181" height="243" key="GridCell.Tab.0.bottom/0.23.1440.832@0.23.1440.832" timestamp="1576543687310" />
-    <state width="1398" height="164" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1576556929365" />
-    <state width="1398" height="164" key="GridCell.Tab.0.center" timestamp="1576556929363">
+    <state width="1398" height="164" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1576556169290" />
+    <state width="1398" height="164" key="GridCell.Tab.0.center" timestamp="1576556169289">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576543195285" />
     <state width="590" height="78" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
     <state width="1181" height="243" key="GridCell.Tab.0.center/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
-    <state width="1398" height="164" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1576556929363" />
-    <state width="1398" height="164" key="GridCell.Tab.0.left" timestamp="1576556929361">
+    <state width="1398" height="164" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1576556169289" />
+    <state width="1398" height="164" key="GridCell.Tab.0.left" timestamp="1576556169288">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576543195284" />
     <state width="590" height="78" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
     <state width="1181" height="243" key="GridCell.Tab.0.left/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
-    <state width="1398" height="164" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1576556929361" />
-    <state width="1398" height="164" key="GridCell.Tab.0.right" timestamp="1576556929363">
+    <state width="1398" height="164" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1576556169288" />
+    <state width="1398" height="164" key="GridCell.Tab.0.right" timestamp="1576556169289">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576543195285" />
     <state width="590" height="78" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
     <state width="1181" height="243" key="GridCell.Tab.0.right/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
-    <state width="1398" height="164" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1576556929363" />
+    <state width="1398" height="164" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1576556169289" />
     <state x="55" y="95" key="MergeDialog" timestamp="1576544627638">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
@@ -459,25 +454,25 @@
     </state>
     <state x="208" y="23" width="1024" height="827" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1576541645840" />
     <state x="208" y="23" width="1024" height="835" key="SettingsEditor/0.23.1440.835@0.23.1440.835" timestamp="1576556151084" />
-    <state x="230" y="177" key="Vcs.Push.Dialog.v2" timestamp="1576556736502">
+    <state x="230" y="177" key="Vcs.Push.Dialog.v2" timestamp="1576545186086">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state x="230" y="176" key="Vcs.Push.Dialog.v2/0.23.1440.827@0.23.1440.827" timestamp="1576544904253" />
-    <state x="230" y="177" key="Vcs.Push.Dialog.v2/0.23.1440.835@0.23.1440.835" timestamp="1576556736502" />
-    <state x="509" y="364" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576556841564">
+    <state x="230" y="177" key="Vcs.Push.Dialog.v2/0.23.1440.835@0.23.1440.835" timestamp="1576545186086" />
+    <state x="509" y="364" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576548281500">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
-    <state x="509" y="364" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.835@0.23.1440.835" timestamp="1576556841564" />
+    <state x="509" y="364" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.835@0.23.1440.835" timestamp="1576548281500" />
     <state x="386" y="234" key="git4idea.merge.GitMergeDialog" timestamp="1576544793674">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="386" y="234" key="git4idea.merge.GitMergeDialog/0.23.1440.827@0.23.1440.827" timestamp="1576544793674" />
-    <state x="353" y="253" key="git4idea.merge.GitPullDialog" timestamp="1576556828495">
+    <state x="353" y="253" key="git4idea.merge.GitPullDialog" timestamp="1576548320154">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state x="353" y="248" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1576539497315" />
     <state x="353" y="251" key="git4idea.merge.GitPullDialog/0.23.1440.827@0.23.1440.827" timestamp="1576544991887" />
-    <state x="353" y="253" key="git4idea.merge.GitPullDialog/0.23.1440.835@0.23.1440.835" timestamp="1576556828495" />
+    <state x="353" y="253" key="git4idea.merge.GitPullDialog/0.23.1440.835@0.23.1440.835" timestamp="1576548320154" />
     <state x="421" y="307" key="git4idea.rebase.GitRebaseDialog" timestamp="1576544857932">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
