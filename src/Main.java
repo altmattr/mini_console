@@ -75,6 +75,11 @@ public class Main extends Application {
 	    app.mouseY = (int)evt.getY();
 	});
 
+	scene.addEventHandler(MouseEvent.MOUSE_CLICKED, (evt) ->{
+	    app.mouseX = (int)evt.getX();
+	    app.mouseY = (int)evt.getY();
+    });
+
         FPSChart fps = new FPSChart();
         new AnimationTimer(){
             public void handle(long currentNanoTime){
