@@ -4,8 +4,7 @@ import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.text.TextAlignment;
-
+import javafx.scene.text.TextAlignment;//
 import java.util.Random;
 
 public class FXApp {
@@ -90,6 +89,20 @@ public class FXApp {
 
     // 2d primitives
     // TODO
+
+
+    protected void triangle (float x1, float y1, float x2, float y2, float x3, float y3){
+        double[] xPoints = {x1, x2, x3};
+        double[] yPoints = {y1, y2, y3};
+        if(filling){
+            g.fillPolygon(xPoints, yPoints, 3);
+        }
+        if(!noStroke) {
+            g.strokePolygon(xPoints, yPoints, 3);
+        }
+    }
+
+
     protected void ellipse(float x, float y, float width, float height){
         float topLeftX = x - width/2;
         float topLeftY = y - width/2;
