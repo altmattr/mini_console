@@ -417,26 +417,30 @@
     <option name="LAST_COMMIT_MESSAGE" value="extra config we needed" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="699" height="243" key="GridCell.Tab.0.bottom" timestamp="1576544217617">
+    <state x="390" y="42" key="CommitChangelistDialog2" timestamp="1576544384659">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="390" y="42" key="CommitChangelistDialog2/0.23.1440.835@0.23.1440.835" timestamp="1576544384659" />
+    <state width="1398" height="243" key="GridCell.Tab.0.bottom" timestamp="1576544391700">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576540581592" />
-    <state width="699" height="243" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1576544217617" />
-    <state width="699" height="243" key="GridCell.Tab.0.center" timestamp="1576544217615">
+    <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1576544391700" />
+    <state width="1398" height="243" key="GridCell.Tab.0.center" timestamp="1576544391698">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576540581587" />
-    <state width="699" height="243" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1576544217615" />
-    <state width="699" height="243" key="GridCell.Tab.0.left" timestamp="1576544217615">
+    <state width="1398" height="243" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1576544391698" />
+    <state width="1398" height="243" key="GridCell.Tab.0.left" timestamp="1576544391697">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576540581585" />
-    <state width="699" height="243" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1576544217615" />
-    <state width="699" height="243" key="GridCell.Tab.0.right" timestamp="1576544217616">
+    <state width="1398" height="243" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1576544391697" />
+    <state width="1398" height="243" key="GridCell.Tab.0.right" timestamp="1576544391699">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576540581590" />
-    <state width="699" height="243" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1576544217616" />
+    <state width="1398" height="243" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1576544391699" />
     <state x="208" y="31" key="SettingsEditor" timestamp="1576540213041">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
