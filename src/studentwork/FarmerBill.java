@@ -41,44 +41,45 @@ public class FarmerBill extends pfx.FXApp {
         background(82, 202, 255);
         //ground
         fill(0, 255, 80);
-        rect(0, 400, 640, 480);
+        rect(width/2, 400, 640, 280);
         //horse
-        //body
-        noStroke();
-        fill(144, 91, 34);
-        ellipse(480, 320, 120, 50);
-        //legs
-        stroke(144, 91, 34);
-        strokeWeight(5);
-        line(500, 340, horseLegOneX, 400);
-        line(515, 335, horseLegTwoX, 400);
-        line(440, 338, 440, 400);
-        line(428, 330, 428, 400);
-        noStroke();
-        strokeWeight(1);
-        //neck
-        rect(420, 280, 20, 40);
-        //ear
-        ellipse(420, 250, 5, 35);
-        //head
-        ellipse(410, 270, 70, 35);
-        //ear
-        ellipse(425, 250, 5, 35);
-        stroke(0);
-        //outer eye
-        fill(255);
-        ellipse(410, 265, 15, 10);
-        //inner eye
-        fill(0);
-        ellipse(410, 265, 5, 5);
-        //tail
-        line(537, 315, 547, 315);
-        line(537, 317, 547, 317);
-        line(537, 319, 547, 319);
-        line(547, 316, 552, 370);
-        line(547, 318, 550, 370);
-        line(547, 320, 554, 370);
-        //bill
+            //body
+            noStroke();
+            fill(144, 91, 34);
+            ellipse(480, 320, 120, 50);
+            //legs
+            stroke(144, 91, 34);
+            strokeWeight(5);
+            line(500, 340, horseLegOneX, 400);
+            line(515, 335, horseLegTwoX, 400);
+            line(440, 338, 440, 400);
+            line(428, 330, 428, 400);
+            noStroke();
+            strokeWeight(1);
+            //neck
+            rect(420, 280, 20, 40);
+            //ear
+            ellipse(420, 250, 5, 35);
+            //head
+            ellipse(410, 270, 70, 35);
+            //ear
+            ellipse(425, 250, 5, 35);
+            stroke(0);
+            //outer eye
+            fill(255);
+            ellipse(410, 265, 15, 10);
+            //inner eye
+            fill(0);
+            ellipse(410, 265, 5, 5);
+            //tail
+            line(537, 315, 547, 315);
+            line(537, 317, 547, 317);
+            line(537, 319, 547, 319);
+            line(547, 316, 552, 370);
+            line(547, 318, 550, 370);
+            line(547, 320, 554, 370);
+
+            //bill
 
         //head
         fill(255);
