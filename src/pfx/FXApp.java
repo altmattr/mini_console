@@ -7,11 +7,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
 import java.util.Random;
+import java.awt.MouseInfo;
 
 public class FXApp {
 
     public final int CORNER = 0;
     public final int CENTER = 1;
+
+    public int mouseX=0;
+    public int mouseY=0;
 
     public int width;
     public int height;
@@ -42,6 +46,10 @@ public class FXApp {
     public void settings(){}
     public void setup(){}
     public void draw(){}
+    public void updateGlobals(){
+        mouseX = MouseInfo.getPointerInfo().getLocation().x;
+        mouseY = MouseInfo.getPointerInfo().getLocation().y;
+    }
     public void demoDraw(GraphicsContext g2){
         GraphicsContext oldG = g;
         g = g2;
@@ -68,6 +76,7 @@ public class FXApp {
 	noStroke = false;
         this.g.setStroke(Color.rgb(r,g,b, 1.0));
     }
+
 
     // environment
     // TODO

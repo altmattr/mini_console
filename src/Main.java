@@ -18,6 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
+
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         stage.setX(bounds.getMinX());
         stage.setY(bounds.getMinY());
@@ -84,6 +85,7 @@ public class Main extends Application {
                 }
 
                 c.getGraphicsContext2D().save();
+                app.updateGlobals();
                 app.draw();
                 c.getGraphicsContext2D().restore();
 
