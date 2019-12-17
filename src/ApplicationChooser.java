@@ -13,8 +13,8 @@ import java.util.function.Consumer;
 
 public class ApplicationChooser extends FXApp {
 
-    List<Pair<FXApp,Optional<Image>>> apps;
-    Image defaultImage;
+    List<Pair<FXApp,Optional<String>>> apps;
+    String defaultImage;
     int boxSize;
     int gapSize;
     int topLoc;
@@ -29,14 +29,13 @@ public class ApplicationChooser extends FXApp {
 
         apps = Arrays.asList(
                 new Pair(new BoxCarrier(g), Optional.empty()),
-		        new Pair(new FarmerBill(g), Optional.empty()),
+                new Pair(new GameOfLife(g), Optional.of("GameOfLife_485.png")),
+                new Pair(new FarmerBill(g), Optional.of("FarmerBill.png")),
                 new Pair(new Yeet(g), Optional.empty()),
-		        new Pair(new GameOfLife(g), Optional.empty()),
-                new Pair(new examples.BouncingBall(g), Optional.empty()),
-                new Pair(new examples.SineWave(g), Optional.empty()),
-                new Pair(new examples.ScalingChecker(g), Optional.empty()),
-                new Pair(new examples.AdditiveWave(g), Optional.empty()),
-                new Pair(new examples.Array2D(g), Optional.empty())
+                new Pair(new examples.BouncingBall(g), Optional.of("BouncingBall.png")),
+                new Pair(new examples.SineWave(g), Optional.of("SineWave.png")),
+                new Pair(new examples.AdditiveWave(g), Optional.of("AdditiveWave.png")),
+                new Pair(new examples.Array2D(g), Optional.of("Array2D.png"))
         );
     }
 
@@ -49,7 +48,7 @@ public class ApplicationChooser extends FXApp {
         boxSize = height / 6;
         gapSize = height / 30;
         selected = 0;
-        defaultImage = new Image("boxcarrier.png", boxSize-2, boxSize-2, true, false);
+        defaultImage = "boxcarrier.png";
         recalcGlobals();
     }
 
@@ -64,7 +63,8 @@ public class ApplicationChooser extends FXApp {
             } else {
                 stroke(55, 58, 54);
             }
-            image(apps.get(i).getValue().orElse(defaultImage), gapSize+1, ycoord+1);
+            Image img = new Image(apps.get(i).getValue().orElse(defaultImage), boxSize-2, boxSize-2, true, false);
+            image(img, gapSize+1, ycoord+1);
             rect(gapSize, ycoord, boxSize, boxSize);
             text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().description(), gapSize * 2 + boxSize, ycoord);
             ycoord = ycoord + boxSize + gapSize;

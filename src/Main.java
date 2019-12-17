@@ -70,6 +70,16 @@ public class Main extends Application {
             }
         });
 
+	scene.addEventHandler(MouseEvent.MOUSE_MOVED, (evt) -> {
+	    app.mouseX = (int)evt.getX();
+	    app.mouseY = (int)evt.getY();
+	});
+
+	scene.addEventHandler(MouseEvent.MOUSE_CLICKED, (evt) ->{
+	    app.mouseX = (int)evt.getX();
+	    app.mouseY = (int)evt.getY();
+    });
+
         FPSChart fps = new FPSChart();
         new AnimationTimer(){
             public void handle(long currentNanoTime){
@@ -85,7 +95,6 @@ public class Main extends Application {
                 }
 
                 c.getGraphicsContext2D().save();
-                app.updateGlobals();
                 app.draw();
                 c.getGraphicsContext2D().restore();
 
