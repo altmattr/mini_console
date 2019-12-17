@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="extra config we needed">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/xchart_3_5_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/GameOfLife_485.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ApplicationChooser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicationChooser.java" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="setting all of the pictures for games" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -342,20 +337,18 @@
       <option name="project" value="LOCAL" />
       <updated>1576463727507</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="setting all of the pictures for games">
+      <created>1576557145971</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1576557145971</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1302000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -397,44 +390,45 @@
     <MESSAGE value="attempt to fix the error on pi" />
     <MESSAGE value="attempt to fix missing functions added" />
     <MESSAGE value="extra config we needed" />
-    <option name="LAST_COMMIT_MESSAGE" value="extra config we needed" />
+    <MESSAGE value="setting all of the pictures for games" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting all of the pictures for games" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="383" y="51" key="CommitChangelistDialog2" timestamp="1576557102076">
+    <state x="383" y="51" key="CommitChangelistDialog2" timestamp="1576557162066">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="383" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1576539374388" />
-    <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.823@0.23.1440.823" timestamp="1576557102076" />
+    <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.823@0.23.1440.823" timestamp="1576557162066" />
     <state x="383" y="55" key="CommitChangelistDialog2/0.23.1440.827@0.23.1440.827" timestamp="1576544936406" />
-    <state width="1181" height="199" key="GridCell.Tab.0.bottom" timestamp="1576557104980">
+    <state width="1181" height="199" key="GridCell.Tab.0.bottom" timestamp="1576557152785">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576543195286" />
-    <state width="1181" height="199" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1576557104980" />
+    <state width="1181" height="199" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1576557152785" />
     <state width="590" height="78" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1576544998789" />
     <state width="1181" height="243" key="GridCell.Tab.0.bottom/0.23.1440.832@0.23.1440.832" timestamp="1576543687310" />
     <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1576545117124" />
-    <state width="1181" height="199" key="GridCell.Tab.0.center" timestamp="1576557104980">
+    <state width="1181" height="199" key="GridCell.Tab.0.center" timestamp="1576557152784">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576543195285" />
-    <state width="1181" height="199" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1576557104980" />
+    <state width="1181" height="199" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1576557152784" />
     <state width="590" height="78" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
     <state width="1181" height="243" key="GridCell.Tab.0.center/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
     <state width="1398" height="243" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1576545117124" />
-    <state width="1181" height="199" key="GridCell.Tab.0.left" timestamp="1576557104979">
+    <state width="1181" height="199" key="GridCell.Tab.0.left" timestamp="1576557152784">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576543195284" />
-    <state width="1181" height="199" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1576557104979" />
+    <state width="1181" height="199" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1576557152784" />
     <state width="590" height="78" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
     <state width="1181" height="243" key="GridCell.Tab.0.left/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
     <state width="1398" height="243" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1576545117123" />
-    <state width="1181" height="199" key="GridCell.Tab.0.right" timestamp="1576557104980">
+    <state width="1181" height="199" key="GridCell.Tab.0.right" timestamp="1576557152785">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576543195285" />
-    <state width="1181" height="199" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1576557104980" />
+    <state width="1181" height="199" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1576557152785" />
     <state width="590" height="78" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
     <state width="1181" height="243" key="GridCell.Tab.0.right/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
     <state width="1398" height="243" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1576545117124" />
