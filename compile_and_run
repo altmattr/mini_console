@@ -1,4 +1,4 @@
 
 ./clean
-javac -classpath ./lib/xchart-3.5.4.jar:./ -sourcepath ./src ./src/*.java
+javac -classpath ./lib/xchart-3.5.41.jar:./ -sourcepath ./src ./src/*.java
 java -classpath ./src:./resources/ Main

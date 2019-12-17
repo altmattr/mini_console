@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
 import java.util.Random;
-import java.awt.MouseInfo;
 
 public class FXApp {
 
@@ -46,10 +45,6 @@ public class FXApp {
     public void settings(){}
     public void setup(){}
     public void draw(){}
-    public void updateGlobals(){
-        mouseX = MouseInfo.getPointerInfo().getLocation().x;
-        mouseY = MouseInfo.getPointerInfo().getLocation().y;
-    }
     public void demoDraw(GraphicsContext g2){
         GraphicsContext oldG = g;
         g = g2;
