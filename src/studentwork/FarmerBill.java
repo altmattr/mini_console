@@ -9,6 +9,7 @@ import java.awt.MouseInfo;
 public class FarmerBill extends pfx.FXApp {
 
     public String name(){return "Farmer Bill";}
+    public String description(){return "Bounce a ball on Bill's head";}
 
     //variables
     float circleX = 0;
