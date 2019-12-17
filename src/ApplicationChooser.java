@@ -30,6 +30,7 @@ public class ApplicationChooser extends FXApp {
         apps = Arrays.asList(
                 new Pair(new BoxCarrier(g), Optional.empty()),
                 new Pair(new GameOfLife(g), Optional.of("GameOfLife_485.png")),
+                new Pair(new FarmerBill(g), Optional.empty()),
                 new Pair(new examples.BouncingBall(g), Optional.empty()),
                 new Pair(new examples.SineWave(g), Optional.empty()),
                 new Pair(new examples.ScalingChecker(g), Optional.empty()),
