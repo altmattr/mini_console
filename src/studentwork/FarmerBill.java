@@ -4,38 +4,38 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Screen;
 import pfx.PVector;
+import processing.core.*;
+import processing.data.*;
+
 import java.awt.MouseInfo;
 
-public class FarmerBill extends pfx.FXApp {
+public class FarmerBill extends mqapp.MQApp {
 
     public String name(){return "Farmer Bill";}
+    public String description(){return "Bounce a ball on Bill's head";}
 
     //variables
     float circleX = 0;
     float circleY = 0;
     float xSpeed = random(1.15f, 1.2f);
     float ySpeed = random(0.2f, 1.2f);
-    float xSpeed2 = random(1.15f, 1.2f);
-    float ySpeed2 = random(0.2f, 1.2f);
+//    float xSpeed2 = random(1.15f, 1.2f);
+//    float ySpeed2 = random(0.2f, 1.2f);
     float gravity = 0.075f;
 
     int horseLegOneX = 500;
     int horseLegTwoX = 515;
 
-    int smokeOpacity = 255;
-    float smokeSize = 5;
-    float smokeLocation = 343f;
+//    int smokeOpacity = 255;
+//    float smokeSize = 5;
+//    float smokeLocation = 343f;
 
-    public FarmerBill(GraphicsContext g) {
-        super(g);
-    }
 
-    public void settings(){
-        size(640, 480);
-    }
+
 
     public void setup(){
         background(100);
+        size(640, 480);
         //rectMode(CENTER);
     }
 

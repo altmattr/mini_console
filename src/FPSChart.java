@@ -35,11 +35,11 @@ public class FPSChart {
 
         c.setStroke(Color.GRAY);
         c.strokeRect(x, y, len, 20);
-        c.setLineDashes(1,3);
+        //c.setLineDashes(1,3);
         c.strokeLine(x,y+4,x+len,y+4); // 60fps line
 
         // current spot line
-        c.setLineDashes(0);
+        //c.setLineDashes(0);
         c.strokeLine(x+records, y, x+records, y+20);
 
         //TODO: getting rid of this empty path slows the application incredibly.
