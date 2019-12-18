@@ -25,7 +25,8 @@ public class ApplicationChooser extends mqapp.MQApp {
 
         apps = Arrays.asList(
                 new Pair(new Yeet(), Optional.empty()),
-                new Pair(new BlackHole(), Optional.empty())
+                new Pair(new BlackHole(), Optional.empty()),
+                new Pair(new FarmerBill(), Optional.empty())
         );
     }
 
@@ -59,17 +60,22 @@ public class ApplicationChooser extends mqapp.MQApp {
 
 
     public void keyPressed() {
+        if (key == ENTER) {
+            System.out.println("made it");
+            loadApp(apps.get(selected).getKey());
+        }
         if (key == CODED) {
             if (keyCode == UP) {
+                System.out.println("up");
+
                 selected = (selected - 1);
                 if (selected < 0)
                     selected = apps.size() - 1;
                 recalcGlobals();
             } else if (keyCode == DOWN) {
+                System.out.println("down");
                 selected = (selected + 1) % apps.size();
                 recalcGlobals();
-            } else if (keyCode == ENTER) {
-                //appResetter.accept(apps.get(selected).getKey());
             }
         }
     }

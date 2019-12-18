@@ -14,7 +14,7 @@ import java.io.InputStream;
 import java.io.OutputStream; 
 import java.io.IOException; 
 
-public class BlackHole extends PApplet {
+public class BlackHole extends mqapp.MQApp {
 
 /* Assignment 2 (COMP115). S1, 2015.
    By Rifhad Mahbub (SID: 44647662). */
