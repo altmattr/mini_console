@@ -3,7 +3,7 @@ import processing.core.*;
 import processing.data.*;
 
 
-public class Grapher extends PApplet {
+public class Grapher extends mqapp.MQApp {
 
     public String name(){
         return "Grapher - Sepehr";}
