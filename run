@@ -1,1 +1,1 @@
-java -classpath src:resources Main
+java -cp ./src/:lib/core.jar:lib/xchart-3.5.41.jar Main

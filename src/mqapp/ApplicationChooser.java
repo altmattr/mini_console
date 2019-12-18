@@ -27,13 +27,13 @@ public class ApplicationChooser extends mqapp.MQApp {
                 new Pair(new Yeet(), Optional.empty()),
                 new Pair(new BlackHole(), Optional.empty()),
                 new Pair(new FarmerBill(), Optional.empty()),
-                new Pair(new Grapher(), Optional.empty()),
-                new Pair(new MrGW(), Optional.empty())
+                new Pair(new KuruCountry(), Optional.empty()),
+                new Pair(new GameAndWatch(), Optional.empty())
         );
     }
 
     public void setup() {
-        size(960,540);
+        size(displayWidth, displayHeight);
         boxSize = height / 6;
         gapSize = height / 30;
         selected = 0;
