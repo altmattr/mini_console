@@ -2,12 +2,12 @@ package studentwork;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class KuruCountry extends pfx.FXApp {
+public class KuruCountry extends mqapp.MQApp { //important
 
     public String name(){return "Kuru Country - Chris Felix";}
     public String description(){return "";}
 
-    public KuruCountry(GraphicsContext g){super(g);}
+    //public KuruCountry(GraphicsContext g){super(g);} - found to be unnecessary so far
 
     int ydirection=3;//variable required to bounce of wall
     int xdirection=3;
@@ -50,6 +50,7 @@ public class KuruCountry extends pfx.FXApp {
 
     public void setup()
     {
+        size(810,810);
 
         background(0,102,51);
         //sets all status values to false
@@ -543,10 +544,9 @@ public class KuruCountry extends pfx.FXApp {
         fill(0);
         text("YAY! YOU WIN!", width/3, height/2-40);
         textSize(22);
-        text("Time taken: ", width/3, height/2+40);
-        text("Lives left: ", width/3, height/2+5);
-        text("final Time: ", width/3+160, height/2+40);
-        text("final Life: ", width/3+160, height/2+5);
+        text("Time taken: " + timer, width/3, height/2+40);
+        text("Lives left: " + lives, width/3, height/2+5);
+
     }
     public void checkBaddieCollision(){
         for (int i = 0; i < baddieX.length; i++)
@@ -661,15 +661,11 @@ public class KuruCountry extends pfx.FXApp {
             baddieSpeedY[i]=0;
         }
     }
-    public void settings() {  size(810,810); }
-    static public void main(String[] passedArgs) {
-        String[] appletArgs = new String[] { "Chris_Felix___ass2" };
-        if (passedArgs != null) {
-            PApplet.main(concat(appletArgs, passedArgs));
-        } else {
-            PApplet.main(appletArgs);
-        }
+
+
+    static public void main(String[] passedArgs) { //important; this function must be at the bottom of each game
+        String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "studentwork.KuruCountry" };
+        runSketch(appletArgs, new KuruCountry() );
     }
 }
 
-}
