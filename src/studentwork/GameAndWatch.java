@@ -2,20 +2,9 @@ package studentwork;
 
 import processing.core.*;
 import processing.data.*;
-import processing.event.*;
-import processing.opengl.*;
 
 //import processing.sound.*;
 
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.io.File;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.IOException;
-import javafx.scene.canvas.GraphicsContext;
 
 public class GameAndWatch extends mqapp.MQApp {
 
@@ -23,11 +12,8 @@ public class GameAndWatch extends mqapp.MQApp {
     public String description(){return " ";}
 
 
-        public void settings() {
-            size(512, 348);
-        }
-
         public void setup() {
+            size(512, 348);
             // This section is here to ensure that the contained code is only run on the initial setup of the program, and not each time setup is called.
             if (firstSetup) {
                 frameRate(30);
