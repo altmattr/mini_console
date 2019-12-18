@@ -31,6 +31,7 @@ public class ApplicationChooser extends FXApp {
                 new Pair(new BoxCarrier(g), Optional.empty()),
                 new Pair(new GameOfLife(g), Optional.of("GameOfLife_485.png")),
                 new Pair(new FarmerBill(g), Optional.of("FarmerBill.png")),
+                new Pair(new Yeet(g), Optional.empty()),
                 new Pair(new examples.BouncingBall(g), Optional.of("BouncingBall.png")),
                 new Pair(new examples.SineWave(g), Optional.of("SineWave.png")),
                 new Pair(new examples.AdditiveWave(g), Optional.of("AdditiveWave.png")),
