@@ -1,16 +1,15 @@
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+package mqapp;
+
 import javafx.util.Pair;
+import processing.event.*;
+import processing.core.*;
 import studentwork.*;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class ApplicationChooser extends MQApp {
+public class ApplicationChooser extends mqapp.MQApp {
 
     List<Pair<MQApp,Optional<String>>> apps;
     String defaultImage;
@@ -30,12 +29,8 @@ public class ApplicationChooser extends MQApp {
         );
     }
 
-    @Override
-    public void settings() {
-        size(1920, 1080);
-    }
-
     public void setup() {
+        size(960,540);
         boxSize = height / 6;
         gapSize = height / 30;
         selected = 0;
@@ -57,13 +52,13 @@ public class ApplicationChooser extends MQApp {
             //Image img = new Image(apps.get(i).getValue().orElse(defaultImage), boxSize-2, boxSize-2, true, false);
             //image(img, gapSize+1, ycoord+1);
             rect(gapSize, ycoord, boxSize, boxSize);
-            text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().description(), gapSize * 2 + boxSize, ycoord);
+            //text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().description(), gapSize * 2 + boxSize, ycoord);
             ycoord = ycoord + boxSize + gapSize;
         }
     }
 
 /*
-    public void keyPressed(KeyEvent evt) {
+    public void keyPressed() {
         if (evt.getCode() == KeyCode.UP) {
             selected = (selected - 1);
             if (selected < 0)

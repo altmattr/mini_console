@@ -14,7 +14,7 @@ import java.io.InputStream;
 import java.io.OutputStream; 
 import java.io.IOException; 
 
-public class Yeet extends PApplet {
+public class Yeet extends mqapp.MQApp {
 
     public String name() {
         return "Yeet";

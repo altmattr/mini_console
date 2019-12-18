@@ -588,6 +588,5 @@ public void mousePressed(){
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "studentwork.BlackHole" };
     runSketch(appletArgs, new BlackHole());
-    runSketch(appletArgs, new studentwork.Yeet());
   }
 }
