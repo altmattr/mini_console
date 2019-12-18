@@ -453,10 +453,10 @@
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state x="494" y="332" width="451" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1440.835@0.23.1440.835" timestamp="1576634654649" />
-    <state x="390" y="42" key="CommitChangelistDialog2" timestamp="1576635797312">
+    <state x="390" y="42" key="CommitChangelistDialog2" timestamp="1576638259569">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
-    <state x="390" y="42" key="CommitChangelistDialog2/0.23.1440.835@0.23.1440.835" timestamp="1576635797312" />
+    <state x="390" y="42" key="CommitChangelistDialog2/0.23.1440.835@0.23.1440.835" timestamp="1576638259569" />
     <state width="1398" height="216" key="GridCell.Tab.0.bottom" timestamp="1576638100543">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
@@ -482,14 +482,19 @@
     </state>
     <state x="208" y="31" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1576540213041" />
     <state x="208" y="23" width="1024" height="835" key="SettingsEditor/0.23.1440.835@0.23.1440.835" timestamp="1576634597944" />
-    <state x="320" y="180" key="Vcs.Push.Dialog.v2" timestamp="1576635803843">
+    <state x="482" y="163" key="VCS.ChangeListViewerDialog" timestamp="1576638273531">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
-    <state x="320" y="180" key="Vcs.Push.Dialog.v2/0.23.1440.835@0.23.1440.835" timestamp="1576635803843" />
-    <state x="509" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576539640924">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="482" y="163" key="VCS.ChangeListViewerDialog/0.23.1440.835@0.23.1440.835" timestamp="1576638273531" />
+    <state x="320" y="180" key="Vcs.Push.Dialog.v2" timestamp="1576638237169">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="320" y="180" key="Vcs.Push.Dialog.v2/0.23.1440.835@0.23.1440.835" timestamp="1576638237169" />
+    <state x="509" y="370" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576638265465">
+      <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state x="509" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1576539640924" />
+    <state x="509" y="370" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.835@0.23.1440.835" timestamp="1576638265465" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
