@@ -545,8 +545,8 @@ public class KuruCountry extends pfx.FXApp {
         textSize(22);
         text("Time taken: ", width/3, height/2+40);
         text("Lives left: ", width/3, height/2+5);
-        text(finalTime, width/3+160, height/2+40);
-        text(finalLife, width/3+160, height/2+5);
+        text("final Time: ", width/3+160, height/2+40);
+        text("final Life: ", width/3+160, height/2+5);
     }
     public void checkBaddieCollision(){
         for (int i = 0; i < baddieX.length; i++)
