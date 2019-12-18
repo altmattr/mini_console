@@ -26,7 +26,8 @@ public class ApplicationChooser extends mqapp.MQApp {
         apps = Arrays.asList(
                 new Pair(new Yeet(), Optional.empty()),
                 new Pair(new BlackHole(), Optional.empty()),
-                new Pair(new FarmerBill(), Optional.empty())
+                new Pair(new FarmerBill(), Optional.empty()),
+                new Pair(new KuruCountry(), Optional.empty())
         );
     }
 
