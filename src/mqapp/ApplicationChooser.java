@@ -31,7 +31,7 @@ public class ApplicationChooser extends mqapp.MQApp {
     }
 
     public void setup() {
-        size(960,540);
+        size(displayWidth, displayHeight);
         boxSize = height / 6;
         gapSize = height / 30;
         selected = 0;
