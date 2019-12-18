@@ -57,21 +57,23 @@ public class ApplicationChooser extends mqapp.MQApp {
         }
     }
 
-/*
+
     public void keyPressed() {
-        if (evt.getCode() == KeyCode.UP) {
-            selected = (selected - 1);
-            if (selected < 0)
-                selected = apps.size() - 1;
-            recalcGlobals();
-        } else if (evt.getCode() == KeyCode.DOWN) {
-            selected = (selected + 1) % apps.size();
-            recalcGlobals();
-        } else if (evt.getCode() == KeyCode.ENTER){
-            //appResetter.accept(apps.get(selected).getKey());
+        if (key == CODED) {
+            if (keyCode == UP) {
+                selected = (selected - 1);
+                if (selected < 0)
+                    selected = apps.size() - 1;
+                recalcGlobals();
+            } else if (keyCode == DOWN) {
+                selected = (selected + 1) % apps.size();
+                recalcGlobals();
+            } else if (keyCode == ENTER) {
+                //appResetter.accept(apps.get(selected).getKey());
+            }
         }
     }
-*/
+
     private void recalcGlobals() {
         switch (selected) {
             case 0:
