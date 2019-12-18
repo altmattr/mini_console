@@ -1,15 +1,26 @@
 package studentwork;
-import javafx.scene.canvas.GraphicsContext;
 
-public class Yeet extends pfx.FXApp {
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Yeet extends PApplet {
 
     public String name() {
         return "Yeet";
     }
 
-    public Yeet(GraphicsContext g) {
-        super(g);
-    }
+
 // attempt 3
 //with projectile motion
 
@@ -129,5 +140,19 @@ public class Yeet extends pfx.FXApp {
         }
         velocityY = velocityY+ gravity;
     }
+
+public void keyPressed(){
+  if (key == 'd'){
+    System.out.println("disposed");
+    dispose();
+    String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "studentwork.BlackHole" };
+    runSketch(appletArgs, new BlackHole());
+  }
+}
+
+static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "studentwork.Yeet" };
+    runSketch(appletArgs, new Yeet());
+  }
 
 }

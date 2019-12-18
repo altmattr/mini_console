@@ -3,7 +3,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Pair;
-import pfx.FXApp;
 import studentwork.*;
 
 import java.util.Arrays;
@@ -11,9 +10,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class ApplicationChooser extends FXApp {
+public class ApplicationChooser extends MQApp {
 
-    List<Pair<FXApp,Optional<String>>> apps;
+    List<Pair<MQApp,Optional<String>>> apps;
     String defaultImage;
     int boxSize;
     int gapSize;
@@ -21,21 +20,13 @@ public class ApplicationChooser extends FXApp {
     int topSpot;
     int selected;
     int numRender;
-    Consumer<FXApp> appResetter;
 
-    public ApplicationChooser(GraphicsContext g, Consumer<FXApp> appResetter) {
-        super(g);
-        this.appResetter = appResetter;
+    public ApplicationChooser() {
+        super();
 
         apps = Arrays.asList(
-                new Pair(new BoxCarrier(g), Optional.empty()),
-                new Pair(new GameOfLife(g), Optional.of("GameOfLife_485.png")),
-                new Pair(new FarmerBill(g), Optional.of("FarmerBill.png")),
-                new Pair(new Yeet(g), Optional.empty()),
-                new Pair(new examples.BouncingBall(g), Optional.of("BouncingBall.png")),
-                new Pair(new examples.SineWave(g), Optional.of("SineWave.png")),
-                new Pair(new examples.AdditiveWave(g), Optional.of("AdditiveWave.png")),
-                new Pair(new examples.Array2D(g), Optional.of("Array2D.png"))
+                new Pair(new Yeet(), Optional.empty()),
+                new Pair(new BlackHole(), Optional.empty())
         );
     }
 
@@ -63,14 +54,15 @@ public class ApplicationChooser extends FXApp {
             } else {
                 stroke(55, 58, 54);
             }
-            Image img = new Image(apps.get(i).getValue().orElse(defaultImage), boxSize-2, boxSize-2, true, false);
-            image(img, gapSize+1, ycoord+1);
+            //Image img = new Image(apps.get(i).getValue().orElse(defaultImage), boxSize-2, boxSize-2, true, false);
+            //image(img, gapSize+1, ycoord+1);
             rect(gapSize, ycoord, boxSize, boxSize);
             text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().description(), gapSize * 2 + boxSize, ycoord);
             ycoord = ycoord + boxSize + gapSize;
         }
     }
 
+/*
     public void keyPressed(KeyEvent evt) {
         if (evt.getCode() == KeyCode.UP) {
             selected = (selected - 1);
@@ -81,10 +73,10 @@ public class ApplicationChooser extends FXApp {
             selected = (selected + 1) % apps.size();
             recalcGlobals();
         } else if (evt.getCode() == KeyCode.ENTER){
-            appResetter.accept(apps.get(selected).getKey());
+            //appResetter.accept(apps.get(selected).getKey());
         }
     }
-
+*/
     private void recalcGlobals() {
         switch (selected) {
             case 0:
