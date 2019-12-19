@@ -15,10 +15,9 @@ public class MQApp extends PApplet {
         runSketch(appletArgs, new ApplicationChooser());
       } else if (event.getKey() == 'x'){
 	    exit();
-      } else {
-        super.handleKeyEvent(event);
       }
     }
+    super.handleKeyEvent(event);
   }
 
   public void loadApp(MQApp newApp){
