@@ -1,1 +1,4 @@
+#!/bin/bash
+
+cd $(dirname $0)
 java -cp ./src/:lib/core.jar:lib/xchart-3.5.41.jar Main
