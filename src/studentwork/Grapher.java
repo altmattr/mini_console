@@ -5,10 +5,12 @@ import processing.data.*;
 
 public class Grapher extends mqapp.MQApp {
 
-    public String name(){
-        return "Grapher - Sepehr";}
-    public String description(){
-        return "";}
+
+
+
+    public String name(){return "Grapher";}
+    public String author() {return "Sepehr Torfeg Nejad";}
+    public String description(){return "";}
 
     final int N_PARTITIONS = 10;
     int current;
