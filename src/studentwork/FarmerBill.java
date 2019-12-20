@@ -1,45 +1,52 @@
 package studentwork;
 
-import javafx.geometry.Rectangle2D;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.stage.Screen;
-import pfx.PVector;
-import processing.core.*;
-import processing.data.*;
-
-import java.awt.MouseInfo;
-
 public class FarmerBill extends mqapp.MQApp {
 
     public String name(){return "Farmer Bill";}
+    public String author(){return "Georgia Curtis";}
     public String description(){return "Bounce a ball on Bill's head";}
 
-    //variables
+
+    //Scaling Variables
+    float a = 640;
+    float b = 480;
+    float Scale = 0;
+    //Farmer Bill variables
     float circleX = 0;
     float circleY = 0;
     float xSpeed = random(1.15f, 1.2f);
     float ySpeed = random(0.2f, 1.2f);
-//    float xSpeed2 = random(1.15f, 1.2f);
-//    float ySpeed2 = random(0.2f, 1.2f);
     float gravity = 0.075f;
 
     int horseLegOneX = 500;
     int horseLegTwoX = 515;
 
-//    int smokeOpacity = 255;
-//    float smokeSize = 5;
-//    float smokeLocation = 343f;
+    int smokeOpacity = 255;
+    float smokeSize = 5;
+    float smokeLocation = 343f;
 
 
 
 
     public void setup(){
         background(100);
-        size(640, 480);
-        //rectMode(CENTER);
+        size(displayWidth, displayHeight); //original dimensions- 640, 480
     }
 
     public void draw(){
+        //scaling
+        scale(Scale);
+        float ratioX = displayWidth/a;
+        float ratioY = displayHeight/b;
+        if(ratioX <= ratioY){
+            Scale = ratioX;
+        } else{
+            Scale = ratioY;
+        }
+        //translating
+        translate(50, 50);
+
+        //game
         background(82, 202, 255);
         //ground
         fill(0, 255, 80);
@@ -160,27 +167,27 @@ public class FarmerBill extends mqapp.MQApp {
         rect(mouseX+20, 365, 10, 5);
         line(mouseX+3, 360, mouseX+20, 365);
 
-//        //smoke
-//        fill(170, 170, 170, smokeOpacity);
-//        noStroke();
-//        ellipse(mouseX+25, smokeLocation+20, smokeSize, smokeSize);
-//        ellipse(mouseX+28, smokeLocation+12, smokeSize, smokeSize);
-//        ellipse(mouseX+31, smokeLocation, smokeSize, smokeSize);
-//
-//        smokeLocation = smokeLocation -0.5f;
-//        smokeOpacity = smokeOpacity - 1;
-//        if (smokeSize < 70) {
-//            smokeSize = smokeSize + 1;
-//        }
-//        if (smokeLocation < 240) {
-//            smokeLocation = smokeLocation +103;
-//
-//        }
-//
-//
-//        if (smokeOpacity < 0) {
-//            smokeOpacity = smokeOpacity + 200;
-//
-//        }
+        //smoke
+        fill(170, 170, 170, smokeOpacity);
+        noStroke();
+        ellipse(mouseX+25, smokeLocation+20, smokeSize, smokeSize);
+        ellipse(mouseX+28, smokeLocation+12, smokeSize, smokeSize);
+        ellipse(mouseX+31, smokeLocation, smokeSize, smokeSize);
+
+        smokeLocation = smokeLocation -0.5f;
+        smokeOpacity = smokeOpacity - 1;
+        if (smokeSize < 70) {
+            smokeSize = smokeSize + 1;
+        }
+        if (smokeLocation < 240) {
+            smokeLocation = smokeLocation +103;
+
+        }
+
+
+        if (smokeOpacity < 0) {
+            smokeOpacity = smokeOpacity + 200;
+
+        }
     }
 }
