@@ -503,6 +503,11 @@ public boolean toggleBoolButton(int togX, int togY, int togSize, boolean toggleB
 // KeyPress function.
 public void keyPressed(){
   // Keypresses during the game.
+  if (gameState == 0){
+    if (key == 10){
+      startMain();
+      }
+    }
   if (gameState == 1){
     if (key == 'a'){
       if (cameraDisplacementX < 10){
