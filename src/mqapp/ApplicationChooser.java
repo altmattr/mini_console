@@ -44,7 +44,7 @@ public class ApplicationChooser extends mqapp.MQApp {
     }
 
     public void draw() {
-        background(214, 210, 196);
+        background(0);
 
         noFill();
         int ycoord = topLoc;
