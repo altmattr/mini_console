@@ -76,7 +76,6 @@ public class ApplicationChooser extends mqapp.MQApp {
                 recalcGlobals();
             }
         if (key == ENTER) {
-            System.out.println("made it");
             loadApp(apps.get(selected).getKey());
         }
     }

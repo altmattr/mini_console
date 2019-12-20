@@ -502,17 +502,6 @@ public boolean toggleBoolButton(int togX, int togY, int togSize, boolean toggleB
 
 // KeyPress function.
 public void keyPressed(){
-System.out.println("do you even work?");
-  if (key == 'd'){
-        System.out.println("dispose called");
-	dispose();
-  }
-  // Keypresses before the game (main menu).
-  if (gameState == 0){
-    if (key == 10){
-      startMain();
-    }
-  }
   // Keypresses during the game.
   if (gameState == 1){
     if (key == 'a'){
