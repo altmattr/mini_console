@@ -6,7 +6,7 @@ public class KuruCountry extends mqapp.MQApp { //important
 
     public String name(){return "Kuru Country";}
     public String author(){return "created by Chris Felix";}
-    public String description(){return "";}
+    public String description(){return "Find all the rupees";}
 
     //public KuruCountry(GraphicsContext g){super(g);} - found to be unnecessary so far
 
