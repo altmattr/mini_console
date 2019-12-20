@@ -9,8 +9,8 @@ public class Grapher extends mqapp.MQApp {
 
 
     public String name(){return "Grapher";}
-    public String author() {return "Sepehr Torfeg Nejad";}
-    public String description(){return "";}
+    public String author() {return "created by Sepehr Torfeh Nejad";}
+    public String description(){return "Make your own interactive graph";}
 
     final int N_PARTITIONS = 10;
     int current;
