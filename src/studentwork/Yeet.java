@@ -45,12 +45,25 @@ public class Yeet extends mqapp.MQApp {
     float x = 0;
     float y =100;
 
+    float Scale = 1;
+    int originalWidth = 640;
+    int originalHeight = 480;
+
     public void setup() {
-        size(640, 480);
+        size(displayWidth, displayHeight);
 
     }
     public void draw() {
         background(0, 200, 255);
+
+        float ratioX = displayWidth/originalWidth;
+        float ratioY = displayHeight/originalHeight;
+        if(ratioX <= ratioY){
+            Scale = ratioX;
+        } else{
+            Scale = ratioY;
+        }
+        scale(Scale);
 
 
 
@@ -140,6 +153,8 @@ public class Yeet extends mqapp.MQApp {
             velocityY = -(velocityY)+gravity ;
         }
         velocityY = velocityY+ gravity;
+
+
     }
 
 public void keyPressed(){
@@ -149,7 +164,12 @@ public void keyPressed(){
     String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "studentwork.BlackHole" };
     runSketch(appletArgs, new BlackHole());
   }
+  if (key == 'a') {
+      setup();
+  }
 }
+
+
 
 static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "studentwork.Yeet" };
