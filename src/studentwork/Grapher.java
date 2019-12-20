@@ -22,7 +22,7 @@ public class Grapher extends mqapp.MQApp {
     boolean nodePressed;
 
     public void setup() {
-        size(600, 360);
+        size(displayWidth, displayHeight);
         current = 0;
         sum = 0;
         draggingPoint = 0;

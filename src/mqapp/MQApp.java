@@ -10,15 +10,13 @@ public class MQApp extends PApplet {
   
   protected void handleKeyEvent(KeyEvent event){
     if(event.getAction() == KeyEvent.PRESS){
-      if (event.getKey() == ESC){
-        dispose();
-        runSketch(appletArgs, new ApplicationChooser());
-      } else if (event.getKey() == 'x'){
+      if (event.getKey() == 'x'){
+        loadApp(new ApplicationChooser());
+      } else if (event.getKey() == ESC){
 	    exit();
-      } else {
-        super.handleKeyEvent(event);
       }
     }
+    super.handleKeyEvent(event);
   }
 
   public void loadApp(MQApp newApp){

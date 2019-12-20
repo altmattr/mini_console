@@ -11,8 +11,8 @@ import java.util.Optional;
 
 public class ApplicationChooser extends mqapp.MQApp {
 
-    List<Pair<MQApp,Optional<String>>> apps;
-    String defaultImage;
+    List<Pair<MQApp,Optional<PImage>>> apps;
+    PImage defaultImage;
     int boxSize;
     int gapSize;
     int topLoc;
@@ -22,22 +22,24 @@ public class ApplicationChooser extends mqapp.MQApp {
 
     public ApplicationChooser() {
         super();
-
-        apps = Arrays.asList(
-                new Pair(new Yeet(), Optional.empty()),
-                new Pair(new BlackHole(), Optional.empty()),
-                new Pair(new FarmerBill(), Optional.empty()),
-                new Pair(new KuruCountry(), Optional.empty()),
-                new Pair(new GameAndWatch(), Optional.empty())
-        );
     }
 
     public void setup() {
         size(displayWidth, displayHeight);
+
+        apps = Arrays.asList(
+                new Pair(new Yeet(), Optional.of(loadImage("Yeet.png"))),
+                new Pair(new BlackHole(), Optional.of(loadImage("BlackHole.png"))),
+                new Pair(new FarmerBill(), Optional.of(loadImage("FarmerBill.png"))),
+                new Pair(new KuruCountry(), Optional.of(loadImage("KuruCounrty.png"))),
+                new Pair(new GameAndWatch(), Optional.of(loadImage("GameAndWatch.png"))),
+                new Pair(new Grapher(), Optional.of(loadImage("Grapher.png")))
+        );
+
         boxSize = height / 6;
         gapSize = height / 30;
         selected = 0;
-        defaultImage = "boxcarrier.png";
+        defaultImage = loadImage("boxcarrier.png");
         recalcGlobals();
     }
 
@@ -52,7 +54,7 @@ public class ApplicationChooser extends mqapp.MQApp {
             } else {
                 stroke(55, 58, 54);
             }
-            //Image img = new Image(apps.get(i).getValue().orElse(defaultImage), boxSize-2, boxSize-2, true, false);
+            image(apps.get(i).getValue().orElse(defaultImage), gapSize+1,ycoord+1, height/6, height/6);
             //image(img, gapSize+1, ycoord+1);
             rect(gapSize, ycoord, boxSize, boxSize);
             //text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().description(), gapSize * 2 + boxSize, ycoord);
@@ -74,7 +76,6 @@ public class ApplicationChooser extends mqapp.MQApp {
                 recalcGlobals();
             }
         if (key == ENTER) {
-            System.out.println("made it");
             loadApp(apps.get(selected).getKey());
         }
     }
