@@ -77,7 +77,9 @@ public class ApplicationChooser extends mqapp.MQApp {
             fill(200, 0, 0);
             textSize(150);
             textAlign(LEFT);
-            text("Macquarie" + "\n\n" + "Classic" + "\n\n" + "Mini", 3*width/6, height/6);
+            text("Macquarie", 3*width/6, height/6);
+            text("Classic", 3*width/6, 3*height/6);
+            text("Mini", 3*width/6, 5*height/6);
 
             noFill();
 
