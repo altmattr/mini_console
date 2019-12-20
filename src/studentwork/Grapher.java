@@ -9,7 +9,7 @@ public class Grapher extends mqapp.MQApp {
 
 
     public String name(){return "Grapher";}
-    public String author() {return "Sepehr Torfeg Nejad";}
+    public String author() {return "Sepehr Torfeh Nejad";}
     public String description(){return "";}
 
     final int N_PARTITIONS = 10;
