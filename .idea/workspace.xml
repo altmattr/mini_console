@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Adding Grapher game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mqapp/MQApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mqapp/MQApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studentwork/GameAndWatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/studentwork/GameAndWatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/studentwork/FarmerBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/studentwork/FarmerBill.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +118,7 @@
       <recent name="C:\Users\mattr\repos\mqm\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GameAndWatch">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -136,16 +135,22 @@
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
-    <configuration name="AppInterface" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AppInterface" />
+    <configuration name="BlackHole" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="studentwork.BlackHole" />
       <module name="mqm" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="studentwork.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BlackHole" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="studentwork.BlackHole" />
+    <configuration name="FarmerBill2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="studentwork.FarmerBill2" />
       <module name="mqm" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -283,19 +288,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.AppInterface" />
       <item itemvalue="Application.GridChooser" />
       <item itemvalue="Application.Grapher" />
       <item itemvalue="Application.BlackHole" />
       <item itemvalue="Application.GameAndWatch" />
+      <item itemvalue="Application.FarmerBill2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FarmerBill2" />
         <item itemvalue="Application.GameAndWatch" />
         <item itemvalue="Application.BlackHole" />
         <item itemvalue="Application.Grapher" />
         <item itemvalue="Application.GridChooser" />
-        <item itemvalue="Application.AppInterface" />
       </list>
     </recent_temporary>
   </component>
@@ -421,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576804165690</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Adding Grapher game">
+      <created>1576815868418</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1576815868418</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -468,27 +480,28 @@
     <MESSAGE value="attempt to fix missing functions added" />
     <MESSAGE value="extra config we needed" />
     <MESSAGE value="setting all of the pictures for games" />
-    <MESSAGE value="Adding Grapher game" />
     <MESSAGE value="missing file from last time" />
     <MESSAGE value="adding all the images to the games, also adding Grapher game" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding all the images to the games, also adding Grapher game" />
+    <MESSAGE value="Adding Grapher game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Grapher game" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="383" y="51" key="CommitChangelistDialog2" timestamp="1576804165351">
-      <screen x="0" y="23" width="1440" height="826" />
+    <state x="383" y="51" key="CommitChangelistDialog2" timestamp="1576815868164">
+      <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state x="383" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1576539374388" />
     <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.823@0.23.1440.823" timestamp="1576643151314" />
     <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.825@0.23.1440.825" timestamp="1576637933491" />
     <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.826@0.23.1440.826" timestamp="1576804165351" />
     <state x="383" y="55" key="CommitChangelistDialog2/0.23.1440.827@0.23.1440.827" timestamp="1576544936406" />
+    <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.835@0.23.1440.835" timestamp="1576815868164" />
     <state x="256" y="127" width="1023" height="588" key="DiffContextDialog" timestamp="1576799160877">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state x="256" y="127" width="1023" height="586" key="DiffContextDialog/0.23.1440.823@0.23.1440.823" timestamp="1576642464950" />
     <state x="256" y="127" width="1023" height="588" key="DiffContextDialog/0.23.1440.826@0.23.1440.826" timestamp="1576799160877" />
-    <state width="1181" height="199" key="GridCell.Tab.0.bottom" timestamp="1576805736596">
-      <screen x="0" y="23" width="1440" height="826" />
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom" timestamp="1576816248360">
+      <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576543195286" />
     <state width="1181" height="199" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1576643127896" />
@@ -496,9 +509,9 @@
     <state width="1181" height="199" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1576805736596" />
     <state width="590" height="78" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1576544998789" />
     <state width="1181" height="243" key="GridCell.Tab.0.bottom/0.23.1440.832@0.23.1440.832" timestamp="1576543687310" />
-    <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1576545117124" />
-    <state width="1181" height="199" key="GridCell.Tab.0.center" timestamp="1576805736595">
-      <screen x="0" y="23" width="1440" height="826" />
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1576816248360" />
+    <state width="1398" height="216" key="GridCell.Tab.0.center" timestamp="1576816248359">
+      <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576543195285" />
     <state width="1181" height="199" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1576643127894" />
@@ -506,9 +519,9 @@
     <state width="1181" height="199" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1576805736595" />
     <state width="590" height="78" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
     <state width="1181" height="243" key="GridCell.Tab.0.center/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
-    <state width="1398" height="243" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1576545117124" />
-    <state width="1181" height="199" key="GridCell.Tab.0.left" timestamp="1576805736595">
-      <screen x="0" y="23" width="1440" height="826" />
+    <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1576816248359" />
+    <state width="1398" height="216" key="GridCell.Tab.0.left" timestamp="1576816248358">
+      <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576543195284" />
     <state width="1181" height="199" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1576643127893" />
@@ -516,9 +529,9 @@
     <state width="1181" height="199" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1576805736595" />
     <state width="590" height="78" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
     <state width="1181" height="243" key="GridCell.Tab.0.left/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
-    <state width="1398" height="243" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1576545117123" />
-    <state width="1181" height="199" key="GridCell.Tab.0.right" timestamp="1576805736595">
-      <screen x="0" y="23" width="1440" height="826" />
+    <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1576816248358" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right" timestamp="1576816248360">
+      <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state width="1398" height="243" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576543195285" />
     <state width="1181" height="199" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1576643127895" />
@@ -526,7 +539,7 @@
     <state width="1181" height="199" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1576805736595" />
     <state width="590" height="78" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
     <state width="1181" height="243" key="GridCell.Tab.0.right/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
-    <state width="1398" height="243" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1576545117124" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1576816248360" />
     <state x="55" y="95" key="MergeDialog" timestamp="1576544627638">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
@@ -540,13 +553,14 @@
     </state>
     <state x="208" y="23" width="1024" height="827" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1576541645840" />
     <state x="208" y="44" key="SettingsEditor/0.23.1440.826@0.23.1440.826" timestamp="1576636062918" />
-    <state x="230" y="175" key="Vcs.Push.Dialog.v2" timestamp="1576804181234">
-      <screen x="0" y="23" width="1440" height="826" />
+    <state x="230" y="177" key="Vcs.Push.Dialog.v2" timestamp="1576815887836">
+      <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state x="230" y="175" key="Vcs.Push.Dialog.v2/0.23.1440.823@0.23.1440.823" timestamp="1576642730648" />
     <state x="230" y="175" key="Vcs.Push.Dialog.v2/0.23.1440.825@0.23.1440.825" timestamp="1576733244117" />
     <state x="230" y="175" key="Vcs.Push.Dialog.v2/0.23.1440.826@0.23.1440.826" timestamp="1576804181234" />
     <state x="230" y="176" key="Vcs.Push.Dialog.v2/0.23.1440.827@0.23.1440.827" timestamp="1576544904253" />
+    <state x="230" y="177" key="Vcs.Push.Dialog.v2/0.23.1440.835@0.23.1440.835" timestamp="1576815887836" />
     <state x="288" y="275" key="com.intellij.ide.util.TipDialog" timestamp="1576797190319">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
