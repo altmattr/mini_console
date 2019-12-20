@@ -19,6 +19,8 @@ public class ApplicationChooser extends mqapp.MQApp {
     int topSpot;
     int selected;
     int numRender;
+    int textGapSize;
+    PFont retro;
 
     public ApplicationChooser() {
         super();
@@ -38,29 +40,51 @@ public class ApplicationChooser extends mqapp.MQApp {
 
         boxSize = height / 6;
         gapSize = height / 30;
+        textGapSize = height/100;
         selected = 0;
         defaultImage = loadImage("boxcarrier.png");
         recalcGlobals();
     }
 
     public void draw() {
-        background(214, 210, 196);
+
+        background(0);
 
         noFill();
         int ycoord = topLoc;
         for (int i = topSpot; i < numRender && i < apps.size(); i++) {
             if (i == selected) {
-                stroke(166, 25, 46);
+                strokeWeight(5);
+                stroke(255,0,255);
+                //stroke(166, 25, 46);
             } else {
+                strokeWeight(1);
                 stroke(55, 58, 54);
             }
             image(apps.get(i).getValue().orElse(defaultImage), gapSize+1,ycoord+1, height/6, height/6);
             //image(img, gapSize+1, ycoord+1);
             rect(gapSize, ycoord, boxSize, boxSize);
-            text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().author() + "\n\n" + apps.get(i).getKey().description(), ((gapSize * 2) + boxSize), ycoord);
+            retro = createFont("DS-DIGI.TTF", 40);
+            textFont(retro);
+            fill(255,0,255);
+            text(apps.get(i).getKey().name(), ((gapSize * 2) + boxSize), ycoord + gapSize);
+            textSize(25);
+            fill(255);
+            text(apps.get(i).getKey().author(), ((gapSize * 2) + boxSize), ycoord + 2*gapSize);
+            textSize(35);
+            text(apps.get(i).getKey().description(), ((gapSize * 2) + boxSize), ycoord + 4*gapSize);
+
+            fill(200, 0, 0);
+            textSize(150);
+            textAlign(LEFT);
+            text("Macquarie" + "\n\n" + "Classic" + "\n\n" + "Mini", 3*width/6, height/6);
+
+            noFill();
 
             //text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().description(), gapSize * 2 + boxSize, ycoord);
             ycoord = ycoord + boxSize + gapSize;
+
+
         }
     }
 
