@@ -28,11 +28,12 @@ public class ApplicationChooser extends mqapp.MQApp {
         size(displayWidth, displayHeight);
 
         apps = Arrays.asList(
-                new Pair(new Yeet(), Optional.of(loadImage("BouncingBall.png"))),
-                new Pair(new BlackHole(), Optional.empty()),
+                new Pair(new Yeet(), Optional.of(loadImage("Yeet.png"))),
+                new Pair(new BlackHole(), Optional.of(loadImage("BlackHole.png"))),
                 new Pair(new FarmerBill(), Optional.of(loadImage("FarmerBill.png"))),
-                new Pair(new KuruCountry(), Optional.empty()),
-                new Pair(new GameAndWatch(), Optional.empty())
+                new Pair(new KuruCountry(), Optional.of(loadImage("KuruCounrty.png"))),
+                new Pair(new GameAndWatch(), Optional.of(loadImage("GameAndWatch.png"))),
+                new Pair(new Grapher(), Optional.of(loadImage("Grapher.png")))
         );
 
         boxSize = height / 6;
