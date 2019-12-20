@@ -5,7 +5,12 @@ import processing.core.*;
 
 
 public class MQApp extends PApplet {
-  
+
+  public String name(){return "";}
+  public String author(){return "";}
+  public String description(){return "";}
+
+
   final static String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "" };
   
   protected void handleKeyEvent(KeyEvent event){

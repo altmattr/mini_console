@@ -57,6 +57,8 @@ public class ApplicationChooser extends mqapp.MQApp {
             image(apps.get(i).getValue().orElse(defaultImage), gapSize+1,ycoord+1, height/6, height/6);
             //image(img, gapSize+1, ycoord+1);
             rect(gapSize, ycoord, boxSize, boxSize);
+            text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().author() + "\n\n" + apps.get(i).getKey().description(), ((gapSize * 2) + boxSize), ycoord);
+
             //text(apps.get(i).getKey().name() + "\n\n" + apps.get(i).getKey().description(), gapSize * 2 + boxSize, ycoord);
             ycoord = ycoord + boxSize + gapSize;
         }

@@ -19,6 +19,16 @@ public class BlackHole extends mqapp.MQApp {
 /* Assignment 2 (COMP115). S1, 2015.
    By Rifhad Mahbub (SID: 44647662). */
 
+  public String name(){return "BlackHole";}
+  public String author(){return "Rifhad Mahbub";}
+  public String description(){return "Avoid black holes in your spaceship";}
+
+
+  float a = 600;
+  float b = 600;
+  float Scale = 1;
+
+
 int score;
 int starCount = 100;
 int shipRed = 127, shipGreen = 127, shipBlue = 127;
@@ -75,7 +85,8 @@ public void blackHoleAt(float holeX, float holeY){
 }
 
 public void setup(){
-  size(600,600);
+  size(displayWidth,displayHeight);
+
   playerX = 300;
   playerY = 300;
   direction = 0;
@@ -112,8 +123,39 @@ public void setup(){
   }
 }
 
+
 public void draw(){
-  // Pre-Game State. Main Menu.
+
+    float ratioX = displayWidth/a; // 1920/600 = 3.2
+    float ratioY = displayHeight/b;  // 1080/600 = 1.8
+
+    float tran;
+    if (ratioX <= ratioY) {
+
+        //tran = ((displayWidth - a) /2);
+        tran = ((displayHeight - b) / 2);
+        translate(0,300);
+    }
+    else {
+        tran = ((displayWidth - a) /2);
+        //tran = ((displayHeight - b) / 2);
+        translate(300, 0);
+    }
+
+
+
+
+
+  if (ratioX <= ratioY) {
+    Scale = ratioX;
+  }
+  else {
+    Scale = ratioY;
+  }
+  scale(Scale);
+
+
+   // Pre-Game State. Main Menu.
   if (gameState == 0){
     background(0);
     
@@ -140,20 +182,20 @@ public void draw(){
     
     textAlign(CENTER);
     fill(255);
-    text("Ship Preview",width/2,280);
+    text("Ship Preview",300,280);
     noFill();
     rect(220,250,160,160);
-    displaySpaceShip(width/2,330);
+    displaySpaceShip(300,330);
     
     fill(255);
     
     if (mouseX >= 210 && mouseX <= 395 && mouseY >= 530 && mouseY <= 550){
       textSize(25);
-      text("Click here to start!",width/2,550);
+      text("Click here to start!",300,550);
     }
     else{
       textSize(18);
-      text("Press ENTER to start!",width/2,550);
+      text("Press ENTER to start!",300,550);
     }
     
   }
@@ -249,15 +291,15 @@ public void displaySpaceShip(float posX, float posY){
 // Function to handle collision with borders.
 public void handleBorderCollision(){
   if (playerX < 0){
-    playerX = width;
+    playerX = 600;
   }
-  if (playerX > width){
+  if (playerX > 600){
     playerX = 0;
   }
   if (playerY < 0){
-    playerY = height;
+    playerY = 600;
   }
-  if (playerY > height){
+  if (playerY > 600){
     playerY = 0;
   }
 }
@@ -265,8 +307,8 @@ public void handleBorderCollision(){
 // Function to set random star positions, AND random star sizes (added feature).
 public void randomiseStars(){
   for (int i = 0; i < starCount; i ++){
-    starX[i] = random(0,width);
-    starY[i] = random(0,height);
+    starX[i] = random(0,600);
+    starY[i] = random(0,600);
     starSize[i] = random(1.0f,4.0f);
   }
 }
@@ -274,8 +316,8 @@ public void randomiseStars(){
 // Function to set random wormhole position.
 public void randomiseWormPos(){
   wormDiameter = 0;
-  wormX = random(0,width);
-  wormY = random(0,height);
+  wormX = random(0,600);
+  wormY = random(0,600);
 }
 
 // Function called when the game is over.
@@ -289,31 +331,31 @@ public void endGame(){
   
   fill(100,255,250);
   textSize(20);
-  text("Play again? Press '1'",width/2,60);
-  text("Return to the Main Menu? Press '2'",width/2,80);
-  text("That game took you " + (endTime-startTime)/1000 + " seconds!",width/2,100);
+  text("Play again? Press '1'",300,60);
+  text("Return to the Main Menu? Press '2'",300,80);
+  text("That game took you " + (endTime-startTime)/1000 + " seconds!",300,100);
   
   fill(255);
   textSize(40);
-  text("Game Over",width/2,240);
+  text("Game Over",300,240);
   textSize(20);
-  text("Final Score: " + score,width/2,280);
+  text("Final Score: " + score,300,280);
   
   textSize(20);
-  text("Enter your name (4 letters): "+ playerName,width/2,340);
+  text("Enter your name (4 letters): "+ playerName,300,340);
   
   if (playerName.length() == 4){
     fill(255);
-    text("Press ENTER to save your score.",width/2,440);
+    text("Press ENTER to save your score.",300,440);
   }
   
   if (gameSaved == true){
     fill(255);
-    text("SAVED!",width/2,480);
+    text("SAVED!",300,480);
     //Show top player.
     fill(100,255,250);
     textSize(20);
-    text(topPlayer + " has the best score of " + topScore + ".",width/2,540);
+    text(topPlayer + " has the best score of " + topScore + ".",300,540);
   }
 }
 
@@ -503,6 +545,11 @@ public boolean toggleBoolButton(int togX, int togY, int togSize, boolean toggleB
 // KeyPress function.
 public void keyPressed(){
   // Keypresses during the game.
+  if (gameState == 0){
+    if (key == 10){
+      startMain();
+      }
+    }
   if (gameState == 1){
     if (key == 'a'){
       if (cameraDisplacementX < 10){

@@ -2664,7 +2664,7 @@ public class GameAndWatch extends mqapp.MQApp {
 
         static public void main(String[] passedArgs) {
             String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "studentwork.GameAndWatch" };
-            runSketch(appletArgs, new KuruCountry() );
+            runSketch(appletArgs, new GameAndWatch() );
         }
     }
 
