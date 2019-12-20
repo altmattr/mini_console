@@ -44,7 +44,7 @@ public class FarmerBill extends mqapp.MQApp {
     public void draw()
     {
 
-scale(Scale);
+
         float ratioX = displayWidth/originalWidth;
         float ratioY = displayHeight/originalHeight;
         if(ratioX <= ratioY){
@@ -52,9 +52,9 @@ scale(Scale);
         } else{
             Scale = ratioY;
         }
-
+        scale(Scale);
 //translating
-        translate(0, 50);
+        translate(0, 0);
 
 
 //gradientLoop();
