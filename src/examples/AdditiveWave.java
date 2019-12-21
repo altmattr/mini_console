@@ -2,14 +2,11 @@
 
 package examples;
 
-import javafx.scene.canvas.GraphicsContext;
 
-public class AdditiveWave extends pfx.FXApp {
-    public AdditiveWave(GraphicsContext g) {
-        super(g);
-    }
+public class AdditiveWave extends mqapp.MQApp {
 
-    public String name(){return "Additive Wave - TEST";}
+    public String name(){return "Additive Wave";}
+    public String author(){return "DEMO";}
     public String description(){return "Create a more complex wave by adding two waves together.";}
 
     int xspacing = 8;   // How far apart should each horizontal location be spaced
@@ -21,11 +18,9 @@ public class AdditiveWave extends pfx.FXApp {
     float[] dx = new float[maxwaves];          // Value for incrementing X, to be calculated as a function of period and xspacing
     float[] yvalues;                           // Using an array to store height values for the wave (not entirely necessary)
 
-    public void settings() {
-        size(640, 360);
-    }
 
     public void setup() {
+        size(displayWidth, displayHeight);
 
         //frameRate(30);
         //colorMode(RGB, 255, 255, 255, 100);

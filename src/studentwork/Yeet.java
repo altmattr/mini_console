@@ -17,7 +17,7 @@ import java.io.IOException;
 public class Yeet extends mqapp.MQApp {
 
     public String name() {return "Yeet";}
-    public String author() { return "created by Caitlin Bedwin"; }
+    public String author() { return "Caitlin Bedwin"; }
     public String description() { return "Yeet the ball away";}
 
 

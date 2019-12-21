@@ -9,7 +9,7 @@ import processing.data.*;
 public class GameAndWatch extends mqapp.MQApp {
 
     public String name(){return "GameAndWatch";}
-    public String author() {return "created by Tanner Schineller";}
+    public String author() {return "Tanner Schineller";}
     public String description(){return "Based on the classic game";}
 
 

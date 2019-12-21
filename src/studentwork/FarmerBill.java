@@ -7,7 +7,7 @@ import processing.core.*;
 public class FarmerBill extends mqapp.MQApp {
 
     public String name(){return "Farmer Bill";}
-    public String author(){return "created by Georgie Curtis";}
+    public String author(){return "Georgie Curtis";}
     public String description(){return "Bounce a ball on Bill's head";}
 
     PVector [] ball = new PVector [5];

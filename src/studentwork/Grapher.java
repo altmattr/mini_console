@@ -5,11 +5,8 @@ import processing.data.*;
 
 public class Grapher extends mqapp.MQApp {
 
-
-
-
     public String name(){return "Grapher";}
-    public String author() {return "created by Sepehr Torfeh Nejad";}
+    public String author() {return "Sepehr Torfeh Nejad";}
     public String description(){return "Make your own interactive graph";}
 
     final int N_PARTITIONS = 10;

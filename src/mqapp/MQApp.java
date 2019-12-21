@@ -5,6 +5,14 @@ import processing.core.*;
 
 
 public class MQApp extends PApplet {
+  class Pair<A,B>{
+    public A fst;
+    public B snd;
+    public Pair(A fst, B snd){
+      this.fst = fst;
+      this.snd = snd;
+    }
+  }
 
   public String name(){return "";}
   public String author(){return "";}
@@ -18,7 +26,7 @@ public class MQApp extends PApplet {
       if (event.getKey() == 'x'){
         loadApp(new ApplicationChooser());
       } else if (event.getKey() == ESC){
-	    exit();
+	      exit();
       }
     }
     super.handleKeyEvent(event);

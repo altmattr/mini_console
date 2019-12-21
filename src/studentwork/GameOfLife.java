@@ -1,30 +1,25 @@
 package studentwork;
 
-import javafx.geometry.Rectangle2D;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.stage.Screen;
-import pfx.PVector;
+import processing.core.*;
 
-public class GameOfLife extends pfx.FXApp {
+public class GameOfLife extends mqapp.MQApp {
 
-    public String name(){return "Game of Life - Evan";}
+    public String name(){return "Game of Life";}
+    public String author(){return "Even Gillard";}
     public String description(){return "Conway via Gillard";}
 
     int w, h, scale;
     Cell[][] grid;
 
-    public GameOfLife(GraphicsContext g) {
-        super(g);
-    }
 
     public void settings()
     {
-        size(360,240);
     }
 
     public void setup()
     {
-        scale = 5;
+        size(displayWidth,displayHeight);
+        scale = 8;
         w = width / scale;
         h = height / scale;
         grid = new Cell[w][h];
@@ -59,7 +54,7 @@ public class GameOfLife extends pfx.FXApp {
 
         Cell(float x, float y) {
             pos = new PVector(x, y);
-            state = random(2);
+            state = (int)random(2);
             prev = state;
         }
 
@@ -71,7 +66,7 @@ public class GameOfLife extends pfx.FXApp {
                 fill(0);
             }
 
-            square(pos.x+1, pos.y+1, scale-2);
+            rect(pos.x+1, pos.y+1, scale-2, scale-2);
         }
     }
 }
