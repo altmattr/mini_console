@@ -1,3 +1,0 @@
-./clean
-javac -classpath ./src:./resources:./lib/xchart-3.5.4.jar -sourcepath ./src ./src/*.java
-java -classpath ./src:./resources:./lib/xchart-3.5.4.jar Benchmark

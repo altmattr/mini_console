@@ -23,15 +23,21 @@ public class BoxCarrier extends mqapp.MQApp {
     float dist;
     float endS;
 
+    float scaleX;
+    float scaleY;
+
     public void setup() {
         // original size is 500x200
-        size(500, 200);
+        size(displayWidth, displayHeight);
+        scaleX = displayWidth/500;
+        scaleY = displayHeight/200;
         background(110);
         rectMode(CENTER);
         //frameRate(24); TODO: how to control the frame rate
     }
 
     public void draw() {
+        scale(min(scaleX, scaleY));
         counter ++;
         background(110);
         fill(0);

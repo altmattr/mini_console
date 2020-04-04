@@ -10,16 +10,16 @@ import java.util.Optional;
 
 public class ApplicationChooser extends mqapp.MQApp {
 
-    List<Pair<MQApp,Optional<PImage>>> apps;
-    PImage defaultImage;
-    int boxSize;
-    int gapSize;
-    int topLoc;
-    int topSpot;
-    int selected;
-    int numRender;
-    int textGapSize;
-    PFont retro;
+    public List<Pair<MQApp,Optional<PImage>>> apps;
+    public PImage defaultImage;
+    public int boxSize;
+    public int gapSize;
+    public int topLoc;
+    public int topSpot;
+    public int selected;
+    public int numRender;
+    public int textGapSize;
+    public PFont uiFont, largeFont;
 
     public void setup() {
         size(displayWidth, displayHeight);
@@ -41,6 +41,8 @@ public class ApplicationChooser extends mqapp.MQApp {
         textGapSize = height/100;
         selected = 0;
         defaultImage = loadImage("boxcarrier.png");
+        uiFont = loadFont("Avenir-LightOblique-28.vlw");
+        largeFont = loadFont("Avenir-LightOblique-78.vlw");
         recalcGlobals();
     }
 
@@ -61,21 +63,18 @@ public class ApplicationChooser extends mqapp.MQApp {
             image(apps.get(i).snd.orElse(defaultImage), gapSize+1,ycoord+1, height/6, height/6);
             noFill();
             rect(gapSize, ycoord, boxSize, boxSize);
-            retro = createFont("DS-DIGI.TTF", 40);
-            textFont(retro);
+            textFont(uiFont);
             fill(255,0,255);
             text(apps.get(i).fst.name(), ((gapSize * 2) + boxSize), ycoord + gapSize);
-            textSize(25);
             fill(255);
             text("created by " + apps.get(i).fst.author(), ((gapSize * 2) + boxSize), ycoord + 2*gapSize);
-            textSize(35);
             text(apps.get(i).fst.description(), ((gapSize * 2) + boxSize), ycoord + 4*gapSize);
 
             ycoord = ycoord + boxSize + gapSize;
         }
         fill(200, 0, 0);
-        textSize(150);
         textAlign(LEFT);
+        textFont(largeFont);
         text("Macquarie", 3*width/6, height/6);
         text("Classic", 3*width/6, 3*height/6);
         text("Mini", 3*width/6, 5*height/6);
