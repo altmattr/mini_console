@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd $(dirname $0)
-javac -cp lib/core.jar:lib/xchart-3.5.41.jar -sourcepath ./src src/Main.java
+javac -cp lib/core.jar:lib/sound.jar -sourcepath ./src src/Main.java

@@ -2,11 +2,10 @@
 
 package studentwork;
 
-import javafx.scene.canvas.GraphicsContext;
+public class BoxCarrier extends mqapp.MQApp {
 
-public class BoxCarrier extends pfx.FXApp {
-
-    public String name(){return "Box Carrier - Elise";}
+    public String name(){return "Box Carrier";}
+    public String author(){return "Elise McCabe";}
     public String description(){return "A game of infinite haulage";}
 
     float pX = 175;
@@ -24,24 +23,21 @@ public class BoxCarrier extends pfx.FXApp {
     float dist;
     float endS;
 
-    public BoxCarrier(GraphicsContext g) {
-        super(g);
-    }
-
-    public void settings()
-    {
-        size(500, 200);
-        //fullScreen();
-    }
+    float scaleX;
+    float scaleY;
 
     public void setup() {
-
+        // original size is 500x200
+        size(displayWidth, displayHeight);
+        scaleX = displayWidth/500;
+        scaleY = displayHeight/200;
         background(110);
         rectMode(CENTER);
         //frameRate(24); TODO: how to control the frame rate
     }
 
     public void draw() {
+        scale(min(scaleX, scaleY));
         counter ++;
         background(110);
         fill(0);

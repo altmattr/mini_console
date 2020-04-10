@@ -20,7 +20,7 @@ public class BlackHole extends mqapp.MQApp {
    By Rifhad Mahbub (SID: 44647662). */
 
   public String name(){return "BlackHole";}
-  public String author(){return "created by Rifhad Mahbub";}
+  public String author(){return "Rifhad Mahbub";}
   public String description(){return "Avoid black holes in your spaceship";}
 
 
