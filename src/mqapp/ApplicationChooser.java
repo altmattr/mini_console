@@ -21,6 +21,15 @@ public class ApplicationChooser extends mqapp.MQApp {
     public int textGapSize;
     public PFont uiFont, largeFont;
 
+    float gap = 100; //<>//
+    float period = 3000;
+    float startAt = 500;
+    int darkest = color(247, 123, 0);
+    long pmillis;
+
+    int[] colours = {color(247, 146, 2), color(247, 161, 2), color(247, 133, 5), darkest};
+
+
     public void setup() {
         size(displayWidth, displayHeight);
 
@@ -42,42 +51,56 @@ public class ApplicationChooser extends mqapp.MQApp {
         selected = 0;
         defaultImage = loadImage("boxcarrier.png");
         uiFont = loadFont("Avenir-LightOblique-28.vlw");
-        largeFont = loadFont("Avenir-LightOblique-78.vlw");
+        largeFont = loadFont("application_chooser/HiraMaruPro-W4-60.vlw");
         recalcGlobals();
     }
 
     public void draw() {
 
-        background(0);
+        // eshop background
+        background(darkest);
+        noStroke();
+        pmillis = millis() % 16000;
+        for (int round = 0; round < 4; round++) {
+          float leaderX = max(0, pmillis-(startAt+period*round));
+          for (int i = 0; i < 5; i++) {
+            float linear = (max(0, leaderX - i*gap)/width);
+            double animated = (1 - pow(2, -2*linear))*1.5*width; // FIXME
+            fill(colours[round]);
+            if (round % 2 == 0) {
+              rect(0, i*(height/5), (float)animated, height/5);
+            } else {
+              rect(width-(float)animated, i*(height/5), (float)animated, height/5);
+            }
+          }
+        }
 
+        // apps
         int ycoord = topLoc;
         for (int i = topSpot; i < topSpot + numRender && i < apps.size(); i++) {
             if (i == selected) {
                 strokeWeight(5);
-                stroke(255,0,255);
+                stroke(255);
                 //stroke(166, 25, 46);
             } else {
                 strokeWeight(1);
-                stroke(55, 58, 54);
+                stroke(255);
             }
             image(apps.get(i).snd.orElse(defaultImage), gapSize+1,ycoord+1, height/6, height/6);
             noFill();
             rect(gapSize, ycoord, boxSize, boxSize);
             textFont(uiFont);
-            fill(255,0,255);
-            text(apps.get(i).fst.name(), ((gapSize * 2) + boxSize), ycoord + gapSize);
             fill(255);
+            text(apps.get(i).fst.name(), ((gapSize * 2) + boxSize), ycoord + gapSize);
             text("created by " + apps.get(i).fst.author(), ((gapSize * 2) + boxSize), ycoord + 2*gapSize);
             text(apps.get(i).fst.description(), ((gapSize * 2) + boxSize), ycoord + 4*gapSize);
 
             ycoord = ycoord + boxSize + gapSize;
         }
-        fill(200, 0, 0);
+        fill(255);
         textAlign(LEFT);
         textFont(largeFont);
-        text("Macquarie", 3*width/6, height/6);
-        text("Classic", 3*width/6, 3*height/6);
-        text("Mini", 3*width/6, 5*height/6);
+        text("Macquarie Classic Mini", 4*width/6 - 50, height-50);
 
     }
 

@@ -1,0 +1,504 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sim",
+				"simAtLocation"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"inter",
+				"intersectSorted"
+			],
+			[
+				"visite",
+				"visitedCellsTied"
+			],
+			[
+				"vi",
+				"visitedCellsTied"
+			],
+			[
+				"targ",
+				"target_code"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "run",
+			"settings":
+			{
+				"buffer_size": 99,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"javac",
+					""
+				],
+				[
+					"Packages/Java/Ant.sublime-build",
+					""
+				],
+				[
+					"Packages/Java/JavaC.sublime-build",
+					""
+				]
+			],
+			[
+				"javac",
+				""
+			]
+		],
+		[
+			[
+				[
+					"run",
+					""
+				],
+				[
+					"test",
+					""
+				],
+				[
+					"Packages/Java/Ant.sublime-build",
+					""
+				],
+				[
+					"Packages/Java/JavaC.sublime-build",
+					""
+				]
+			],
+			[
+				"test",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"build",
+				"Build With: test"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"package instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 297.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/mq30513723/repos/mq_mini_console"
+	],
+	"file_history":
+	[
+		"/Users/mq30513723/Dropbox/teaching/COMP1010/MattsShape/MattsShape.sublime-project",
+		"/Users/mq30513723/Dropbox/teaching/COMP1010/MattsShape/Main.java",
+		"/Users/mq30513723/Downloads/PlaylistEntry.java",
+		"/Users/mq30513723/Downloads/exam planning.csv",
+		"/Users/mq30513723/repos/body-image/log.log",
+		"/Users/mq30513723/Downloads/bodyimage-logs-1589010022109.txt",
+		"/Users/mq30513723/Dropbox/teaching/COMP1010/MattsList/Main.java",
+		"/Users/mq30513723/Dropbox/teaching/COMP1010/MattsList/MattsList.java",
+		"/Users/mq30513723/Dropbox/teaching/COMP1010/building my own array list methods.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_04-recursion/04-what-happens-during-method-calls.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_04-recursion/05-method-calling-itself.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_05-searching/old/02-selection-sort.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_05-searching/old/03-insertion-sort.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_06-lists/03-built-in-lists-in-java.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_06-lists/05-iterator.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_06-lists/06-array-operation-analysis.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_06-lists/07-custom-built-arraylist.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_06-lists/08-the-node-class.md",
+		"/Users/mq30513723/repos/software_technology/programming/todo/_06-lists/10-important-methods-in-custom-linkedlist.md",
+		"/Users/mq30513723/Dropbox/teaching/COMP1000/2020 S1/viva_recordings.md",
+		"/Users/mq30513723/Dropbox/Documents/sleep bag.md",
+		"/Users/mq30513723/Downloads/sketch_200404a/data/Avenir-LightOblique-78.vlw",
+		"/Users/mq30513723/Downloads/sketch_200404a/data/Avenir-LightOblique-68.vlw",
+		"/Users/mq30513723/Downloads/sketch_200404a/data/Avenir-LightOblique-58.vlw",
+		"/Users/mq30513723/Downloads/sketch_200404a/data/Avenir-LightOblique-18.vlw",
+		"/Users/mq30513723/Downloads/sketch_200404a/data/Avenir-LightOblique-28.vlw",
+		"/Users/mq30513723/Downloads/sketch_200404a/data/Avenir-LightOblique-48.vlw",
+		"/Users/mq30513723/Downloads/sketch_200404a/data/Avenir-LightOblique-38.vlw",
+		"/Users/mq30513723/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/B056FB18-FDB1-4BF3-870C-C4C2B344FE9A/Income.dta",
+		"/Users/mq30513723/repos/software_technology/programming/pen_and_paper_methodology.md",
+		"/Users/mq30513723/Dropbox/Sublime/User/task.sublime-snippet",
+		"/Users/mq30513723/Dropbox/Sublime/User/soln.sublime-snippet",
+		"/Users/mq30513723/repos/pattern-mining/languages.csv",
+		"/Users/mq30513723/repos/software_technology/assets/css/lesson.scss",
+		"/Users/mq30513723/repos/software_technology/_site/assets/css/bootstrap.css.map",
+		"/Volumes/gsr/CommentPlus.rb",
+		"/Users/mq30513723/Dropbox/teaching/advent of code 2019/five.hs",
+		"/Users/mq30513723/Dropbox/teaching/advent of code 2019/five.dat",
+		"/Users/mq30513723/Dropbox/teaching/advent of code 2019/five.demo",
+		"/Users/mq30513723/Dropbox/teaching/advent of code 2019/three.hs",
+		"/Users/mq30513723/Dropbox/teaching/advent of code 2019/three.demo",
+		"/Users/mq30513723/Dropbox/teaching/advent of code 2019/three.dat",
+		"/Users/mq30513723/repos/program_mapping/db/populate_targets.rb",
+		"/Users/mq30513723/repos/program_mapping/db/migrate/20191202010045_create_targets.rb",
+		"/Users/mq30513723/repos/program_mapping/app/views/courses/enter_data.html.erb",
+		"/Users/mq30513723/Dropbox/Sublime/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 142.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "run",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 99,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Bash.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 50.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 450.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "mq_mini_console.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"n",
+				"_includes/navigation.html"
+			],
+			[
+				"",
+				"PopulationTest.java"
+			],
+			[
+				"p",
+				"Population.java"
+			],
+			[
+				"refer",
+				"programming/reference_semantics.md"
+			],
+			[
+				"na",
+				"_includes/navigation.html"
+			],
+			[
+				"l",
+				"programming/lists.md"
+			],
+			[
+				"navi",
+				"_includes/navigation.html"
+			],
+			[
+				"nav",
+				"_includes/navigation.html"
+			],
+			[
+				"goog",
+				"meta/google.md"
+			],
+			[
+				"variabl",
+				"programming/variables.md"
+			],
+			[
+				"var",
+				"programming/variables.md"
+			],
+			[
+				"algo",
+				"programming/algorithms.md"
+			],
+			[
+				"de",
+				"programming/debugging.md"
+			],
+			[
+				"less",
+				"assets/css/lesson.scss"
+			],
+			[
+				"nati",
+				"_includes/navigation.html"
+			],
+			[
+				"tra",
+				"programming/transition_to_java.md"
+			],
+			[
+				"lesson.sc",
+				"assets/css/lesson.scss"
+			],
+			[
+				"loops",
+				"programming/loops.md"
+			],
+			[
+				"con",
+				"programming/conditions.md"
+			],
+			[
+				"loo",
+				"programming/loops.md"
+			],
+			[
+				"vari",
+				"programming/variables.md"
+			],
+			[
+				"debu",
+				"programming/debugging_processing.md"
+			],
+			[
+				"cond",
+				"programming/conditions.md"
+			],
+			[
+				"varia",
+				"programming/variables.md"
+			],
+			[
+				"pri",
+				"programming/primitive_operations.md"
+			],
+			[
+				"google",
+				"meta/google.md"
+			],
+			[
+				"trans",
+				"programming/transition_to_java.md"
+			],
+			[
+				"alg",
+				"programming/algorithms.md"
+			],
+			[
+				"condi",
+				"programming/conditions.md"
+			],
+			[
+				"tran",
+				"programming/transition_to_java.md"
+			],
+			[
+				"ana",
+				"analysis.rb"
+			],
+			[
+				"GID",
+				"GID.hs"
+			],
+			[
+				"cover",
+				"app/views/courses/show_coverage.html.erb"
+			],
+			[
+				"enter",
+				"app/views/courses/enter_data.html.erb"
+			],
+			[
+				"course",
+				"app/models/course.rb"
+			],
+			[
+				"L",
+				"app/models/lo.rb"
+			],
+			[
+				"ma",
+				"app/models/mapping.rb"
+			],
+			[
+				"app",
+				"app/assets/javascripts/application.js"
+			],
+			[
+				"rou",
+				"config/routes.rb"
+			],
+			[
+				"Add",
+				"db/migrate/20191126030909_add_tf_to_migrations.rb"
+			],
+			[
+				"unit",
+				"app/controllers/units_controller.rb"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 302.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

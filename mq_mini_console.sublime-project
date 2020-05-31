@@ -1,0 +1,16 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "run",
+			"working_dir": "$project_path",
+			"shell_cmd": "./compile; ./run"
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}
