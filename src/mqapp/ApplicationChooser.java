@@ -42,7 +42,7 @@ public class ApplicationChooser extends mqapp.MQApp {
                 new Pair(new FarmerBill(), Optional.of(loadImage("FarmerBill.png"))),
                 new Pair(new KuruCountry(), Optional.of(loadImage("KuruCounrty.png"))),
                 new Pair(new Grapher(), Optional.of(loadImage("Grapher.png"))),
-                new Pair(new examples.AdditiveWave(), Optional.of(loadImage("AdditiveWave.png")))
+                new Pair(new Stacker(), Optional.of(loadImage("application_chooser/stacker.png")))
         );
 
         boxSize = height / 6;
@@ -106,7 +106,6 @@ public class ApplicationChooser extends mqapp.MQApp {
 
 
     public void keyPressed() {
-
         if (keyCode == UP) {
             selected = (selected - 1);
                 if (selected < 0)

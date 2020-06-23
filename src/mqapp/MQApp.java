@@ -25,9 +25,8 @@ public class MQApp extends PApplet {
     if(event.getAction() == KeyEvent.PRESS){
       if (event.getKey() == 'x'){
         loadApp(new ApplicationChooser());
-      } else if (event.getKey() == ESC){
-	      exit();
-      }
+      } 
+      // ESC kills the application no matter what I do.
     }
     super.handleKeyEvent(event);
   }
