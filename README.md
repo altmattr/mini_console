@@ -6,7 +6,7 @@ The "macquarie mini console" is:
 You will find a zip of the raspberry pi image in the downloads folder.  To get started with this project you should:
 
   * Make sure to install JDK 8 and Intellij IDEA to edit the code.
-  * Download the [pi image](http://web.science.mq.edu.au/~mattr/mq_mini_console.zip) and [write it to an SD card](https://www.raspberrypi.org/documentation/installation/installing-images/)
+  * Download the [pi image](https://platypus.science.mq.edu.au/~mq30513723/mq_mini_console.zip) and [write it to an SD card](https://www.raspberrypi.org/documentation/installation/installing-images/)
   * Boot the pi, login (pi/raspberry) and navigate to the java project directory (`cd ~/mqm`).
   * Pull the latest version of the code (`git pull`)
   * Build and run the java code (`./compile && ./run`)
