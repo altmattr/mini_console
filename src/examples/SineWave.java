@@ -1,8 +1,8 @@
 package examples;// https://processing.org/examples/sinewave.html
 
-import javafx.scene.canvas.GraphicsContext;
+import processing.core.*;
 
-public class SineWave extends pfx.FXApp {
+public class SineWave extends mqapp.MQApp {
 
     int xspacing = 16;   // How far apart should each horizontal location be spaced
     int w;              // Width of entire wave
@@ -13,9 +13,6 @@ public class SineWave extends pfx.FXApp {
     double dx;  // Value for incrementing X, a function of period and xspacing
     double[] yvalues;  // Using an array to store height values for the wave
 
-    public SineWave(GraphicsContext g) {
-        super(g);
-    }
     public String name(){return "Sine Wave - TEST";}
     public String description(){return "Render a simple sine wave.";}
 

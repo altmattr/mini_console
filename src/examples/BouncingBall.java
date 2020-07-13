@@ -1,17 +1,14 @@
 package examples;// https://processing.org/examples/bouncingball.html
 
-import pfx.*;
+import processing.core.*;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class BouncingBall extends pfx.FXApp {
+public class BouncingBall extends mqapp.MQApp {
     PVector location;
     PVector velocity;
     PVector gravity;
 
-    public BouncingBall(GraphicsContext g) {
-        super(g);
-    }
     public String name(){return "Bouncing Ball - TEST";}
     public String description(){return "Demonstration of using vectors to control motion of body.";}
 
