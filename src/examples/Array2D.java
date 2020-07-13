@@ -2,12 +2,10 @@
 
 package examples;
 
-import javafx.scene.canvas.GraphicsContext;
+import processing.core.*;
 
-public class Array2D extends pfx.FXApp {
-    public Array2D(GraphicsContext g) {
-        super(g);
-    }
+public class Array2D extends mqapp.MQApp {
+
     public String name(){return "2D Grid Array  - TEST";}
     public String description(){return "Demonstrates the syntax for creating a two-dimensional (2D) array. Values in a 2D array are accessed through\ntwo index values. 2D arrays are useful for storing images. In this example, each dot is colored in relation to its\ndistance from the center of the image.";}
 

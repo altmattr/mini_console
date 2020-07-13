@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Adding Grapher game">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sound.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studentwork/FarmerBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/studentwork/FarmerBill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mqm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mqm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examples/Array2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examples/Array2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examples/BouncingBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examples/BouncingBall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examples/ScalingChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examples/ScalingChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examples/SineWave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examples/SineWave.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +74,6 @@
     <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="JavaFxApplication" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -83,7 +103,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -94,6 +113,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -231,7 +251,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
       <option name="vmParameters" />
       <option name="alternativeJrePath" />
@@ -303,18 +323,6 @@
         <item itemvalue="Application.GridChooser" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -444,9 +452,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -465,6 +471,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
@@ -486,108 +493,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Adding Grapher game" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="383" y="51" key="CommitChangelistDialog2" timestamp="1576815868164">
-      <screen x="0" y="23" width="1440" height="835" />
+    <state x="221" y="150" key="SettingsEditor" timestamp="1594612616117">
+      <screen x="0" y="23" width="2048" height="1129" />
     </state>
-    <state x="383" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1576539374388" />
-    <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.823@0.23.1440.823" timestamp="1576643151314" />
-    <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.825@0.23.1440.825" timestamp="1576637933491" />
-    <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.826@0.23.1440.826" timestamp="1576804165351" />
-    <state x="383" y="55" key="CommitChangelistDialog2/0.23.1440.827@0.23.1440.827" timestamp="1576544936406" />
-    <state x="383" y="51" key="CommitChangelistDialog2/0.23.1440.835@0.23.1440.835" timestamp="1576815868164" />
-    <state x="256" y="127" width="1023" height="588" key="DiffContextDialog" timestamp="1576799160877">
-      <screen x="0" y="23" width="1440" height="826" />
-    </state>
-    <state x="256" y="127" width="1023" height="586" key="DiffContextDialog/0.23.1440.823@0.23.1440.823" timestamp="1576642464950" />
-    <state x="256" y="127" width="1023" height="588" key="DiffContextDialog/0.23.1440.826@0.23.1440.826" timestamp="1576799160877" />
-    <state width="1398" height="216" key="GridCell.Tab.0.bottom" timestamp="1576816248360">
-      <screen x="0" y="23" width="1440" height="835" />
-    </state>
-    <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576543195286" />
-    <state width="1181" height="199" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1576643127896" />
-    <state width="1181" height="199" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1576637916654" />
-    <state width="1181" height="199" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1576805736596" />
-    <state width="590" height="78" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1576544998789" />
-    <state width="1181" height="243" key="GridCell.Tab.0.bottom/0.23.1440.832@0.23.1440.832" timestamp="1576543687310" />
-    <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1576816248360" />
-    <state width="1398" height="216" key="GridCell.Tab.0.center" timestamp="1576816248359">
-      <screen x="0" y="23" width="1440" height="835" />
-    </state>
-    <state width="1398" height="243" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576543195285" />
-    <state width="1181" height="199" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1576643127894" />
-    <state width="1181" height="199" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1576637916654" />
-    <state width="1181" height="199" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1576805736595" />
-    <state width="590" height="78" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
-    <state width="1181" height="243" key="GridCell.Tab.0.center/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
-    <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1576816248359" />
-    <state width="1398" height="216" key="GridCell.Tab.0.left" timestamp="1576816248358">
-      <screen x="0" y="23" width="1440" height="835" />
-    </state>
-    <state width="1398" height="243" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576543195284" />
-    <state width="1181" height="199" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1576643127893" />
-    <state width="1181" height="199" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1576637916654" />
-    <state width="1181" height="199" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1576805736595" />
-    <state width="590" height="78" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
-    <state width="1181" height="243" key="GridCell.Tab.0.left/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
-    <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1576816248358" />
-    <state width="1398" height="216" key="GridCell.Tab.0.right" timestamp="1576816248360">
-      <screen x="0" y="23" width="1440" height="835" />
-    </state>
-    <state width="1398" height="243" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576543195285" />
-    <state width="1181" height="199" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1576643127895" />
-    <state width="1181" height="199" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1576637916654" />
-    <state width="1181" height="199" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1576805736595" />
-    <state width="590" height="78" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1576544998788" />
-    <state width="1181" height="243" key="GridCell.Tab.0.right/0.23.1440.832@0.23.1440.832" timestamp="1576543687309" />
-    <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1576816248360" />
-    <state x="55" y="95" key="MergeDialog" timestamp="1576544627638">
-      <screen x="0" y="23" width="1440" height="827" />
-    </state>
-    <state x="55" y="95" key="MergeDialog/0.23.1440.827@0.23.1440.827" timestamp="1576544627638" />
-    <state x="342" y="159" key="MultipleFileMergeDialog" timestamp="1576544632567">
-      <screen x="0" y="23" width="1440" height="827" />
-    </state>
-    <state x="342" y="159" key="MultipleFileMergeDialog/0.23.1440.827@0.23.1440.827" timestamp="1576544632567" />
-    <state x="208" y="44" width="1024" height="827" key="SettingsEditor" timestamp="1576636062918">
-      <screen x="0" y="23" width="1440" height="826" />
-    </state>
-    <state x="208" y="23" width="1024" height="827" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1576541645840" />
-    <state x="208" y="44" key="SettingsEditor/0.23.1440.826@0.23.1440.826" timestamp="1576636062918" />
-    <state x="230" y="177" key="Vcs.Push.Dialog.v2" timestamp="1576815887836">
-      <screen x="0" y="23" width="1440" height="835" />
-    </state>
-    <state x="230" y="175" key="Vcs.Push.Dialog.v2/0.23.1440.823@0.23.1440.823" timestamp="1576642730648" />
-    <state x="230" y="175" key="Vcs.Push.Dialog.v2/0.23.1440.825@0.23.1440.825" timestamp="1576733244117" />
-    <state x="230" y="175" key="Vcs.Push.Dialog.v2/0.23.1440.826@0.23.1440.826" timestamp="1576804181234" />
-    <state x="230" y="176" key="Vcs.Push.Dialog.v2/0.23.1440.827@0.23.1440.827" timestamp="1576544904253" />
-    <state x="230" y="177" key="Vcs.Push.Dialog.v2/0.23.1440.835@0.23.1440.835" timestamp="1576815887836" />
-    <state x="288" y="275" key="com.intellij.ide.util.TipDialog" timestamp="1576797190319">
-      <screen x="0" y="23" width="1440" height="825" />
-    </state>
-    <state x="288" y="275" key="com.intellij.ide.util.TipDialog/0.23.1440.825@0.23.1440.825" timestamp="1576797190319" />
-    <state x="551" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576805893614">
-      <screen x="0" y="23" width="1440" height="826" />
-    </state>
-    <state x="551" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.823@0.23.1440.823" timestamp="1576642674868" />
-    <state x="551" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.825@0.23.1440.825" timestamp="1576797220370" />
-    <state x="551" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.826@0.23.1440.826" timestamp="1576805893614" />
-    <state x="367" y="82" width="683" height="714" key="find.popup" timestamp="1576805084320">
-      <screen x="0" y="23" width="1440" height="826" />
-    </state>
-    <state x="367" y="82" width="683" height="714" key="find.popup/0.23.1440.826@0.23.1440.826" timestamp="1576805084320" />
-    <state x="386" y="234" key="git4idea.merge.GitMergeDialog" timestamp="1576544793674">
-      <screen x="0" y="23" width="1440" height="827" />
-    </state>
-    <state x="386" y="234" key="git4idea.merge.GitMergeDialog/0.23.1440.827@0.23.1440.827" timestamp="1576544793674" />
-    <state x="353" y="251" key="git4idea.merge.GitPullDialog" timestamp="1576544991887">
-      <screen x="0" y="23" width="1440" height="827" />
-    </state>
-    <state x="353" y="248" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1576539497315" />
-    <state x="353" y="251" key="git4idea.merge.GitPullDialog/0.23.1440.827@0.23.1440.827" timestamp="1576544991887" />
-    <state x="421" y="307" key="git4idea.rebase.GitRebaseDialog" timestamp="1576544857932">
-      <screen x="0" y="23" width="1440" height="827" />
-    </state>
-    <state x="421" y="307" key="git4idea.rebase.GitRebaseDialog/0.23.1440.827@0.23.1440.827" timestamp="1576544857932" />
+    <state x="221" y="150" key="SettingsEditor/0.23.2048.1129@0.23.2048.1129" timestamp="1594612616117" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

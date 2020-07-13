@@ -1,11 +1,8 @@
 package examples;
 
-import javafx.scene.canvas.GraphicsContext;
+import processing.core.*;
 
-public class ScalingChecker extends pfx.FXApp {
-    public ScalingChecker(GraphicsContext g) {
-        super(g);
-    }
+public class ScalingChecker extends mqapp.MQApp {
 
     public String name(){return "Scaling Checker - Matt";}
     public String description(){return "A new age test pattern";}
