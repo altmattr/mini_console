@@ -111,13 +111,6 @@ public class Pandemic extends mqapp.MQApp {
         	Point2D mouse = new Point2D.Float(mouseX, mouseY);
         	selected = p.simAtLocation(mouse); //simAtLocation needs to be updated for mouseX mouseY
         }
-        /*public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT){
-                selected = p.nextAfter(selected);
-            } else if (e.getKeyCode() == KeyEvent.VK_LEFT){
-                selected = p.prevBefore(selected);
-            }
-        }*/
         public void keyPressed()
         {
         	if(key == CODED){
