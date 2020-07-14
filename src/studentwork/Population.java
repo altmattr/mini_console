@@ -170,6 +170,42 @@ class Population {
 		return count;
 	}
 
+	public int numberDead(){
+		int count = 0;
+
+		for (int i = 0; i < sims.size(); i++) {
+			if (sims.get(i).sick == -1) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public int numberImmune(){
+		int count = 0;
+
+		for (int i = 0; i < sims.size(); i++) {
+			if (sims.get(i).immune) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public int numberUninfected(){
+		int count = 0;
+
+		for (int i = 0; i < sims.size(); i++) {
+			if (sims.get(i).sick == 0 && !sims.get(i).immune) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+
+
+
 	/**
 	  * @return An array list of all the simulants
 	  *         sorted by "sickness".  Sorting order is 
