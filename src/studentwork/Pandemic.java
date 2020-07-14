@@ -72,7 +72,7 @@ public class Pandemic extends mqapp.MQApp {
 	            }
 	            if (p.numberSick() > 0){ //faint yellow circle
 	                fill(255, 253, 90, 20);
-	                ellipse((int)p.averageXOfSick() - 20, (int)p.averageYOfSick() - 20, 40, 40);
+	                ellipse((int)p.averageXOfSick(), (int)p.averageYOfSick(), 40, 40);
 	            }
 
 	            fill(255,255,255);
