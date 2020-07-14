@@ -2,6 +2,11 @@ package studentwork;
 
 import java.util.ArrayList;
 import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+import java.awt.*;
+import java.awt.geom.*;
 
 public class Pandemic extends mqapp.MQApp {
 	
@@ -20,27 +25,27 @@ public class Pandemic extends mqapp.MQApp {
     public static final int ILL_FOR    = 840; // 14 days
     public static final int TRANS_RATE = 50;  
 
-    public static final color SICK    = color(255, 153, 90);
-    public static final color DEAD    = color(255, 0, 0);
-    public static final color IMMUNE  = color(72, 202, 48);
-    public static final color UNKNOWN = color(141, 141, 141);
+    public static final Color SICK    = new Color(255, 153, 90);
+    public static final Color DEAD    = new Color(255, 0, 0);
+    public static final Color IMMUNE  = new Color(72, 202, 48);
+    public static final Color UNKNOWN = new Color(141, 141, 141);
 	
     public Population p;
 	public Simulant selected;
-	public color[][] graph;
+	public Color[][] graph;
 	public int graphX;
 
     public void setup() {
 	    	 
 	        
-            size(Main.WIDTH, Main.HEIGHT+Main.GRAPH_HEIGHT);
+            size(Pandemic.WIDTH, Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT);
         	p = new Population();
         	selected = null;
         	graphX = 0;
-        	graph = new color[Main.WIDTH][Main.GRAPH_HEIGHT];
+        	graph = new Color[Pandemic.WIDTH][Pandemic.GRAPH_HEIGHT];
         	for(int x = 0; x < graph.length; x++){
                 for(int y = 0; y < graph[x].length; y++){
-                    graph[x][y]= color(255, 255, 255);
+                    graph[x][y]= new Color(255, 255, 255);
                 }
         }
 }
@@ -48,7 +53,7 @@ public class Pandemic extends mqapp.MQApp {
 	    public void draw() {
 	    	
 	            fill(255,255,255); //change to processing
-	            rect(0,0,Main.WIDTH,Main.HEIGHT); //processing
+	            rect(0,0,Pandemic.WIDTH,Pandemic.HEIGHT); //processing
 
 	            if (selected != null){ //shows circle of motion around selected sim
 	                stroke(94,86,90);
@@ -58,8 +63,9 @@ public class Pandemic extends mqapp.MQApp {
 	            }
 
 	            for(Simulant s: p.sims){ //places sims on screen
-	                fill(chooseColour(s));
-	                ellipse((int)s.loc.getX() - Main.SIM_SIZE/2,(int)s.loc.getY() - Main.SIM_SIZE/2, Main.SIM_SIZE, Main.SIM_SIZE);
+	            	Color fillCol = chooseColour(s);
+	                fill(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
+	                ellipse((int)s.loc.getX() - Pandemic.SIM_SIZE/2,(int)s.loc.getY() - Pandemic.SIM_SIZE/2, Pandemic.SIM_SIZE, Pandemic.SIM_SIZE);
 	            }
 	            if (p.numberSick() > 0){ //faint yellow circle
 	                fill(255, 253, 90, 20);
@@ -68,40 +74,49 @@ public class Pandemic extends mqapp.MQApp {
 
 	            fill(255,255,255);
 	            ArrayList<Simulant> sorted = p.sort();
-	            for(int y = 0; y < Main.GRAPH_HEIGHT; y++){
-	                graph[graphX][y] = chooseColour(sorted.get(y*Main.SIMS/Main.GRAPH_HEIGHT));
+	            for(int y = 0; y < Pandemic.GRAPH_HEIGHT; y++){
+	                graph[graphX][y] = chooseColour(sorted.get(y*Pandemic.SIMS/Pandemic.GRAPH_HEIGHT));
 	            }
-	            graphX = (graphX + 1) % Main.WIDTH;
+	            graphX = (graphX + 1) % Pandemic.WIDTH;
 
 	            // draw graph
 	            for(int x = 0; x < graph.length; x++){
 	                for(int y = 0; y < graph[x].length; y++){
-	                    fill(graph[x][y]);
-	                    line(x, Main.HEIGHT + Main.GRAPH_HEIGHT - y, x, Main.HEIGHT + Main.GRAPH_HEIGHT -y);
+	                	Color fillCol = graph[x][y];
+	                    fill(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
+	                    line(x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT - y, x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT -y);
 	                }
 	            }
 	    }
 	    
-	    private color chooseColour(Simulant s){
+	    private Color chooseColour(Simulant s){
             if(s.sick > 0){
-                    return Main.SICK;
+                    return Pandemic.SICK;
             } else if (s.sick < 0){
-                    return Main.DEAD;
+                    return Pandemic.DEAD;
             } else if (s.immune){
-                    return Main.IMMUNE;
+                    return Pandemic.IMMUNE;
             } else {
-                    return Main.UNKNOWN;
+                    return Pandemic.UNKNOWN;
             }
         }
 
         
         public void mouseClicked()
         {
-        	Point2D mouse = new Point2D(mouseX, mouseY);
+        	Point2D mouse = new Point2D.Float(mouseX, mouseY);
         	selected = p.simAtLocation(mouse); //simAtLocation needs to be updated for mouseX mouseY
         }
+        /*public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+                selected = p.nextAfter(selected);
+            } else if (e.getKeyCode() == KeyEvent.VK_LEFT){
+                selected = p.prevBefore(selected);
+            }
+        }*/
         public void keyPressed()
         {
+        	if(key == CODED){
         	if (keyCode == RIGHT) {
         		selected = p.nextAfter(selected);
         	}
@@ -109,8 +124,9 @@ public class Pandemic extends mqapp.MQApp {
         		selected = p.prevBefore(selected);
         	}
         }
+        }
     }
-}
+
 
 	
 
