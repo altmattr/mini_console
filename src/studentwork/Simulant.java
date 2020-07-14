@@ -17,13 +17,13 @@ class Simulant implements Comparable<Simulant> {
 
 	public Simulant(){
 		rand = new Random();
-		homeLoc = new Point2D.Double(rand.nextInt(Main.WIDTH), rand.nextInt(Main.HEIGHT));
+		homeLoc = new Point2D.Double(rand.nextInt(Pandemic.WIDTH), rand.nextInt(Pandemic.HEIGHT));
 		loc = new Point2D.Double(homeLoc.getX(),homeLoc.getY());
 		sick = 0;
 		immune = false;
 		dir = Math.random()*2*Math.PI;
 		speed = Math.random();
-		mobility = rand.nextInt(Main.MAX_MOVE);
+		mobility = rand.nextInt(Pandemic.MAX_MOVE);
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Simulant implements Comparable<Simulant> {
 			nLoc.setLocation( nLoc.getX() + speed * Math.cos(dir)
 				            , nLoc.getY() + speed * Math.sin(dir));
 
-			if (nLoc.distance(homeLoc) > mobility || nLoc.getX() < 0 || nLoc.getY() < 0 || nLoc.getX() > Main.WIDTH || nLoc.getY() > Main.HEIGHT){
+			if (nLoc.distance(homeLoc) > mobility || nLoc.getX() < 0 || nLoc.getY() < 0 || nLoc.getX() > Pandemic.WIDTH || nLoc.getY() > Pandemic.HEIGHT){
 				dir = Math.random()*2*Math.PI;
 			} else {
 				loc = nLoc;
@@ -51,15 +51,15 @@ class Simulant implements Comparable<Simulant> {
 	 ** to 240 frames
 	 **/
 	public void updateIllness(){
-		if (sick > Main.CONT_AFTER){
-			if (rand.nextInt((Main.ILL_FOR - Main.CONT_AFTER)*100) < Main.DEATH_RATE){
+		if (sick > Pandemic.CONT_AFTER){
+			if (rand.nextInt((Pandemic.ILL_FOR - Pandemic.CONT_AFTER)*100) < Pandemic.DEATH_RATE){
 				sick = -1;
 			}
 		}
 		if (sick > 0){
 			sick++;
 		}
-		if (sick > Main.ILL_FOR){
+		if (sick > Pandemic.ILL_FOR){
 			sick = 0;
 			immune = true;
 		}

@@ -7,6 +7,7 @@ import processing.event.*;
 import processing.opengl.*; 
 import java.awt.*;
 import java.awt.geom.*;
+import java.awt.event.*;
 
 public class Pandemic extends mqapp.MQApp {
 	
@@ -19,7 +20,7 @@ public class Pandemic extends mqapp.MQApp {
     public static final int GRAPH_HEIGHT = 50;
     public static final int SIMS       = 500;
     public static final int SIM_SIZE   = 6;
-    public static final int MAX_MOVE   = 1000;
+    public static final int MAX_MOVE   = 100;
     public static final int CONT_AFTER = 240; // 4 days
     public static final int DEATH_RATE = 10;   
     public static final int ILL_FOR    = 840; // 14 days
@@ -52,13 +53,15 @@ public class Pandemic extends mqapp.MQApp {
 	    
 	    public void draw() {
 	    	
+	    		p.update();
+
 	            fill(255,255,255); //change to processing
 	            rect(0,0,Pandemic.WIDTH,Pandemic.HEIGHT); //processing
 
 	            if (selected != null){ //shows circle of motion around selected sim
 	                stroke(94,86,90);
 	                noFill();
-	                ellipse((int)selected.homeLoc.getX() - (int)selected.mobility, (int)selected.homeLoc.getY() - (int)selected.mobility, (int)selected.mobility*2, (int)selected.mobility*2);
+	                ellipse((int)selected.homeLoc.getX(), (int)selected.homeLoc.getY() , (int)selected.mobility*2, (int)selected.mobility*2);
 	            	noStroke();
 	            }
 
@@ -83,8 +86,9 @@ public class Pandemic extends mqapp.MQApp {
 	            for(int x = 0; x < graph.length; x++){
 	                for(int y = 0; y < graph[x].length; y++){
 	                	Color fillCol = graph[x][y];
-	                    fill(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
+	                    stroke(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
 	                    line(x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT - y, x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT -y);
+	                    noStroke();
 	                }
 	            }
 	    }

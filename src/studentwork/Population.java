@@ -7,7 +7,7 @@ class Population {
 	public Random rand = new Random();
 
 	public Population(){
-		for(int i = 0; i < Main.SIMS; i++){
+		for(int i = 0; i < Pandemic.SIMS; i++){
             sims.add(new Simulant());
         }
 		
@@ -29,8 +29,8 @@ class Population {
         for(Simulant s1: sims){
             for(Simulant s2: sims){
                 if (s1.loc.distance(s2.loc) < Simulant.SIZE){
-                    s1.sick = s1.sick == 0 && s2.sick > Main.CONT_AFTER && !s1.immune && rand.nextInt(100) < Main.TRANS_RATE ? 1 : s1.sick;
-                    s2.sick = s2.sick == 0 && s1.sick > Main.CONT_AFTER && !s2.immune && rand.nextInt(100) < Main.TRANS_RATE ? 1 : s2.sick;
+                    s1.sick = s1.sick == 0 && s2.sick > Pandemic.CONT_AFTER && !s1.immune && rand.nextInt(100) < Pandemic.TRANS_RATE ? 1 : s1.sick;
+                    s2.sick = s2.sick == 0 && s1.sick > Pandemic.CONT_AFTER && !s2.immune && rand.nextInt(100) < Pandemic.TRANS_RATE ? 1 : s2.sick;
                 }
             }
         }
@@ -101,7 +101,7 @@ class Population {
 			double xCentre = sims.get(i).loc.getX();
 			double yCentre = sims.get(i).loc.getY();
 			
-			int radius = Main.SIM_SIZE;
+			int radius = Pandemic.SIM_SIZE;
 			
 			if (loc.getX() >= (xCentre - radius) && loc.getX() <= (xCentre + radius)) {
 				if (loc.getY() >= (yCentre-radius) && loc.getY() <= (yCentre + radius)) {
