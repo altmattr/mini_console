@@ -22,9 +22,9 @@ public class Pandemic extends mqapp.MQApp {
     public static final int SIM_SIZE   = 6; //size of the sims
     public static final int MAX_MOVE   = 100; //max possible radius that sims can move
     public static final int CONT_AFTER = 240; // 4 days - how long after contact does the sim get sick
-    public static final int DEATH_RATE = 10;   
+    public static final int DEATH_RATE = 10;  //self explanatory
     public static final int ILL_FOR    = 840; // 14 days - how long the sim is sick for before dying or becoming immune
-    public static final int TRANS_RATE = 50;  //transmission rate of disease
+    public static final int TRANS_RATE = 50;  //transmission rate of disease 
 
     public static final Color SICK    = new Color(255, 153, 90);
     public static final Color DEAD    = new Color(255, 0, 0);
