@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"gam",
+				"game_state"
+			],
+			[
+				"sta",
+				"startSimilator"
+			],
+			[
 				"sim",
 				"simAtLocation"
 			],
@@ -32,47 +40,28 @@
 	"buffers":
 	[
 		{
-			"file": "mq_mini_console.sublime-project",
+			"file": "src/studentwork/Pandemic.java",
 			"settings":
 			{
-				"buffer_size": 166,
+				"buffer_size": 6264,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/studentwork/Simulant.java",
+			"settings":
+			{
+				"buffer_size": 3598,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/studentwork/GameAndWatch.java",
+			"file": "src/studentwork/Population.java",
 			"settings":
 			{
-				"buffer_size": 47646,
+				"buffer_size": 4754,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/mqapp/ApplicationChooser.java",
-			"settings":
-			{
-				"buffer_size": 4585,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "compile",
-			"settings":
-			{
-				"buffer_size": 120,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 74 files for \"soundDir\" (case sensitive)\n\n/Users/mq30513723/repos/mq_mini_console/src/studentwork/GameAndWatch.java:\n   30  \n   31    // This block imports all the sound files used\n   32:   hammerB = new SoundFile(this, soundDir +  \"hammerBeep.wav\");\n   33:   bucketB = new SoundFile(this, soundDir +  \"bucketBeep.wav\");\n   34:   plierB = new SoundFile(this, soundDir +  \"plierBeep.wav\");\n   35:   screwdriverB = new SoundFile(this, soundDir +  \"screwdriverBeep.wav\");\n   36:   spannerB = new SoundFile(this, soundDir +  \"spannerBeep.wav\");\n   37:   deathB = new SoundFile(this, soundDir +  \"deathBeep.wav\");\n   38:   doorB = new SoundFile(this, soundDir +  \"doorBeep.wav\");\n   39    setVolume();\n   40  \n   ..\n  795  PFont retro, arialbd, arial;\n  796  int backgroundColor = 0xffFFFFFF, treeColor = 0xff18C824, balconyColor = 0xffFF5500; // colors for the background and backdrop\n  797: String name = \"\", colorDir = \"gw/bright//\", soundDir = \"gw/sounds//\", fontDir = \"gw/fonts//\";\n  798  \n  799  // Circle variables\n\n8 matches in 1 file\n",
-			"settings":
-			{
-				"buffer_size": 1048,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
 			}
 		}
 	],
@@ -185,13 +174,16 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/mq30513723/repos/mq_mini_console",
-		"/Users/mq30513723/repos/mq_mini_console/src",
-		"/Users/mq30513723/repos/mq_mini_console/src/mqapp",
-		"/Users/mq30513723/repos/mq_mini_console/src/studentwork"
+		"/Users/nishalnajeeb/Documents/mq_mini_console",
+		"/Users/nishalnajeeb/Documents/mq_mini_console/src",
+		"/Users/nishalnajeeb/Documents/mq_mini_console/src/studentwork"
 	],
 	"file_history":
 	[
+		"/Users/nishalnajeeb/Documents/mq_mini_console/src/studentwork/Simulant.java",
+		"/Users/nishalnajeeb/Documents/mq_mini_console/src/mqapp/ApplicationChooser.java",
+		"/Users/nishalnajeeb/Documents/mq_mini_console/src/studentwork/GameAndWatch.java",
+		"/Users/nishalnajeeb/Documents/mq_mini_console/mq_mini_console.sublime-project",
 		"/Users/mq30513723/repos/software_technology/programming/resources/src/processing/eshop/data/HiraMaruPro-W4-60.vlw",
 		"/Users/mq30513723/Dropbox/teaching/COMP1010/MattsShape/MattsShape.sublime-project",
 		"/Users/mq30513723/Dropbox/teaching/COMP1010/MattsShape/Main.java",
@@ -242,7 +234,7 @@
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -275,82 +267,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "mq_mini_console.sublime-project",
+					"file": "src/studentwork/Pandemic.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 166,
+						"buffer_size": 6264,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								108,
-								108
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/studentwork/GameAndWatch.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 47646,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								22599,
-								22599
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 12899.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/mqapp/ApplicationChooser.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4585,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2890,
-								2890
+								2883,
+								2883
 							]
 						],
 						"settings":
@@ -360,32 +294,33 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 990.0,
+						"translation.y": 807.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "compile",
-					"semi_transient": true,
+					"buffer": 1,
+					"file": "src/studentwork/Simulant.java",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 120,
+						"buffer_size": 3598,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								66,
+								66
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/ShellScript/Bash.sublime-syntax"
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -395,77 +330,32 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"semi_transient": false,
+					"buffer": 2,
+					"file": "src/studentwork/Population.java",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1048,
+						"buffer_size": 4754,
 						"regions":
 						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										230,
-										238
-									],
-									[
-										300,
-										308
-									],
-									[
-										369,
-										377
-									],
-									[
-										443,
-										451
-									],
-									[
-										519,
-										527
-									],
-									[
-										589,
-										597
-									],
-									[
-										656,
-										664
-									],
-									[
-										942,
-										950
-									]
-								],
-								"scope": ""
-							}
 						},
 						"selection":
 						[
 							[
-								941,
-								941
+								1727,
+								1727
 							]
 						],
 						"settings":
 						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -473,7 +363,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -514,7 +404,7 @@
 	"project": "mq_mini_console.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.awt.event.*;
 
+
+
+
 public class Pandemic extends mqapp.MQApp {
 	
 	public String name(){return "Pandemic";}
@@ -26,6 +29,7 @@ public class Pandemic extends mqapp.MQApp {
     public static final int ILL_FOR    = 840; // 14 days - how long the sim is sick for before dying or becoming immune
     public static final int TRANS_RATE = 50;  //transmission rate of disease 
 
+
     public static final Color SICK    = new Color(255, 153, 90);
     public static final Color DEAD    = new Color(255, 0, 0);
     public static final Color IMMUNE  = new Color(72, 202, 48);
@@ -35,6 +39,7 @@ public class Pandemic extends mqapp.MQApp {
 	public Simulant selected; //the sim that has been clicked on
 	public Color[][] graph; //array of colours
 	public int graphX;
+    public int game_state = 0;      // to determine if the game is running or not
 
     public void setup() {
 	    	 
@@ -52,45 +57,28 @@ public class Pandemic extends mqapp.MQApp {
 }
 	    
 	    public void draw() {
+            if(game_state == 0) { //start screen
+                background(0);
+                textAlign(CENTER);
+                strokeWeight(3);
+                fill(255);
+                textSize(20);
+                text("PANDEMIC", 200, 100);
+                text("PRESS SPACE BAR TO START THE GAME", 200, 150);
+                text("PRESS 'b' TO RE-SET THE GAME", 200, 250);
+            } else if(game_state == 1) {
+                startSimilator();
+            } /* else if( game_state == 2 ) {
+                // end screen
+                background(0);
+                textAlign(CENTER);
+                strokeWeight(3);
+                fill(255);
+                textSize(20);
+                text("Pandemic is over", 200, 100);     
+            } */
 	    	
-	    		p.update(); //this updates the simulation
-
-	            fill(255,255,255);
-	            rect(0,0,Pandemic.WIDTH,Pandemic.HEIGHT);
-
-	            if (selected != null){ //shows circle of motion around selected sim
-	                stroke(94,86,90);
-	                noFill();
-	                ellipse((int)selected.homeLoc.getX(), (int)selected.homeLoc.getY() , (int)selected.mobility*2, (int)selected.mobility*2);
-	            	noStroke();
-	            }
-
-	            for(Simulant s: p.sims){ //places sims on screen
-	            	Color fillCol = chooseColour(s);
-	                fill(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
-	                ellipse((int)s.loc.getX() - Pandemic.SIM_SIZE/2,(int)s.loc.getY() - Pandemic.SIM_SIZE/2, Pandemic.SIM_SIZE, Pandemic.SIM_SIZE);
-	            }
-	            if (p.numberSick() > 0){ //faint yellow circle
-	                fill(255, 253, 90, 20);
-	                ellipse((int)p.averageXOfSick(), (int)p.averageYOfSick(), 40, 40);
-	            }
-
-	            fill(255,255,255);
-	            ArrayList<Simulant> sorted = p.sort();
-	            for(int y = 0; y < Pandemic.GRAPH_HEIGHT; y++){
-	                graph[graphX][y] = chooseColour(sorted.get(y*Pandemic.SIMS/Pandemic.GRAPH_HEIGHT));
-	            }
-	            graphX = (graphX + 1) % Pandemic.WIDTH;
-
-	            // draw graph
-	            for(int x = 0; x < graph.length; x++){
-	                for(int y = 0; y < graph[x].length; y++){
-	                	Color fillCol = graph[x][y];
-	                    stroke(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
-	                    line(x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT - y, x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT -y);
-	                    noStroke();
-	                }
-	            }
+	    		
 	    }
 	    
 	    private Color chooseColour(Simulant s){
@@ -121,6 +109,61 @@ public class Pandemic extends mqapp.MQApp {
         		selected = p.prevBefore(selected);
         	}
         }
+            if(key == ' ') {
+                game_state = 1;
+            }
+            if (key == 'b' || key == 'B') {
+                p = new Population();
+                selected = null;
+                graphX = 0;
+                graph = new Color[Pandemic.WIDTH][Pandemic.GRAPH_HEIGHT];
+                for(int x = 0; x < graph.length; x++){
+                    for(int y = 0; y < graph[x].length; y++){
+                        graph[x][y]= new Color(255, 255, 255);
+                    }
+            }
+            }
+
+        }
+        public void startSimilator() {
+            p.update(); //this updates the simulation
+
+                fill(255,255,255);
+                rect(0,0,Pandemic.WIDTH,Pandemic.HEIGHT);
+
+                if (selected != null){ //shows circle of motion around selected sim
+                    stroke(94,86,90);
+                    noFill();
+                    ellipse((int)selected.homeLoc.getX(), (int)selected.homeLoc.getY() , (int)selected.mobility*2, (int)selected.mobility*2);
+                    noStroke();
+                }
+
+                for(Simulant s: p.sims){ //places sims on screen
+                    Color fillCol = chooseColour(s);
+                    fill(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
+                    ellipse((int)s.loc.getX() - Pandemic.SIM_SIZE/2,(int)s.loc.getY() - Pandemic.SIM_SIZE/2, Pandemic.SIM_SIZE, Pandemic.SIM_SIZE);
+                }
+                if (p.numberSick() > 0){ //faint yellow circle
+                    fill(255, 253, 90, 20);
+                    ellipse((int)p.averageXOfSick(), (int)p.averageYOfSick(), 40, 40);
+                }
+
+                fill(255,255,255);
+                ArrayList<Simulant> sorted = p.sort();
+                for(int y = 0; y < Pandemic.GRAPH_HEIGHT; y++){
+                    graph[graphX][y] = chooseColour(sorted.get(y*Pandemic.SIMS/Pandemic.GRAPH_HEIGHT));
+                }
+                graphX = (graphX + 1) % Pandemic.WIDTH;
+
+                // draw graph
+                for(int x = 0; x < graph.length; x++){
+                    for(int y = 0; y < graph[x].length; y++){
+                        Color fillCol = graph[x][y];
+                        stroke(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
+                        line(x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT - y, x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT -y);
+                        noStroke();
+                    }
+                }
         }
     }
 
