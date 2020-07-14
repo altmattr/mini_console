@@ -18,13 +18,13 @@ public class Pandemic extends mqapp.MQApp {
 	public static final int WIDTH      = 400;
     public static final int HEIGHT     = 300;
     public static final int GRAPH_HEIGHT = 50;
-    public static final int SIMS       = 500;
-    public static final int SIM_SIZE   = 6;
-    public static final int MAX_MOVE   = 100;
-    public static final int CONT_AFTER = 240; // 4 days
+    public static final int SIMS       = 500; //no. of sims
+    public static final int SIM_SIZE   = 6; //size of the sims
+    public static final int MAX_MOVE   = 100; //max possible radius that sims can move
+    public static final int CONT_AFTER = 240; // 4 days - how long after contact does the sim get sick
     public static final int DEATH_RATE = 10;   
-    public static final int ILL_FOR    = 840; // 14 days
-    public static final int TRANS_RATE = 50;  
+    public static final int ILL_FOR    = 840; // 14 days - how long the sim is sick for before dying or becoming immune
+    public static final int TRANS_RATE = 50;  //transmission rate of disease
 
     public static final Color SICK    = new Color(255, 153, 90);
     public static final Color DEAD    = new Color(255, 0, 0);
@@ -32,8 +32,8 @@ public class Pandemic extends mqapp.MQApp {
     public static final Color UNKNOWN = new Color(141, 141, 141);
 	
     public Population p;
-	public Simulant selected;
-	public Color[][] graph;
+	public Simulant selected; //the sim that has been clicked on
+	public Color[][] graph; //array of colours
 	public int graphX;
 
     public void setup() {
@@ -53,10 +53,10 @@ public class Pandemic extends mqapp.MQApp {
 	    
 	    public void draw() {
 	    	
-	    		p.update();
+	    		p.update(); //this updates the simulation
 
-	            fill(255,255,255); //change to processing
-	            rect(0,0,Pandemic.WIDTH,Pandemic.HEIGHT); //processing
+	            fill(255,255,255);
+	            rect(0,0,Pandemic.WIDTH,Pandemic.HEIGHT);
 
 	            if (selected != null){ //shows circle of motion around selected sim
 	                stroke(94,86,90);
