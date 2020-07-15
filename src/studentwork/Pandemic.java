@@ -69,7 +69,7 @@ public class Pandemic extends mqapp.MQApp {
                 text("PRESS SPACE BAR TO START THE GAME", 200, 150);
                 text("PRESS 'b' TO RE-SET THE GAME", 200, 250);
             } else if(game_state == 1) {
-                startSimilator();
+                runSimulator();
                 timer();
             }  
             if( p.numberSick() == 0 ) {
@@ -128,7 +128,7 @@ public class Pandemic extends mqapp.MQApp {
             }
 
         }
-        public void startSimilator() {
+        public void runSimulator() {
            p.update(); //this updates the simulation
                 drawCounters();
                 drawLegend();
