@@ -127,12 +127,12 @@ public class Pandemic extends mqapp.MQApp {
         if(key == ' ') {
             game_state = 1;
         }
-        if (key == 'b' || key == 'B') {
+        if (key == 'r' || key == 'R') {
             p = new Population();
             selected = null;
             startTimer = millis();
             graphX = 0;
-            graph = new Color[WIDTH + COUNTER_WIDTH][GRAPH_HEIGHT];
+          
 
             for(int x = 0; x < graph.length; x++){
                 for(int y = 0; y < graph[x].length; y++){

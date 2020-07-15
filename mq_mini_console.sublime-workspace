@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"en",
+				"endScreen"
+			],
+			[
+				"disp",
+				"displayTime"
+			],
+			[
 				"dis",
 				"displayTime"
 			],
@@ -47,7 +55,7 @@
 			"file": "src/studentwork/Pandemic.java",
 			"settings":
 			{
-				"buffer_size": 7993,
+				"buffer_size": 9844,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -56,7 +64,7 @@
 			"file": "src/studentwork/Simulant.java",
 			"settings":
 			{
-				"buffer_size": 3601,
+				"buffer_size": 4056,
 				"line_ending": "Unix"
 			}
 		},
@@ -280,15 +288,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7993,
+						"buffer_size": 9844,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2312,
-								2312
+								4057,
+								4057
 							]
 						],
 						"settings":
@@ -310,7 +318,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3601,
+						"buffer_size": 4056,
 						"regions":
 						{
 						},
