@@ -18,10 +18,10 @@ public class Pandemic extends mqapp.MQApp {
   	public String author(){return "Elizabeth Cappellazzo";}
   	public String description(){return "Pandemic simulator";}
 
-	public static final int WIDTH      = 1280;
-    public static final int HEIGHT     = 720;
+	public static final int WIDTH      = 600;
+    public static final int HEIGHT     = 600;
     public static final int GRAPH_HEIGHT = 50;
-    public static final int SIMS       = 1000; //no. of sims
+    public static final int SIMS       = 500; //no. of sims
     public static final int SIM_SIZE   = 6; //size of the sims
     public static final int MAX_MOVE   = 500; //max possible radius that sims can move
     public static final int CONT_AFTER = 240; // 4 days - how long after contact does the sim get sick
@@ -35,7 +35,7 @@ public class Pandemic extends mqapp.MQApp {
     public static final Color DEAD    = new Color(255, 0, 0);
     public static final Color IMMUNE  = new Color(72, 202, 48);
     public static final Color UNKNOWN = new Color(141, 141, 141);
-	
+	public int startTimer;
     public Population p;
 	public Simulant selected; //the sim that has been clicked on
 	public Color[][] graph; //array of colours
@@ -44,7 +44,7 @@ public class Pandemic extends mqapp.MQApp {
 
     public void setup() {
 	    	 
-	        
+	        startTimer = millis();
             size(Pandemic.WIDTH+ Pandemic.COUNTER_WIDTH, Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT);
         	p = new Population();
         	selected = null;
@@ -69,6 +69,7 @@ public class Pandemic extends mqapp.MQApp {
                 text("PRESS 'b' TO RE-SET THE GAME", 200, 250);
             } else if(game_state == 1) {
                 startSimilator();
+                timer();
             } /* else if( game_state == 2 ) {
                 // end screen
                 background(0);
@@ -115,8 +116,10 @@ public class Pandemic extends mqapp.MQApp {
             if (key == 'b' || key == 'B') {
                 p = new Population();
                 selected = null;
+                startTimer = millis();
                 graphX = 0;
                 graph = new Color[Pandemic.WIDTH][Pandemic.GRAPH_HEIGHT];
+
                 for(int x = 0; x < graph.length; x++){
                     for(int y = 0; y < graph[x].length; y++){
                         graph[x][y]= new Color(255, 255, 255);
@@ -181,11 +184,18 @@ public class Pandemic extends mqapp.MQApp {
             rect(WIDTH, 0, COUNTER_WIDTH, HEIGHT);
             textSize(20);
             fill(0);
-            text("Time: "+(millis()/1000), WIDTH + 10, 20);
+            text("Time: "+timer(), WIDTH + 10, 20);
             text("Healthy: "+p.numberUninfected(), WIDTH + 10, 50);
             text("Infected: "+p.numberSick(), WIDTH + 10, 80);
             text("Immune: "+p.numberImmune(), WIDTH + 10, 110);
             text("Dead: "+p.numberDead(), WIDTH +  10, 140);
+        }
+
+        public int timer()
+        {
+            int time = (millis()-startTimer)/1000;
+            return time;
+
         }
 
         public void drawLegend()
