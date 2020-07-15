@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"dis",
+				"displayTime"
+			],
+			[
 				"gam",
 				"game_state"
 			],
@@ -43,7 +47,7 @@
 			"file": "src/studentwork/Pandemic.java",
 			"settings":
 			{
-				"buffer_size": 6264,
+				"buffer_size": 7993,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -52,7 +56,7 @@
 			"file": "src/studentwork/Simulant.java",
 			"settings":
 			{
-				"buffer_size": 3598,
+				"buffer_size": 3601,
 				"line_ending": "Unix"
 			}
 		},
@@ -60,7 +64,7 @@
 			"file": "src/studentwork/Population.java",
 			"settings":
 			{
-				"buffer_size": 4754,
+				"buffer_size": 5266,
 				"line_ending": "Unix"
 			}
 		}
@@ -276,15 +280,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6264,
+						"buffer_size": 7993,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2883,
-								2883
+								2312,
+								2312
 							]
 						],
 						"settings":
@@ -294,7 +298,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 807.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -306,7 +310,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3598,
+						"buffer_size": 3601,
 						"regions":
 						{
 						},
@@ -326,16 +330,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
 					"file": "src/studentwork/Population.java",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4754,
+						"buffer_size": 5266,
 						"regions":
 						{
 						},
@@ -355,7 +359,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
