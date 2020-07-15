@@ -22,7 +22,7 @@ class Simulant implements Comparable<Simulant> {
 		sick = 0;
 		immune = false;
 		dir = Math.random()*2*Math.PI;
-		speed = Math.random()*10;
+		speed = Math.random();
 		mobility = rand.nextInt(Pandemic.MAX_MOVE);
 	}
 

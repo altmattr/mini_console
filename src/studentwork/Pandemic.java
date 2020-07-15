@@ -21,7 +21,7 @@ public class Pandemic extends mqapp.MQApp {
 	public static final int WIDTH      = 600;
     public static final int HEIGHT     = 600;
     public static final int GRAPH_HEIGHT = 50;
-    public static final int SIMS       = 500; //no. of sims
+    public static final int SIMS       = 1000; //no. of sims
     public static final int SIM_SIZE   = 6; //size of the sims
     public static final int MAX_MOVE   = 500; //max possible radius that sims can move
     public static final int CONT_AFTER = 240; // 4 days - how long after contact does the sim get sick
@@ -43,7 +43,7 @@ public class Pandemic extends mqapp.MQApp {
     public int game_state = 0;      // to determine if the game is running or not
 
     public void setup() {
-	    	 
+	    	//noSmooth();
 	        startTimer = millis();
             size(Pandemic.WIDTH+ Pandemic.COUNTER_WIDTH, Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT);
         	p = new Population();
@@ -97,8 +97,11 @@ public class Pandemic extends mqapp.MQApp {
         
         public void mouseClicked()
         {
-        	Point2D mouse = new Point2D.Float(mouseX, mouseY);
-        	selected = p.simAtLocation(mouse); //simAtLocation needs to be updated for mouseX mouseY
+            if (game_state == 1) {
+                Point2D mouse = new Point2D.Float(mouseX, mouseY);
+                selected = p.simAtLocation(mouse); //simAtLocation needs to be updated for mouseX mouseY
+            }
+
         }
         public void keyPressed()
         {
@@ -118,7 +121,7 @@ public class Pandemic extends mqapp.MQApp {
                 selected = null;
                 startTimer = millis();
                 graphX = 0;
-                graph = new Color[Pandemic.WIDTH][Pandemic.GRAPH_HEIGHT];
+                graph = new Color[Pandemic.WIDTH + COUNTER_WIDTH][Pandemic.GRAPH_HEIGHT];
 
                 for(int x = 0; x < graph.length; x++){
                     for(int y = 0; y < graph[x].length; y++){
@@ -147,15 +150,13 @@ public class Pandemic extends mqapp.MQApp {
                     fill(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
                     ellipse((int)s.loc.getX() - Pandemic.SIM_SIZE/2,(int)s.loc.getY() - Pandemic.SIM_SIZE/2, Pandemic.SIM_SIZE, Pandemic.SIM_SIZE);
                 }
-                if (p.numberSick() > 0){ //faint yellow circle
+                if (p.numberSick() > 0){ //faint purple circle
                     fill(131, 50, 168, 20);
                     int circleRadius = 40;
-                    float scale = (p.numberSick() / p.sims.size()) * 1000;
-                    ellipse((int)p.averageXOfSick(), (int)p.averageYOfSick(), circleRadius + p.numberSick(), circleRadius + p.numberSick());
+                    ellipse((int)p.averageXOfSick(), (int)p.averageYOfSick(), circleRadius + p.numberSick()/2, circleRadius + p.numberSick()/2);
                 }
 
                 
-
                 fill(255,255,255);
                 ArrayList<Simulant> sorted = p.sort();
                 for(int y = 0; y < Pandemic.GRAPH_HEIGHT; y++){
@@ -167,12 +168,11 @@ public class Pandemic extends mqapp.MQApp {
                 for(int x = 0; x < graph.length; x++){
                     for(int y = 0; y < graph[x].length; y++){
                         Color fillCol = graph[x][y];
-                        stroke(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
-                        line(x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT - y, x, Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT -y);
+                        int c = color(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
+                        set(x,Pandemic.HEIGHT + Pandemic.GRAPH_HEIGHT - y, c);
                         noStroke();
                     }
                 }
-
                 
         }
 
@@ -182,13 +182,33 @@ public class Pandemic extends mqapp.MQApp {
             //uninfected
             fill(200);
             rect(WIDTH, 0, COUNTER_WIDTH, HEIGHT);
-            textSize(20);
+            textSize(40);
+            textAlign(LEFT);
             fill(0);
-            text("Time: "+timer(), WIDTH + 10, 20);
-            text("Healthy: "+p.numberUninfected(), WIDTH + 10, 50);
-            text("Infected: "+p.numberSick(), WIDTH + 10, 80);
-            text("Immune: "+p.numberImmune(), WIDTH + 10, 110);
-            text("Dead: "+p.numberDead(), WIDTH +  10, 140);
+
+            fill(237, 108, 9);
+            text("Pandemic", WIDTH + 4, 45);
+            fill(0);
+            textSize(20);
+            text("Time: "+timer() + " secs", WIDTH + 5, 80);
+            text("Healthy: "+p.numberUninfected(), WIDTH + 5, 110);
+            text("Infected: "+p.numberSick(), WIDTH + 5, 140);
+            text("Immune: "+p.numberImmune(), WIDTH + 5, 170);
+            text("Dead: "+p.numberDead(), WIDTH +  5, 200);
+            text("FrameRate: "+(int)frameRate, WIDTH +  5, 230);
+
+            //Sims
+            textSize(30);
+            textAlign(CENTER);
+            text("Sims", WIDTH + 100, 330);
+            textSize(20);
+            text("Time", WIDTH + 100, 360);
+            text("Healthy", WIDTH + 100, 390);
+            text("Infected", WIDTH + 100, 420);
+            text("Immune", WIDTH + 100, 450);
+            text("Dead", WIDTH + 100, 480);
+            text("FrameRate", WIDTH + 100, 510);
+
         }
 
         public int timer()
