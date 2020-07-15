@@ -46,11 +46,12 @@ public class Pandemic extends mqapp.MQApp {
     public void setup() {
 	    	//noSmooth();
 	        startTimer = millis();
-            size(Pandemic.WIDTH+ Pandemic.COUNTER_WIDTH, Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT);
+            //size(WIDTH+COUNTER_WIDTH, HEIGHT+GRAPH_HEIGHT);
+            size(displayWidth, displayHeight);
         	p = new Population();
         	selected = null;
         	graphX = 0;
-        	graph = new Color[Pandemic.WIDTH + COUNTER_WIDTH][Pandemic.GRAPH_HEIGHT];
+        	graph = new Color[WIDTH + COUNTER_WIDTH][GRAPH_HEIGHT];
         	for(int x = 0; x < graph.length; x++){
                 for(int y = 0; y < graph[x].length; y++){
                     graph[x][y]= new Color(255, 255, 255);
@@ -59,6 +60,7 @@ public class Pandemic extends mqapp.MQApp {
 }
 	    
 	    public void draw() {
+            scale(scaleRatio());
             if(game_state == 0) { //start screen
                 preGame();
             } else if(game_state == 1) {
@@ -72,15 +74,27 @@ public class Pandemic extends mqapp.MQApp {
 	    	
 	    }
 	    
+        public float scaleRatio()
+        {
+            float scaleWidth = (float)((1.0*displayWidth)/(WIDTH+COUNTER_WIDTH));
+            float scaleHeight = (float)((1.0*displayHeight)/(HEIGHT+GRAPH_HEIGHT));
+            if (scaleWidth > scaleHeight){
+                return scaleHeight;
+            }
+            else{
+            return scaleWidth;
+        }
+        }
+
 	    private Color chooseColour(Simulant s){
             if(s.sick > 0){
-                    return Pandemic.SICK;
+                    return SICK;
             } else if (s.sick < 0){
-                    return Pandemic.DEAD;
+                    return DEAD;
             } else if (s.immune){
-                    return Pandemic.IMMUNE;
+                    return IMMUNE;
             } else {
-                    return Pandemic.UNKNOWN;
+                    return UNKNOWN;
             }
         }
 
@@ -111,7 +125,7 @@ public class Pandemic extends mqapp.MQApp {
                 selected = null;
                 startTimer = millis();
                 graphX = 0;
-                graph = new Color[Pandemic.WIDTH + COUNTER_WIDTH][Pandemic.GRAPH_HEIGHT];
+                graph = new Color[WIDTH + COUNTER_WIDTH][GRAPH_HEIGHT];
 
                 for(int x = 0; x < graph.length; x++){
                     for(int y = 0; y < graph[x].length; y++){
@@ -242,4 +256,21 @@ public class Pandemic extends mqapp.MQApp {
                 text("Immune: "+p.numberImmune(), 400, 350);
                 text("Dead: "+p.numberDead(), 400, 400);   
         }
+
+        public int toggleIntButton(int togX, int togY, int togSize, int toggleValue, int toggleByAmount, int toggleValueMin, int toggleValueMax) {
+        stroke(255);
+        fill(200);
+        rect(togX, togY, togSize, togSize * 2);
+        fill(50);
+        triangle(togX + togSize / 2, togY, togX, togY + togSize, togX + togSize, togY + togSize);
+        triangle(togX + togSize / 2, togY + togSize * 2, togX, togY + togSize, togX + togSize, togY + togSize);
+        if ((mousePressed) && (mouseX > togX) && (togX + togSize > mouseX) && (mouseY > togY) && (togY + togSize * 2 > mouseY) && (toggleValue < toggleValueMax)) {
+            toggleValue += toggleByAmount;
+        }
+        if ((mousePressed) && (mouseX > togX) && (togX + togSize > mouseX) && (mouseY > togY + togSize) && (togY + togSize * 2 > mouseY) && (toggleValue > toggleValueMin)) {
+            toggleValue -= toggleByAmount;
+        }
+        return toggleValue;
     }
+}
+    
