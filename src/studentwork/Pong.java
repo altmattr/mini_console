@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Pong extends mqapp.MQApp implements Runnable, KeyListener{
+public class Pong extends mqapp.MQApp {
 
 
     public String name() {return "Pong";}
@@ -21,13 +21,12 @@ public class Pong extends mqapp.MQApp implements Runnable, KeyListener{
 	Paddle top;
 	public void setup()
 	{
-	  frameRate(100);
 	  noStroke();
 	  pongball= new Ball();
 	  bottom=new Paddle();
 	  top=new Paddle();
 	  top.y=0;
-	  size(500, 500);
+	  size(displayWidth, displayHeight);
 	}
 	public void keyPressed()
 	{
@@ -98,7 +97,7 @@ public class Pong extends mqapp.MQApp implements Runnable, KeyListener{
 	      gameover=true;
 	      bottomscore++;
 	    }
-	    if (pongball.y>508)
+	    if (pongball.y>width + 8)
 	    {
 	      gameover=true;
 	      topscore++;
@@ -146,7 +145,7 @@ public class Pong extends mqapp.MQApp implements Runnable, KeyListener{
 	  Paddle()
 	  {
 	    x=250;
-	    y=496;
+	    y=height-4;
 	  }
 	  void show()
 	  {
@@ -162,7 +161,7 @@ public class Pong extends mqapp.MQApp implements Runnable, KeyListener{
 	  }
 	  void moveright()
 	  {
-	    if (x<=440)
+	    if (x<=width)
 	    {
 	      x+=5;
 	    }
@@ -223,15 +222,5 @@ public class Pong extends mqapp.MQApp implements Runnable, KeyListener{
 	    fill(247, 226, 47);
 	    ellipse(x, y, 16, 16);
 	  }
-	}
-
-
-
-
-
-	public static void main(String[] args) {
-
-		String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#000000", "--stop-color=#cccccc", "studentwork.Pong" };
-		runSketch(appletArgs, new Pong());
 	}
 }

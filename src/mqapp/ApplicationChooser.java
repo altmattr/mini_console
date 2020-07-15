@@ -21,7 +21,7 @@ public class ApplicationChooser extends mqapp.MQApp {
     public int textGapSize;
     public PFont uiFont, largeFont;
 
-    float gap = 100; //<>//
+    float gap = 100;
     float period = 3000;
     float startAt = 500;
     int darkest = color(247, 123, 0);
@@ -42,7 +42,8 @@ public class ApplicationChooser extends mqapp.MQApp {
                 new Pair(new FarmerBill(), Optional.of(loadImage("FarmerBill.png"))),
                 new Pair(new KuruCountry(), Optional.of(loadImage("KuruCounrty.png"))),
                 new Pair(new Grapher(), Optional.of(loadImage("Grapher.png"))),
-                new Pair(new Stacker(), Optional.of(loadImage("application_chooser/stacker.png"))),
+                new Pair(new Stacker(), Optional.empty()),
+                new Pair(new Snake(), Optional.empty()),
                 new Pair(new Pong(), Optional.of(loadImage("application_chooser/pongoptimised.png")))
         );
 
@@ -51,8 +52,8 @@ public class ApplicationChooser extends mqapp.MQApp {
         textGapSize = height/100;
         selected = 0;
         defaultImage = loadImage("boxcarrier.png");
-        uiFont = loadFont("Avenir-LightOblique-28.vlw");
-        largeFont = loadFont("application_chooser/HiraMaruPro-W4-60.vlw");
+        uiFont = loadFont("shared/Avenir-LightOblique-28.vlw");
+        largeFont = loadFont("shared/HiraMaruPro-W4-60.vlw");
         recalcGlobals();
     }
 
@@ -81,7 +82,7 @@ public class ApplicationChooser extends mqapp.MQApp {
         for (int i = topSpot; i < topSpot + numRender && i < apps.size(); i++) {
             if (i == selected) {
                 strokeWeight(5);
-                stroke(255);
+                stroke(94, 86, 90);
                 //stroke(166, 25, 46);
             } else {
                 strokeWeight(1);
