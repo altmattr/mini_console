@@ -74,19 +74,7 @@ public class Pandemic extends mqapp.MQApp {
             }  
             if( p.numberSick() == 0 ) {
                 // end screen
-                if(displayTime == 0) {
-                    displayTime = timer();
-                }
-                background(0);
-                textAlign(CENTER);
-                strokeWeight(3);
-                fill(255);
-                textSize(20);
-                text("Time: "+displayTime, 400, 200);
-                text("Healthy: "+p.numberUninfected(), 400, 250);
-                text("Infected: "+p.numberSick(), 400, 300);
-                text("Immune: "+p.numberImmune(), 400, 350);
-                text("Dead: "+p.numberDead(), 400, 400);   
+               endScreen();
             } 
 	    	
 	    }
@@ -213,5 +201,20 @@ public class Pandemic extends mqapp.MQApp {
             int offsetX = 180;
             fill(0,0,255, 20);
             rect(WIDTH-offsetX, HEIGHT-offsetY, offsetX, offsetY);
+        }
+        public void endScreen() {
+             if(displayTime == 0) {
+                    displayTime = timer();
+                }
+                background(0);
+                textAlign(CENTER);
+                strokeWeight(3);
+                fill(255);
+                textSize(20);
+                text("Time: "+displayTime, 400, 200);
+                text("Healthy: "+p.numberUninfected(), 400, 250);
+                text("Infected: "+p.numberSick(), 400, 300);
+                text("Immune: "+p.numberImmune(), 400, 350);
+                text("Dead: "+p.numberDead(), 400, 400);   
         }
     }
