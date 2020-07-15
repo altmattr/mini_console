@@ -3,7 +3,7 @@ package studentwork;
 import java.awt.geom.*;
 import java.util.*;
 
-class Simulant implements Comparable<Simulant> {
+class Simulant implements Comparable<Simulant>{
 	public static final int SIZE = 5;
 	public Point2D loc;
 	public int sick;
@@ -17,7 +17,7 @@ class Simulant implements Comparable<Simulant> {
 
 	public Simulant(){
 		rand = new Random();
-		homeLoc = new Point2D.Double(rand.nextInt(Pandemic.WIDTH), rand.nextInt(Pandemic.HEIGHT));
+		homeLoc = new Point2D.Double(rand.nextInt((int)scaleRatio()*Pandemic.WIDTH), rand.nextInt((int)scaleRatio()*Pandemic.HEIGHT));
 		loc = new Point2D.Double(homeLoc.getX(),homeLoc.getY());
 		sick = 0;
 		immune = false;
@@ -141,5 +141,17 @@ class Simulant implements Comparable<Simulant> {
 		
 		return 0;
 	}
+
+	public float scaleRatio()
+        {
+            float scaleWidth = (float)((1.0*Pandemic.DISPLAY_WIDTH)/(Pandemic.WIDTH+Pandemic.COUNTER_WIDTH));
+            float scaleHeight = (float)((1.0*Pandemic.DISPLAY_HEIGHT)/(Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT));
+            if (scaleWidth > scaleHeight){
+                return scaleHeight;
+            }
+            else{
+            return scaleWidth;
+        	}
+        }
 
 }
