@@ -60,14 +60,7 @@ public class Pandemic extends mqapp.MQApp {
 	    
 	    public void draw() {
             if(game_state == 0) { //start screen
-                background(0);
-                textAlign(CENTER);
-                strokeWeight(3);
-                fill(255);
-                textSize(20);
-                text("PANDEMIC", 200, 100);
-                text("PRESS SPACE BAR TO START THE GAME", 200, 150);
-                text("PRESS 'b' TO RE-SET THE GAME", 200, 250);
+                preGame();
             } else if(game_state == 1) {
                 runSimulator();
                 timer();
@@ -222,6 +215,18 @@ public class Pandemic extends mqapp.MQApp {
             fill(0,0,255, 20);
             rect(WIDTH-offsetX, HEIGHT-offsetY, offsetX, offsetY);
         }
+        
+        public void preGame() {
+        	background(0);
+            textAlign(CENTER);
+            strokeWeight(3);
+            fill(255);
+            textSize(20);
+            text("PANDEMIC", 200, 100);
+            text("PRESS SPACE BAR TO START THE GAME", 200, 150);
+            text("PRESS 'b' TO RE-SET THE GAME", 200, 250);
+        }
+        
         public void endScreen() {
              if(displayTime == 0) {
                     displayTime = timer();
