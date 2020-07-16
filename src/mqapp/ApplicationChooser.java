@@ -42,8 +42,8 @@ public class ApplicationChooser extends mqapp.MQApp {
                 new Pair(new FarmerBill(), Optional.of(loadImage("FarmerBill.png"))),
                 new Pair(new KuruCountry(), Optional.of(loadImage("KuruCounrty.png"))),
                 new Pair(new Grapher(), Optional.of(loadImage("Grapher.png"))),
-                new Pair(new Stacker(), Optional.empty()),
-                new Pair(new Snake(), Optional.empty()),
+                new Pair(new Stacker(), Optional.of(loadImage("application_chooser/stacker.png"))),
+                new Pair(new Snake(), Optional.of(loadImage("application_chooser/snake.png"))),
                 new Pair(new Pong(), Optional.of(loadImage("application_chooser/pongoptimised.png")))
         );
 
