@@ -23,7 +23,7 @@ public class Pandemic extends mqapp.MQApp {
     public static final int GRAPH_HEIGHT = 50;
     public static int SIMS       = 1000; //no. of sims
     public static int SIM_SIZE   = 6; //size of the sims
-    public static final int MAX_MOVE   = 500; //max possible radius that sims can move
+    public static final int MAX_MOVE   = 300; //max possible radius that sims can move
     public static final int CONT_AFTER = 240; // 4 days - how long after contact does the sim get sick
     public static int DEATH_RATE = 10;  //self explanatory
     public static int ILL_FOR    = 840; // 14 days - how long the sim is sick for before dying or becoming immune
@@ -226,7 +226,7 @@ public class Pandemic extends mqapp.MQApp {
             for(int y = 0; y < graph[x].length; y++){
                 Color fillCol = graph[x][y];
                 int c = color(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
-                set(x,(int)(scale *(HEIGHT + GRAPH_HEIGHT)) - y, c);
+                set(x + (int)xTrans,(int)(scale *(HEIGHT + GRAPH_HEIGHT + (int)yTrans)) - y, c);
                 noStroke();
             }
         }
