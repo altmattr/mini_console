@@ -70,10 +70,12 @@ public class Pandemic extends mqapp.MQApp {
         if(game_state == 0) { //start screen
             preGame();
         } else if(game_state == 1) {
+            
             runSimulator();
             timer();
         }  
-        if( p.numberSick() == 0 ) {
+        if( p.numberSick() == 0 && game_state != 0) {
+            game_state = 2;
             // end screen
            endScreen();
         } 
@@ -125,13 +127,20 @@ public class Pandemic extends mqapp.MQApp {
     	   }
         }
         if(key == ' ') {
+            reset();
             game_state = 1;
         }
         if(key == 'b' || key == 'B') {
             game_state = 0;
         }
         if (key == 'r' || key == 'R') {
-            p = new Population();
+            game_state = 1;
+            reset();
+        }
+    }
+
+    public void reset(){
+        p = new Population();
             selected = null;
             startTimer = millis();
             graphX = 0;
@@ -142,7 +151,6 @@ public class Pandemic extends mqapp.MQApp {
                     graph[x][y]= new Color(255, 255, 255);
                 }
             }
-        }
     }
 
     public void runSimulator() {
