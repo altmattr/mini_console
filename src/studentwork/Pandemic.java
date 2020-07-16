@@ -18,12 +18,12 @@ public class Pandemic extends mqapp.MQApp {
   	public String author(){return "Elizabeth Cappellazzo";}
   	public String description(){return "Pandemic simulator";}
 
-	public static final int WIDTH      = 600;
-    public static final int HEIGHT     = 600;
+	public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
     public static final int GRAPH_HEIGHT = 50;
-    public static int SIMS       = 1000; //no. of sims
-    public static int SIM_SIZE   = 6; //size of the sims
-    public static final int MAX_MOVE   = 300; //max possible radius that sims can move
+    public static int SIMS = 1000; //no. of sims
+    public static int SIM_SIZE = 6; //size of the sims
+    public static final int MAX_MOVE = 300; //max possible radius that sims can move
     public static final int CONT_AFTER = 240; // 4 days - how long after contact does the sim get sick
     public static int DEATH_RATE = 10;  //self explanatory
     public static int ILL_FOR    = 840; // 14 days - how long the sim is sick for before dying or becoming immune
@@ -82,7 +82,6 @@ public class Pandemic extends mqapp.MQApp {
         background(100);
         translate(xTrans, yTrans);
         scale(scale);
-        //System.out.println("X: "+translateXRatio() + " Y: "+ translateYRatio() + " displayWidth: "+displayWidth + " displayHeight: " + displayHeight);
         mouse = new Point2D.Float((mouseX-xTrans)/scale,  (mouseY - yTrans)/scale);
         if(game_state == 0) { //start screen
             preGame();
@@ -145,12 +144,8 @@ public class Pandemic extends mqapp.MQApp {
 
         
     public void mouseClicked(){
-        pressedMouse = true;
         if (game_state == 1) {
-            //Point2D mouse = new Point2D.Float((mouseX-xTrans)/scale,  (mouseY - yTrans)/scale);
-            //System.out.println("MouseX: " + mouseX + " MouseY: " + mouseY + " calcX: " + (mouseX-translateXRatio())/scaleRatio() + " calcY: " + (mouseY - translateYRatio())/scaleRatio());
-            //System.out.println("translateX: " + translateXRatio() + " translateY: " + translateYRatio() + " scaleRatio: " + scaleRatio());
-            selected = p.simAtLocation(mouse); //simAtLocation needs to be updated for mouseX mouseY
+            selected = p.simAtLocation(mouse); 
         }
 
     }
@@ -175,6 +170,13 @@ public class Pandemic extends mqapp.MQApp {
             game_state = 1;
             reset();
         }
+        if ((key == 'd' || key == 'D') && game_state == 0) {
+            SIMS = 1000; 
+            SIM_SIZE = 6; 
+            DEATH_RATE = 10; 
+            ILL_FOR    = 840;
+            TRANS_RATE = 50; 
+        }
     }
 
     public void reset(){
@@ -195,7 +197,6 @@ public class Pandemic extends mqapp.MQApp {
 
         p.update(); //this updates the simulation
         drawCounters();
-        drawLegend();
         fill(255,255,255);
         rect(0,0,Pandemic.WIDTH,Pandemic.HEIGHT);
 
@@ -241,22 +242,22 @@ public class Pandemic extends mqapp.MQApp {
     {
         //infected, immune, dead, uninfected, timer
         //uninfected
-        fill(200);
+        fill(237, 108, 9);
         rect(WIDTH, 0, COUNTER_WIDTH, HEIGHT);
         textSize(40);
         textAlign(LEFT);
         fill(0);
 
-        fill(237, 108, 9);
-        text("Pandemic", WIDTH + 4, 45);
+        fill(0);
+        text("Pandemic", WIDTH + 4, 60);
         fill(0);
         textSize(20);
-        text("Time: "+timer() + " secs", WIDTH + 5, 80);
-        text("Healthy: "+p.numberUninfected(), WIDTH + 5, 110);
-        text("Infected: "+p.numberSick(), WIDTH + 5, 140);
-        text("Immune: "+p.numberImmune(), WIDTH + 5, 170);
-        text("Dead: "+p.numberDead(), WIDTH +  5, 200);
-        text("FrameRate: "+(int)frameRate, WIDTH +  5, 230);
+        text("Time: "+timer() + " secs", WIDTH + 25, 110);
+        text("Healthy: "+p.numberUninfected(), WIDTH + 25, 140);
+        text("Infected: "+p.numberSick(), WIDTH + 25, 170);
+        text("Immune: "+p.numberImmune(), WIDTH + 25, 200);
+        text("Dead: "+p.numberDead(), WIDTH +  25, 230);
+        text("FrameRate: "+(int)frameRate, WIDTH +  25, 260);
 
         //Sims
         textSize(30);
@@ -264,52 +265,60 @@ public class Pandemic extends mqapp.MQApp {
         text("Sims", WIDTH + 100, 330);
         textSize(20);
         textAlign(LEFT);
-        text("Healthy", WIDTH + 40, 360);
-        text("Infected", WIDTH + 40, 390);
-        text("Immune", WIDTH + 40, 420);
-        text("Dead", WIDTH + 40, 450);
+        text("Healthy", WIDTH + 70, 367);
+        text("Infected", WIDTH + 70, 397);
+        text("Immune", WIDTH + 70, 427);
+        text("Dead", WIDTH + 70, 457);
+
+        textAlign(CENTER);
+        text("Press 'b' for", WIDTH + 100, 500);
+        text("Main Menu", WIDTH + 100, 520);
+        text("Press 'r' to", WIDTH + 100, 550);
+        text("restart Sim", WIDTH + 100, 570);
 
         //circles
+        stroke(0);
+        strokeWeight(2);
         //Healthy
         fill(141, 141, 141);
-        ellipse(WIDTH+20, 360, 20,20);
+        ellipse(WIDTH+40, 360, 20,20);
         //Infected
         fill(255, 153, 90);
-        ellipse(WIDTH+20, 390, 20,20);
+        ellipse(WIDTH+40, 390, 20,20);
         //Immune
         fill(72, 202, 48);
-        ellipse(WIDTH+20, 420, 20,20);
+        ellipse(WIDTH+40, 420, 20,20);
         //Dead
         fill(255, 0, 0);
-        ellipse(WIDTH+20, 450, 20,20);
-
+        ellipse(WIDTH+40, 450, 20,20);
+        noStroke();
     }
 
-    public int timer()
-    {
+    public int timer() {
         int time = (millis()-startTimer)/1000;
         return time;
-
-    }
-
-    public void drawLegend()
-    {
-        int offsetY = 100;
-        int offsetX = 180;
-        fill(0,0,255, 20);
-        rect(WIDTH-offsetX, HEIGHT-offsetY, offsetX, offsetY);
     }
     
     public void preGame() {
     	background(0);
+        fill(237, 108, 9);
+        rect(0, 0, WIDTH+COUNTER_WIDTH,GRAPH_HEIGHT+HEIGHT);
         textAlign(CENTER);
         strokeWeight(3);
-        fill(255);
+        fill(0);
+        textSize(80);
+        
+        text("PANDEMIC", (WIDTH+COUNTER_WIDTH)/2, 150);
         textSize(20);
-        text("PANDEMIC", 200, 100);
-        text("PRESS SPACE BAR TO START THE GAME", 200, 150);
-        text("PRESS 'R' TO RE-SET THE GAME", 200, 250);
-        SIMS = toggle(400, 200, 50, 10, 1000, 1, SIMS);
+        
+        text("PRESS SPACE BAR TO START THE GAME", (WIDTH+COUNTER_WIDTH)/2, 600);
+        text("PRESS 'R' TO RESTART THE GAME", (WIDTH+COUNTER_WIDTH)/2, 200);
+        text("PRESS 'D' TO RESET THE VALUES", (WIDTH+COUNTER_WIDTH)/2, 240);
+        SIMS = toggle(400-25, 350, 50, 25, 1000, 1, SIMS, "Sim Count");
+        SIM_SIZE = toggle(80, 350, 50, 1, 20, 1, SIM_SIZE, "Sim Size");
+        DEATH_RATE = toggle( 220, 350, 50, 5, 100, 1, DEATH_RATE, "Death Rate");
+        TRANS_RATE = toggle( 670, 350, 50, 5, 100, 1, TRANS_RATE, "Infection Rate");
+        ILL_FOR = toggle(530, 350, 50, 25, 1000, 200, ILL_FOR, "Time Sick");
     }
     
     public void endScreen() {
@@ -317,36 +326,56 @@ public class Pandemic extends mqapp.MQApp {
                 displayTime = timer();
             }
             background(0);
+            float survivalRate = (float)(p.numberImmune() + p.numberUninfected())/SIMS * 100;
+            if (survivalRate >= 50) {
+                fill(99,255,120);
+            }
+            else {
+                fill(255,99,99);
+            }
+            rect(0, 0, WIDTH+COUNTER_WIDTH,GRAPH_HEIGHT+HEIGHT);
             textAlign(CENTER);
             strokeWeight(3);
-            fill(255);
+            fill(0);
             textSize(20);
-            text("Time: "+displayTime, 400, 200);
-            text("Healthy: "+p.numberUninfected(), 400, 250);
-            text("Infected: "+p.numberSick(), 400, 300);
-            text("Immune: "+p.numberImmune(), 400, 350);
-            text("Dead: "+p.numberDead(), 400, 400);   
+            text("Survival rate: " + survivalRate + "%", 400, 200);
+            text("Time: "+displayTime, 400, 250);
+            text("Healthy: "+p.numberUninfected(), 400, 300);
+            text("Infected: "+p.numberSick(), 400, 350);
+            text("Immune: "+p.numberImmune(), 400, 400);
+            text("Dead: "+p.numberDead(), 400, 450);
+            text("Press 'B' to return to the Main Menu", 400, 500);
+
+            textSize(80);
+            text("PANDEMIC", (WIDTH+COUNTER_WIDTH)/2, 150);
     }
 
-    public int toggle(int posX, int posY, int dim, int toggleAmount, int toggleMax, int toggleMin, int toggleValue) {
+    public int toggle(int posX, int posY, int dim, int toggleAmount, int toggleMax, int toggleMin, int toggleValue, String title) {
         stroke(0);
         fill(255);
         rect(posX, posY, dim, 2*dim);
-        fill(50);
+        fill(150);
         triangle(posX, posY+dim, posX+dim/2, posY, posX+dim, posY+dim);
         triangle(posX, posY+dim, posX+dim/2, posY+2*dim, posX+dim, posY+dim);
-        text(toggleValue, posX+dim+10, posY);
-        float mX = (mouseX-xTrans)/scale, mY = (mouseY - yTrans)/scale;
         if ((mousePressed) && (mouse.getY() >=posY) && (mouse.getY()<=dim+posY) && (mouse.getX()<=dim+posX) && (mouse.getX()>posX) && (toggleValue<toggleMax)) {
-            toggleValue=toggleValue+1;
-            System.out.println(toggleValue);
+            fill(50);
+            triangle(posX, posY+dim, posX+dim/2, posY, posX+dim, posY+dim);
+            toggleValue=toggleValue+toggleAmount;
+            delay(300);
         }
 
-        if ((mousePressed) && (mouse.getY() >=dim+posY) && (mouse.getY()<=2*dim+posY) && (mouse.getX()<=dim+posX) && (mouse.getX()>posX) && (toggleValue>toggleMin)) {
-            toggleValue=toggleValue-1;
-            System.out.println(toggleValue);
+        if ((mousePressed) && (mouse.getY() >=dim+posY) && (mouse.getY()<=2*dim+posY) && (mouse.getX()<=dim+posX) && (mouse.getX()>posX) && (toggleValue>toggleMin+toggleAmount)) {
+            fill(50);
+            triangle(posX, posY+dim, posX+dim/2, posY+2*dim, posX+dim, posY+dim);
+            toggleValue=toggleValue-toggleAmount;
+            delay(300);
         }
-        pressedMouse = false;
+        fill(255);
+        text(toggleValue, posX+dim/2, posY+dim*3);
+        text(title, posX + dim/2, posY - dim);
+        float mX = (mouseX-xTrans)/scale, mY = (mouseY - yTrans)/scale;
+        
+        //pressedMouse = false;
         return toggleValue;
     }
 }
