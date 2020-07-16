@@ -127,6 +127,9 @@ public class Pandemic extends mqapp.MQApp {
         if(key == ' ') {
             game_state = 1;
         }
+        if(key == 'b' || key == 'B') {
+            game_state = 0;
+        }
         if (key == 'r' || key == 'R') {
             p = new Population();
             selected = null;
@@ -259,7 +262,7 @@ public class Pandemic extends mqapp.MQApp {
         textSize(20);
         text("PANDEMIC", 200, 100);
         text("PRESS SPACE BAR TO START THE GAME", 200, 150);
-        text("PRESS 'b' TO RE-SET THE GAME", 200, 250);
+        text("PRESS 'R' TO RE-SET THE GAME", 200, 250);
     }
     
     public void endScreen() {
