@@ -43,9 +43,21 @@ public class Pandemic extends mqapp.MQApp {
 	public int graphX;
     public int game_state = 0;      // to determine if the game is running or not
     public int displayTime = 0;    // to display time in end screen
-    public int a, b;
+    public int a, b; //VITAL DO NOT REMOVE
+    public float scaleWidth;
+    public float scaleHeight;
+    public float scale;
+    public float xTrans, yTrans;
+
 
     public void setup() {
+        //fun scale translation stuff 
+        scale = scaleRatio();
+        xTrans = translateXRatio()/2;
+        yTrans = translateYRatio()/2;
+       
+
+
         a = displayWidth;
         b = displayHeight;
         DISPLAY_WIDTH = a;
@@ -66,7 +78,10 @@ public class Pandemic extends mqapp.MQApp {
     }
 	    
     public void draw() {
-        scale(scaleRatio());
+        background(100);
+        translate(xTrans, yTrans);
+        scale(scale);
+        //System.out.println("X: "+translateXRatio() + " Y: "+ translateYRatio() + " displayWidth: "+displayWidth + " displayHeight: " + displayHeight);
         if(game_state == 0) { //start screen
             preGame();
         } else if(game_state == 1) {
@@ -82,10 +97,28 @@ public class Pandemic extends mqapp.MQApp {
     	
     }
 	    
+    public int translateXRatio()
+    {
+        if (scaleWidth < scaleHeight) {
+            return 0;
+        }
+        int xDif = displayWidth - (int)((WIDTH+COUNTER_WIDTH));
+        return xDif/2;
+    }
+    public int translateYRatio()
+    {
+        if (scaleHeight < scaleWidth) {
+            return 0;
+        }
+        int yDif = displayHeight - (int)((HEIGHT+GRAPH_HEIGHT));
+        return yDif/2;
+    }
+    
+
     public float scaleRatio()
     {
-        float scaleWidth = (float)((1.0*displayWidth)/(WIDTH+COUNTER_WIDTH));
-        float scaleHeight = (float)((1.0*displayHeight)/(HEIGHT+GRAPH_HEIGHT));
+        scaleWidth = (float)((1.0*displayWidth)/(WIDTH+COUNTER_WIDTH));
+        scaleHeight = (float)((1.0*displayHeight)/(HEIGHT+GRAPH_HEIGHT));
         if (scaleWidth > scaleHeight){
             return scaleHeight;
         }
@@ -110,8 +143,9 @@ public class Pandemic extends mqapp.MQApp {
         
     public void mouseClicked(){
         if (game_state == 1) {
-            Point2D mouse = new Point2D.Float(mouseX/scaleRatio(),  mouseY/scaleRatio());
-            System.out.println("MouseX: " + mouseX + " MouseY: " + mouseY);
+            Point2D mouse = new Point2D.Float((mouseX-xTrans)/scale,  (mouseY - yTrans)/scale);
+            //System.out.println("MouseX: " + mouseX + " MouseY: " + mouseY + " calcX: " + (mouseX-translateXRatio())/scaleRatio() + " calcY: " + (mouseY - translateYRatio())/scaleRatio());
+            //System.out.println("translateX: " + translateXRatio() + " translateY: " + translateYRatio() + " scaleRatio: " + scaleRatio());
             selected = p.simAtLocation(mouse); //simAtLocation needs to be updated for mouseX mouseY
         }
 
@@ -182,8 +216,8 @@ public class Pandemic extends mqapp.MQApp {
         
         fill(255,255,255);
         ArrayList<Simulant> sorted = p.sort();
-        for(int y = 0; y < (int)(scaleRatio() * Pandemic.GRAPH_HEIGHT); y++){
-            graph[graphX][y] = chooseColour(sorted.get(y*Pandemic.SIMS/(int)(scaleRatio() *Pandemic.GRAPH_HEIGHT)));
+        for(int y = 0; y < (int)(scale * Pandemic.GRAPH_HEIGHT); y++){
+            graph[graphX][y] = chooseColour(sorted.get(y*Pandemic.SIMS/(int)(scale *Pandemic.GRAPH_HEIGHT)));
         }
         graphX = (graphX + 1) % ((int)(scaleRatio() * (WIDTH + COUNTER_WIDTH)));
 
@@ -192,7 +226,7 @@ public class Pandemic extends mqapp.MQApp {
             for(int y = 0; y < graph[x].length; y++){
                 Color fillCol = graph[x][y];
                 int c = color(fillCol.getRed(), fillCol.getGreen(), fillCol.getBlue());
-                set(x,(int)(scaleRatio() *(HEIGHT + GRAPH_HEIGHT)) - y, c);
+                set(x,(int)(scale *(HEIGHT + GRAPH_HEIGHT)) - y, c);
                 noStroke();
             }
         }

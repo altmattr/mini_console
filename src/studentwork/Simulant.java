@@ -14,10 +14,12 @@ class Simulant implements Comparable<Simulant>{
 	public Point2D homeLoc;
 	public double mobility;
 	private Random rand;
-
+	public float scaleWidth;
+	public float scaleHeight;
 	public Simulant(){
 		rand = new Random();
-		homeLoc = new Point2D.Double(rand.nextInt((int)scaleRatio()*Pandemic.WIDTH), rand.nextInt((int)scaleRatio()*Pandemic.HEIGHT));
+		//homeLoc = new Point2D.Double(rand.nextInt((int)scaleRatio()*(translateXRatio() + Pandemic.WIDTH)), rand.nextInt((int)scaleRatio()*(translateYRatio() + Pandemic.HEIGHT)));
+		homeLoc = new Point2D.Double(rand.nextInt(Pandemic.WIDTH), rand.nextInt(Pandemic.HEIGHT));
 		loc = new Point2D.Double(homeLoc.getX(),homeLoc.getY());
 		sick = 0;
 		immune = false;
@@ -144,8 +146,8 @@ class Simulant implements Comparable<Simulant>{
 
 	public float scaleRatio()
         {
-            float scaleWidth = (float)((1.0*Pandemic.DISPLAY_WIDTH)/(Pandemic.WIDTH+Pandemic.COUNTER_WIDTH));
-            float scaleHeight = (float)((1.0*Pandemic.DISPLAY_HEIGHT)/(Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT));
+            scaleWidth = (float)((1.0*Pandemic.DISPLAY_WIDTH)/(Pandemic.WIDTH+Pandemic.COUNTER_WIDTH));
+            scaleHeight = (float)((1.0*Pandemic.DISPLAY_HEIGHT)/(Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT));
             if (scaleWidth > scaleHeight){
                 return scaleHeight;
             }
@@ -153,5 +155,22 @@ class Simulant implements Comparable<Simulant>{
             return scaleWidth;
         	}
         }
+
+        public int translateXRatio()
+    {
+        if (scaleWidth < scaleHeight) {
+            return 0;
+        }
+        int xDif = Pandemic.DISPLAY_WIDTH - (Pandemic.WIDTH+Pandemic.COUNTER_WIDTH);
+        return xDif/2;
+    }
+    public int translateYRatio()
+    {
+        if (scaleHeight < scaleWidth) {
+            return 0;
+        }
+        int yDif = Pandemic.DISPLAY_HEIGHT - (Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT);
+        return yDif/2;
+    }
 
 }
