@@ -48,7 +48,8 @@ public class Pandemic extends mqapp.MQApp {
     public float scaleHeight;
     public float scale;
     public float xTrans, yTrans;
-
+    public boolean pressedMouse;
+    public Point2D mouse;
 
     public void setup() {
         //fun scale translation stuff 
@@ -82,6 +83,7 @@ public class Pandemic extends mqapp.MQApp {
         translate(xTrans, yTrans);
         scale(scale);
         //System.out.println("X: "+translateXRatio() + " Y: "+ translateYRatio() + " displayWidth: "+displayWidth + " displayHeight: " + displayHeight);
+        mouse = new Point2D.Float((mouseX-xTrans)/scale,  (mouseY - yTrans)/scale);
         if(game_state == 0) { //start screen
             preGame();
         } else if(game_state == 1) {
@@ -95,6 +97,7 @@ public class Pandemic extends mqapp.MQApp {
            endScreen();
         } 
     	
+
     }
 	    
     public int translateXRatio()
@@ -142,8 +145,9 @@ public class Pandemic extends mqapp.MQApp {
 
         
     public void mouseClicked(){
+        pressedMouse = true;
         if (game_state == 1) {
-            Point2D mouse = new Point2D.Float((mouseX-xTrans)/scale,  (mouseY - yTrans)/scale);
+            //Point2D mouse = new Point2D.Float((mouseX-xTrans)/scale,  (mouseY - yTrans)/scale);
             //System.out.println("MouseX: " + mouseX + " MouseY: " + mouseY + " calcX: " + (mouseX-translateXRatio())/scaleRatio() + " calcY: " + (mouseY - translateYRatio())/scaleRatio());
             //System.out.println("translateX: " + translateXRatio() + " translateY: " + translateYRatio() + " scaleRatio: " + scaleRatio());
             selected = p.simAtLocation(mouse); //simAtLocation needs to be updated for mouseX mouseY
@@ -305,6 +309,7 @@ public class Pandemic extends mqapp.MQApp {
         text("PANDEMIC", 200, 100);
         text("PRESS SPACE BAR TO START THE GAME", 200, 150);
         text("PRESS 'R' TO RE-SET THE GAME", 200, 250);
+        SIMS = toggle(400, 200, 50, 10, 1000, 1, SIMS);
     }
     
     public void endScreen() {
@@ -331,17 +336,17 @@ public class Pandemic extends mqapp.MQApp {
         triangle(posX, posY+dim, posX+dim/2, posY, posX+dim, posY+dim);
         triangle(posX, posY+dim, posX+dim/2, posY+2*dim, posX+dim, posY+dim);
         text(toggleValue, posX+dim+10, posY);
-
-        if ((mousePressed) && (mouseY >=posY) && (mouseY<=dim+posY) && (mouseX<=dim+posX) && (mouseX>posX) && (toggleValue<toggleMax)) {
+        float mX = (mouseX-xTrans)/scale, mY = (mouseY - yTrans)/scale;
+        if ((mousePressed) && (mouse.getY() >=posY) && (mouse.getY()<=dim+posY) && (mouse.getX()<=dim+posX) && (mouse.getX()>posX) && (toggleValue<toggleMax)) {
             toggleValue=toggleValue+1;
-            println(toggleValue);
+            System.out.println(toggleValue);
         }
 
-        if ((mousePressed) && (mouseY >=dim+posY) && (mouseY<=2*dim+posY) && (mouseX<=dim+posX) && (mouseX>posX) && (toggleValue>toggleMin)) {
+        if ((mousePressed) && (mouse.getY() >=dim+posY) && (mouse.getY()<=2*dim+posY) && (mouse.getX()<=dim+posX) && (mouse.getX()>posX) && (toggleValue>toggleMin)) {
             toggleValue=toggleValue-1;
-            println(toggleValue);
+            System.out.println(toggleValue);
         }
-
+        pressedMouse = false;
         return toggleValue;
     }
 }
