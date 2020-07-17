@@ -36,14 +36,14 @@ public class ApplicationChooser extends mqapp.MQApp {
         apps = Arrays.asList(
                 //new Pair(new MarbleLabrynth(), Optional.empty()), // TODO: waiting on the 3d fix to have this one work
                 new Pair(new BoxCarrier(), Optional.of(loadImage("boxcarrier.png"))),
+                new Pair(new Yeet(), Optional.of(loadImage("Yeet.png"))),
+                new Pair(new FarmerBill(), Optional.of(loadImage("FarmerBill.png")))
                 new Pair(new Snake(), Optional.of(loadImage("application_chooser/snake.png"))),
-                new Pair(new Stacker(), Optional.of(loadImage("application_chooser/stacker.png"))),
                 new Pair(new GameAndWatch(), Optional.of(loadImage("GameAndWatch.png"))),
                 new Pair(new KuruCountry(), Optional.of(loadImage("KuruCounrty.png"))),
                 new Pair(new Grapher(), Optional.of(loadImage("Grapher.png"))),
-                new Pair(new BlackHole(), Optional.of(loadImage("BlackHole.png"))),
-                new Pair(new Yeet(), Optional.of(loadImage("Yeet.png"))),
-                new Pair(new FarmerBill(), Optional.of(loadImage("FarmerBill.png")))
+                new Pair(new Stacker(), Optional.of(loadImage("application_chooser/stacker.png"))),
+                new Pair(new Pong(), Optional.of(loadImage("application_chooser/pongoptimised.png"))),                new Pair(new BlackHole(), Optional.of(loadImage("BlackHole.png"))),
         );
 
         boxSize = height / 6;
