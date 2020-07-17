@@ -52,7 +52,6 @@ class Simulant implements Comparable<Simulant>{
 	 ** to 240 frames
 	 **/
 	public void updateIllness(){
-		//if you don't like our death rate fix it yourself
 		if (sick > Pandemic.CONT_AFTER){
 			float deathMulti = Pandemic.DEATH_RATE;
 			if (Pandemic.DEATH_RATE <= 50){
