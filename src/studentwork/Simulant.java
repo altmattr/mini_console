@@ -18,7 +18,7 @@ class Simulant implements Comparable<Simulant>{
 	public float scaleHeight;
 	public Simulant(){
 		rand = new Random();
-		homeLoc = new Point2D.Double(rand.nextInt(Pandemic.WIDTH), rand.nextInt(Pandemic.HEIGHT));
+		homeLoc = new Point2D.Double(rand.nextInt(Pandemic.WIDTH-Pandemic.SIM_SIZE)+ Pandemic.SIM_SIZE, rand.nextInt(Pandemic.HEIGHT-Pandemic.SIM_SIZE)+ Pandemic.SIM_SIZE);
 		loc = new Point2D.Double(homeLoc.getX(),homeLoc.getY());
 		sick = 0;
 		immune = false;
@@ -37,7 +37,7 @@ class Simulant implements Comparable<Simulant>{
 			nLoc.setLocation( nLoc.getX() + speed * Math.cos(dir)
 				            , nLoc.getY() + speed * Math.sin(dir));
 
-			if (nLoc.distance(homeLoc) > mobility || nLoc.getX() < 0 || nLoc.getY() < 0 || nLoc.getX() > Pandemic.WIDTH || nLoc.getY() > Pandemic.HEIGHT){
+			if (nLoc.distance(homeLoc) > mobility || nLoc.getX() < Pandemic.SIM_SIZE || nLoc.getY() < Pandemic.SIM_SIZE || nLoc.getX() > Pandemic.WIDTH || nLoc.getY() > Pandemic.HEIGHT){
 				dir = Math.random()*2*Math.PI;
 			} else {
 				loc = nLoc;
@@ -52,10 +52,20 @@ class Simulant implements Comparable<Simulant>{
 	 ** to 240 frames
 	 **/
 	public void updateIllness(){
+		//if you don't like our death rate fix it yourself
 		if (sick > Pandemic.CONT_AFTER){
-			if (rand.nextInt((Pandemic.ILL_FOR - Pandemic.CONT_AFTER)*100) < Pandemic.DEATH_RATE){
+			float deathMulti = Pandemic.DEATH_RATE;
+			if (Pandemic.DEATH_RATE <= 50){
+				deathMulti *= 1.44;
+			} else if (Pandemic.DEATH_RATE > 50) {
+				deathMulti *= 2;
+			}
+			
+			if (rand.nextInt((Pandemic.ILL_FOR - Pandemic.CONT_AFTER)*100) < (deathMulti)){
 				sick = -1;
 			}
+
+			
 		}
 		if (sick > 0){
 			sick++;
@@ -141,39 +151,4 @@ class Simulant implements Comparable<Simulant>{
 		
 		return 0;
 	}
-
-	
-	//To delete, but check first
-		/*
-	public float scaleRatio() {
-            scaleWidth = (float)((1.0*Pandemic.DISPLAY_WIDTH)/(Pandemic.WIDTH+Pandemic.COUNTER_WIDTH));
-            scaleHeight = (float)((1.0*Pandemic.DISPLAY_HEIGHT)/(Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT));
-            if (scaleWidth > scaleHeight){
-                return scaleHeight;
-            }
-            else{
-            return scaleWidth;
-        	}
-        }
-	
-	
-
-        public int translateXRatio()
-    {
-        if (scaleWidth < scaleHeight) {
-            return 0;
-        }
-        int xDif = Pandemic.DISPLAY_WIDTH - (Pandemic.WIDTH+Pandemic.COUNTER_WIDTH);
-        return xDif/2;
-    }
-    public int translateYRatio()
-    {
-        if (scaleHeight < scaleWidth) {
-            return 0;
-        }
-        int yDif = Pandemic.DISPLAY_HEIGHT - (Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT);
-        return yDif/2;
-    }
-    */
-
 }

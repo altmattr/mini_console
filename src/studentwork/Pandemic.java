@@ -49,13 +49,6 @@ public class Pandemic extends mqapp.MQApp {
     public int game_state = 0; 
     public int displayTime = 0; // to display time in end screen
     
-    /*
-    //lol might be able to delete
-    public static int DISPLAY_WIDTH;
-    public static int DISPLAY_HEIGHT;
-    public int a, b; //VITAL DO NOT REMOVE ****** fix this lol
-    */
-    
     //variables for scaling and translating of sim window
     public float scaleWidth;
     public float scaleHeight;
@@ -68,15 +61,6 @@ public class Pandemic extends mqapp.MQApp {
         scale = scaleRatio();
         xTrans = translateXRatio()/2;
         yTrans = translateYRatio()/2;
-       
-        
-        /*
-        //lol might able to delete
-        a = displayWidth;
-        b = displayHeight;
-        DISPLAY_WIDTH = a;
-        DISPLAY_HEIGHT = b;
-        */
         
     	noSmooth();
         startTimer = millis();
@@ -142,7 +126,7 @@ public class Pandemic extends mqapp.MQApp {
         SIM_SIZE = toggle(80, 350, 50, 1, 20, 1, SIM_SIZE, "Sim Size");
         DEATH_RATE = toggle( 220, 350, 50, 5, 100, 1, DEATH_RATE, "Death Rate");
         TRANS_RATE = toggle( 670, 350, 50, 5, 100, 1, TRANS_RATE, "Infection Rate");
-        ILL_FOR = toggle(530, 350, 50, 25, 1000, 200, ILL_FOR, "Time Sick");
+        ILL_FOR = toggle(530, 350, 50, 25, 1000, 240, ILL_FOR, "Time Sick");
     }
     
     //Creates and updates toggle values
@@ -208,14 +192,14 @@ public class Pandemic extends mqapp.MQApp {
         if (p.numberSick() > 0){
             fill(131, 50, 168, 20);
             int circleRadius = 40;
-            ellipse((int)p.averageXOfSick(), (int)p.averageYOfSick(), circleRadius + p.numberSick()/2, circleRadius + p.numberSick()/2);
+            ellipse((int)p.averageXOfSick()-SIM_SIZE/2, (int)p.averageYOfSick()-SIM_SIZE/2, circleRadius + p.numberSick()/2, circleRadius + p.numberSick()/2);
         }
         
         fill(255,255,255);
-        ArrayList<Simulant> sorted = p.sort();
+        ArrayList<Simulant> sorted = p.sort(); //Does cause performance issues
         
         //samples a proportion of sorted simulants and puts their colours in an array
-        for(int y = 0; y < (int)(scale * Pandemic.GRAPH_HEIGHT); y++){
+       for(int y = 0; y < (int)(scale * Pandemic.GRAPH_HEIGHT); y++){
             graph[graphX][y] = chooseColour(sorted.get(y*Pandemic.SIMS/(int)(scale *Pandemic.GRAPH_HEIGHT)));
         }
         graphX = (graphX + 1) % ((int)(scaleRatio() * (WIDTH + COUNTER_WIDTH)));
@@ -433,4 +417,3 @@ public class Pandemic extends mqapp.MQApp {
     }
    
 }
-    
