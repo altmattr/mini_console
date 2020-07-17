@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd $(dirname $0)
-javac -cp lib/core.jar:lib/sound.jar:lib/jsyn-20171016.jar -sourcepath ./src src/Main.java
+javac -cp lib/core.jar:lib/sound.jar:lib/jsyn-20171016.jar:lib/gluegen-rt-natives-macosx-universal.jar:lib/jogl-all-natives-macosx-universal.jar -sourcepath ./src src/Main.java
