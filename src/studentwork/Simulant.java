@@ -18,7 +18,6 @@ class Simulant implements Comparable<Simulant>{
 	public float scaleHeight;
 	public Simulant(){
 		rand = new Random();
-		//homeLoc = new Point2D.Double(rand.nextInt((int)scaleRatio()*(translateXRatio() + Pandemic.WIDTH)), rand.nextInt((int)scaleRatio()*(translateYRatio() + Pandemic.HEIGHT)));
 		homeLoc = new Point2D.Double(rand.nextInt(Pandemic.WIDTH), rand.nextInt(Pandemic.HEIGHT));
 		loc = new Point2D.Double(homeLoc.getX(),homeLoc.getY());
 		sick = 0;
@@ -65,7 +64,6 @@ class Simulant implements Comparable<Simulant>{
 			sick = 0;
 			immune = true;
 		}
-
 	}
 
 	/** compares simulants using sickness.
@@ -76,7 +74,7 @@ class Simulant implements Comparable<Simulant>{
 	  * @return 0 if this simulant is equal to the other, less than zero if it is less than and
 	  *         greater than zero if it is greater than
 	  **/
-	public int compareTo(Simulant other){ //done
+	public int compareTo(Simulant other){
 		if (other == null) {
 			return 1;
 		}
@@ -144,8 +142,10 @@ class Simulant implements Comparable<Simulant>{
 		return 0;
 	}
 
-	public float scaleRatio()
-        {
+	
+	//To delete, but check first
+		/*
+	public float scaleRatio() {
             scaleWidth = (float)((1.0*Pandemic.DISPLAY_WIDTH)/(Pandemic.WIDTH+Pandemic.COUNTER_WIDTH));
             scaleHeight = (float)((1.0*Pandemic.DISPLAY_HEIGHT)/(Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT));
             if (scaleWidth > scaleHeight){
@@ -155,6 +155,8 @@ class Simulant implements Comparable<Simulant>{
             return scaleWidth;
         	}
         }
+	
+	
 
         public int translateXRatio()
     {
@@ -172,5 +174,6 @@ class Simulant implements Comparable<Simulant>{
         int yDif = Pandemic.DISPLAY_HEIGHT - (Pandemic.HEIGHT+Pandemic.GRAPH_HEIGHT);
         return yDif/2;
     }
+    */
 
 }

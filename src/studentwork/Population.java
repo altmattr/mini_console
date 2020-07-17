@@ -11,7 +11,7 @@ class Population {
             sims.add(new Simulant());
         }
 		
-        // make the first one sick
+        // makes the first one sick
         sims.get(0).sick = 1;
 	}
 
@@ -129,7 +129,6 @@ class Population {
 				return sims.get(i+1);
 			}
 		}
-		
 		return null;
 	}
         
@@ -150,10 +149,7 @@ class Population {
 				return sims.get(i-1);
 			}
 		}
-		
 		return null;
-		
-		
 	}
 
 	/**
@@ -192,7 +188,7 @@ class Population {
 		return count;
 	}
 
-	public int numberUninfected(){
+	public int numberHealthy(){
 		int count = 0;
 
 		for (int i = 0; i < sims.size(); i++) {
@@ -222,7 +218,6 @@ class Population {
 					
 					sims.set(i, sims.get(k));
 					sims.set(k, tempSim);
-					
 				}
 			}
 		}
