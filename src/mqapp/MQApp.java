@@ -35,4 +35,8 @@ public class MQApp extends PApplet {
     dispose();
     runSketch(appletArgs, newApp);
   }
+
+  public void circle(float x, float y, float rad){
+    ellipse(x, y, rad, rad);
+  }
 }

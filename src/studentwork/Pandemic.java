@@ -13,7 +13,7 @@ import java.awt.event.*;
 public class Pandemic extends mqapp.MQApp {
 	
 	public String name(){return "Pandemic";}
-  	public String author(){return "Elizabeth Cappellazzo";}
+  	public String author(){return "Elizabeth Cappellazzo, Cameron Baker, Quang Minh Pham, Robert Stockton, Nishal Najeeb, and Chhade Alasbar";}
   	public String description(){return "Pandemic simulator";}
 
   	
@@ -62,7 +62,7 @@ public class Pandemic extends mqapp.MQApp {
         xTrans = translateXRatio()/2;
         yTrans = translateYRatio()/2;
         
-    	noSmooth();
+    	//noSmooth();
         startTimer = millis();
         size(displayWidth, displayHeight);
     	p = new Population();
