@@ -2,6 +2,8 @@ package mqapp;
 
 import processing.event.*;
 import processing.core.*;
+import processing.sound.*;
+
 import studentwork.*;
 
 import java.util.Arrays;
@@ -21,6 +23,8 @@ public class ApplicationChooser extends mqapp.MQApp {
     public int textGapSize;
     public PFont uiFont, largeFont;
 
+    SoundFile music;
+
     float gap = 100;
     float period = 3000;
     float startAt = 500;
@@ -35,12 +39,13 @@ public class ApplicationChooser extends mqapp.MQApp {
 
         apps = Arrays.asList(
                 //new Pair(new MarbleLabrynth(), Optional.empty()), // TODO: waiting on the 3d fix to have this one work
-                new Pair(new BoxCarrier(), Optional.of(loadImage("boxcarrier.png"))),
+                new Pair(new Tetris(), Optional.of(loadImage("application_chooser/tetris.png"))),
                 new Pair(new Rocket(), Optional.of(loadImage("application_chooser/rocket.png"))),
                 new Pair(new BlackHole(), Optional.of(loadImage("BlackHole.png"))),
                 new Pair(new Snake(), Optional.of(loadImage("application_chooser/snake.png"))),
                 new Pair(new GameAndWatch(), Optional.of(loadImage("GameAndWatch.png"))),
                 new Pair(new KuruCountry(), Optional.of(loadImage("KuruCounrty.png"))),
+                new Pair(new BoxCarrier(), Optional.of(loadImage("boxcarrier.png"))),
                 new Pair(new Grapher(), Optional.of(loadImage("Grapher.png"))),
                 new Pair(new Stacker(), Optional.of(loadImage("application_chooser/stacker.png"))),
                 new Pair(new Pong(), Optional.of(loadImage("application_chooser/pongoptimised.png"))),
@@ -53,10 +58,16 @@ public class ApplicationChooser extends mqapp.MQApp {
         gapSize = height / 30;
         textGapSize = height/100;
         selected = 0;
+        topSpot = 0;
         defaultImage = loadImage("boxcarrier.png");
         uiFont = loadFont("shared/Avenir-LightOblique-28.vlw");
         largeFont = loadFont("shared/HiraMaruPro-W4-60.vlw");
         recalcGlobals();
+
+        //music = new SoundFile(this, "application_chooser/b3.wav");
+        //music.amp(0.3f);  // just some quiet background music
+        //music.loop();
+
     }
 
     public void draw() {
@@ -79,12 +90,35 @@ public class ApplicationChooser extends mqapp.MQApp {
           }
         }
 
+        // spiel
+        fill(255);
+        textSize(width/80);
+        int xloc = 2*width/3;
+        int yloc = height/20;
+        int ygap = height/30;
+        String[] txt = {"What is this?",
+                         "In their first-year, computing students at",
+                         "Macquarie Univeristy learn to program",
+                         "by writing interacting programs.  We've",
+                         "collected some ot their work here to show you."
+                       };
+        for(int y = 0; y< txt.length; y++){
+            text(txt[y], xloc, yloc + ygap*y);
+        }
+
+        // branding
+        fill(255);
+        textAlign(LEFT);
+        textFont(largeFont);
+        text("Macquarie Classic Mini", 4*width/6 - 50, height-50);
+
         // apps
         int ycoord = topLoc;
         for (int i = topSpot; i < topSpot + numRender && i < apps.size(); i++) {
             if (i == selected) {
                 strokeWeight(5);
-                stroke(94, 86, 90);
+                stroke(255);
+                line(5, ycoord+boxSize/2, gapSize, ycoord+boxSize/2);
                 //stroke(166, 25, 46);
             } else {
                 strokeWeight(1);
@@ -101,11 +135,6 @@ public class ApplicationChooser extends mqapp.MQApp {
 
             ycoord = ycoord + boxSize + gapSize;
         }
-        fill(255);
-        textAlign(LEFT);
-        textFont(largeFont);
-        text("Macquarie Classic Mini", 4*width/6 - 50, height-50);
-
     }
 
 
