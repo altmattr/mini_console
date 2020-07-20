@@ -31,11 +31,12 @@ public class ApplicationChooser extends mqapp.MQApp {
 
 
     public void setup() {
-        size(1280, 1024);
+        size(displayWidth, displayHeight);
 
         apps = Arrays.asList(
                 //new Pair(new MarbleLabrynth(), Optional.empty()), // TODO: waiting on the 3d fix to have this one work
                 new Pair(new BoxCarrier(), Optional.of(loadImage("boxcarrier.png"))),
+                new Pair(new Rocket(), Optional.of(loadImage("application_chooser/rocket.png"))),
                 new Pair(new Yeet(), Optional.of(loadImage("Yeet.png"))),
                 new Pair(new FarmerBill(), Optional.of(loadImage("FarmerBill.png"))),
                 new Pair(new BlackHole(), Optional.of(loadImage("BlackHole.png"))),
