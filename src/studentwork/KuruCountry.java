@@ -46,6 +46,10 @@ public class KuruCountry extends mqapp.MQApp { //important
     boolean top=false;
     boolean down=false;
 
+    static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new KuruCountry());
+    }
+
 
     public void setup()
     {
@@ -659,12 +663,6 @@ public class KuruCountry extends mqapp.MQApp { //important
             baddieSpeedX[i]=2;
             baddieSpeedY[i]=0;
         }
-    }
-
-
-    static public void main(String[] passedArgs) { //important; this function must be at the bottom of each game
-        String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "studentwork.KuruCountry" };
-        runSketch(appletArgs, new KuruCountry() );
     }
 }
 

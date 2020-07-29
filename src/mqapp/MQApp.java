@@ -5,6 +5,9 @@ import processing.core.*;
 
 
 public class MQApp extends PApplet {
+
+  public final static String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "" };
+  
   class Pair<A,B>{
     public A fst;
     public B snd;
@@ -19,7 +22,7 @@ public class MQApp extends PApplet {
   public String description(){return "";}
 
 
-  final static String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--stop-color=#cccccc", "" };
+  
   
   protected void handleKeyEvent(KeyEvent event){
     if(event.getAction() == KeyEvent.PRESS){
@@ -32,9 +35,10 @@ public class MQApp extends PApplet {
   }
 
   public void loadApp(MQApp newApp){
-    dispose();
-    runSketch(appletArgs, newApp);
+    //nextApp = newApp;
+    exit();
   }
+
 
   public void circle(float x, float y, float rad){
     ellipse(x, y, rad, rad);

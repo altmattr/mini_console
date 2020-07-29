@@ -22,6 +22,10 @@ public class GameAndWatch extends mqapp.MQApp {
     public String author(){return "Tanner Schineller";}
     public String description(){return "A classic reborn (but better)";}
 
+    static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new GameAndWatch());
+    }
+
 public void setup() {
   readSettings();
   //size(100,100);

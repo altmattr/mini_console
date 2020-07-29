@@ -1,4 +1,5 @@
 #!/bin/bash
 
+main=${1:-Main}
 cd $(dirname $0)
-java -cp ./src/:lib/core.jar:lib/sound.jar:lib/controlp5.jar:lib/jsyn-20171016.jar:lib/gluegen-rt-natives-macosx-universal.jar:lib/jogl-all-natives-macosx-universal.jar Main
+java -cp ./src/:lib/core.jar:lib/sound.jar:lib/controlp5.jar:lib/jsyn-20171016.jar:lib/gluegen-rt-natives-macosx-universal.jar:lib/jogl-all-natives-macosx-universal.jar $main

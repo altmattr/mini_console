@@ -4,7 +4,10 @@
 		{
 			"name": "run",
 			"working_dir": "$project_path",
-			"shell_cmd": "./compile && ./run"
+			"shell_cmd": "./compile && ./run",
+			"windows" : {
+			    "shell_cmd": "compileAndRun.bat"
+			}
 		}
 	],
 	"folders":

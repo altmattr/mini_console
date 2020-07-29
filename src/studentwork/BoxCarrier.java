@@ -26,6 +26,10 @@ public class BoxCarrier extends mqapp.MQApp {
     float scaleX;
     float scaleY;
 
+    static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new BoxCarrier());
+    }
+
     public void setup() {
         // original size is 500x200
         size(displayWidth, displayHeight);

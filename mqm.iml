@@ -12,5 +12,7 @@
     <orderEntry type="library" name="xchart-3.5.4" level="project" />
     <orderEntry type="library" name="core" level="project" />
     <orderEntry type="library" name="sound" level="project" />
+    <orderEntry type="library" name="gluegen-rt-natives-linux-aarch64" level="project" />
+    <orderEntry type="library" name="jsyn-20171016" level="project" />
   </component>
 </module>

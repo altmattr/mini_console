@@ -33,6 +33,10 @@ public class ApplicationChooser extends mqapp.MQApp {
 
     int[] colours = {color(247, 146, 2), color(247, 161, 2), color(247, 133, 5), darkest};
 
+    static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new ApplicationChooser());
+    }
+
 
     public void setup() {
         size(displayWidth, displayHeight);
@@ -64,9 +68,9 @@ public class ApplicationChooser extends mqapp.MQApp {
         largeFont = loadFont("shared/HiraMaruPro-W4-60.vlw");
         recalcGlobals();
 
-        //music = new SoundFile(this, "application_chooser/b3.wav");
-        //music.amp(0.3f);  // just some quiet background music
-        //music.loop();
+        music = new SoundFile(this, "application_chooser/b3.wav");
+        music.amp(0.1f);  // just some quiet background music
+        music.loop();
 
     }
 
@@ -150,7 +154,13 @@ public class ApplicationChooser extends mqapp.MQApp {
                 recalcGlobals();
             }
         if (key == ENTER) {
-            loadApp(apps.get(selected).fst);
+            System.out.println("huh");
+            Globals.setCurrApp(apps.get(selected).fst.getClass().getName());
+            Globals.setNextApp(this.getClass().getName());
+            System.out.println(Globals.getCurrApp());
+            System.out.println(Globals.getNextApp());
+
+            exit();
         }
     }
 

@@ -32,6 +32,10 @@ public class Stacker extends mqapp.MQApp {
     int score;
     PFont uiFont, largeFont;
 
+    static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new Stacker());
+    }
+
     public void setup() {
         size(504, 882);
         xGrid = width / 8.0;
@@ -194,4 +198,5 @@ public class Stacker extends mqapp.MQApp {
             }
         }
     }
+
 }

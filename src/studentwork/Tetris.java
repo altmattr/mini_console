@@ -80,6 +80,9 @@ ControlP5 diffControl;
 PImage logo;
 PImage boom;
 
+static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new Tetris());
+    }
 
 public void setup() {
   
@@ -679,12 +682,4 @@ public void keyReleased() {
   }
 }
   public void settings() {  size(500, 800); }
-  static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "mq_console_tetris" };
-    if (passedArgs != null) {
-      PApplet.main(concat(appletArgs, passedArgs));
-    } else {
-      PApplet.main(appletArgs);
-    }
-  }
 }

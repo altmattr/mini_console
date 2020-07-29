@@ -20,6 +20,10 @@ public class Grapher extends mqapp.MQApp {
     PVector[] gridLocations;
     boolean nodePressed;
 
+    static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new Grapher());
+    }
+
     public void setup() {
         size(displayWidth, displayHeight);
         current = 0;
@@ -241,12 +245,4 @@ public class Grapher extends mqapp.MQApp {
         }
     }
 
-    static public void main(String[] passedArgs) {
-        String[] appletArgs = new String[] { "studentwork.Grapher" };
-        if (passedArgs != null) {
-            PApplet.main(concat(appletArgs, passedArgs));
-        } else {
-            PApplet.main(appletArgs);
-        }
-    }
 }

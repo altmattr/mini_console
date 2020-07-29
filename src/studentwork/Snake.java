@@ -26,6 +26,10 @@ public class Snake extends mqapp.MQApp {
     int dif = 9;
     public PFont uiFont, largeFont;
 
+    static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new Snake());
+    }
+
     public void setup() {
         size(displayWidth, displayHeight);
         grid = height/30;

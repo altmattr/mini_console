@@ -60,6 +60,10 @@ public class Rocket extends mqapp.MQApp {
   int explosionTime;
   
   SoundFile music;
+
+  static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new Rocket());
+    }
   
   public void setup() {              // initialise the game properties
     size(displayWidth, displayHeight);

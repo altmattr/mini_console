@@ -54,6 +54,10 @@ public class Pandemic extends mqapp.MQApp {
     public float scaleHeight;
     public float scale;
     public float xTrans, yTrans;
+
+    static public void main(String[] passedArgs) {
+        runSketch(appletArgs, new Pandemic());
+    }
     
 
     public void setup() {
