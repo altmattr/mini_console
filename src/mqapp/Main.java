@@ -23,7 +23,7 @@ public class Main {
 
     Globals.setCurrApp("mqapp.ApplicationChooser");
     while(Globals.getCurrApp() != ""){
-      pb.command("java", "-cp", cp, Globals.getCurrApp());
+      pb.command("java", "-Xmx1024m", "-Xms1024m", "-cp", cp, Globals.getCurrApp());
       Globals.setCurrApp(Globals.getNextApp());
       Globals.setNextApp("");
   
