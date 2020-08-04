@@ -4,10 +4,6 @@ package studentwork;
 
 public class BoxCarrier extends mqapp.MQApp {
 
-    public String name(){return "Box Carrier";}
-    public String author(){return "Elise McCabe";}
-    public String description(){return "A game of infinite haulage";}
-
     float pX = 175;
     float pY = 120;
     float s = 4;

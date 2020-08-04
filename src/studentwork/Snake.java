@@ -5,18 +5,6 @@ import java.util.*;
 
 public class Snake extends mqapp.MQApp {
 
-    public String name() {
-        return "Snake";
-    }
-
-    public String author() {
-        return "Andrew Kefala";
-    }
-
-    public String description() {
-        return "No need for a Nokia";
-    }
-
     SnakeItself snake;
     int grid;
     int count;

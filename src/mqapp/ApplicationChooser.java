@@ -12,7 +12,23 @@ import java.util.Optional;
 
 public class ApplicationChooser extends mqapp.MQApp {
 
-    public List<Pair<MQApp,Optional<PImage>>> apps;
+    class App{
+      public String cls;
+      public String name;
+      public String author;
+      public String description;
+      public Optional<PImage> image;
+      public App(String cls, String name, String author, String description, Optional<PImage> image){
+        this.cls = cls;
+        this.name = name;
+        this.author = author;
+        this.description = description;
+        this.image = image;
+      }
+    }
+
+
+    public List<App> apps;
     public PImage defaultImage;
     public int boxSize;
     public int gapSize;
@@ -43,19 +59,19 @@ public class ApplicationChooser extends mqapp.MQApp {
 
         apps = Arrays.asList(
                 //new Pair(new MarbleLabrynth(), Optional.empty()), // TODO: waiting on the 3d fix to have this one work
-                new Pair(new Tetris(), Optional.of(loadImage("application_chooser/tetris.png"))),
-                new Pair(new Rocket(), Optional.of(loadImage("application_chooser/rocket.png"))),
-                new Pair(new BlackHole(), Optional.of(loadImage("BlackHole.png"))),
-                new Pair(new Snake(), Optional.of(loadImage("application_chooser/snake.png"))),
-                new Pair(new GameAndWatch(), Optional.of(loadImage("GameAndWatch.png"))),
-                new Pair(new KuruCountry(), Optional.of(loadImage("KuruCounrty.png"))),
-                new Pair(new BoxCarrier(), Optional.of(loadImage("boxcarrier.png"))),
-                new Pair(new Grapher(), Optional.of(loadImage("Grapher.png"))),
-                new Pair(new Stacker(), Optional.of(loadImage("application_chooser/stacker.png"))),
-                new Pair(new Pong(), Optional.of(loadImage("application_chooser/pongoptimised.png"))),
-                new Pair(new Pandemic(), Optional.of(loadImage("application_chooser/Pandemic.png"))),
-                new Pair(new Yeet(), Optional.of(loadImage("Yeet.png"))),
-                new Pair(new FarmerBill(), Optional.of(loadImage("FarmerBill.png")))
+                new App("studentwork.Tetris",       "Tetris", "By Nataly Falero, Andrew, Alyssa Fedele, et.al.", "Just like you remember", Optional.of(loadImage("application_chooser/tetris.png"))),
+                new App("studentwork.Rocket",       "Rocket", "Ben Talese", "Keep away from asteroids, swerve and boost!", Optional.of(loadImage("application_chooser/rocket.png"))),
+                new App("studentwork.BlackHole",    "BlackHole", "Rifhad Mahbub", "Avoid black holes in your spaceship", Optional.of(loadImage("BlackHole.png"))),
+                new App("studentwork.Snake",        "Snake", "Andrew Kefala", "No need for a Nokia", Optional.of(loadImage("application_chooser/snake.png"))),
+                new App("studentwork.GameAndWatch", "", "", "", Optional.of(loadImage("GameAndWatch.png"))),
+                new App("studentwork.KuruCountry",  "", "", "", Optional.of(loadImage("KuruCounrty.png"))),
+                new App("studentwork.BoxCarrier",   "Box Carrier", "Elise McCabe", "A game of infinite haulage", Optional.of(loadImage("boxcarrier.png"))),
+                new App("studentwork.Grapher",      "", "", "", Optional.of(loadImage("Grapher.png"))),
+                new App("studentwork.Stacker",      "", "", "", Optional.of(loadImage("application_chooser/stacker.png"))),
+                new App("studentwork.Pong",         "", "", "", Optional.of(loadImage("application_chooser/pongoptimised.png"))),
+                new App("studentwork.Pandemic",     "", "", "", Optional.of(loadImage("application_chooser/Pandemic.png"))),
+                new App("studentwork.Yeet",         "", "", "", Optional.of(loadImage("Yeet.png"))),
+                new App("studentwork.FarmerBill",   "", "", "", Optional.of(loadImage("FarmerBill.png")))
         );
 
         boxSize = height / 6;
@@ -128,14 +144,14 @@ public class ApplicationChooser extends mqapp.MQApp {
                 strokeWeight(1);
                 stroke(255);
             }
-            image(apps.get(i).snd.orElse(defaultImage), gapSize+1,ycoord+1, height/6, height/6);
+            image(apps.get(i).image.orElse(defaultImage), gapSize+1,ycoord+1, height/6, height/6);
             noFill();
             rect(gapSize, ycoord, boxSize, boxSize);
             textFont(uiFont);
             fill(255);
-            text(apps.get(i).fst.name(), ((gapSize * 2) + boxSize), ycoord + gapSize);
-            text("created by " + apps.get(i).fst.author(), ((gapSize * 2) + boxSize), ycoord + 2*gapSize);
-            text(apps.get(i).fst.description(), ((gapSize * 2) + boxSize), ycoord + 4*gapSize);
+            text(apps.get(i).name, ((gapSize * 2) + boxSize), ycoord + gapSize);
+            text("created by " + apps.get(i).author, ((gapSize * 2) + boxSize), ycoord + 2*gapSize);
+            text(apps.get(i).description, ((gapSize * 2) + boxSize), ycoord + 4*gapSize);
 
             ycoord = ycoord + boxSize + gapSize;
         }
@@ -155,7 +171,7 @@ public class ApplicationChooser extends mqapp.MQApp {
             }
         if (key == ENTER) {
             System.out.println("huh");
-            Globals.setCurrApp(apps.get(selected).fst.getClass().getName());
+            Globals.setCurrApp(apps.get(selected).cls);
             Globals.setNextApp(this.getClass().getName());
             System.out.println(Globals.getCurrApp());
             System.out.println(Globals.getNextApp());

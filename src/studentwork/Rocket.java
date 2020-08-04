@@ -11,10 +11,6 @@ import processing.core.*;
 
 public class Rocket extends mqapp.MQApp {
   
-  public String name(){return "Rocket";}
-  public String author(){return "Ben Talese";}
-  public String description(){return "Keep away from asteroids, swerve and boost!";}
-
   PVector rocketPos;               // rocket properties
   int rocketHealth;
   int rocketFuel;

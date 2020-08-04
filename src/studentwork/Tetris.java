@@ -19,10 +19,6 @@ import java.io.IOException;
 
 public class Tetris extends mqapp.MQApp {
 
-public String name(){return "Tetris";}
-public String author(){return "By Nataly Falero, Andrew, Alyssa Fedele, et.al.";}
-public String description(){return "Just like you remember";}
-
 int PREF_WIDTH = 500;
 int PREF_HEIGHT = 800;
 float scaleFactor;

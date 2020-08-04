@@ -19,11 +19,6 @@ public class BlackHole extends mqapp.MQApp {
 /* Assignment 2 (COMP115). S1, 2015.
    By Rifhad Mahbub (SID: 44647662). */
 
-  public String name(){return "BlackHole";}
-  public String author(){return "Rifhad Mahbub";}
-  public String description(){return "Avoid black holes in your spaceship";}
-
-
   float a = 600;
   float b = 600;
   float Scale = 1;
