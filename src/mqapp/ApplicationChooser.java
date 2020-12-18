@@ -63,15 +63,13 @@ public class ApplicationChooser extends mqapp.MQApp {
                 new App("studentwork.Rocket",       "Rocket", "Ben Talese", "Keep away from asteroids, swerve and boost!", Optional.of(loadImage("application_chooser/rocket.png"))),
                 new App("studentwork.BlackHole",    "BlackHole", "Rifhad Mahbub", "Avoid black holes in your spaceship", Optional.of(loadImage("BlackHole.png"))),
                 new App("studentwork.Snake",        "Snake", "Andrew Kefala", "No need for a Nokia", Optional.of(loadImage("application_chooser/snake.png"))),
-                new App("studentwork.GameAndWatch", "", "", "", Optional.of(loadImage("GameAndWatch.png"))),
-                new App("studentwork.KuruCountry",  "", "", "", Optional.of(loadImage("KuruCounrty.png"))),
+                new App("studentwork.GameAndWatch", "Game and Watch", "Tanner Schineller", "A perfect clone", Optional.of(loadImage("GameAndWatch.png"))),
+                new App("studentwork.KuruCountry",  "Kuru Country", "Chris Felix", "Find all the gems", Optional.of(loadImage("KuruCounrty.png"))),
                 new App("studentwork.BoxCarrier",   "Box Carrier", "Elise McCabe", "A game of infinite haulage", Optional.of(loadImage("boxcarrier.png"))),
-                new App("studentwork.Grapher",      "", "", "", Optional.of(loadImage("Grapher.png"))),
-                new App("studentwork.Stacker",      "", "", "", Optional.of(loadImage("application_chooser/stacker.png"))),
-                new App("studentwork.Pong",         "", "", "", Optional.of(loadImage("application_chooser/pongoptimised.png"))),
-                new App("studentwork.Pandemic",     "", "", "", Optional.of(loadImage("application_chooser/Pandemic.png"))),
-                new App("studentwork.Yeet",         "", "", "", Optional.of(loadImage("Yeet.png"))),
-                new App("studentwork.FarmerBill",   "", "", "", Optional.of(loadImage("FarmerBill.png")))
+                new App("studentwork.Grapher",      "Grapher", "Sepehr Torfeh Nejad", "Make your own interactive graph", Optional.of(loadImage("Grapher.png"))),
+                new App("studentwork.Stacker",      "Stacker", "Andrew Kefala", "Arcade Money Hog", Optional.of(loadImage("application_chooser/stacker.png"))),
+                new App("studentwork.Pong",         "Pong", "Beau Williams", "need I say more?", Optional.of(loadImage("application_chooser/pongoptimised.png"))),
+                new App("studentwork.Pandemic",     "Pandemic", "Elizabeth Cappellazzo, Cameron Baker, Quang Minh Pham, Robert Stockton, Nishal Najeeb, and Chhade Alasbar", "2020 Simulator", Optional.of(loadImage("application_chooser/Pandemic.png")))
         );
 
         boxSize = height / 6;
@@ -119,8 +117,8 @@ public class ApplicationChooser extends mqapp.MQApp {
         String[] txt = {"What is this?",
                          "In their first-year, computing students at",
                          "Macquarie Univeristy learn to program",
-                         "by writing interacting programs.  We've",
-                         "collected some ot their work here to show you."
+                         "by writing interactive programs.  We've",
+                         "collected some of their work here to show you."
                        };
         for(int y = 0; y< txt.length; y++){
             text(txt[y], xloc, yloc + ygap*y);
