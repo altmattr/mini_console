@@ -21,10 +21,6 @@ import java.io.IOException;
 
 public class UniGame extends mqapp.MQApp {
 
-    public String name(){return "Mr Game and Watch";}
-    public String author(){return "Tanner Schineller";}
-    public String description(){return "A classic reborn (but better)";}
-
     static public void main(String[] passedArgs) {
         runSketch(appletArgs, new UniGame());
     }
@@ -34,9 +30,6 @@ public class UniGame extends mqapp.MQApp {
 final int scale = 7;
 
 static final String assetspath = "unigame/";
-
-public void settings(){
-}
 
 GameStateManager gameStateManager;
 TextManager textManager;
@@ -57,14 +50,10 @@ PFont textDisplayFont;
 
 
 public void setup(){
-    size((int)(240*scale), (int)(160*scale));
-    System.out.println(width);
-    System.out.println(height);
-    frameRate(30);
-
-    textDisplayFont = createFont(textFontPath,scale*8);
-
-    battleUIFont = createFont(battleFontPath,scale*8);
+  size((int)(240*scale), (int)(160*scale));
+  frameRate(30);
+  textDisplayFont = createFont(textFontPath,scale*8);
+  battleUIFont = createFont(battleFontPath,scale*8);
   battleManager = new BattleManager();
   player = new Player("p_"+playerType);
   attacks = new Attacks();
@@ -98,7 +87,7 @@ public void keyReleased(){
 PGraphics lastScene;
 
 //custom per-pixel upscaling. Processing's default upscaler is super ugly with pixel art
-public PImage upscale(PGraphics img) {
+public PImage upscale(PImage img) {
   img.loadPixels();
   PImage outimg = createImage(img.width*scale,img.height*scale,ARGB);
   outimg.loadPixels();
@@ -215,9 +204,9 @@ class BattleManager {
   
   Lambda afterBattle;
 
-  private PGraphics scene;
+  private PGraphics scene = createGraphics(240*scale,160*scale);
   final String battlePath = "Tiles/Battle/";
-  final PImage bg = loadImage(assetspath+battlePath+"Background.png");
+  final PImage bg = upscale(loadImage(assetspath+battlePath+"Background.png"));
 
 
 
@@ -299,36 +288,34 @@ class BattleManager {
   }
 
   private void display() {
-    scene = createGraphics(240, 160);
     scene.beginDraw();
     scene.background(0);
+    
     //background
     scene.image(bg, 0, 0);
+    
     //health rectangles
     scene.fill(255, 0, 0);
-
     noStroke();
+    
     //lots of magic numbers with draw element locations but hey it works
     //enemy hp bar
     int eHPSize = (int)(83.0f/enemy.maxHP*enemy.currentHP);
-    scene.rect(22, 36, eHPSize, 5);
+    scene.rect(22*scale, 36*scale, eHPSize*scale, 5*scale);
 
 
     //player hp bar
     int pHPSize = (int)(83.0f/playerUnit.maxHP*playerUnit.currentHP);
-    scene.rect(150, 101, pHPSize, 5);
+    scene.rect(150*scale, 101*scale, pHPSize*scale, 5*scale);
 
-    scene.image(playerUnit.appearance, 40, 57);
-    scene.image(enemy.appearance, 150, 10);
-
+    scene.image(playerUnit.appearance, 40*scale, 57*scale);
+    scene.image(enemy.appearance, 150*scale, 10*scale);
+    scene.textFont(battleUIFont);
+    scene.fill(0, 0, 0);
+    scene.text(enemy.name, (63-(enemy.name.length()*4))*scale, 30*scale);
+    scene.text(playerUnit.name, (191-(playerUnit.name.length()*4))*scale, 96*scale);
     scene.endDraw();
-    //Need to draw the scene as everything else is text
-    //And text looks real bad if we perform per pixel upscaling
-    image(upscale(scene), 0, 0);
-    textFont(battleUIFont);
-    fill(0, 0, 0);
-    text(enemy.name, (63-(enemy.name.length()*4))*scale, 30*scale);
-    text(playerUnit.name, (191-(playerUnit.name.length()*4))*scale, 96*scale);
+    image(scene, 0, 0);
   }
 
   private void introDisplay() {
@@ -344,7 +331,7 @@ class BattleManager {
     introFrame +=15;
     if (introFrame <= 255) {
       PGraphics overworldScene = world.getScene();
-      image(upscale(overworldScene), 0, 0);
+      image(overworldScene, 0, 0);
       fill(0, 0, 0, min(introFrame, 255));
       noStroke();
       rect(0, 0, width, height);
@@ -367,7 +354,7 @@ class BattleManager {
       rect(0,0,width,height);
     }else if(outroFrame <= 510){
       PGraphics overworldScene = world.getScene();
-      image(upscale(overworldScene), 0, 0);
+      image(overworldScene, 0, 0);
       fill(0, 0, 0, max(0,510-outroFrame));
       noStroke();
       rect(0, 0, width, height);
@@ -955,7 +942,7 @@ class BattleUnit {
   public BattleUnit(String name, PImage appearance, Attack attack0, Attack attack1, Attack attack2, Attack attack3, 
     int maxHP, int speed, int defense, int dodge) {
     this.name = name;
-    this.appearance = appearance;
+    this.appearance = upscale(appearance);
     this.attack0 = attack0;
     this.attack1 = attack1;
     this.attack2 = attack2;
@@ -986,7 +973,7 @@ public void cutsceneOnePartOne() {
 public void cutsceneOnePartTwo() {
   //Karen faces up
   //Really dirty way of doing this but we can guarantee karen is there so it works
-  world.pcLab.tiles[3][7].appearance = loadImage(assetspath+"Characters/Karen/karen_up.png");
+  world.pcLab.tiles[3][7].setAppearance(loadImage(assetspath+"Characters/Karen/karen_up.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1013,7 +1000,7 @@ public void cutsceneOnePartThree() {
 }
 
 public void cutsceneOnePartFour() {
-  world.pcLab.tiles[8][6].appearance = loadImage(assetspath+"Characters/Dev/dev_up.png");
+  world.pcLab.tiles[8][6].setAppearance(loadImage(assetspath+"Characters/Dev/dev_up.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1037,7 +1024,7 @@ public void cutsceneOnePartFive() {
 }
 
 public void cutsceneOnePartSix() {
-  world.currentRoom.tiles[8][6].appearance = loadImage(assetspath+"Characters/Dev/dev_left.png");
+  world.currentRoom.tiles[8][6].setAppearance(loadImage(assetspath+"Characters/Dev/dev_left.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1048,7 +1035,7 @@ public void cutsceneOnePartSix() {
 }
 
 public void cutsceneOnePartSeven() {
-  world.pcLab.tiles[3][7].appearance = loadImage(assetspath+"Characters/Karen/karen_left.png");
+  world.pcLab.tiles[3][7].setAppearance(loadImage(assetspath+"Characters/Karen/karen_left.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1288,13 +1275,13 @@ public void cutscenePatronBattleTwo() {
 public void cutscenePatronBattleThree() {
   switch(world.playerDirection) {
   case UP:
-    world.ubar.tiles[7][3].appearance = loadImage(assetspath+"Characters/Patron/patron_down.png");
+    world.ubar.tiles[7][3].setAppearance(loadImage(assetspath+"Characters/Patron/patron_down.png"));
     break;
   case LEFT:
-    world.ubar.tiles[7][3].appearance = loadImage(assetspath+"Characters/Patron/patron_right.png");
+    world.ubar.tiles[7][3].setAppearance(loadImage(assetspath+"Characters/Patron/patron_right.png"));
     break;    
   case RIGHT:
-    world.ubar.tiles[7][3].appearance = loadImage(assetspath+"Characters/Patron/patron_left.png");
+    world.ubar.tiles[7][3].setAppearance(loadImage(assetspath+"Characters/Patron/patron_left.png"));
     break;    
   case DOWN:
     break;
@@ -1497,7 +1484,7 @@ public void cutsceneSchoolBattleFive() {
 }
 
 public void cutsceneSchoolBattleSix() {
-  world.library.tiles[10][3].appearance = loadImage(assetspath+"Characters/Karen/karen_down.png");
+  world.library.tiles[10][3].setAppearance(loadImage(assetspath+"Characters/Karen/karen_down.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1542,7 +1529,7 @@ public void cutsceneSchoolBattleNine() {
 
 public void cutsceneSchoolBattleTen() {
   world.playerDirection = Direction.RIGHT;
-  world.library.tiles[10][3].appearance = loadImage(assetspath+"Characters/Karen/karen_right.png");
+  world.library.tiles[10][3].setAppearance(loadImage(assetspath+"Characters/Karen/karen_right.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1721,7 +1708,7 @@ class FadeManager{
     fadeTime +=15;
     if(fadeTime <= 255){
       PGraphics overworldScene = world.getScene();
-      image(upscale(overworldScene),0,0);
+      image(overworldScene,0,0);
       fill(0,0,0,min(fadeTime,255));
       noStroke();
       rect(0,0,width,height);
@@ -1732,7 +1719,7 @@ class FadeManager{
         world.drawOverworld();
       }
       PGraphics overworldScene = world.getScene();
-      image(upscale(overworldScene),0,0);
+      image(overworldScene,0,0);
       fill(0,0,0,max(510-fadeTime,0));
       noStroke();
       rect(0,0,width,height);
@@ -2154,7 +2141,7 @@ class OverworldManager {
     drawOverworld();
   }
 
-  private PGraphics scene;
+  private PGraphics scene = createGraphics(240*scale,160*scale);
   
   public PGraphics getScene(){
     return scene;
@@ -2168,12 +2155,12 @@ class OverworldManager {
 
   private void drawOverworld() {
     //draw a black background
-    scene = createGraphics(240, 160);
+    //scene = createGraphics(240, 160);
     scene.beginDraw();
     scene.background(0);
 
     //draw the current background plate, offset by the player location 
-    scene.image(currentRoom.background, offsetX-playerDrawX, offsetY-playerDrawY);
+    scene.image(currentRoom.background, (offsetX-playerDrawX)*scale, (offsetY-playerDrawY)*scale);
 
     //iterate through active elements, drawing the tiles below the player
     for (int i = 0; i < currentRoom.tiles[0].length; i++) {
@@ -2193,29 +2180,29 @@ class OverworldManager {
       }
     }
     scene.endDraw();
-    image(upscale(scene), 0, 0);
+    image(scene, 0, 0);
   }
 
 
   private void drawTile(Tile t, int x, int y) {
     int tileXPos = offsetX-playerDrawX-t.offsetX+x*16;
     int tileYPos = offsetY-playerDrawY-t.offsetY+y*16;
-    scene.image(t.appearance, tileXPos, tileYPos);
+    scene.image(t.appearance, tileXPos*scale, tileYPos*scale);
   }
 
   private void drawPlayer() {
     switch(playerDirection) {
     case UP: 
-      scene.image(player.overworldUp[animationState/4], offsetX, offsetY); 
+      scene.image(player.overworldUp[animationState/4], offsetX*scale, offsetY*scale); 
       break;
     case DOWN: 
-      scene.image(player.overworldDown[animationState/4], offsetX, offsetY); 
+      scene.image(player.overworldDown[animationState/4], offsetX*scale, offsetY*scale); 
       break;
     case LEFT: 
-      scene.image(player.overworldLeft[animationState/4], offsetX, offsetY); 
+      scene.image(player.overworldLeft[animationState/4], offsetX*scale, offsetY*scale); 
       break;
     case RIGHT: 
-      scene.image(player.overworldRight[animationState/4], offsetX, offsetY); 
+      scene.image(player.overworldRight[animationState/4], offsetX*scale, offsetY*scale); 
       break;
     }
   }
@@ -2443,7 +2430,7 @@ class Player {
 
   public Player(String playerType) {
     this.playerType = playerType;
-    battleImage = loadImage(battlepath+playerType+"_battle.png");
+    battleImage = loadImage(battlepath+playerType+"_battle.png"); //battleUnit constructor will automatically upscale this
     PImage[] tOverworldLeft = {loadImage(path+playerType+"_left_still.png"), loadImage(path+playerType+"_left_left.png"), loadImage(path+playerType+"_left_still.png"), loadImage(path+playerType+"_left_right.png")};   
     overworldLeft = tOverworldLeft;
     PImage[] tOverworldRight = {loadImage(path+playerType+"_right_still.png"), loadImage(path+playerType+"_right_left.png"), loadImage(path+playerType+"_right_still.png"), loadImage(path+playerType+"_right_right.png")};   
@@ -2453,9 +2440,12 @@ class Player {
     PImage[] tOverworldDown = {loadImage(path+playerType+"_down_still.png"), loadImage(path+playerType+"_down_left.png"), loadImage(path+playerType+"_down_still.png"), loadImage(path+playerType+"_down_right.png")};   
     overworldDown = tOverworldDown;
     
-
-    
-    
+    for(int i = 0; i < overworldLeft.length; ++i){
+      overworldLeft[i] = upscale(overworldLeft[i]);
+      overworldRight[i] = upscale(overworldRight[i]);
+      overworldUp[i] = upscale(overworldUp[i]);
+      overworldDown[i] = upscale(overworldDown[i]);
+    }
   }
 }
 class Room {
@@ -2464,7 +2454,7 @@ class Room {
   int roomHeight;
   Tile[][] tiles;
   public Room(PImage background){
-    this.background = background;
+    this.background = upscale(background);
     roomWidth = background.width/16;
     roomHeight = background.height/16;
     tiles = new Tile[roomWidth][roomHeight];
@@ -2495,7 +2485,7 @@ class TextManager {
   final String textboxPath = assetspath+"Other/textbox.png";
   final int textX = 14*scale;
   final int textY = 133*scale;
-  PImage textbox = loadImage(textboxPath);
+  PImage textbox = upscale(loadImage(textboxPath));
   int currentCharacter = 0;
   int currentString = 0;
   int currentLine = 0;
@@ -2556,11 +2546,11 @@ class TextManager {
     PGraphics scene = world.getScene();
     scene.beginDraw();
     scene.image(textbox,0,0);
+    scene.fill(0,0,0);
+    scene.textFont(textDisplayFont);
+    scene.text(sb.toString(),textX,textY);
     scene.endDraw();
-    image(upscale(scene), 0, 0);
-    fill(0,0,0);
-    textFont(textDisplayFont);
-    text(sb.toString(),textX,textY);
+    image(scene,0,0);
   }
 
   private void nextChar() {
@@ -2639,9 +2629,9 @@ class Tile {
 
   //The standard tile, a visible object with no behaviour. May or may not be solid
   public Tile(PImage appearance, boolean displayOver, boolean isSolid) {
-    this.appearance = appearance;
-    this.offsetX = this.appearance.width-16;
-    this.offsetY = this.appearance.height-16;
+    this.appearance = upscale(appearance);
+    this.offsetX = appearance.width-16;
+    this.offsetY = appearance.height-16;
     this.isSolid = isSolid;
     this.displayOver = displayOver;
     this.pb = new PressBehaviour() {
@@ -2674,8 +2664,8 @@ class Tile {
   //A tile that does something when you land on it. Can not be solid
   public Tile(LandBehaviour lb) {
     this.appearance = new PImage(); 
-    this.offsetX = -16;
-    this.offsetY = -16;
+    this.offsetX = appearance.width-16;
+    this.offsetY = appearance.height-16;
     this.isSolid = false;
     this.pb = new PressBehaviour() {
       public void activate(Tile t) {
@@ -2699,9 +2689,9 @@ class Tile {
 
   //A visible tile with landing behaviour. Can not be solid
   public Tile(PImage appearance, boolean displayOver, LandBehaviour lb) {
-    this.appearance = appearance;
-    this.offsetX = this.appearance.width-16;
-    this.offsetY = this.appearance.height-16;
+    this.appearance = upscale(appearance);
+    this.offsetX = appearance.width-16;
+    this.offsetY = appearance.height-16;
     this.isSolid = false;
     this.displayOver = displayOver;
     this.pb = new PressBehaviour() {
@@ -2713,9 +2703,9 @@ class Tile {
 
   //A visible tile with press behaviour. May or may not be solid
   public Tile(PImage appearance, boolean displayOver, PressBehaviour pb, boolean isSolid) {
-    this.appearance = appearance;
-    this.offsetX = this.appearance.width-16;
-    this.offsetY = this.appearance.height-16;
+    this.appearance = upscale(appearance);
+    this.offsetX = appearance.width-16;
+    this.offsetY = appearance.height-16;
     this.isSolid = isSolid;
     this.displayOver = displayOver;
     this.lb = new LandBehaviour() {
@@ -2725,6 +2715,11 @@ class Tile {
     this.pb = pb;
   }
 
+  public void setAppearance(PImage appearance){
+    this.appearance = upscale(appearance);
+    this.offsetX = appearance.width-16;
+    this.offsetY = appearance.height-16;
+  }
 
   public void press() {
     pb.activate(this);
@@ -2762,16 +2757,16 @@ class TurnToFace extends PressBehaviour {
   public void activate(Tile t) {
     switch(world.playerDirection) {
     case UP:
-      t.appearance = loadImage(path+"_down.png");
+      t.setAppearance(loadImage(path+"_down.png"));
       break;
     case DOWN:
-      t.appearance = loadImage(path+"_up.png");
+      t.setAppearance(loadImage(path+"_up.png"));
       break;
     case LEFT:
-      t.appearance = loadImage(path+"_right.png");
+      t.setAppearance(loadImage(path+"_right.png"));
       break;
     case RIGHT:
-      t.appearance = loadImage(path+"_left.png");
+      t.setAppearance(loadImage(path+"_left.png"));
       break;
     }
     world.drawOverworld();
@@ -2961,4 +2956,5 @@ class UBar extends Room {
     tiles[12][4] = npc6;
   }
 }
+
 }
