@@ -25,12 +25,6 @@ public class UniGame extends mqapp.MQApp {
         runSketch(appletArgs, new UniGame());
     }
 
-//edit this to change the scale the game runs at. 1 is 260*160 and each increase causes pixels to become that size
-//(i.e at scale 2 each pixel is rendered as 2x2, at scale 3 each pixel is rendered at 3x3, etc.)
-final int scale = 7;
-
-static final String assetspath = "unigame/";
-
 GameStateManager gameStateManager;
 TextManager textManager;
 KeyPressManager keyPressManager;
@@ -38,25 +32,22 @@ OverworldManager world;
 BattleManager battleManager;
 BattleUnits battleUnits;
 FadeManager fadeManager;
-Player player;
-Attacks attacks;
 
-
-final String battleFontPath = assetspath+"Fonts/kongtext.ttf";
-final String textFontPath = assetspath+"Fonts/dogicapixel.ttf";
+final String battleFontPath = Globals.assetspath+"Fonts/kongtext.ttf";
+final String textFontPath = Globals.assetspath+"Fonts/dogicapixel.ttf";
 final String playerType = "red";
 PFont battleUIFont;
 PFont textDisplayFont;
 
 
 public void setup(){
-  size((int)(240*scale), (int)(160*scale));
+  size((int)(240*Globals.scale), (int)(160*Globals.scale));
   frameRate(30);
-  textDisplayFont = createFont(textFontPath,scale*8);
-  battleUIFont = createFont(battleFontPath,scale*8);
+  textDisplayFont = createFont(textFontPath,Globals.scale*8);
+  battleUIFont = createFont(battleFontPath,Globals.scale*8);
   battleManager = new BattleManager();
-  player = new Player("p_"+playerType);
-  attacks = new Attacks();
+  Globals.player = new Player("p_"+playerType, this);
+  Globals.attacks = new Attacks();
   battleUnits = new BattleUnits();
   gameStateManager = new GameStateManager();
   keyPressManager = new KeyPressManager();
@@ -89,13 +80,13 @@ PGraphics lastScene;
 //custom per-pixel upscaling. Processing's default upscaler is super ugly with pixel art
 public PImage upscale(PImage img) {
   img.loadPixels();
-  PImage outimg = createImage(img.width*scale,img.height*scale,ARGB);
+  PImage outimg = createImage(img.width*Globals.scale,img.height*Globals.scale,ARGB);
   outimg.loadPixels();
   for(int i = 0; i < img.height; ++i){
     for(int j = 0; j < img.width; ++j){
-      for(int k = 0; k < scale; ++k){
-        for(int l = 0; l < scale; ++l){
-          outimg.pixels[i*outimg.width*scale+j*scale+k*outimg.width+l] = img.pixels[i*img.width+j];
+      for(int k = 0; k < Globals.scale; ++k){
+        for(int l = 0; l < Globals.scale; ++l){
+          outimg.pixels[i*outimg.width*Globals.scale+j*Globals.scale+k*outimg.width+l] = img.pixels[i*img.width+j];
         }
       }
     }
@@ -103,84 +94,6 @@ public PImage upscale(PImage img) {
   outimg.updatePixels();
   return outimg;
 }
-
-
-abstract class Lambda{
-  abstract public void activate();
-}
-class Attacks{
-  //Attacks go: Name, Damage, Accuracy, Self-Damage/Healing, Effect (status and length), effectTargetSelf and alwaysHit
-  Attack powerNap = new Attack("Power Nap",0,100,-50,new Effect(StatusEffect.RESTING,1),true,true);
-  Attack coffeeShot = new Attack("Coffee Shot",15,100,0,new Effect(StatusEffect.CAFFEINATED,4),true,false);
-  Attack selfStudy = new Attack("Self Study",0,100,0,new Effect(StatusEffect.FOCUSED,2),true,true);
-  Attack persuade = new Attack("Persuade",25,80,0,new Effect(),false,false);
-  
-  //Ibis attacks
-  Attack wingWave = new Attack("Wing Wave",10,100,0,new Effect(),false,false);
-  Attack screechingSquawk = new Attack("Screeching Squawk",10,100,0,new Effect(),false,false);
-  Attack rummage = new Attack("Rummage",0,70,-20,new Effect(),false,false);
-  Attack snackSteal = new Attack("Snack Steal",20,80,-5,new Effect(),false,false);
-  
-  //Patron attacks
-  Attack cheers = new Attack("Cheers",0,100,-10,new Effect(StatusEffect.DRUNK,5),true,true);
-  Attack recruitmentAttempt = new Attack("MACS Recruitment Attempt",20,100,0,new Effect(),false,false);
-  Attack smallTalk = new Attack("Small Talk",10,100,0,new Effect(StatusEffect.AWKWARD,1),false,false);
-  Attack clumsyDance = new Attack("Clumsy Dance Move",25,80,10,new Effect(StatusEffect.RESTING,1),true,false);
-  
-  //HSC attacks
-  Attack heavyBookThrow = new Attack("Heavy Book Throw",10,100,0,new Effect(),false,false);
-  Attack portableCharger = new Attack("Portable Charger",0,100,-5,new Effect(StatusEffect.FOCUSED,1),true,true);
-  Attack zoomerMeme = new Attack("Abstract Meme", 20,90,0,new Effect(),false,false);
-  Attack gossip = new Attack("Gossip About "+player.name, 0, 100, 0, new Effect(StatusEffect.VULNERABLE,2),false,false);
-  
-  //Teacher attacks
-  Attack rulesReminder = new Attack("Rules Reminder",10,100,0,new Effect(StatusEffect.AWKWARD,2),false,false);
-  Attack hardHittingTruth = new Attack("Hard Hitting Truth",15,100,0,new Effect(),false,false);
-  Attack armedAccusation = new Attack("Armed Accusation",30,90,0,new Effect(),false,false);
-  Attack disappointedSigh = new Attack("Disappointed Sigh",10,100,-20,new Effect(),false,false);
-  
-  public Attacks(){};
-}
-
-
-class Attack {
-  String name;
-  Effect effect;
-  boolean effectTargetSelf;
-  boolean alwaysHit;
-  int attack;
-  int selfDamage;
-  int accuracy;
-
-  public Attack(String name, int attack, int accuracy, int selfDamage, Effect effect, boolean effectTargetSelf, boolean alwaysHit) {
-    this.name = name;
-    this.effect = effect;
-    this.effectTargetSelf = effectTargetSelf;
-    this.alwaysHit = alwaysHit;
-    this.attack = attack;
-    this.accuracy = accuracy;
-    this.selfDamage = selfDamage;
-  }
-}
-
-
-enum StatusEffect {
-  DRUNK, CAFFEINATED, FOCUSED, GUARDING, RESTING, AWKWARD, VULNERABLE, NONE
-}
-
-class Effect {
-  StatusEffect status;
-  int turnsLeft;
-  public Effect(StatusEffect status, int turnsLeft) {
-    this.status = status;
-    this.turnsLeft = turnsLeft;
-  }
-  public Effect() {
-    this.status = StatusEffect.NONE;
-    this.turnsLeft = 0;
-  }
-}
-
 
 
 enum BattleState {
@@ -204,9 +117,9 @@ class BattleManager {
   
   Lambda afterBattle;
 
-  private PGraphics scene = createGraphics(240*scale,160*scale);
+  private PGraphics scene = createGraphics(240*Globals.scale,160*Globals.scale);
   final String battlePath = "Tiles/Battle/";
-  final PImage bg = upscale(loadImage(assetspath+battlePath+"Background.png"));
+  final PImage bg = upscale(loadImage(Globals.assetspath+battlePath+"Background.png"));
 
 
 
@@ -301,19 +214,19 @@ class BattleManager {
     //lots of magic numbers with draw element locations but hey it works
     //enemy hp bar
     int eHPSize = (int)(83.0f/enemy.maxHP*enemy.currentHP);
-    scene.rect(22*scale, 36*scale, eHPSize*scale, 5*scale);
+    scene.rect(22*Globals.scale, 36*Globals.scale, eHPSize*Globals.scale, 5*Globals.scale);
 
 
     //player hp bar
     int pHPSize = (int)(83.0f/playerUnit.maxHP*playerUnit.currentHP);
-    scene.rect(150*scale, 101*scale, pHPSize*scale, 5*scale);
+    scene.rect(150*Globals.scale, 101*Globals.scale, pHPSize*Globals.scale, 5*Globals.scale);
 
-    scene.image(playerUnit.appearance, 40*scale, 57*scale);
-    scene.image(enemy.appearance, 150*scale, 10*scale);
+    scene.image(playerUnit.appearance, 40*Globals.scale, 57*Globals.scale);
+    scene.image(enemy.appearance, 150*Globals.scale, 10*Globals.scale);
     scene.textFont(battleUIFont);
     scene.fill(0, 0, 0);
-    scene.text(enemy.name, (63-(enemy.name.length()*4))*scale, 30*scale);
-    scene.text(playerUnit.name, (191-(playerUnit.name.length()*4))*scale, 96*scale);
+    scene.text(enemy.name, (63-(enemy.name.length()*4))*Globals.scale, 30*Globals.scale);
+    scene.text(playerUnit.name, (191-(playerUnit.name.length()*4))*Globals.scale, 96*Globals.scale);
     scene.endDraw();
     image(scene, 0, 0);
   }
@@ -321,10 +234,10 @@ class BattleManager {
   private void introDisplay() {
     display();
     fill(0, 0, 0);
-    text(playerUnit.attack0.name, 4*scale, 130*scale);
-    text(playerUnit.attack1.name, 4*scale, 150*scale);
-    text(playerUnit.attack2.name, 124*scale, 130*scale);
-    text(playerUnit.attack3.name, 124*scale, 150*scale);
+    text(playerUnit.attack0.name, 4*Globals.scale, 130*Globals.scale);
+    text(playerUnit.attack1.name, 4*Globals.scale, 150*Globals.scale);
+    text(playerUnit.attack2.name, 124*Globals.scale, 130*Globals.scale);
+    text(playerUnit.attack3.name, 124*Globals.scale, 150*Globals.scale);
   }
 
   private void processIntro() {
@@ -431,26 +344,26 @@ class BattleManager {
     } else {
       fill(0, 0, 0);
     }
-    text(playerUnit.attack0.name, 4*scale, 130*scale);
+    text(playerUnit.attack0.name, 4*Globals.scale, 130*Globals.scale);
     if (selectedAttack == 1) {
       fill(255, 255, 255);
     } else {
       fill(0, 0, 0);
     }
-    text(playerUnit.attack1.name, 4*scale, 150*scale);
+    text(playerUnit.attack1.name, 4*Globals.scale, 150*Globals.scale);
     if (selectedAttack == 2) {
       fill(255, 255, 255);
     } else {
       fill(0, 0, 0);
     }
-    text(playerUnit.attack2.name, 124*scale, 130*scale);
+    text(playerUnit.attack2.name, 124*Globals.scale, 130*Globals.scale);
 
     if (selectedAttack == 3) {
       fill(255, 255, 255);
     } else {
       fill(0, 0, 0);
     }
-    text(playerUnit.attack3.name, 124*scale, 150*scale);
+    text(playerUnit.attack3.name, 124*Globals.scale, 150*Globals.scale);
   }
 
 
@@ -605,13 +518,13 @@ class BattleManager {
         }
         textFont(textDisplayFont);
         fill(0, 0, 0);
-        text(battleTextDisplay.sb.toString(), 4*scale, 130*scale);
+        text(battleTextDisplay.sb.toString(), 4*Globals.scale, 130*Globals.scale);
         return;
       } else {
         battleTextDisplay.process();
         textFont(textDisplayFont);
         fill(0, 0, 0);
-        text(battleTextDisplay.sb.toString(), 4*scale, 130*scale);
+        text(battleTextDisplay.sb.toString(), 4*Globals.scale, 130*Globals.scale);
         return;
       }
     }
@@ -895,21 +808,21 @@ class BattleTextDisplay {
 //Focused -> All your attacks do double damage
 //we can think of others I guess
 class BattleUnits{
-  BattleUnit playerBattleUnit = new BattleUnit(player.name, player.battleImage, attacks.powerNap, attacks.coffeeShot,
-                                      attacks.selfStudy, attacks.persuade, 100, 100, 0, 5);
+  BattleUnit playerBattleUnit = new BattleUnit(Globals.player.name, Globals.player.battleImage, Globals.attacks.powerNap, Globals.attacks.coffeeShot,
+                                      Globals.attacks.selfStudy, Globals.attacks.persuade, 100, 100, 0, 5);
                                       
-  BattleUnit hungryIbis = new BattleUnit("Hungry Ibis", loadImage(assetspath+"Characters/Battle/ibis_battle.png"), 
-    attacks.wingWave, attacks.screechingSquawk, attacks.rummage, attacks.snackSteal, 
+  BattleUnit hungryIbis = new BattleUnit("Hungry Ibis", loadImage(Globals.assetspath+"Characters/Battle/ibis_battle.png"), 
+    Globals.attacks.wingWave, Globals.attacks.screechingSquawk, Globals.attacks.rummage, Globals.attacks.snackSteal, 
     100, 100, 0, 0);
 
-  BattleUnit patron = new BattleUnit("UBar Patron", loadImage(assetspath+"Characters/Battle/ubarpatron_battle.png"),
-    attacks.cheers, attacks.recruitmentAttempt, attacks.smallTalk, attacks.clumsyDance, 120, 100, 0, 10);
+  BattleUnit patron = new BattleUnit("UBar Patron", loadImage(Globals.assetspath+"Characters/Battle/ubarpatron_battle.png"),
+    Globals.attacks.cheers, Globals.attacks.recruitmentAttempt, Globals.attacks.smallTalk, Globals.attacks.clumsyDance, 120, 100, 0, 10);
     
-  BattleUnit schoolKids = new BattleUnit("HSC Student", loadImage(assetspath+"Characters/Battle/schoolkids_battle.png"),
-    attacks.heavyBookThrow, attacks.portableCharger, attacks.zoomerMeme, attacks.gossip, 150,100,0,10);
+  BattleUnit schoolKids = new BattleUnit("HSC Student", loadImage(Globals.assetspath+"Characters/Battle/schoolkids_battle.png"),
+    Globals.attacks.heavyBookThrow, Globals.attacks.portableCharger, Globals.attacks.zoomerMeme, Globals.attacks.gossip, 150,100,0,10);
     
-  BattleUnit teacher = new BattleUnit("Teacher", loadImage(assetspath+"Characters/Battle/teacher_battle.png"),
-    attacks.rulesReminder, attacks.hardHittingTruth, attacks.armedAccusation, attacks.disappointedSigh, 200,100,0,20);
+  BattleUnit teacher = new BattleUnit("Teacher", loadImage(Globals.assetspath+"Characters/Battle/teacher_battle.png"),
+    Globals.attacks.rulesReminder, Globals.attacks.hardHittingTruth, Globals.attacks.armedAccusation, Globals.attacks.disappointedSigh, 200,100,0,20);
 }
 
 
@@ -973,7 +886,7 @@ public void cutsceneOnePartOne() {
 public void cutsceneOnePartTwo() {
   //Karen faces up
   //Really dirty way of doing this but we can guarantee karen is there so it works
-  world.pcLab.tiles[3][7].setAppearance(loadImage(assetspath+"Characters/Karen/karen_up.png"));
+  world.pcLab.tiles[3][7].setAppearance(loadImage(Globals.assetspath+"Characters/Karen/karen_up.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1000,7 +913,7 @@ public void cutsceneOnePartThree() {
 }
 
 public void cutsceneOnePartFour() {
-  world.pcLab.tiles[8][6].setAppearance(loadImage(assetspath+"Characters/Dev/dev_up.png"));
+  world.pcLab.tiles[8][6].setAppearance(loadImage(Globals.assetspath+"Characters/Dev/dev_up.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1024,7 +937,7 @@ public void cutsceneOnePartFive() {
 }
 
 public void cutsceneOnePartSix() {
-  world.currentRoom.tiles[8][6].setAppearance(loadImage(assetspath+"Characters/Dev/dev_left.png"));
+  world.currentRoom.tiles[8][6].setAppearance(loadImage(Globals.assetspath+"Characters/Dev/dev_left.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1035,7 +948,7 @@ public void cutsceneOnePartSix() {
 }
 
 public void cutsceneOnePartSeven() {
-  world.pcLab.tiles[3][7].setAppearance(loadImage(assetspath+"Characters/Karen/karen_left.png"));
+  world.pcLab.tiles[3][7].setAppearance(loadImage(Globals.assetspath+"Characters/Karen/karen_left.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1056,7 +969,7 @@ public void cutsceneTwoPartOne() {
   fadeManager.fade(new Lambda() {
     public void activate() {
       world.pcLab.tiles[3][7] = null;
-      world.pcLab.tiles[10][4] = new Tile(loadImage(assetspath+"Characters/Karen/karen_right.png"), false, false);
+      world.pcLab.tiles[10][4] = new Tile(loadImage(Globals.assetspath+"Characters/Karen/karen_right.png"), false, false);
       world.playerDirection = Direction.LEFT;
     }
   }
@@ -1072,7 +985,7 @@ public void cutsceneTwoPartOne() {
 public void cutsceneTwoPartTwo() {
   textManager.printText(
     new String[]{
-    "KAREN: Hey "+player.name+"! You haven't started either - perfect! Let’s go get some lunch while we figure out how to do this assignment. With the two of us working together we’ll get it done in no time at all! Plus, I haven’t seen any of the lectures yet, I’m stumped. I’ll meet you at Ubar!"
+    "KAREN: Hey "+Globals.player.name+"! You haven't started either - perfect! Let’s go get some lunch while we figure out how to do this assignment. With the two of us working together we’ll get it done in no time at all! Plus, I haven’t seen any of the lectures yet, I’m stumped. I’ll meet you at Ubar!"
     }, 
     new Lambda(){
       public void activate(){
@@ -1190,7 +1103,7 @@ public void cutsceneIbisBattleFive() {
 public void cutsceneThreePartOne() {
   fadeManager.fade(new Lambda() {
     public void activate() {
-      world.ubar.tiles[world.playerX+1][world.playerY] = new Tile(loadImage(assetspath+"Characters/Karen/karen_left.png"), true, true);
+      world.ubar.tiles[world.playerX+1][world.playerY] = new Tile(loadImage(Globals.assetspath+"Characters/Karen/karen_left.png"), true, true);
     }
   }
   , 
@@ -1220,9 +1133,9 @@ public void cutsceneThreePartThree() {
       world.ubar.tiles[1][9] = null;
       world.ubar.tiles[world.playerX+1][world.playerY] = null;
 
-      world.ubar.tiles[13][10] = new Tile(loadImage(assetspath+"Characters/Karen/karen_left.png"), false, 
+      world.ubar.tiles[13][10] = new Tile(loadImage(Globals.assetspath+"Characters/Karen/karen_left.png"), false, 
         new TurnToFace(
-        assetspath+"Characters/Karen/karen", 
+        Globals.assetspath+"Characters/Karen/karen", 
         new Lambda() {
         public void activate() {
           textManager.printText(new String[]{
@@ -1275,13 +1188,13 @@ public void cutscenePatronBattleTwo() {
 public void cutscenePatronBattleThree() {
   switch(world.playerDirection) {
   case UP:
-    world.ubar.tiles[7][3].setAppearance(loadImage(assetspath+"Characters/Patron/patron_down.png"));
+    world.ubar.tiles[7][3].setAppearance(loadImage(Globals.assetspath+"Characters/Patron/patron_down.png"));
     break;
   case LEFT:
-    world.ubar.tiles[7][3].setAppearance(loadImage(assetspath+"Characters/Patron/patron_right.png"));
+    world.ubar.tiles[7][3].setAppearance(loadImage(Globals.assetspath+"Characters/Patron/patron_right.png"));
     break;    
   case RIGHT:
-    world.ubar.tiles[7][3].setAppearance(loadImage(assetspath+"Characters/Patron/patron_left.png"));
+    world.ubar.tiles[7][3].setAppearance(loadImage(Globals.assetspath+"Characters/Patron/patron_left.png"));
     break;    
   case DOWN:
     break;
@@ -1312,9 +1225,9 @@ public void cutscenePatronBattleFour() {
   fadeManager.fade(new Lambda() {
     public void activate() {
       world.ubar.tiles[7][3] = null;
-      world.ubar.tiles[13][4] = new Tile(loadImage(assetspath+"Characters/Patron/patron_down.png"), false, 
+      world.ubar.tiles[13][4] = new Tile(loadImage(Globals.assetspath+"Characters/Patron/patron_down.png"), false, 
         new TurnToFace(
-        assetspath+"Characters/Patron/patron", 
+        Globals.assetspath+"Characters/Patron/patron", 
         new Lambda() {
         public void activate() {
           textManager.printText(new String[]{
@@ -1326,7 +1239,7 @@ public void cutscenePatronBattleFour() {
 
       //Making it so that talking to karen triggers the next cutscene
       world.ubar.tiles[13][10].pb = new TurnToFace(
-        assetspath+"Characters/Karen/karen", 
+        Globals.assetspath+"Characters/Karen/karen", 
         new Lambda() {
         public void activate() {
           cutsceneFourPartOne();
@@ -1396,7 +1309,7 @@ public void cutsceneFourPartTwo() {
 
 public void cutsceneFivePartOne() {
   textManager.printText(new String[]{
-    "KAREN: Hey "+player.name+" I can’t find a seat anywhere! Looks like high school students are coming here to hang out with their friends. That table at the back would be perfect, go ask if we can have it."
+    "KAREN: Hey "+Globals.player.name+" I can’t find a seat anywhere! Looks like high school students are coming here to hang out with their friends. That table at the back would be perfect, go ask if we can have it."
     }, new Lambda(){
       public void activate(){
         world.library.tiles[7][8] = null;
@@ -1462,7 +1375,7 @@ public void cutsceneSchoolBattleFour() {
       world.playerDirection = Direction.RIGHT;
       world.adjustOffsets();
 
-      world.library.tiles[10][3] = new Tile(loadImage(assetspath+"Characters/Karen/karen_left.png"), false, true);
+      world.library.tiles[10][3] = new Tile(loadImage(Globals.assetspath+"Characters/Karen/karen_left.png"), false, true);
     }
   }
   , new Lambda() {
@@ -1484,7 +1397,7 @@ public void cutsceneSchoolBattleFive() {
 }
 
 public void cutsceneSchoolBattleSix() {
-  world.library.tiles[10][3].setAppearance(loadImage(assetspath+"Characters/Karen/karen_down.png"));
+  world.library.tiles[10][3].setAppearance(loadImage(Globals.assetspath+"Characters/Karen/karen_down.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1529,7 +1442,7 @@ public void cutsceneSchoolBattleNine() {
 
 public void cutsceneSchoolBattleTen() {
   world.playerDirection = Direction.RIGHT;
-  world.library.tiles[10][3].setAppearance(loadImage(assetspath+"Characters/Karen/karen_right.png"));
+  world.library.tiles[10][3].setAppearance(loadImage(Globals.assetspath+"Characters/Karen/karen_right.png"));
   world.drawOverworld();
   world.sleepWorld(15, new Lambda() {
     public void activate() {
@@ -1581,9 +1494,9 @@ public void cutsceneSchoolBattleFourteen() {
   }
   , new Lambda() {
     public void activate() {
-      world.pcLab.tiles[6][3] = new Tile(loadImage(assetspath+"Characters/Teacher/teacher_down.png"), false, 
+      world.pcLab.tiles[6][3] = new Tile(loadImage(Globals.assetspath+"Characters/Teacher/teacher_down.png"), false, 
         new TurnToFace(
-        assetspath+"Characters/Teacher/teacher", 
+        Globals.assetspath+"Characters/Teacher/teacher", 
         new Lambda() {
         public void activate() {
           cutsceneTeacherBattleOne();
@@ -1612,7 +1525,7 @@ public void cutsceneTeacherBattleTwo() {
   fadeManager.fade(new Lambda() {
     public void activate() {
       world.pcLab.tiles[8][6] = null;
-      world.pcLab.tiles[7][4] = new Tile(loadImage(assetspath+"Characters/Dev/dev_up.png"), false, true);
+      world.pcLab.tiles[7][4] = new Tile(loadImage(Globals.assetspath+"Characters/Dev/dev_up.png"), false, true);
     }
   }
   , new Lambda() {
@@ -1651,10 +1564,10 @@ public void cutsceneTeacherBattleFour() {
 
 public void cutsceneTeacherBattleFive() {
   textManager.printText(new String[]{
-    "TEACHER: Hm, okay "+player.name+", let’s put this in the system.", 
+    "TEACHER: Hm, okay "+Globals.player.name+", let’s put this in the system.", 
     "...", 
     "TEACHER: Oh dear... 90% plagiarism.", 
-    "…"+player.name+" this is not good, not only will you not receive any marks but you also will need to be reported to the disciplinary committee. Please explain yourself"
+    "…"+Globals.player.name+" this is not good, not only will you not receive any marks but you also will need to be reported to the disciplinary committee. Please explain yourself"
     }, new Lambda(){
       public void activate(){
         cutsceneTeacherBattleSix();
@@ -1685,7 +1598,7 @@ public void cutsceneTeacherBattleSeven() {
 
 public void cutsceneTeacherBattleEight() {
   world.pcLab.tiles[6][3].pb = new TurnToFace(
-    assetspath+"Characters/Teacher/teacher", 
+    Globals.assetspath+"Characters/Teacher/teacher", 
       new Lambda() {
         public void activate() {
           textManager.printText(new String[]{
@@ -1864,14 +1777,14 @@ class KeyPressManager {
 }
 class Library extends Room {
 
-  static final String path = assetspath+"Tiles/Library/";
+  static final String path = Globals.assetspath+"Tiles/Library/";
 
   private Tile wall = new Tile();
   private Tile overlay = new Tile(loadImage(path+"Overlay.png"), true, false);
 
-  private Tile karen = new Tile(loadImage(assetspath+"Characters/Karen/karen_up.png"), false, 
+  private Tile karen = new Tile(loadImage(Globals.assetspath+"Characters/Karen/karen_up.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/Karen/karen", 
+    Globals.assetspath+"Characters/Karen/karen", 
     new Lambda() {
     public void activate() {
       textManager.printText(new String[]{
@@ -1881,9 +1794,9 @@ class Library extends Room {
   }
   ), true);
   
-  private Tile schoolKidOne = new Tile(loadImage(assetspath+"Characters/SchoolKids/schoolkid1_right.png"), false, 
+  private Tile schoolKidOne = new Tile(loadImage(Globals.assetspath+"Characters/SchoolKids/schoolkid1_right.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/SchoolKids/schoolkid1", 
+    Globals.assetspath+"Characters/SchoolKids/schoolkid1", 
     new Lambda() {
     public void activate() {
       cutsceneSchoolBattleOne();
@@ -1891,9 +1804,9 @@ class Library extends Room {
   })
   , true);
   
-  private Tile schoolKidTwo = new Tile(loadImage(assetspath+"Characters/SchoolKids/schoolkid2_left.png"), false, 
+  private Tile schoolKidTwo = new Tile(loadImage(Globals.assetspath+"Characters/SchoolKids/schoolkid2_left.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/SchoolKids/schoolkid2", 
+    Globals.assetspath+"Characters/SchoolKids/schoolkid2", 
     new Lambda() {
     public void activate() {
       cutsceneSchoolBattleOne();
@@ -1901,9 +1814,9 @@ class Library extends Room {
   })
   , true);
   
-  private Tile schoolKidThree = new Tile(loadImage(assetspath+"Characters/SchoolKids/schoolkid3_right.png"), false, 
+  private Tile schoolKidThree = new Tile(loadImage(Globals.assetspath+"Characters/SchoolKids/schoolkid3_right.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/SchoolKids/schoolkid3", 
+    Globals.assetspath+"Characters/SchoolKids/schoolkid3", 
     new Lambda() {
     public void activate() {
       cutsceneSchoolBattleOne();
@@ -1932,10 +1845,10 @@ class Library extends Room {
   }
   );
   
-  private Tile npc0 = new Sign(loadImage(assetspath+"Characters/SchoolKids/schoolkid3_right.png"),"(They look too invested in their study to talk to you)");
-  private Tile npc1 = new Sign(loadImage(assetspath+"Characters/SchoolKids/schoolkid3_right.png"),"(They look too invested in their study to talk to you)");
-  private Tile npc2 = new Sign(loadImage(assetspath+"Characters/NPCs/npc1_left.png"),"(They’re looking at colourful statistical diagrams.)");
-  private Tile npc3 = new Sign(loadImage(assetspath+"Characters/NPCs/npc2_right.png"),"(They’re taking a buzzfeed quiz, \"What kind of procrastination am I?\")");
+  private Tile npc0 = new Sign(loadImage(Globals.assetspath+"Characters/SchoolKids/schoolkid3_right.png"),"(They look too invested in their study to talk to you)");
+  private Tile npc1 = new Sign(loadImage(Globals.assetspath+"Characters/SchoolKids/schoolkid3_right.png"),"(They look too invested in their study to talk to you)");
+  private Tile npc2 = new Sign(loadImage(Globals.assetspath+"Characters/NPCs/npc1_left.png"),"(They’re looking at colourful statistical diagrams.)");
+  private Tile npc3 = new Sign(loadImage(Globals.assetspath+"Characters/NPCs/npc2_right.png"),"(They’re taking a buzzfeed quiz, \"What kind of procrastination am I?\")");
   
   private Tile clrs = new Sign(new String[]{"You browse the bookshelf and find a book that looks interesting.", "Introduction to Algorithms by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein", "...", "Let's put this back."});
   
@@ -1973,12 +1886,12 @@ class Library extends Room {
 }
 class Outside extends Room {
 
-  static final String path = assetspath+"Tiles/Outside/";
+  static final String path = Globals.assetspath+"Tiles/Outside/";
 
   private Tile wall = new Tile();
   private Tile overlay = new Tile(loadImage(path+"Overlay.png"), true, false);
 
-  private Tile ibis = new Tile(loadImage(assetspath+"Characters/Ibis/ibis_left.png"), true, false);
+  private Tile ibis = new Tile(loadImage(Globals.assetspath+"Characters/Ibis/ibis_left.png"), true, false);
 
   private Tile ibisBattle = new Tile(new LandBehaviour() {
     public void activate(Tile t) {
@@ -2141,7 +2054,7 @@ class OverworldManager {
     drawOverworld();
   }
 
-  private PGraphics scene = createGraphics(240*scale,160*scale);
+  private PGraphics scene = createGraphics(240*Globals.scale,160*Globals.scale);
   
   public PGraphics getScene(){
     return scene;
@@ -2160,7 +2073,7 @@ class OverworldManager {
     scene.background(0);
 
     //draw the current background plate, offset by the player location 
-    scene.image(currentRoom.background, (offsetX-playerDrawX)*scale, (offsetY-playerDrawY)*scale);
+    scene.image(currentRoom.background, (offsetX-playerDrawX)*Globals.scale, (offsetY-playerDrawY)*Globals.scale);
 
     //iterate through active elements, drawing the tiles below the player
     for (int i = 0; i < currentRoom.tiles[0].length; i++) {
@@ -2187,22 +2100,22 @@ class OverworldManager {
   private void drawTile(Tile t, int x, int y) {
     int tileXPos = offsetX-playerDrawX-t.offsetX+x*16;
     int tileYPos = offsetY-playerDrawY-t.offsetY+y*16;
-    scene.image(t.appearance, tileXPos*scale, tileYPos*scale);
+    scene.image(t.appearance, tileXPos*Globals.scale, tileYPos*Globals.scale);
   }
 
   private void drawPlayer() {
     switch(playerDirection) {
     case UP: 
-      scene.image(player.overworldUp[animationState/4], offsetX*scale, offsetY*scale); 
+      scene.image(Globals.player.overworldUp[animationState/4], offsetX*Globals.scale, offsetY*Globals.scale); 
       break;
     case DOWN: 
-      scene.image(player.overworldDown[animationState/4], offsetX*scale, offsetY*scale); 
+      scene.image(Globals.player.overworldDown[animationState/4], offsetX*Globals.scale, offsetY*Globals.scale); 
       break;
     case LEFT: 
-      scene.image(player.overworldLeft[animationState/4], offsetX*scale, offsetY*scale); 
+      scene.image(Globals.player.overworldLeft[animationState/4], offsetX*Globals.scale, offsetY*Globals.scale); 
       break;
     case RIGHT: 
-      scene.image(player.overworldRight[animationState/4], offsetX*scale, offsetY*scale); 
+      scene.image(Globals.player.overworldRight[animationState/4], offsetX*Globals.scale, offsetY*Globals.scale); 
       break;
     }
   }
@@ -2326,14 +2239,14 @@ class OverworldManager {
   
 }
 class PCLab extends Room {
-  static final String path = assetspath+"Tiles/PCLab/";
+  static final String path = Globals.assetspath+"Tiles/PCLab/";
 
 
   private Tile wall = new Tile();
 
-  private Tile teacher = new Tile(loadImage(assetspath+"Characters/Teacher/teacher_down.png"), false, 
+  private Tile teacher = new Tile(loadImage(Globals.assetspath+"Characters/Teacher/teacher_down.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/Teacher/teacher", 
+    Globals.assetspath+"Characters/Teacher/teacher", 
     new Lambda() {
     public void activate() {
       textManager.printText(new String[]{
@@ -2343,7 +2256,7 @@ class PCLab extends Room {
   }
   ), true);
 
-  private Tile karen = new Tile(loadImage(assetspath+"Characters/Karen/karen_left.png"), false, 
+  private Tile karen = new Tile(loadImage(Globals.assetspath+"Characters/Karen/karen_left.png"), false, 
     new PressBehaviour() {
     public void activate(Tile t) {
       textManager.printText(new String[]{
@@ -2353,9 +2266,9 @@ class PCLab extends Room {
   }
   , true);
 
-  private Tile dev = new Tile(loadImage(assetspath+"Characters/Dev/dev_left.png"), false, 
+  private Tile dev = new Tile(loadImage(Globals.assetspath+"Characters/Dev/dev_left.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/Dev/dev", 
+    Globals.assetspath+"Characters/Dev/dev", 
     new Lambda() {
     public void activate() {
       textManager.printText(new String[]{
@@ -2374,8 +2287,8 @@ class PCLab extends Room {
     }
   });
   
-  private Tile npc3 = new Sign(loadImage(assetspath+"Characters/NPCs/npc3_right.png"),"(Looks like they're busy)");
-  private Tile npc4 = new Sign(loadImage(assetspath+"Characters/NPCs/npc4_right.png"),"(Looks like they're busy)");
+  private Tile npc3 = new Sign(loadImage(Globals.assetspath+"Characters/NPCs/npc3_right.png"),"(Looks like they're busy)");
+  private Tile npc4 = new Sign(loadImage(Globals.assetspath+"Characters/NPCs/npc4_right.png"),"(Looks like they're busy)");
   
   private Tile outsideTeleport = new Tile(new LandBehaviour(){
     public void activate(Tile t){
@@ -2416,38 +2329,6 @@ class PCLab extends Room {
     tiles[10][8] = npc4;
   }
 }
-class Player {
-  PImage[] overworldLeft;
-  PImage[] overworldRight;  
-  PImage[] overworldUp; 
-  PImage[] overworldDown;
-  PImage battleImage;
-  String playerType;
-  String name = "Macky"; 
-
-  static final String path = assetspath+"Characters/Player/";
-  static final String battlepath = assetspath+"Characters/Battle/";
-
-  public Player(String playerType) {
-    this.playerType = playerType;
-    battleImage = loadImage(battlepath+playerType+"_battle.png"); //battleUnit constructor will automatically upscale this
-    PImage[] tOverworldLeft = {loadImage(path+playerType+"_left_still.png"), loadImage(path+playerType+"_left_left.png"), loadImage(path+playerType+"_left_still.png"), loadImage(path+playerType+"_left_right.png")};   
-    overworldLeft = tOverworldLeft;
-    PImage[] tOverworldRight = {loadImage(path+playerType+"_right_still.png"), loadImage(path+playerType+"_right_left.png"), loadImage(path+playerType+"_right_still.png"), loadImage(path+playerType+"_right_right.png")};   
-    overworldRight = tOverworldRight;
-    PImage[] tOverworldUp = {loadImage(path+playerType+"_up_still.png"), loadImage(path+playerType+"_up_left.png"), loadImage(path+playerType+"_up_still.png"), loadImage(path+playerType+"_up_right.png")};   
-    overworldUp = tOverworldUp;
-    PImage[] tOverworldDown = {loadImage(path+playerType+"_down_still.png"), loadImage(path+playerType+"_down_left.png"), loadImage(path+playerType+"_down_still.png"), loadImage(path+playerType+"_down_right.png")};   
-    overworldDown = tOverworldDown;
-    
-    for(int i = 0; i < overworldLeft.length; ++i){
-      overworldLeft[i] = upscale(overworldLeft[i]);
-      overworldRight[i] = upscale(overworldRight[i]);
-      overworldUp[i] = upscale(overworldUp[i]);
-      overworldDown[i] = upscale(overworldDown[i]);
-    }
-  }
-}
 class Room {
   PImage background;
   int roomWidth; 
@@ -2482,9 +2363,9 @@ class Room {
   
 }
 class TextManager {
-  final String textboxPath = assetspath+"Other/textbox.png";
-  final int textX = 14*scale;
-  final int textY = 133*scale;
+  final String textboxPath = Globals.assetspath+"Other/textbox.png";
+  final int textX = 14*Globals.scale;
+  final int textY = 133*Globals.scale;
   PImage textbox = upscale(loadImage(textboxPath));
   int currentCharacter = 0;
   int currentString = 0;
@@ -2497,7 +2378,6 @@ class TextManager {
 
   StringBuilder sb;
   String[] strings;
-
   PImage currentDisplay;
   
   Lambda afterText;
@@ -2809,7 +2689,7 @@ class Sign extends Tile{
 }
 class UBar extends Room {
 
-  static final String path = assetspath+"Tiles/UBar/";
+  static final String path = Globals.assetspath+"Tiles/UBar/";
 
   private Tile wall = new Tile();
   private Tile overlay = new Tile(loadImage(path+"Overlay.png"), true, false);
@@ -2853,7 +2733,7 @@ class UBar extends Room {
   }
   );
 
-  private Tile patron = new Tile(loadImage(assetspath+"Characters/Patron/patron_up.png"), false, 
+  private Tile patron = new Tile(loadImage(Globals.assetspath+"Characters/Patron/patron_up.png"), false, 
     new PressBehaviour() {
     public void activate(Tile t) {
       cutscenePatronBattleOne();
@@ -2865,9 +2745,9 @@ class UBar extends Room {
   private Tile ubarSign = new Sign("It's the sign for the campus bar");
   private Tile poster = new Sign("There are posters for upcoming events at the bar");
 
-  private Tile npc0 = new Tile(loadImage(assetspath+"Characters/SchoolKids/schoolkid2_right.png"), false, 
+  private Tile npc0 = new Tile(loadImage(Globals.assetspath+"Characters/SchoolKids/schoolkid2_right.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/SchoolKids/schoolkid2", 
+    Globals.assetspath+"Characters/SchoolKids/schoolkid2", 
     new Lambda() {
     public void activate() {
       textManager.printText(new String[]{
@@ -2877,13 +2757,13 @@ class UBar extends Room {
   }
   ), true);
   
-  private Tile npc1 = new Sign(loadImage(assetspath+"Characters/NPCs/npc3_up.png"),"(They're enjoying their burger.)");
-  private Tile npc2 = new Sign(loadImage(assetspath+"Characters/NPCs/npc2_down.png"),"PATRON: Let’s have a game after the exam!");
-  private Tile npc3 = new Sign(loadImage(assetspath+"Characters/NPCs/npc4_left.png"),"(They’re chatting about pool strategies)");
+  private Tile npc1 = new Sign(loadImage(Globals.assetspath+"Characters/NPCs/npc3_up.png"),"(They're enjoying their burger.)");
+  private Tile npc2 = new Sign(loadImage(Globals.assetspath+"Characters/NPCs/npc2_down.png"),"PATRON: Let’s have a game after the exam!");
+  private Tile npc3 = new Sign(loadImage(Globals.assetspath+"Characters/NPCs/npc4_left.png"),"(They’re chatting about pool strategies)");
   
-  private Tile npc4 = new Tile(loadImage(assetspath+"Characters/NPCs/npc3_up.png"), false, 
+  private Tile npc4 = new Tile(loadImage(Globals.assetspath+"Characters/NPCs/npc3_up.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/NPCs/npc3", 
+    Globals.assetspath+"Characters/NPCs/npc3", 
     new Lambda() {
     public void activate() {
       textManager.printText(new String[]{
@@ -2893,9 +2773,9 @@ class UBar extends Room {
   }
   ), true);
   
-  private Tile npc5 = new Tile(loadImage(assetspath+"Characters/NPCs/npc4_up.png"), false, 
+  private Tile npc5 = new Tile(loadImage(Globals.assetspath+"Characters/NPCs/npc4_up.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/NPCs/npc4", 
+    Globals.assetspath+"Characters/NPCs/npc4", 
     new Lambda() {
     public void activate() {
       textManager.printText(new String[]{
@@ -2905,9 +2785,9 @@ class UBar extends Room {
   }
   ), true);
   
-  private Tile npc6 = new Tile(loadImage(assetspath+"Characters/NPCs/npc1_down.png"), false, 
+  private Tile npc6 = new Tile(loadImage(Globals.assetspath+"Characters/NPCs/npc1_down.png"), false, 
     new TurnToFace(
-    assetspath+"Characters/NPCs/npc1", 
+    Globals.assetspath+"Characters/NPCs/npc1", 
     new Lambda() {
     public void activate() {
       textManager.printText(new String[]{

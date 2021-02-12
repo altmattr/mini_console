@@ -119,7 +119,10 @@ public class ApplicationChooser extends mqapp.MQApp {
                          "In their first-year, computing students at",
                          "Macquarie Univeristy learn to program",
                          "by writing interactive programs.  We've",
-                         "collected some of their work here to show you."
+                         "collected some of their work here to show you.",
+                         "",
+                         "for more information, contact",
+                         "matthew.roberts@mq.edu.au"
                        };
         for(int y = 0; y< txt.length; y++){
             text(txt[y], xloc, yloc + ygap*y);
