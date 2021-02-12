@@ -665,7 +665,7 @@ public class Rocket extends mqapp.MQApp {
   
   
   void drawStars() {
-    fill(255);
+    fill(255,255,0);
     noStroke();
     for (int i = 0; i < starXPos.length; i++) {             // cycle through all stars
       circle(starXPos[i], starYPos[i], starSize[i]);        // draw stars at current attributes stored in the star arrays
