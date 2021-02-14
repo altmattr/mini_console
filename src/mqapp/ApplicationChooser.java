@@ -59,6 +59,7 @@ public class ApplicationChooser extends mqapp.MQApp {
 
         apps = Arrays.asList(
                 //new Pair(new MarbleLabrynth(), Optional.empty()), // TODO: waiting on the 3d fix to have this one work
+                new App("unigame.UniGame",          "UniGame", "By Elise McCabe and Joseph Hardman", "Gamify your uni-life", Optional.of(loadImage("application_chooser/unigame.png"))),
                 new App("studentwork.Tetris",       "Tetris", "By Nataly Falero, Andrew, Alyssa Fedele, et.al.", "Just like you remember", Optional.of(loadImage("application_chooser/tetris.png"))),
                 new App("studentwork.Rocket",       "Rocket", "Ben Talese", "Keep away from asteroids, swerve and boost!", Optional.of(loadImage("application_chooser/rocket.png"))),
                 new App("studentwork.BlackHole",    "BlackHole", "Rifhad Mahbub", "Avoid black holes in your spaceship", Optional.of(loadImage("BlackHole.png"))),
@@ -168,7 +169,6 @@ public class ApplicationChooser extends mqapp.MQApp {
                 recalcGlobals();
             }
         if (key == ENTER) {
-            System.out.println("huh");
             Globals.setCurrApp(apps.get(selected).cls);
             Globals.setNextApp(this.getClass().getName());
             System.out.println(Globals.getCurrApp());
