@@ -71,7 +71,7 @@ public class Rocket extends mqapp.MQApp {
   
   
   public void draw() {              // display the game on the screen
-    background(0);
+    background(245, 166, 223);
     startScreen();
     drawStars();
     spawnMeteoroids();
@@ -462,13 +462,13 @@ public class Rocket extends mqapp.MQApp {
         }
   
         if (warpDriveOn) {                                                // if player has activated warp speed,
-          bigFlameColour = color(30, 30, 220);                            // display flame colours in shades of blue,
-          mediumFlameColour = color(90, 190, 255);                        // otherwise display flames in shades of red
-          smallFlameColour = color(190, 255, 255);
+          bigFlameColour = color(110, 240, 238);                            // display flame colours in shades of blue,
+          mediumFlameColour = color(35, 148, 204);                        // otherwise display flames in shades of red
+          smallFlameColour = color(16, 26, 227);
         } else {
-          bigFlameColour = color(220, 30, 30, 200);
-          mediumFlameColour = color(255, 190, 90);
-          smallFlameColour = color(255, 255, 190);
+          bigFlameColour = color(110, 240, 238);
+          mediumFlameColour = color(35, 148, 204);
+          smallFlameColour = color(16, 26, 227);
         }
   
         noStroke();        // disable outline for all flames
@@ -665,7 +665,7 @@ public class Rocket extends mqapp.MQApp {
   
   
   void drawStars() {
-    fill(255);
+    fill(255,255,0);
     noStroke();
     for (int i = 0; i < starXPos.length; i++) {             // cycle through all stars
       circle(starXPos[i], starYPos[i], starSize[i]);        // draw stars at current attributes stored in the star arrays
