@@ -21,7 +21,7 @@ public class Main {
   	}
   	cp = cp + (new File("./src").getPath());
 
-    Globals.setCurrApp("unigame.UniGame");
+    Globals.setCurrApp("mqapp.ApplicationChooser");
     while(Globals.getCurrApp() != ""){
       pb.command("java", "-Xmx1024m", "-Xms1024m", "-cp", cp, Globals.getCurrApp());
       Globals.setCurrApp(Globals.getNextApp());
