@@ -2,7 +2,7 @@ package studentwork;
 
 import processing.core.*;
 import java.util.*;
-
+//hi 
 public class Snake extends mqapp.MQApp {
 
     SnakeItself snake;
@@ -46,7 +46,7 @@ public class Snake extends mqapp.MQApp {
                 score++;
             }
 
-            fill(0, 250, 0); //GREEN APPLES
+            fill(250, 0, 0);
             rect(snake.food.x, snake.food.y, grid, grid);
 
             snake.deathTail();
