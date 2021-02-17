@@ -69,8 +69,8 @@ public boolean warp(){
 
 // Function to draw a blackhole and check collision.
 public void blackHoleAt(float holeX, float holeY){
-  strokeWeight(1);
-  stroke(255);
+  strokeWeight(4);
+  stroke(100, 230, 150);
   fill(0);
   ellipse(holeX,holeY,40,40);
   if (dist(holeX,holeY,playerX,playerY) <= (40/2 + 10) && (!shielded)){ // Also checks if shielded (added feature), if not, then game over.
@@ -152,7 +152,7 @@ public void draw(){
 
    // Pre-Game State. Main Menu.
   if (gameState == 0){
-    background(0);
+    background(150);
     
     textAlign(LEFT);
     strokeWeight(1);
