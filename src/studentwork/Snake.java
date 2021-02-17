@@ -62,7 +62,7 @@ public class Snake extends mqapp.MQApp {
                 textFont(uiFont);
                 text("score", width / 2, 11 * height / 16);
                 text(score, width / 2, 3 * height / 4);
-                text("press space to play again", width/2, 13*height/16);
+                text("To play again press spacebar", width/2, 13*height/16);
                 noLoop();
             }
         }
