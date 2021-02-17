@@ -46,7 +46,7 @@ public class Snake extends mqapp.MQApp {
                 score++;
             }
 
-            fill(250, 0, 0);
+            fill(0, 250, 0); //GREEN APPLES
             rect(snake.food.x, snake.food.y, grid, grid);
 
             snake.deathTail();
