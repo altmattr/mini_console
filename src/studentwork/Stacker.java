@@ -16,7 +16,7 @@ public class Stacker extends mqapp.MQApp {
         return "Arcade money hog";
     }
 
-    double[] xSpeed = new double[6];
+    double[] xSpeed = new double[14];
     double[] xPos = new double[14];
     int[] lives = new int[14];
     boolean movingDown = true;
