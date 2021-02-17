@@ -71,7 +71,7 @@ public class Rocket extends mqapp.MQApp {
   
   
   public void draw() {              // display the game on the screen
-    background(245, 166, 223);
+    background(253, 134, 38);
     startScreen();
     drawStars();
     spawnMeteoroids();
