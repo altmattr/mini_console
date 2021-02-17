@@ -25,7 +25,7 @@ float scaleFactor;
 
 //Shape colours
 int alpha = 150;
-int black = color(0);
+int black = color(255);
 int blue = color(128, 206, 255, alpha);
 int red = color(255, 105, 97, alpha);
 int orange = color(255, 179, 71, alpha);
@@ -127,7 +127,7 @@ public void draw() {
   
   //Do this if game is active/alive
   if (gameRun) {
-    background(0);
+    
     
     //Moves the gamescreen so that the top two rows are hidden off screen
     translate(0, -100);
