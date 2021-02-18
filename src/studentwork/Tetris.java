@@ -149,16 +149,17 @@ public void draw() {
       activeShapeRef = (int)random(1, 8);
       changeCol = false;
     }
-    
+    else{
     //Draw shape
-    for (int i = 0; i < activeShape.length; i++) {
+   /* for (int i = 0; i < activeShape.length; i++) {
       fill(255);
       rect(activeShape[i].x * grid, (activeShape[i].y) * grid, grid, grid, 7);
-    }
+    }*/
     for (int i = 0; i < activeShape.length; i++) {
       fill(shapeColors[activeShapeRef]);
       rect(activeShape[i].x * grid, (activeShape[i].y) * grid, grid, grid, 7);
     }
+}
     assignShape ();
     
     //Game logic
@@ -311,7 +312,7 @@ public boolean rotateCheck() {
 }
 //Switch to call the active shape
 public void assignShape () {
-  fill(shapeColors[activeShapeRef]);
+//  fill(shapeColors[activeShapeRef]);
   switch (activeShapeRef) {
   case 1:
     LSHAPE_B();
