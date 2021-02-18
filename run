@@ -4,7 +4,7 @@ main=${1:-mqapp.Main}
 cd $(dirname $0)
 
 case `uname` in
-MINGW64_NT-10.0-18363)
+MINGW*)
 java -Xmx1024m -Xms1024m -cp ./src/\;lib/core.jar\;lib/sound.jar\;lib/controlp5.jar\;lib/jsyn-20171016.jar\;lib/gluegen-rt-natives-macosx-universal.jar\;lib/jogl-all-natives-macosx-universal.jar $main
 ;;
 *)
