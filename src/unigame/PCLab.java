@@ -14,7 +14,7 @@ class PCLab extends Room {
         new Lambda() {
         public void activate() {
           Globals.textManager.printText(new String[]{
-            "TEACHER: Don’t forget to hand the assignment in when it’s finished"
+            "TEACHER: Don't forget to hand the assignment in when it's finished"
             });
         };
       }
@@ -24,7 +24,7 @@ class PCLab extends Room {
         new PressBehaviour() {
         public void activate(Tile t, UniGame p3) {
           Globals.textManager.printText(new String[]{
-            "KAREN: Stupid program isnt saving… I’ll catch up with you later"
+            "KAREN: Stupid program isnt saving... I'll catch up with you later"
             });
         }
       }
@@ -36,7 +36,7 @@ class PCLab extends Room {
         new Lambda() {
         public void activate() {
           Globals.textManager.printText(new String[]{
-            "DEV: I’m really struggling, I should have asked for help earlier…"
+            "DEV: I'm really struggling, I should have asked for help earlier..."
             });
         };
       }
@@ -138,7 +138,7 @@ class PCLab extends Room {
       public void cutsceneTwoPartFour() {
         Globals.textManager.printText(
           new String[]{
-          "(She dashed off before I had the chance to answer, typical Karen…)", 
+          "(She dashed off before I had the chance to answer, typical Karen...)", 
           "(I am hungry though so I should head that way anyway)"
           }, 
           new Lambda(){
