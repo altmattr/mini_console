@@ -81,9 +81,12 @@ static public void main(String[] passedArgs) {
     }
 
 public void setup() {
-  
+if(displayHeight<800){
+	size(500,displayHeight);
+}  
+else{
   size(500*(displayHeight/800), displayHeight);
-  
+  }
   //Initialize gameboard
   scrheight = height/50;
   isFilled = new int[10][scrheight + 4];
