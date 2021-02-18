@@ -2,7 +2,7 @@ package studentwork;
 
 import processing.core.*;
 import java.util.*;
-//hi 
+
 public class Snake extends mqapp.MQApp {
 
     SnakeItself snake;
