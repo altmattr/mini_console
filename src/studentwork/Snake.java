@@ -36,7 +36,7 @@ public class Snake extends mqapp.MQApp {
         count = count % (60 / (dif + 1));
 
         if (count == 0) {
-            background(40);
+            background(166, 168, 255);
 
             snake.update();
             snake.show();
@@ -46,7 +46,7 @@ public class Snake extends mqapp.MQApp {
                 score++;
             }
 
-            fill(250, 0, 0);
+            fill(180, 66, 255);
             rect(snake.food.x, snake.food.y, grid, grid);
 
             snake.deathTail();
@@ -172,7 +172,7 @@ public class Snake extends mqapp.MQApp {
         }
 
         void show() {
-            fill(255);
+            fill(224, 40, 212);
             for (PVector v : tail) {
                 rect(v.x, v.y, grid, grid);
             }

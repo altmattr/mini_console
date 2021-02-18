@@ -95,8 +95,8 @@ public void cutsceneOnePartZero() {
 
 public void cutsceneOnePartOne() {
   Globals.textManager.printText(
-    new String[]{"TEACHER: Ok everyone don’t forget, assignment 1 is due by 5pm today. I’ll be in this room until then, you can hand it in to me in person or online. It’s a fairly small task but it is important, won’t take long to do.  You can use the feedback from this task to help improve for the next one. Any questions?", 
-    "KAREN: What!? This is due today!!! Oh no I haven’t started yet…"}, 
+    new String[]{"TEACHER: Listen up everyone don't forget, assignment 1 is due by 5pm today. I'll be in this room until then, you can hand it in to me in person or online. It's a fairly small task but it is important, won't take long to do.  You can use the feedback from this task to help improve for the next one. Any questions?", 
+    "KAREN: What!? This is due today!!! Oh no I haven't started yet..."}, 
     new Lambda(){
       public void activate(){
         cutsceneOnePartTwo();
@@ -125,10 +125,10 @@ public void cutsceneOnePartThree() {
   Globals.textManager.printText(
     new String[]{
     "KAREN: Hm can I get an extension?", 
-    "TEACHER: After that remark, no. It should not take long at all if you watched the lectures - it’s very doable in the time remaining", 
-    "KAREN: …", 
+    "TEACHER: After that remark, no. It should not take long at all if you watched the lectures - it's very doable in the time remaining", 
+    "KAREN: ...", 
     "lectures?", 
-    "TEACHER: …"
+    "TEACHER: ..."
     }, 
     new Lambda(){
       public void activate(){
@@ -151,8 +151,8 @@ public void cutsceneOnePartFour() {
 public void cutsceneOnePartFive() {
   Globals.textManager.printText(
     new String[]{
-    "DEV: I don’t think I can get all the marks but I’ll do my best. This is a tough assessment…", 
-    "TEACHER: That’s the spirit. Class is over, I look forward to seeing your answers."
+    "DEV: I don't think I can get all the marks but I'll do my best. This is a tough assessment...", 
+    "TEACHER: That's the spirit. Class is over, I look forward to seeing your answers."
     }, 
     new Lambda(){
       public void activate(){
@@ -186,7 +186,7 @@ public void cutsceneOnePartSeven() {
 
 public void cutsceneOnePartEight() {
   Globals.textManager.printText(new String[]{
-    "(I haven’t started the assignment either, I better go do that now.)"
+    "(I haven't started the assignment either, I better go do that now.)"
     });
 }
 

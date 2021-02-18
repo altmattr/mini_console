@@ -61,7 +61,7 @@ boolean gameRun = false;
 boolean superSpeed = true;
 boolean youDied = true;
 boolean changeCol = false;
-
+boolean allowedToMove=true;
 //Gameboard
 int[][] isFilled; // [x][y] [cols][rows]
 
@@ -84,9 +84,12 @@ static public void main(String[] passedArgs) {
     }
 
 public void setup() {
-  
+if(displayHeight<800){
+	size(500,displayHeight);
+}  
+else{
   size(500*(displayHeight/800), displayHeight);
-  
+  }
   //Initialize gameboard
   scrheight = height/50;
   isFilled = new int[10][scrheight + 4];
@@ -130,7 +133,7 @@ public void draw() {
   
   //Do this if game is active/alive
   if (gameRun) {
-    background(0);
+    
     
     //Moves the gamescreen so that the top two rows are hidden off screen
     translate(0, -100);
@@ -149,16 +152,17 @@ public void draw() {
       activeShapeRef = (int)random(1, 8);
       changeCol = false;
     }
-    
+    else{
     //Draw shape
-    for (int i = 0; i < activeShape.length; i++) {
+   /* for (int i = 0; i < activeShape.length; i++) {
       fill(255);
       rect(activeShape[i].x * grid, (activeShape[i].y) * grid, grid, grid, 7);
-    }
+    }*/
     for (int i = 0; i < activeShape.length; i++) {
       fill(shapeColors[activeShapeRef]);
       rect(activeShape[i].x * grid, (activeShape[i].y) * grid, grid, grid, 7);
     }
+}
     assignShape ();
     
     //Game logic
@@ -316,7 +320,7 @@ public boolean rotateCheck() {
 }
 //Switch to call the active shape
 public void assignShape () {
-  fill(shapeColors[activeShapeRef]);
+//  fill(shapeColors[activeShapeRef]);
   switch (activeShapeRef) {
   case 1:
     LSHAPE_B();
@@ -341,6 +345,7 @@ public void assignShape () {
     break;
   default:
   }
+allowedToMove=true;
 }
 
 //Positions of the four tiles of each shape
@@ -567,6 +572,7 @@ public void gameOver() {
 }
 
 public void startScreen() {
+allowedToMove=true;
   translate(0, 0);
   background(20);
   fill(0);
@@ -591,6 +597,7 @@ public void startScreen() {
 
 public void restart() {
   //Re-initialising variables
+allowedToMove=true;
   youDied = false;
   activeShapeRef = 1;
   currentDirection = 0;
@@ -619,6 +626,8 @@ public void keyPressed() {
   //Checking if there is a shape or screen edge to the sides
   boolean shapeToLeft = false;
   boolean shapeToRight = false;
+if(allowedToMove){
+allowedToMove=false;
   for (int i = 0; i < activeShape.length; i++) {
     try {
       if (isFilled[(int)(activeShape[i].x - 1)][(int)activeShape[i].y] != shapeColors[0])
@@ -655,18 +664,22 @@ public void keyPressed() {
     currentDirection %= 4;
   }
   if ((keyCode == 'c' || keyCode == 'C') && !youDied) {
-    activeShapeRef = 7;
+allowedToMove=true;   
+ activeShapeRef = 7;
   }
   if (youDied && keyCode==' ') {
-    gameRun = true;
+allowedToMove=true;   
+ gameRun = true;
     restart();
     loop();
   }
   if (youDied && (keyCode == RETURN || keyCode == ENTER)) {
-    gameRun = false;
+allowedToMove=true;   
+ gameRun = false;
     startScreen();
     loop();
   }
+}
 }
 
 //Soft Drop
