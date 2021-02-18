@@ -52,7 +52,10 @@ int volume = 10;
 int difficulty = 1;
 int boomCount;
 int grid = 50;
-int speed = 60;
+long lastMoveTime=0;
+int LONG_DELAY=1000;
+int FAST_DELAY=200;
+int dropDelay=1000;
 
 boolean gameRun = false;
 boolean superSpeed = true;
@@ -242,7 +245,10 @@ public void displayScore() {
   text("Score: " + score, width/50, 140);
 }
 public void moveShape() {
-  if (frameCount % speed == 0 && !youDied) {
+  long time=millis();
+  long dt=time-lastMoveTime;
+
+  if (dt >= dropDelay && !youDied) {
     //If the piece isn't colliding with anything
     if (!isCollision()) {
       //Move piece down one tile
@@ -260,10 +266,12 @@ public void moveShape() {
         //Soft drop logic to stop soft drop upon collision
         if (keyPressed && (key == 's' || key == 'S' || keyCode == DOWN)) {
           superSpeed = false;
-          speed = (int)60/difficulty;
+          dropDelay = LONG_DELAY/difficulty;
         }
       }
     }
+
+    lastMoveTime=time;
   }
 }
 
@@ -678,9 +686,9 @@ allowedToMove=true;
 public void softDrop() {
   if (superSpeed == true) {
     if (keyPressed && (key == 's' || key == 'S' || keyCode == DOWN)) {
-      speed = (int)5/difficulty;
+      dropDelay = FAST_DELAY/difficulty;
     } else {
-      speed = (int)60/difficulty;
+      dropDelay = LONG_DELAY/difficulty;
     }
   }
 }
