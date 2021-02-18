@@ -82,7 +82,7 @@ public PImage upscale(PImage img) {
 
 public void cutsceneOnePartZero() {
   Globals.textManager.printText(
-    new String[]{"Controls:                        Z:Click  X: Kills game"}, 
+    new String[]{"Controls:                        P: Kills game   Z:Click "}, 
     new Lambda(){
       public void activate(){
         cutsceneOnePartOne();
