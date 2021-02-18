@@ -158,7 +158,7 @@ public void draw(){
     strokeWeight(1);
     fill(255);
     textSize(15);
-    text("Amount of Stars: " + starCount,90,100);
+    text("Amount of Moons: " + starCount,90,100);
     starCount = toggleIntButton(255,85,10,starCount,1,0,200);
     
     fill(255);
