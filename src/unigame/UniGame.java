@@ -197,4 +197,32 @@ public void cutsceneOnePartEight() {
 
 
 
+public void cutsceneOnePartEight() {
+  Globals.textManager.printText(
+    new String[]{
+    "(I haven’t started the assignment either, I better go do that now.)"
+    }, 
+    new Lambda(){
+      public void activate(){
+        cutsceneOnePartNine();
+}
+});
+}
+
+
+
+
+public void cutsceneOnePartNine() {
+  Globals.textManager.printText(new String[]{
+    "W:Up   A:Left   D:Right  S:Down"
+    });
+}
+
+
+
+
+
+
+
+
 }
