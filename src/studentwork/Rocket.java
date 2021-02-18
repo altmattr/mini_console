@@ -71,7 +71,7 @@ public class Rocket extends mqapp.MQApp {
   
   
   public void draw() {              // display the game on the screen
-    background(245, 166, 223);
+    background(9, 166, 223);
     startScreen();
     drawStars();
     spawnMeteoroids();
@@ -283,7 +283,7 @@ public class Rocket extends mqapp.MQApp {
     // health gauge
     for (int i = 0; i < rocketHealth; i += 30) {      // display a bar for each lot of 30 health, increase the x pos of the next health bar by the same width
       if (immunity) {                      // display bars in blue if shield is active
-        fill(0, 200, 200);
+        fill(0, 255, 200);
         stroke(0, 50, 100);
       } else if (rocketHealth <= 30) {     // display the last bar of health in red
         fill(200, 0, 0);
