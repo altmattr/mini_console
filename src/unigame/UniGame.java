@@ -42,7 +42,7 @@ public void setup(){
   Globals.world = new OverworldManager(this);
 
   //When the game is done setting up, we start the opening cutscene
-  cutsceneOnePartOne();
+  cutsceneOnePartZero();
 }
 
 
@@ -80,6 +80,18 @@ public PImage upscale(PImage img) {
 
 
 
+public void cutsceneOnePartZero() {
+  Globals.textManager.printText(
+    new String[]{"Controls:                        Z:Click  X: Kills game"}, 
+    new Lambda(){
+      public void activate(){
+        cutsceneOnePartOne();
+}
+}
+);
+}
+
+
 public void cutsceneOnePartOne() {
   Globals.textManager.printText(
     new String[]{"TEACHER: Ok everyone don’t forget, assignment 1 is due by 5pm today. I’ll be in this room until then, you can hand it in to me in person or online. It’s a fairly small task but it is important, won’t take long to do.  You can use the feedback from this task to help improve for the next one. Any questions?", 
@@ -91,6 +103,9 @@ public void cutsceneOnePartOne() {
 }
 );
 }
+
+
+
 
 public void cutsceneOnePartTwo() {
   //Karen faces up
@@ -167,12 +182,28 @@ public void cutsceneOnePartSeven() {
   );
 }
 
+
+
 public void cutsceneOnePartEight() {
-  Globals.textManager.printText(new String[]{
+  Globals.textManager.printText(
+    new String[]{
     "(I haven’t started the assignment either, I better go do that now.)"
-    });
+    }, 
+    new Lambda(){
+      public void activate(){
+        cutsceneOnePartNine();
+}
+});
 }
 
+
+
+
+public void cutsceneOnePartNine() {
+  Globals.textManager.printText(new String[]{
+    "W:Up   A:Left   D:Right  S:Down"
+    });
+}
 
 
 
