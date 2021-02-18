@@ -31,7 +31,7 @@ class KeyPressManager {
     keyToButton.put(87, Button.UP); 
     keyToButton.put(83, Button.DOWN);
     keyToButton.put(90, Button.A);
-    keyToButton.put(88, Button.B); 
+    keyToButton.put(80, Button.B); 
     keyToButton.put(10, Button.START);
     
     for(Map.Entry<Integer,Button> e : keyToButton.entrySet()){
