@@ -70,15 +70,15 @@ class UBar extends Room {
       new Lambda() {
       public void activate() {
         Globals.textManager.printText(new String[]{
-          "PATRON: I’m coming back next week for the comedy night"
+          "PATRON: I'm coming back next week for the comedy night"
           });
       };
     }
     ), true, p3);
     
     Tile npc1 = new Sign(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc3_up.png"),"(They're enjoying their burger.)", p3);
-    Tile npc2 = new Sign(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc2_down.png"),"PATRON: Let’s have a game after the exam!", p3);
-    Tile npc3 = new Sign(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc4_left.png"),"(They’re chatting about pool strategies)", p3);
+    Tile npc2 = new Sign(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc2_down.png"),"PATRON: Let's have a game after the exam!", p3);
+    Tile npc3 = new Sign(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc4_left.png"),"(They're chatting about pool strategies)", p3);
     
     Tile npc4 = new Tile(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc3_up.png"), false, 
       new TurnToFace(
@@ -110,7 +110,7 @@ class UBar extends Room {
       new Lambda() {
       public void activate() {
         Globals.textManager.printText(new String[]{
-          "MACS MEMBER: ‘MACS’ stands for the Macquarie Association of Computing Students"
+          "MACS MEMBER: 'MACS' stands for the Macquarie Association of Computing Students"
           });
       };
     }
@@ -205,7 +205,7 @@ class UBar extends Room {
     , new Lambda() {
       public void activate() {
         Globals.textManager.printText(new String[]{
-          "KAREN: Looks like theres some kind of society meetup, but the sooner we get food, the sooner we can get on to doing my assignment- uh I mean working together. I’ll mind the seats, go get us some pizza."
+          "KAREN: Looks like theres some kind of society meetup, but the sooner we get food, the sooner we can get on to doing my assignment- uh I mean working together. I'll mind the seats, go get us some pizza."
           });
       }
     }
@@ -216,7 +216,7 @@ class UBar extends Room {
       new String[]{
       "PATRON: Soooo many options. How will I ever decide?", 
       "(The bartender looks annoyed with the disorderly ubar patron holding up the queue)", 
-      "PATRON: I’ll get back to the meetup when I’ve made up my mind, don’t rush me."}, 
+      "PATRON: I'll get back to the meetup when I've made up my mind, don't rush me."}, 
   
       new Lambda(){
         public void activate(){
@@ -252,7 +252,7 @@ class UBar extends Room {
     if (Globals.battleManager.playerUnit.currentHP == 0) {
       Globals.textManager.printText(
         new String[]{
-        "PATRON: That was fun, I’ll think about what I want for a bit and come back"}, 
+        "PATRON: That was fun, I'll think about what I want for a bit and come back"}, 
         new Lambda(){
           public void activate(){
             cutscenePatronBattleFour();
@@ -262,7 +262,7 @@ class UBar extends Room {
   }  else {
     Globals.textManager.printText(
       new String[]{
-      "PATRON: Fine, I’ll come back when I figure out what I want"}, 
+      "PATRON: Fine, I'll come back when I figure out what I want"}, 
       new Lambda(){
         public void activate(){
           cutscenePatronBattleFour();
@@ -281,7 +281,7 @@ class UBar extends Room {
           new Lambda() {
           public void activate() {
             Globals.textManager.printText(new String[]{
-              "PATRON: Maybe I should get the vegetarian pizza… but the margarita looks so good…"
+              "PATRON: Maybe I should get the vegetarian pizza... but the margarita looks so good..."
               });
           };
         }
@@ -313,17 +313,17 @@ class UBar extends Room {
   
   public void cutscenePatronBattleFive() {
     Globals.textManager.printText(new String[]{
-      "BARTENDER: Thanks for helping move her along, here’s your food", 
+      "BARTENDER: Thanks for helping move her along, here's your food", 
       "(I should head back to Karen)"
       });
   }
 
   public void cutsceneFourPartOne() {
     Globals.textManager.printText(new String[]{
-      "KAREN: Nice work, let’s eat!", 
+      "KAREN: Nice work, let's eat!", 
       "Mmmhmm delicious.", 
       "…", 
-      "Okay, let’s go somewhere more quiet, I’ll meet you at the library - don’t keep me waiting again."
+      "Okay, let's go somewhere more quiet, I'll meet you at the library - don't keep me waiting again."
       }, new Lambda(){
         public void activate(){
           cutsceneFourPartTwo();

@@ -3,4 +3,12 @@
 main=${1:-Main.java}
 cd $(dirname $0)
 find ./ -name "*.java" > sources.txt
+
+case `uname` in
+MINGW64_NT-10.0-18363)
 javac -cp lib/core.jar\;lib/sound.jar\;lib/controlP5.jar\;lib/jsyn-20171016.jar\;lib/gluegen-rt-natives-macosx-universal.jar\;lib/jogl-all-natives-macosx-universal.jar @sources.txt
+;;
+ *)
+javac -cp lib/core.jar:lib/sound.jar:lib/controlP5.jar:lib/jsyn-20171016.jar:lib/gluegen-rt-natives-macosx-universal.jar:lib/jogl-all-natives-macosx-universal.jar @sources.txt
+;;
+esac
