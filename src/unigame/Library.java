@@ -77,8 +77,8 @@ class Library extends Room {
       
       Tile npc0 = new Sign(p3.loadImage(Globals.assetspath+"Characters/SchoolKids/schoolkid3_right.png"),"(They look too invested in their study to talk to you)", p3);
       Tile npc1 = new Sign(p3.loadImage(Globals.assetspath+"Characters/SchoolKids/schoolkid3_right.png"),"(They look too invested in their study to talk to you)", p3);
-      Tile npc2 = new Sign(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc1_left.png"),"(They’re looking at colourful statistical diagrams.)", p3);
-      Tile npc3 = new Sign(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc2_right.png"),"(They’re taking a buzzfeed quiz, \"What kind of procrastination am I?\")", p3);
+      Tile npc2 = new Sign(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc1_left.png"),"(They're looking at colourful statistical diagrams.)", p3);
+      Tile npc3 = new Sign(p3.loadImage(Globals.assetspath+"Characters/NPCs/npc2_right.png"),"(They're taking a buzzfeed quiz, \"What kind of procrastination am I?\")", p3);
       
       Tile clrs = new Sign(new String[]{"You browse the bookshelf and find a book that looks interesting.", "Introduction to Algorithms by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein", "...", "Let's put this back."}, p3);
       
@@ -136,7 +136,7 @@ class Library extends Room {
         if (Globals.battleManager.playerUnit.currentHP == 0) {
           Globals.textManager.printText(
             new String[]{
-            "HIGHSCHOOLER: Heh, we’re heading off anyway"}, 
+            "HIGHSCHOOLER: Heh, we're heading off anyway"}, 
             new Lambda(){
               public void activate(){
                 cutsceneSchoolBattleFour();
@@ -224,8 +224,8 @@ class Library extends Room {
       public void cutsceneSchoolBattleNine() {
         Globals.textManager.printText(new String[]{
           "...", 
-          "KAREN: Hey, I was busy with my friends so of course I didn’t have time to start it before today.", 
-          "Argh! Just work on your own then I’ll figure something out."
+          "KAREN: Hey, I was busy with my friends so of course I didn't have time to start it before today.", 
+          "Argh! Just work on your own then I'll figure something out."
           }, new Lambda(){
             public void activate(){
               cutsceneSchoolBattleTen();
@@ -247,7 +247,7 @@ class Library extends Room {
       
       public void cutsceneSchoolBattleEleven() {
         Globals.textManager.printText(new String[]{
-          "(As you type up your answers you can’t help but get the feeling that Karen isn’t really looking at her own screen)" 
+          "(As you type up your answers you can't help but get the feeling that Karen isn’t really looking at her own screen)" 
           }, new Lambda(){
             public void activate(){
               cutsceneSchoolBattleTwelve();
@@ -270,7 +270,7 @@ class Library extends Room {
       
       public void cutsceneSchoolBattleThirteen() {
         Globals.textManager.printText(new String[]{
-          "KAREN: Aha! We finished at the same time - Yay! I’m going to go hand this in right now.", 
+          "KAREN: Aha! We finished at the same time - Yay! I'm going to go hand this in right now.", 
           "Yeah sorry I can’t stick around, gotta run!"
           }, new Lambda(){
             public void activate(){
@@ -331,8 +331,8 @@ class Library extends Room {
       
       public void cutsceneTeacherBattleThree() {
         Globals.textManager.printText(new String[]{
-          "DEV: I’m finally done, I couldn’t do every task but I’m proud of myself for powering through.", 
-          "TEACHER: Well done! I’ll have your feedback uploaded by the end of the week which will help you find which areas need more work.", 
+          "DEV: I'm finally done, I couldn't do every task but I’m proud of myself for powering through.", 
+          "TEACHER: Well done! I'll have your feedback uploaded by the end of the week which will help you find which areas need more work.", 
           "DEV: Cheers, see you next week."
           }, new Lambda(){
             public void activate(){
@@ -357,7 +357,7 @@ class Library extends Room {
       
       public void cutsceneTeacherBattleFive() {
         Globals.textManager.printText(new String[]{
-          "TEACHER: Hm, okay "+Globals.player.name+", let’s put this in the system.", 
+          "TEACHER: Hm, okay "+Globals.player.name+", let's put this in the system.", 
           "...", 
           "TEACHER: Oh dear... 90% plagiarism.", 
           "…"+Globals.player.name+" this is not good, not only will you not receive any marks but you also will need to be reported to the disciplinary committee. Please explain yourself"
@@ -381,7 +381,7 @@ class Library extends Room {
       
       public void cutsceneTeacherBattleSeven() {
         Globals.textManager.printText(new String[]{
-          "TEACHER: Okay, I see… So Karen said she would work on her own, but then used your work without acknowledgement. And now it seems you are just as surprised as me. Your honesty is appreciated. I can’t give you any marks - you need to learn to be more careful in the future. But, I won’t need to report you to the higher ups . The point of this small assignment was so that I could give you feedback that will help in the next assessment. That feedback will still be valuable to you as you did the work but Karen wont have the benefit of that. I’ll see you in class next week." 
+          "TEACHER: Okay, I see… So Karen said she would work on her own, but then used your work without acknowledgement. And now it seems you are just as surprised as me. Your honesty is appreciated. I can't give you any marks - you need to learn to be more careful in the future. But, I won't need to report you to the higher ups . The point of this small assignment was so that I could give you feedback that will help in the next assessment. That feedback will still be valuable to you as you did the work but Karen wont have the benefit of that. I'll see you in class next week." 
           }, new Lambda(){
             public void activate(){
               cutsceneTeacherBattleEight();
@@ -405,7 +405,7 @@ class Library extends Room {
       
       public void cutsceneFivePartOne() {
         Globals.textManager.printText(new String[]{
-          "KAREN: Hey "+Globals.player.name+" I can’t find a seat anywhere! Looks like high school students are coming here to hang out with their friends. That table at the back would be perfect, go ask if we can have it."
+          "KAREN: Hey "+Globals.player.name+" I can't find a seat anywhere! Looks like high school students are coming here to hang out with their friends. That table at the back would be perfect, go ask if we can have it."
           }, new Lambda(){
             public void activate(){
               Globals.world.library.tiles[7][8] = null;

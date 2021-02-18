@@ -9,3 +9,6 @@ logs/*
 
 # vim swap
 *.swp
+
+# compile artiface
+sources.txt
