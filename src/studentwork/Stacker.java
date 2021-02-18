@@ -56,7 +56,7 @@ public class Stacker extends mqapp.MQApp {
 
     public void draw() {
 
-        background(0, 0, 20);
+        background(67, 205, 153);
         score = 0;
         for (int i = 1; i < lvl; i++) {
             int sc = constrain(lives[i], 0, 4);
