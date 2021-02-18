@@ -25,7 +25,7 @@ float scaleFactor;
 
 //Shape colours
 int alpha = 150;
-int black = color(255);
+int black = color(0);
 int blue = color(128, 206, 255, alpha);
 int red = color(255, 105, 97, alpha);
 int orange = color(255, 179, 71, alpha);
