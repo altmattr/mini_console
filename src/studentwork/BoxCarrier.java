@@ -4,21 +4,20 @@ package studentwork;
 
 public class BoxCarrier extends mqapp.MQApp {
 
-    float pX = 175;
-    float pY = 120;
-    float s = 4;
-    boolean pRight = true;
+    float personX = 175; 
+    float personY = 120;
+    float speed = random (1, 6);
+    boolean personRight = true; // therefore personLeft = false personRight
     boolean stopped = true;
     int counter = 0;
     float bounce = 0;
     float boxX = 430;
     float boxY = 140;
-    boolean boxHeld = false;
-    float goal = random(150, 350);
+    boolean boxHeld = false; // this = boxDropped 
+    float goal = random(100, 400);
     boolean gameWon = false;
     float dist;
     float endS;
-
     float scaleX;
     float scaleY;
 
@@ -31,7 +30,7 @@ public class BoxCarrier extends mqapp.MQApp {
         size(displayWidth, displayHeight);
         scaleX = displayWidth/500;
         scaleY = displayHeight/200;
-        background(110);
+        background(0, 122, 204);
         rectMode(CENTER);
         //frameRate(24); TODO: how to control the frame rate
     }
@@ -39,57 +38,52 @@ public class BoxCarrier extends mqapp.MQApp {
     public void draw() {
         scale(min(scaleX, scaleY));
         counter ++;
-        background(110);
-        fill(0);
+        background(0, 122, 204);
+        fill(100, 200, 150);
+        noStroke(); 
         rect(width/2, 180, 500, 63);
         if (gameWon) {
             if (counter < 60){
-                background(255, 0, 0);
+                background(255, 100, 0);
                 fill(0);
                 rect(width/2, 180, 500, 63);
             } else {
-                pX = 101;
-                pRight = true;
+                personX = 101;
+                personRight = true;
                 gameWon = false;
                 boxY = 140;
                 boxX = random(70,430);
                 goal = random(150, 350);
             }
-
-
-            drawP();
-
+            drawPerson();
         } else {
             if (stopped) {
-                s = 0;
+                speed = 0;
             } else {
-                s = 4;
+                speed = random (1, 6);
             }
-            if (pX <= width-100 || pX >= 100) {
-                if (pRight) {
-                    pX += s;
+            if (personX <= width-100 || personX >= 100) {
+                if (personRight) {
+                    personX += speed;
                 } else {
-                    pX -= s;
+                    personX -= speed;
                 }
             } else {
-                s = 0;
+                speed = 0;
                 stopped = true;
             }
-
-
-            if (pX >= width-100 || pX <= 100) {
+            if (personX >= width-100 || personX <= 100) {
                 stopped = true;
             }
             if (boxHeld) {
-                fill(0,255,219);
+                fill(30,170,200);
                 noStroke();
-                rect(goal, 150, 50, 5);
+                rect(goal, 150, 70, 10);
                 stroke(0);
             }
-
-            drawP();
+            drawPerson();
             if (boxHeld == false) {
-                fill(103, 72, 47);
+                fill(50, 180, 130);
                 noStroke();
                 rect(boxX, boxY, 30, 30);
                 stroke(0);
@@ -97,7 +91,7 @@ public class BoxCarrier extends mqapp.MQApp {
         }
     }
 
-    public void drawP() {
+    public void drawPerson() {
         if (stopped == false) {
             bounce = 0;
         } else {
@@ -110,64 +104,62 @@ public class BoxCarrier extends mqapp.MQApp {
             }
         }
         fill(0);
-        rect(pX, pY + bounce, 30, 45);
-        rect(pX, pY - 15 + bounce, 40, 30);
-        rect(pX - 9, pY + 20, 5, 15);
-        rect(pX + 9, pY + 20, 5, 15);
+        rect(personX, personY + bounce, 30, 45);
+        rect(personX, personY - 15 + bounce, 40, 30);
+        rect(personX - 9, personY + 20, 5, 15);
+        rect(personX + 9, personY + 20, 5, 15);
         fill(140);
-        if (pRight) {
-            rect(pX + 10, pY - 15  + bounce, 10, 5);
+        if (personRight) {
+            rect(personX + 10, personY - 15  + bounce, 10, 5);
         } else {
-            rect(pX - 10, pY - 15 + bounce, 10, 5);
+            rect(personX - 10, personY - 15 + bounce, 10, 5);
         }
         if (boxHeld) {
             fill(103, 72, 47);
             noStroke();
-            if (pRight) {
-                rect(pX + 30, pY + bounce, 30, 30);
+            if (personRight) {
+                rect(personX + 30, personY + bounce, 30, 30);
             } else {
-                rect(pX -30, pY + bounce, 30, 30);
+                rect(personX -30, personY + bounce, 30, 30);
             }
             stroke(0);
         }
     }
 
-    public void keyTyped() {
-        if (key == 'a') {
-            if (pX >= 100) {
-                pRight = false;
+    public void keyPressed() {
+        if (key == 'a' || keyCode == LEFT) {
+            if (personX >= 100) {
+                personRight = false;
                 stopped = false;
             }
         }
-
-
-        if (key == 'd') {
-            if (pX <= width-100) {
-                pRight = true;
+        if (key == 'd' || keyCode == RIGHT) {
+            if (personX <= displayWidth-100) {
+                personRight = true;
                 stopped = false;
             }
         }
-        if (key == 's') {
+        if (key == 's' || keyCode == DOWN) {
             stopped = true;
             if (boxHeld == true) {
                 boxHeld = false;
                 boxY = 140;
-                if (pRight) {
-                    boxX = pX + 25;
+                if (personRight) {
+                    boxX = personX + 25;
                 } else {
-                    boxX = pX - 25;
+                    boxX = personX - 25;
                 }
                 if (boxX >= goal - 25 && boxX <= goal + 25) {
                     gameWon = true;
                     boxX = -100;
                     boxY = -100;
                     counter = 0;
-                    dist = goal - 80;
+                    dist = goal - 100;
                 }
             }
         }
-        if (key == 'w') {
-            if (boxHeld == false && pX >= boxX - 30 && pX <= boxX + 30) {
+        if (key == 'w' || keyCode == UP) {
+            if (boxHeld == false && personX >= boxX - 30 && personX <= boxX + 30) {
                 boxHeld = true;
                 stopped = true;
             }
