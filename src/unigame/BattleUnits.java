@@ -36,6 +36,14 @@ class BattleUnits{
     hungryIbis = new BattleUnit("Hungry Ibis", p3.loadImage(Globals.assetspath+"Characters/Battle/ibis_battle.png"), 
     Globals.attacks.wingWave, Globals.attacks.screechingSquawk, Globals.attacks.rummage, Globals.attacks.snackSteal, 
     100, 100, 0, 0, p3);
+  
+    angryTurkey = new BattleUnit("Angry Turkey", p3.loadImage(Globals.assetspath+"Characters/Battle/turkey_battle.png"), 
+    Globals.attacks.wingWave, Globals.attacks.screechingSquawk, Globals.attacks.rummage, Globals.attacks.snackSteal, 
+    100, 100, 0, 0, p3);
+
+    cockyCockatoo = new BattleUnit("Cocky Cockatoo", p3.loadImage(Globals.assetspath+"Characters/Battle/cockatoo_battle.png"), 
+    Globals.attacks.wingWave, Globals.attacks.screechingSquawk, Globals.attacks.rummage, Globals.attacks.snackSteal, 
+    100, 100, 0, 0, p3);
 
     hatIbis = new BattleUnit("Howdy Ibis", p3.loadImage(Globals.assetspath+"Characters/Battle/ibis_hat_battle.png"), 
     Globals.attacks.wingWave, Globals.attacks.screechingSquawk, Globals.attacks.hatTip, Globals.attacks.snackSteal, 

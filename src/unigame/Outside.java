@@ -11,10 +11,28 @@ class Outside extends Room {
     Tile overlay = new Tile(p3.loadImage(path+"Overlay.png"), true, false, p3);
   
     Tile ibis = new Tile(p3.loadImage(Globals.assetspath+"Characters/Ibis/ibis_left.png"), true, false, p3);
-
+    
     Tile ibisBattle = new Tile(new LandBehaviour() {
       public void activate(Tile t, UniGame p3) {
         cutsceneIbisBattleOne();
+      }
+    }
+    );
+
+    Tile bushTurkey = new Tile(p3.loadImage(Globals.assetspath+"Characters/BushTurkey/bushTurkey.png"),true,false,p3);
+
+    Tile turkeyBattle = new Tile(new LandBehaviour() {
+      public void activate(Tile t, UniGame p3) {
+        cutsceneTurkeyBattleOne();
+      }
+    }
+    );
+
+    Tile Cockatoo = new Tile(p3.loadImage(Globals.assetspath+"Characters/Cockatoo/Cockatoo.png"),true,false,p3);
+
+    Tile cockatooBattle = new Tile(new LandBehaviour() {
+      public void activate(Tile t, UniGame p3) {
+        cutsceneCockatooBattleOne();
       }
     }
     );
@@ -115,6 +133,20 @@ class Outside extends Room {
     tiles[13][9] = ibisBattle;
     tiles[14][8] = ibisBattle;
     tiles[14][9] = ibisBattle;
+
+    tiles[8][12] = bushTurkey;
+    tiles[7][12] = turkeyBattle;
+    tiles[8][11] = turkeyBattle;
+    tiles[8][13] = turkeyBattle;
+    tiles[9][12] = turkeyBattle;
+    tiles[9][13] = turkeyBattle;
+
+    tiles[5][7] = Cockatoo;
+    tiles[4][7] = cockatooBattle;
+    tiles[5][6] = cockatooBattle;
+    tiles[5][8] = cockatooBattle;
+    tiles[6][7] = cockatooBattle;
+    tiles[6][8] = cockatooBattle;
 
     tiles[4][8] = ibisHat;
     tiles[3][8] = ibisHatBattle;
@@ -284,4 +316,157 @@ class Outside extends Room {
       });
   }
   
+}
+
+//----------BUSH TURKEY CUT SCENES----------
+public void cutsceneTurkeyBattleOne() {
+    Globals.textManager.printText(
+      new String[]{
+      "TURKEY: cAWWW!", 
+      "(He looks very angry)"}, 
+      new Lambda(){
+        public void activate(){
+          cutsceneTurkeyBattleTwo();
+  }
+  });
+  }
+  
+  public void cutsceneTurkeyBattleTwo() {
+    Globals.battleManager.battle(Globals.battleUnits.playerBattleUnit, Globals.battleUnits.angryTurkey, 
+      new Lambda() {
+      public void activate() {
+        cutsceneTurkeyBattleThree();
+      }
+    }
+    );
+  }
+  
+  public void cutsceneTurkeyBattleThree() {
+    //if player lost
+    if (Globals.battleManager.playerUnit.currentHP == 0) {
+      Globals.textManager.printText(
+        new String[]{
+        "TURKEY: cacAWWWW, cacaAWWW", 
+        "(It seems alright with itself..)"}, 
+        new Lambda(){
+          public void activate(){
+            cutsceneTurkeyBattleFour();
+    }
+  }
+  );
+  }         else {
+    Globals.textManager.printText(
+      new String[]{
+      "TURKEY: cacawww", 
+      "(It seems annoyed..)"}, 
+      new Lambda(){
+        public void activate(){
+          cutsceneTurkeyBattleFour();
+  }
+  });
+  }
+  }
+
+  public void cutsceneTurkeyBattleFour() {
+    Globals.fadeManager.fade(new Lambda() {
+      public void activate() {
+        Globals.world.outside.tiles[8][12] = null;
+        Globals.world.outside.tiles[7][12] = null;
+        Globals.world.outside.tiles[8][11] = null;
+        Globals.world.outside.tiles[8][13] = null;
+        Globals.world.outside.tiles[9][12] = null;
+        Globals.world.outside.tiles[9][13] = null;
+      }
+    }
+    , 
+      new Lambda() {
+      public void activate() {
+        cutsceneTurkeyBattleFive();
+      }
+    }
+    );
+  }
+  
+  
+  public void cutsceneTurkeyBattleFive() {
+    Globals.textManager.printText(new String[]{
+      "(The turkey ran off)" 
+      });
+  }
+
+//----------------------COCKATOO CUT SCENES------------------
+  public void cutsceneCockatooBattleOne() {
+    Globals.textManager.printText(
+      new String[]{
+      "COCKATOO: ?", 
+      "(He looks very cocky)"}, 
+      new Lambda(){
+        public void activate(){
+          cutsceneCockatooBattleTwo();
+  }
+  });
+  }
+  
+  public void cutsceneCockatooBattleTwo() {
+    Globals.battleManager.battle(Globals.battleUnits.playerBattleUnit, Globals.battleUnits.cockyCockatoo, 
+      new Lambda() {
+      public void activate() {
+        cutsceneCockatooBattleThree();
+      }
+    }
+    );
+  }
+  
+  public void cutsceneCockatooBattleThree() {
+    //if player lost
+    if (Globals.battleManager.playerUnit.currentHP == 0) {
+      Globals.textManager.printText(
+        new String[]{
+        "COCKATOO: screeeech", 
+        "(It seems confused with itself..)"}, 
+        new Lambda(){
+          public void activate(){
+            cutsceneCockatooBattleFour();
+    }
+  }
+  );
+  }         else {
+    Globals.textManager.printText(
+      new String[]{
+      "COCKATOO: Hello?", 
+      "(Did it just talk to me?)"}, 
+      new Lambda(){
+        public void activate(){
+          cutsceneCockatooBattleFour();
+  }
+  });
+  }
+  }
+  
+  public void cutsceneCockatooBattleFour() {
+    Globals.fadeManager.fade(new Lambda() {
+      public void activate() {
+        Globals.world.outside.tiles[5][7] = null;
+        Globals.world.outside.tiles[4][7] = null;
+        Globals.world.outside.tiles[5][6] = null;
+        Globals.world.outside.tiles[5][8] = null;
+        Globals.world.outside.tiles[6][7] = null;
+        Globals.world.outside.tiles[6][8] = null;
+      }
+    }
+    , 
+      new Lambda() {
+      public void activate() {
+        cutsceneCockatooBattleFive();
+      }
+    }
+    );
+  }
+  
+  
+  public void cutsceneCockatooBattleFive() {
+    Globals.textManager.printText(new String[]{
+      "(The cockatoo ran off)" 
+      });
+  }
 }
