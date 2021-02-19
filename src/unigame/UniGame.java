@@ -195,9 +195,6 @@ public void cutsceneOnePartEight() {
 });
 }
 
-
-
-
 public void cutsceneOnePartNine() {
   Globals.textManager.printText(new String[]{
     "W:Up   A:Left   D:Right  S:Down"

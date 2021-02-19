@@ -11,10 +11,19 @@ class Outside extends Room {
     Tile overlay = new Tile(p3.loadImage(path+"Overlay.png"), true, false, p3);
   
     Tile ibis = new Tile(p3.loadImage(Globals.assetspath+"Characters/Ibis/ibis_left.png"), true, false, p3);
-  
+
     Tile ibisBattle = new Tile(new LandBehaviour() {
       public void activate(Tile t, UniGame p3) {
         cutsceneIbisBattleOne();
+      }
+    }
+    );
+
+    Tile ibisHat = new Tile(p3.loadImage(Globals.assetspath+"Characters/Ibis/ibis_hat_right.png"), true, false, p3);
+
+    Tile ibisHatBattle = new Tile(new LandBehaviour() {
+      public void activate(Tile t, UniGame p3) {
+        cutsceneIbisHatBattleOne();
       }
     }
     );
@@ -106,6 +115,13 @@ class Outside extends Room {
     tiles[13][9] = ibisBattle;
     tiles[14][8] = ibisBattle;
     tiles[14][9] = ibisBattle;
+
+    tiles[4][8] = ibisHat;
+    tiles[3][8] = ibisHatBattle;
+    tiles[4][7] = ibisHatBattle;
+    tiles[4][9] = ibisHatBattle;
+    tiles[5][8] = ibisHatBattle;
+    tiles[5][9] = ibisHatBattle;
     
     tiles[10][13] = noLibraryYet;
     tiles[11][13] = noLibraryYet;
@@ -184,6 +200,85 @@ class Outside extends Room {
   
   
   public void cutsceneIbisBattleFive() {
+    Globals.textManager.printText(new String[]{
+      "(The ibis ran off)" 
+      });
+  }
+
+
+  //-------------------------HAT IBIS CUT SCENES-------------------------
+
+
+  public void cutsceneIbisHatBattleOne() {
+    Globals.textManager.printText(
+      new String[]{
+      "IBIS: squarrrkkkk", 
+      "(He looks very stylish)"}, 
+      new Lambda(){
+        public void activate(){
+          cutsceneIbisHatBattleTwo();
+  }
+  });
+  }
+  
+  public void cutsceneIbisHatBattleTwo() {
+    Globals.battleManager.battle(Globals.battleUnits.playerBattleUnit, Globals.battleUnits.hatIbis, 
+      new Lambda() {
+      public void activate() {
+        cutsceneIbisHatBattleThree();
+      }
+    }
+    );
+  }
+  
+  public void cutsceneIbisHatBattleThree() {
+    //if player lost
+    if (Globals.battleManager.playerUnit.currentHP == 0) {
+      Globals.textManager.printText(
+        new String[]{
+        "IBIS: squarrrkkkk squarrrkkkk", 
+        "(It seems happy with itself..)"}, 
+        new Lambda(){
+          public void activate(){
+            cutsceneIbisHatBattleFour();
+    }
+  }
+  );
+  }         else {
+    Globals.textManager.printText(
+      new String[]{
+      "IBIS: squarrrkkk", 
+      "(It seems dejected..)"}, 
+      new Lambda(){
+        public void activate(){
+          cutsceneIbisHatBattleFour();
+  }
+  });
+  }
+  }
+  
+  public void cutsceneIbisHatBattleFour() {
+    Globals.fadeManager.fade(new Lambda() {
+      public void activate() {
+        tiles[4][8] = null;
+        tiles[3][8] = null;
+        tiles[4][7] = null;
+        tiles[4][9] = null;
+        tiles[5][8] = null;
+        tiles[5][9] = null;
+      }
+    }
+    , 
+      new Lambda() {
+      public void activate() {
+        cutsceneIbisHatBattleFive();
+      }
+    }
+    );
+  }
+  
+  
+  public void cutsceneIbisHatBattleFive() {
     Globals.textManager.printText(new String[]{
       "(The ibis ran off)" 
       });
