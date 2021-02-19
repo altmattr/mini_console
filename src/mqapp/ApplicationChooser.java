@@ -60,7 +60,7 @@ public class ApplicationChooser extends mqapp.MQApp {
         apps = Arrays.asList(
                 //new Pair(new MarbleLabrynth(), Optional.empty()), // TODO: waiting on the 3d fix to have this one work
                 new App("studentwork.AstroSwarm",   "AstroSwarm", "By Cecilia Cannon", "Dodge asteroids, save the mini-galaxies", Optional.empty()),
-                new App("unigame.UniGame",          "UniGame", "By Elise McCabe and Joseph Hardman", "Gamify your uni-life", Optional.of(loadImage("application_chooser/unigame.png"))),
+                new App("unigame.UniGame",          "UniGame", "By Elise McCabe and Joseph Hardman (not 1st years :) )", "Gamify your uni-life", Optional.of(loadImage("application_chooser/unigame.png"))),
                 new App("studentwork.Tetris",       "Tetris", "By Nataly Falero, Andrew, Alyssa Fedele, et.al.", "Just like you remember", Optional.of(loadImage("application_chooser/tetris.png"))),
                 new App("studentwork.Rocket",       "Rocket", "Ben Talese", "Keep away from asteroids, swerve and boost!", Optional.of(loadImage("application_chooser/rocket.png"))),
                 new App("studentwork.BlackHole",    "BlackHole", "Rifhad Mahbub", "Avoid black holes in your spaceship", Optional.of(loadImage("BlackHole.png"))),
