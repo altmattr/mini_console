@@ -24,6 +24,7 @@ package unigame;
 class BattleUnits{
   public BattleUnit playerBattleUnit;
   public BattleUnit hungryIbis;
+  public BattleUnit hatIbis;
   public BattleUnit patron;
   public BattleUnit schoolKids;
   public BattleUnit teacher;
@@ -34,6 +35,10 @@ class BattleUnits{
                                       
     hungryIbis = new BattleUnit("Hungry Ibis", p3.loadImage(Globals.assetspath+"Characters/Battle/ibis_battle.png"), 
     Globals.attacks.wingWave, Globals.attacks.screechingSquawk, Globals.attacks.rummage, Globals.attacks.snackSteal, 
+    100, 100, 0, 0, p3);
+
+    hatIbis = new BattleUnit("Howdy Ibis", p3.loadImage(Globals.assetspath+"Characters/Battle/ibis_hat_battle.png"), 
+    Globals.attacks.wingWave, Globals.attacks.screechingSquawk, Globals.attacks.hatTip, Globals.attacks.snackSteal, 
     100, 100, 0, 0, p3);
 
     patron = new BattleUnit("UBar Patron", p3.loadImage(Globals.assetspath+"Characters/Battle/ubarpatron_battle.png"),

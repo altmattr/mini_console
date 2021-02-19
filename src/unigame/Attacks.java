@@ -11,6 +11,7 @@ class Attacks{
   Attack wingWave = new Attack("Wing Wave",10,100,0,new Effect(),false,false);
   Attack screechingSquawk = new Attack("Screeching Squawk",10,100,0,new Effect(),false,false);
   Attack rummage = new Attack("Rummage",0,70,-20,new Effect(),false,false);
+  Attack hatTip = new Attack("Hat Tip",10,70,-20,new Effect(),false,false);
   Attack snackSteal = new Attack("Snack Steal",20,80,-5,new Effect(),false,false);
   
   //Patron attacks

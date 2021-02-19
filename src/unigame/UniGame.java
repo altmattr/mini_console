@@ -183,20 +183,6 @@ public void cutsceneOnePartSeven() {
   );
 }
 
-
-public void cutsceneOnePartEight() {
-  Globals.textManager.printText(new String[]{
-    "(I haven't started the assignment either, I better go do that now.)"
-    });
-}
-
-
-
-
-
-
-
-
 public void cutsceneOnePartEight() {
   Globals.textManager.printText(
     new String[]{
@@ -208,9 +194,6 @@ public void cutsceneOnePartEight() {
 }
 });
 }
-
-
-
 
 public void cutsceneOnePartNine() {
   Globals.textManager.printText(new String[]{
