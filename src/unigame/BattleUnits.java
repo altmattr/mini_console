@@ -25,6 +25,8 @@ class BattleUnits{
   public BattleUnit playerBattleUnit;
   public BattleUnit hungryIbis;
   public BattleUnit hatIbis;
+  public BattleUnit angryTurkey;
+  public BattleUnit cockyCockatoo;
   public BattleUnit patron;
   public BattleUnit schoolKids;
   public BattleUnit teacher;
