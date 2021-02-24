@@ -141,12 +141,12 @@ class Outside extends Room {
     tiles[9][12] = turkeyBattle;
     tiles[9][13] = turkeyBattle;
 
-    tiles[5][7] = Cockatoo;
-    tiles[4][7] = cockatooBattle;
-    tiles[5][6] = cockatooBattle;
-    tiles[5][8] = cockatooBattle;
-    tiles[6][7] = cockatooBattle;
-    tiles[6][8] = cockatooBattle;
+    tiles[7][5] = Cockatoo;
+    tiles[6][5] = cockatooBattle;
+    tiles[7][4] = cockatooBattle;
+    tiles[7][6] = cockatooBattle;
+    tiles[8][5] = cockatooBattle;
+    tiles[8][6] = cockatooBattle;
 
     tiles[4][8] = ibisHat;
     tiles[3][8] = ibisHatBattle;
@@ -441,16 +441,16 @@ public void cutsceneTurkeyBattleOne() {
   });
   }
   }
-  
+
   public void cutsceneCockatooBattleFour() {
     Globals.fadeManager.fade(new Lambda() {
       public void activate() {
-        Globals.world.outside.tiles[5][7] = null;
-        Globals.world.outside.tiles[4][7] = null;
-        Globals.world.outside.tiles[5][6] = null;
-        Globals.world.outside.tiles[5][8] = null;
-        Globals.world.outside.tiles[6][7] = null;
-        Globals.world.outside.tiles[6][8] = null;
+        Globals.world.outside.tiles[7][5] = null;
+        Globals.world.outside.tiles[6][5] = null;
+        Globals.world.outside.tiles[7][4] = null;
+        Globals.world.outside.tiles[7][6] = null;
+        Globals.world.outside.tiles[8][5] = null;
+        Globals.world.outside.tiles[8][6] = null;
       }
     }
     , 
