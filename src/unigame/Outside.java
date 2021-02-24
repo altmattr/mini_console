@@ -316,7 +316,6 @@ class Outside extends Room {
       });
   }
   
-}
 
 //----------BUSH TURKEY CUT SCENES----------
 public void cutsceneTurkeyBattleOne() {
@@ -470,3 +469,4 @@ public void cutsceneTurkeyBattleOne() {
       });
   }
 }
+
