@@ -20,7 +20,7 @@ public class Globals{
 
     public static final String battleFontPath = Globals.assetspath+"Fonts/kongtext.ttf";
     public static final String textFontPath = Globals.assetspath+"Fonts/dogicapixel.ttf";
-    public static final String playerType = "red";
+    // public static final String playerType = "red"; // TODO: not used when there is a dialog
     public static PFont battleUIFont;
     public static PFont textDisplayFont;
 

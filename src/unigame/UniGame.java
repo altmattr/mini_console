@@ -32,7 +32,7 @@ public void setup(){
   Globals.textDisplayFont = createFont(Globals.textFontPath,Globals.scale*8);
   Globals.battleUIFont = createFont(Globals.battleFontPath,Globals.scale*8);
   Globals.battleManager = new BattleManager(this);
-  Globals.player = new Player("p_"+Globals.playerType, this);
+  Globals.player = new Player(this);
   Globals.attacks = new Attacks();
   Globals.battleUnits = new BattleUnits(this);
   Globals.gameStateManager = new GameStateManager();
