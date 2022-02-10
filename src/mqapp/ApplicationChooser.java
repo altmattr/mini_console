@@ -71,7 +71,8 @@ public class ApplicationChooser extends mqapp.MQApp {
                 new App("studentwork.Grapher",      "Grapher", "Sepehr Torfeh Nejad", "Make your own interactive graph", Optional.of(loadImage("Grapher.png"))),
                 new App("studentwork.Stacker",      "Stacker", "Andrew Kefala", "Arcade Money Hog", Optional.of(loadImage("application_chooser/stacker.png"))),
                 new App("studentwork.Pong",         "Pong", "Beau Williams", "need I say more?", Optional.of(loadImage("application_chooser/pongoptimised.png"))),
-                new App("studentwork.Pandemic",     "Pandemic", "Elizabeth Cappellazzo, Cameron Baker, Quang Minh Pham, Robert Stockton, Nishal Najeeb, and Chhade Alasbar", "2020 Simulator", Optional.of(loadImage("application_chooser/Pandemic.png")))
+                new App("studentwork.Pandemic",     "Pandemic", "Elizabeth Cappellazzo, Cameron Baker, Quang Minh Pham, Robert Stockton, Nishal Najeeb, and Chhade Alasbar", "2020 Simulator", Optional.of(loadImage("application_chooser/Pandemic.png"))),
+                new App("studentwork.Minigolf",     "Minigolf", "Mark Saba", "A game of golf... but mini", Optional.of(loadImage("application_chooser/minigolf.png")))
         );
 
         boxSize = height / 6;
